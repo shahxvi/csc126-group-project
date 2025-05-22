@@ -1,5 +1,4 @@
 # CSC126 Group Project
----
 Group Members:
 - Irfan Shah bin Maizul Hisham    (shahxvi)
 - Muhammad                        (       )
