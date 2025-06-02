@@ -15,4 +15,9 @@ using namespace std;
 
 int main() {
     
+    // Greeting message
+    cout << "Motorsport Booking System" << endl;
+    cout << "==========================" << endl;
+
+
 }
