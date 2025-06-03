@@ -15,8 +15,28 @@ using namespace std;
 
 int main() {
     
-    // Greeting message
+    /* Initialization */
 
+    // Driver information
+    char driverName[50], driverNationality[50];         // Driver name & nationality
+    int driverAge = 0;                                  // Driver age
+    char driverLicense = 'N';                           // Driver license
+
+    // Formula 1 information
+    char f1Team[50], f1Car[50];                             // Team and Car
+    char f1CircuitMY[50] = "Sepang International Circuit";  // Circuit name
+    char f1CircuitSG[50] = "Marina Bay Street Circuit";     // Circuit name
+
+    // Go-Kart information
+    int kartCC = 0;     // Kart engine capacity in CC
+
+    // MotoGP information
+    char motoGPTeam[50], motoGPBike[50];                        // Team and Bike
+    char motoGPCircuitMY[50] = "Sepang International Circuit";  // Circuit name
+    char motoGPCircuitSG[50] = "Marina Bay Street Circuit";     // Circuit name
+
+
+    // Greeting message
     cout << " __  __       _                                  _     ____              _    _               ____            _                               " << endl;
     cout << "|  \\/  | ___ | |_ ___  _ __ ___ _ __   ___  _ __| |_  | __ )  ___   ___ | | _(_)_ __   __ _  / ___| _   _ ___| |_ ___ _ __ ___               " << endl;
     cout << "| |\\/| |/ _ \\| __/ _ \\| '__/ __| '_ \\ / _ \\| '__| __| |  _ \\ / _ \\ / _ \\| |/ / | '_ \\ / _` | \\___ \\| | | / __| __/ _ \\ '_ ` _ \\  " << endl;
