@@ -1,4 +1,4 @@
-# CSC126 Group Project
+# Go-Kart Booking System
 Group Members:
 - Irfan Shah bin Maizul Hisham    (shahxvi)
 - Muhammad bin Abdul Aziz         (       )
@@ -7,6 +7,3 @@ Group Members:
 
 Instructor:
 - Nora Yanti binti Che Jan
-
-
-# Title : Go-Kart Booking System
