@@ -1,5 +1,5 @@
 // CSC126 Group Project
-// Motorsport Booking System
+// Go-Kart Booking System
 
 // IRFAN SHAH BIN MAIZUL HISHAM       (2025171523)  (RCDCS1101A) (shahxvi)
 // MUHAMMAD HANIF BIN AMIR HAMZAH     (2025155097)  (RCDCS1101A) (revovix)
