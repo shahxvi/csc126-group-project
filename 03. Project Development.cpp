@@ -20,6 +20,7 @@ int main() {
     std::cout << "Kundoo" << std::endl;
     std::cout << "Shah" << std::endl;
     std::cout << "rinnnn17" << std::endl;
+    std::cout << "hai" << std::endl;
 
     system("pause");
     return 0;
