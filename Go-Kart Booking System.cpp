@@ -12,6 +12,7 @@
 #include <iomanip>
 
 std::string setRaceFormat(int x);
+int setEngineCapacity(int x);
 
 int main() {
     	int ID = 0;
@@ -29,6 +30,18 @@ int main() {
 
         std::cout << "You have chosen: " << raceFormat << std::endl;
 
+	std::cout << "\nGo-Kart Engine Capacities:\n"
+		  << "120cc\n"
+	          << "200cc\n"
+		  << "270cc\n";
+	
+	std::cout << "Please enter your desired Go-Kart engine Capacity (120, 200, 270): ";
+	std::cin >> ID;
+	
+	int engineCapacity = setEngineCapacity(ID);
+
+	std::cout << "You have chosen: " << engineCapacity << std::endl;
+
     	return 0;
 }
 
@@ -41,8 +54,18 @@ std::string setRaceFormat(int x) {
         	case 3:
             		return "Time Trial";
         	case 4:
-            		return "Drag Race";
+			return "Drag Race";
         	default:
             		return "Elimination Race";
     }
 }
+
+int setEngineCapacity(int x) {
+	if (x == 120)
+		return 120;
+	if (x == 200)
+		return 200;
+	if (x == 270)
+		return 270;	
+}
+
