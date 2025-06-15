@@ -8,20 +8,42 @@
 // SUPERVISED BY MADAM NORA YANTI BINTI CHE JAN
 
 #include <iostream>
-#include <cstring>
+#include <string>
 #include <iomanip>
 
+std::string setRaceFormat(int x);
+
 int main() {
-    
-    /* Initialization */
+    int ID = 0;
 
-    // Greeting message
     std::cout << "Welcome to the Go-Kart Booking System!" << std::endl;
-    std::cout << "Kundoo" << std::endl;
-    std::cout << "Shah" << std::endl;
-    std::cout << "rinnnn17" << std::endl;
-    std::cout << "hai" << std::endl;
+    std::cout << "Please enter your desired racing format (1-5): ";
+    std::cin >> ID;
 
-    system("pause");
+    std::string chosenFormat = setRaceFormat(ID);
+
+    if (chosenFormat.empty()) {
+        std::cout << "Invalid racing format selected." << std::endl;
+    } else {
+        std::cout << "You have chosen: " << chosenFormat << std::endl;
+    }
+
     return 0;
+}
+
+std::string setRaceFormat(int x) {
+    switch (x) {
+        case 1:
+            return "Circuit Race";
+        case 2:
+            return "Sprint Race";
+        case 3:
+            return "Time Trial";
+        case 4:
+            return "Drag Race";
+        case 5:
+            return "Elimination Race";
+        default:
+            return "";
+    }
 }
