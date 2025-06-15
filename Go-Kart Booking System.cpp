@@ -18,6 +18,13 @@ int main() {
     	int ID = 0;
 
 	std::cout << "Welcome to the Go-Kart Booking System!" << std::endl;
+
+	std::cout << "Racing Formats\n"
+		  << "1 - Circuit\n"
+		  << "2 - Sprint\n"
+		  << "3 - Time Trial\n"
+		  << "4 - Drag\n"
+		  << "5 - Elimination\n";
     	std::cout << "Please enter your desired racing format (1-5): ";
     	std::cin >> ID;
 	
@@ -40,7 +47,7 @@ int main() {
 	
 	int engineCapacity = setEngineCapacity(ID);
 
-	std::cout << "You have chosen: " << engineCapacity << std::endl;
+	std::cout << "You have chosen: " << engineCapacity << "cc" << std::endl;
 
     	return 0;
 }
@@ -65,7 +72,6 @@ int setEngineCapacity(int x) {
 		return 120;
 	if (x == 200)
 		return 200;
-	if (x == 270)
-		return 270;	
+	return 270;
 }
 
