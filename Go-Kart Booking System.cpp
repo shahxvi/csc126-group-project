@@ -21,41 +21,42 @@ std::string setRaceFormat(int x);
 // Insert Track Selection Function Prototype
 // Intert Environment Function Prototype
 int setEngineCapacity(int x);
-int membershipDiscount(char &membership);
+int setMembershipDiscount(char &membership);
 // Insert Price Calculation Prototype
 
 int main() {
-    	int ID = 0;
     	int bookingType, driverCount = 0, driverAge[5];
 	std::string driverName[5];
 	char license[5];
+	int racingFormatID;
+	int engineCapacityID;
 	char membership;
 
 	std::cout << "Welcome to the Go-Kart Booking System!" << std::endl;
 
-	std::cout << "Booking Type:\n"
+	std::cout << "\nBooking Type:\n"
 		  << "1. Solo\n"
-		  << "2. Group (max 5)\n";
+		  << "2. Group (Max 5)\n";
 	std::cout << "Please choose your booking type: ";
 	std::cin >> bookingType;
 
 	booking(bookingType, driverCount, driverAge, driverName, license);
 	
-	std::cout << "Racing Formats\n"
+	std::cout << "\nRacing Formats\n"
 		  << "1 - Circuit\n"
 		  << "2 - Sprint\n"
 		  << "3 - Time Trial\n"
 		  << "4 - Drag\n"
 		  << "5 - Elimination\n";
     	std::cout << "Please enter your desired racing format (1-5): ";
-    	std::cin >> ID;
+    	std::cin >> racingFormatID;
 	
-	while (ID < 1 || ID > 5) {
+	while (racingFormatID < 1 || racingFormatID > 5) {
 		std::cout << "Please choose correct racing format (1-5): ";
-		std::cin >> ID;
+		std::cin >> racingFormatID;
 	}
 
-    	std::string raceFormat = setRaceFormat(ID);
+    	std::string raceFormat = setRaceFormat(racingFormatID);
 
         std::cout << "You have chosen: " << raceFormat << std::endl;
 
@@ -65,14 +66,20 @@ int main() {
 		  << "270cc\n";
 
 	std::cout << "Please enter your desired Go-Kart engine Capacity (120, 200, 270): ";
-	std::cin >> ID;
+	std::cin >> engineCapacityID;
 	
-	int engineCapacity = setEngineCapacity(ID);
+	int engineCapacity = setEngineCapacity(engineCapacityID);
 
 	std::cout << "You have chosen: " << engineCapacity << "cc" << std::endl;
 	
-	int membershipFunc = membershipDiscount(membership);
-	
+	int membershipDicount = setMembershipDiscount(membership);
+
+	if (driverCount == 1) { 
+		std::cout << "\nDriver Name: " << driverName[0] << std::endl;
+		std::cout << "Driver Age: " << driverAge[0] << std::endl;
+		std::cout << "Driver's License: " << license[0] << std::endl;	
+
+	}	
 	system("pause"); // To prevent the console from closing immediately
     	return 0;
 }
@@ -87,7 +94,7 @@ void booking(int &bookingType, int &driverCount, int driverAge[], std::string dr
 
 	if(bookingType == 1) {	// Solo Booking
 		driverCount = 1;
-		std::cout << "Please enter your name: ";
+		std::cout << "\nPlease enter your name: ";
 		std::cin >> driverName[0];
 		
 		std::cout << "Please enter your age: ";
@@ -152,7 +159,7 @@ int setEngineCapacity(int x) {
 }
 
 // 6 - Membership Discount Function
-int membershipDiscount(char &membership) {
+int setMembershipDiscount(char &membership) {
 	std::cout << "Do you have a membership? (Y/N): ";
 	std::cin >> membership;
 	membership = toupper(membership);
