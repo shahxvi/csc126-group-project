@@ -52,6 +52,42 @@ int main() {
     	return 0;
 }
 
+//booking type
+int booking(int bookingType, int driverCount, int driverAge, char driverName, char license) {
+	
+	std::cout << "Booking Type:\n"
+			<< "1. Solo\n"
+			<< "2. Group (max 5)\n";
+	std::cout << "Please choose your booking type: ";
+	std::cin >> bookingType;
+	
+	if(bookingType == 1) {
+		driverCount = 1;
+		std::cout << "Please enter your name: ";
+		std::cin >> driverName;
+		
+		std::cout << "Please enter your age: ";
+		std::cin >> driverAge;
+		
+		std::cout << "Do you have a driving license? (Y/N): ";
+		std::cin >> license;
+	}
+	
+	else if(bookingType == 2) {
+		std::cout << "Please enter the total driver: ";
+		std::cin >> driverCount;
+		
+		if(driverCount < 2 || driverCount > 5)
+			std::cout << "Exceeded the maximum amount.";
+		
+		else
+			std::cout << "Arrayy";
+	}
+	
+	else
+		std::cout << "Please choose correct booking type (1 or 2).";
+}
+
 std::string setRaceFormat(int x) {
     	switch (x) {
         	case 1:
