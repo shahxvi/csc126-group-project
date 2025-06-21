@@ -16,7 +16,7 @@
 #include <string>
 #include <iomanip>
 
-void booking(int &bookingType, int &driverCount, int &driverAge, std::string &driverName, char &license);
+void booking(int &bookingType, int &driverCount, int driverAge[], std::string driverName[], char license[]);
 std::string setRaceFormat(int x);
 // Insert Track Selection Function Prototype
 // Intert Environment Function Prototype
@@ -26,9 +26,10 @@ int membershipDiscount(char &membership);
 
 int main() {
     	int ID = 0;
-    	int bookingType, driverCount = 0, driverAge = 0;
-	std::string driverName;
-	char license, membership;
+    	int bookingType, driverCount = 0, driverAge[5];
+	std::string driverName[5];
+	char license[5];
+	char membership;
 
 	std::cout << "Welcome to the Go-Kart Booking System!" << std::endl;
 
@@ -77,22 +78,21 @@ int main() {
 }
 
 // 1 - Booking Type Function
-void booking(int &bookingType, int &driverCount, int &driverAge, std::string &driverName, char &license) {
+void booking(int &bookingType, int &driverCount, int driverAge[], std::string driverName[], char license[]) {
 	
 	if(bookingType == 1) {
 		driverCount = 1;
 		std::cout << "Please enter your name: ";
-		std::cin >> driverName;
+		std::cin >> driverName[0];
 		
 		std::cout << "Please enter your age: ";
-		std::cin >> driverAge;
+		std::cin >> driverAge[0];
 		
-		if(driverAge < 13)
-			int engineCapacity = 120;
+		// Will check driver age at the set engine capacity function
 		
 		std::cout << "Do you have a driving license? (Y/N): ";
 		std::cin >> license;
-		license = toupper(license);
+		license[0] = toupper(license[0]);
 	}
 	
 	else if(bookingType == 2) {
