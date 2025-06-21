@@ -56,11 +56,26 @@ int booking(int &bookingType, int &driverCount, int &driverAge, std::string &dri
 	return 0;
 }
 
+//membership discount
+int membershipDiscount(char &membership) {
+	std::cout << "Do you have a membership? (Y/N): ";
+	std::cin >> membership;
+	membership = toupper(membership);
+	
+	if(membership == 'Y')
+		int discount = 0.1;
+	
+	else
+		int discount = 0;
+	
+	return 0;
+}
+
 int main() {
     	int ID = 0;
     	int bookingType, driverCount = 0, driverAge = 0;
 		std::string driverName;
-		char license;
+		char license, membership;
 
 	std::cout << "Welcome to the Go-Kart Booking System!" << std::endl;
 
@@ -86,20 +101,20 @@ int main() {
 
 	std::cout << "\nGo-Kart Engine Capacities:\n"
 		  << "120cc\n"
-	          << "200cc\n"
+		  << "200cc\n"
 		  << "270cc\n";
-	
+
 	std::cout << "Please enter your desired Go-Kart engine Capacity (120, 200, 270): ";
 	std::cin >> ID;
 	
 	int engineCapacity = setEngineCapacity(ID);
 
 	std::cout << "You have chosen: " << engineCapacity << "cc" << std::endl;
-
+	
+	int membershipFunc = membershipDiscount(membership);
+	
     	return 0;
 }
-
-
 
 std::string setRaceFormat(int x) {
     	switch (x) {
@@ -123,4 +138,3 @@ int setEngineCapacity(int x) {
 		return 200;
 	return 270;
 }
-
