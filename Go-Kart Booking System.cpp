@@ -11,18 +11,19 @@
 // Function Prototypes are defined at the top of the code.
 // Each function should be defined below the main function.
 // This ensures readability and maintainability of the code.
+// Please update the comment line of the prototype function.
 
 #include <iostream>
 #include <string>
 #include <iomanip>
 
-void booking(int &bookingType, int &driverCount, int driverAge[], std::string driverName[], char license[]);
-std::string setRaceFormat(int x);
+void booking(int &bookingType, int &driverCount, int driverAge[], std::string driverName[], char license[]); //line 87
+std::string setRaceFormat(int x);	// Line 136
 // Insert Track Selection Function Prototype
 // Intert Environment Function Prototype
-int setEngineCapacity(int x);
+int setEngineCapacity(int x);		// Line 152
 int setMembershipDiscount(char &membership);
-// Insert Price Calculation Prototype
+// Insert Price Calculation Prototype	// Line 162
 
 int main() {
     	int bookingType, driverCount = 0, driverAge[5];
