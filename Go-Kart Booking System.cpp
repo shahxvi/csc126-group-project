@@ -93,7 +93,8 @@ void booking(int &bookingType, int &driverCount, int driverAge[], std::string dr
 		std::cin >> bookingType;
 	}
 
-	if(bookingType == 1) {	// Solo Booking
+	// Solo Booking
+	if(bookingType == 1) {
 		driverCount = 1;
 		std::cout << "\nPlease enter your name: ";
 		std::cin >> driverName[0];
