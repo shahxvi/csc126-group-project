@@ -80,7 +80,12 @@ int main() {
 // 1 - Booking Type Function
 void booking(int &bookingType, int &driverCount, int driverAge[], std::string driverName[], char license[]) {
 	
-	if(bookingType == 1) {
+	while (bookingType < 1 || bookingType > 2) {
+		std::cout << "Please choose a valid booking type (1 or 2): ";
+		std::cin >> bookingType;
+	}
+
+	if(bookingType == 1) {	// Solo Booking
 		driverCount = 1;
 		std::cout << "Please enter your name: ";
 		std::cin >> driverName[0];
@@ -95,19 +100,29 @@ void booking(int &bookingType, int &driverCount, int driverAge[], std::string dr
 		license[0] = toupper(license[0]);
 	}
 	
-	else if(bookingType == 2) {
+	else {	// Group Booking
 		std::cout << "Please enter the total number of drivers: ";
 		std::cin >> driverCount;
 		
-		if(driverCount < 2 || driverCount > 5)
-			std::cout << "Exceeded the maximum number of drivers.\n";
-		
-		else
-			std::cout << "Arrayy";
+		while (driverCount < 1 || driverCount > 5) {
+			std::cout << "Please enter a valid number of drivers (1-5): ";
+			std::cin >> driverCount;
+		}
+
+		for (int i = 0; i < driverCount; i++) {
+			std::cout << "Please enter the name of driver " << (i + 1) << ": ";
+			std::cin >> driverName[i];
+			
+			std::cout << "Please enter the age of driver " << (i + 1) << ": ";
+			std::cin >> driverAge[i];
+			
+			// Will check driver age at the set engine capacity function
+			
+			std::cout << "Does driver " << (i + 1) << " have a driving license? (Y/N): ";
+			std::cin >> license[i];
+			license[i] = toupper(license[i]);
+		}
 	}
-	
-	else
-		std::cout << "Please choose a correct booking type (1 or 2).\n";
 }
 
 
