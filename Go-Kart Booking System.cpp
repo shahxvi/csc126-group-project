@@ -17,11 +17,11 @@
 #include <string>
 #include <iomanip>
 
-void booking(int &bookingType, int &driverCount, int driverAge[], std::string driverName[], char license[]); //line 87
+void booking(int &bookingType, int &driverCount, int driverAge[], std::string driverName[], char license[]); //line 86
 std::string setRaceFormat(int x);		// Line 136
 // Insert Track Selection Function Prototype
 // Intert Environment Function Prototype
-int setEngineCapacity(int x);			// Line 152
+int setEngineCapacity(int x);			// Line 153
 int setMembershipDiscount(char &membership);	// Line 162
 // Insert Price Calculation Prototype	
 
