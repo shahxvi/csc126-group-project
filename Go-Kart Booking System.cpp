@@ -23,7 +23,7 @@ std::string setRaceFormat(int x);				// Line 138
 // Intert Environment Function Prototype
 int setEngineCapacity(int x);					// Line 154
 float setMembershipDiscount(char &membership);	// Line 163
-float setPriceCalculation(); 					// Line 176
+float setPriceCalculation(int engineCapacity, int laps, float membershipDiscount);	// Line 176
 
 int main() {
     int bookingType, driverCount = 0, driverAge[5];
@@ -32,6 +32,7 @@ int main() {
 	int racingFormatID;
 	int engineCapacityID;
 	char membership;
+	int laps = 1;
 
 	std::cout << "Welcome to the Go-Kart Booking System!" << std::endl;
 
@@ -73,17 +74,18 @@ int main() {
 
 	std::cout << "You have chosen: " << engineCapacity << "cc" << std::endl;
 	
-	float membershipDicount = setMembershipDiscount(membership);
+	float membershipDiscount = setMembershipDiscount(membership);
 
 	if (driverCount == 1) { 
+		std::cout << "==================================";
 		std::cout << "\nDriver's Name: " << driverName[0] << std::endl;
 		std::cout << "Driver's Age: " << driverAge[0] << std::endl;
 		std::cout << "Driver's License: " << license[0] << std::endl;	
 	}
 	
-	float priceCalculation = setPriceCalculation();
+	float priceCalculation = setPriceCalculation(engineCapacity, laps, membershipDiscount);
 	
-	std::cout << "Total price: RM " << priceCalculation;
+	std::cout << "\nTotal price: RM " << priceCalculation << std::endl;
 	
 	system("pause"); // To prevent the console from closing immediately
     	return 0;
