@@ -17,16 +17,16 @@
 #include <string>
 #include <iomanip>
 
-void booking(int &bookingType, int &driverCount, int driverAge[], std::string driverName[], char license[]); //line 88
+void booking(int &bookingType, int &driverCount, int driverAge[], std::string driverName[], char license[]);	//line 88
 std::string setRaceFormat(int x);				// Line 138
 // Insert Track Selection Function Prototype
 // Intert Environment Function Prototype
 int setEngineCapacity(int x);					// Line 154
 float setMembershipDiscount(char &membership);	// Line 163
-float setPriceCalculation(int engineCapacity, int laps, float membershipDiscount);	// Line 176
+float calcPrice(int engineCapacity, int laps, float membershipDiscount);	// Line 176
 
 int main() {
-    int bookingType, driverCount = 0, driverAge[5];
+	int bookingType, driverCount, driverAge[5];
 	std::string driverName[5];
 	char license[5];
 	int racingFormatID;
@@ -37,36 +37,35 @@ int main() {
 	std::cout << "Welcome to the Go-Kart Booking System!" << std::endl;
 
 	std::cout << "\nBooking Type:\n"
-		  << "1. Solo\n"
-		  << "2. Group (Max 5)\n";
+		  	  << "1. Solo\n"
+			  << "2. Group (Max 5)\n";
 	std::cout << "Please choose your booking type: ";
 	std::cin >> bookingType;
 
 	booking(bookingType, driverCount, driverAge, driverName, license);
 	
 	std::cout << "\nRacing Formats\n"
-		  << "1 - Circuit\n"
-		  << "2 - Sprint\n"
-		  << "3 - Time Trial\n"
-		  << "4 - Drag\n"
-		  << "5 - Elimination\n";
-    	std::cout << "Please enter your desired racing format (1-5): ";
-    	std::cin >> racingFormatID;
+			  << "1 - Circuit\n"
+		      << "2 - Sprint\n"
+		  	  << "3 - Time Trial\n"
+		  	  << "4 - Drag\n"
+		  	  << "5 - Elimination\n";
+    std::cout << "Please enter your desired racing format (1-5): ";
+    std::cin >> racingFormatID;
 	
 	while (racingFormatID < 1 || racingFormatID > 5) {
 		std::cout << "Please choose correct racing format (1-5): ";
 		std::cin >> racingFormatID;
 	}
 
-    	std::string raceFormat = setRaceFormat(racingFormatID);
+    std::string raceFormat = setRaceFormat(racingFormatID);
 
-        std::cout << "You have chosen: " << raceFormat << std::endl;
+    std::cout << "You have chosen: " << raceFormat << std::endl;
 
 	std::cout << "\nGo-Kart Engine Capacities:\n"
-		  << "120cc\n"
-		  << "200cc\n"
-		  << "270cc\n";
-
+			  << "120cc\n"
+		  	  << "200cc\n"
+			  << "270cc\n";
 	std::cout << "Please enter your desired Go-Kart engine Capacity (120, 200, 270): ";
 	std::cin >> engineCapacityID;
 	
@@ -82,13 +81,17 @@ int main() {
 		std::cout << "Driver's Age: " << driverAge[0] << std::endl;
 		std::cout << "Driver's License: " << license[0] << std::endl;	
 	}
+
+	else {
 	
-	float priceCalculation = setPriceCalculation(engineCapacity, laps, membershipDiscount);
+	}
 	
-	std::cout << "\nTotal price: RM " << priceCalculation << std::endl;
+	float price = calcPrice(engineCapacity, laps, membershipDiscount);
+	
+	std::cout << "\nTotal price: RM " << price << std::endl;
 	
 	system("pause"); // To prevent the console from closing immediately
-    	return 0;
+    return 0;
 }
 
 // 1 - Booking Type Function
@@ -180,7 +183,7 @@ float setMembershipDiscount(char &membership) {
 }
 
 // 7 - Price Calculation Function
-float setPriceCalculation(int engineCapacity, int laps, float membershipDiscount) {
+float calcPrice(int engineCapacity, int laps, float membershipDiscount) {
 	float pricePerCC = 0.5;
 	float kartPrice = engineCapacity * pricePerCC;
 	//float totalGearPrice = ;
