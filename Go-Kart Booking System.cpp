@@ -18,15 +18,15 @@
 #include <iomanip>
 
 void booking(int &bookingType, int &driverCount, int driverAge[], std::string driverName[], char license[]); //line 88
-std::string setRaceFormat(int x);		// Line 138
+std::string setRaceFormat(int x);				// Line 138
 // Insert Track Selection Function Prototype
 // Intert Environment Function Prototype
-int setEngineCapacity(int x);			// Line 154
-int setMembershipDiscount(char &membership);	// Line 163
-// Insert Price Calculation Prototype	
+int setEngineCapacity(int x);					// Line 154
+float setMembershipDiscount(char &membership);	// Line 163
+float setPriceCalculation(); 					// Line 176
 
 int main() {
-    	int bookingType, driverCount = 0, driverAge[5];
+    int bookingType, driverCount = 0, driverAge[5];
 	std::string driverName[5];
 	char license[5];
 	int racingFormatID;
@@ -73,14 +73,18 @@ int main() {
 
 	std::cout << "You have chosen: " << engineCapacity << "cc" << std::endl;
 	
-	int membershipDicount = setMembershipDiscount(membership);
+	float membershipDicount = setMembershipDiscount(membership);
 
 	if (driverCount == 1) { 
-		std::cout << "\nDriver Name: " << driverName[0] << std::endl;
-		std::cout << "Driver Age: " << driverAge[0] << std::endl;
+		std::cout << "\nDriver's Name: " << driverName[0] << std::endl;
+		std::cout << "Driver's Age: " << driverAge[0] << std::endl;
 		std::cout << "Driver's License: " << license[0] << std::endl;	
-
-	}	
+	}
+	
+	float priceCalculation = setPriceCalculation();
+	
+	std::cout << "Total price: RM " << priceCalculation;
+	
 	system("pause"); // To prevent the console from closing immediately
     	return 0;
 }
@@ -105,7 +109,7 @@ void booking(int &bookingType, int &driverCount, int driverAge[], std::string dr
 		// Will check driver age at the set engine capacity function
 		
 		std::cout << "Do you have a driving license? (Y/N): ";
-		std::cin >> license;
+		std::cin >> license[0];
 		license[0] = toupper(license[0]);
 	}
 	
@@ -113,7 +117,7 @@ void booking(int &bookingType, int &driverCount, int driverAge[], std::string dr
 		std::cout << "Please enter the total number of drivers: ";
 		std::cin >> driverCount;
 		
-		while (driverCount < 1 || driverCount > 5) {
+		while (driverCount < 2 || driverCount > 5) {
 			std::cout << "Please enter a valid number of drivers (1-5): ";
 			std::cin >> driverCount;
 		}
@@ -127,7 +131,7 @@ void booking(int &bookingType, int &driverCount, int driverAge[], std::string dr
 			
 			// Will check driver age at the set engine capacity function
 			
-			std::cout << "Does driver " << (i + 1) << " have a driving license? (Y/N): ";
+			std::cout << "Does driver " << (i + 1) << " has a driving license? (Y/N): ";
 			std::cin >> license[i];
 			license[i] = toupper(license[i]);
 		}
@@ -137,17 +141,17 @@ void booking(int &bookingType, int &driverCount, int driverAge[], std::string dr
 
 // 2 - Set Race Format Function
 std::string setRaceFormat(int x) {
-    	switch (x) {
-        	case 1:
-            		return "Circuit Race";
-        	case 2:
-            		return "Sprint Race";
-        	case 3:
-            		return "Time Trial";
-        	case 4:
-			return "Drag Race";
-        	default:
-            		return "Elimination Race";
+    switch (x) {
+       	case 1:
+         	return "Circuit Race";
+        case 2:
+            	return "Sprint Race";
+        case 3:
+            	return "Time Trial";
+        case 4:
+		return "Drag Race";
+        default:
+            	return "Elimination Race";
     }
 }
 
@@ -161,7 +165,7 @@ int setEngineCapacity(int x) {
 }
 
 // 6 - Membership Discount Function
-int setMembershipDiscount(char &membership) {
+float setMembershipDiscount(char &membership) {
 	std::cout << "Do you have a membership? (Y/N): ";
 	std::cin >> membership;
 	membership = toupper(membership);
@@ -171,4 +175,14 @@ int setMembershipDiscount(char &membership) {
 	
 	else
 		return 0;
+}
+
+// 7 - Price Calculation Function
+float setPriceCalculation(int engineCapacity, int laps, float membershipDiscount) {
+	float pricePerCC = 0.5;
+	float kartPrice = engineCapacity * pricePerCC;
+	//float totalGearPrice = ;
+	float totalKartPrice = kartPrice * laps;
+	float finalPrice = (totalKartPrice) * (1 - membershipDiscount);
+	return finalPrice;
 }
