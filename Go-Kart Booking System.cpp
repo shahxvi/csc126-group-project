@@ -23,6 +23,7 @@ std::string setRaceFormat(int x);				// Line 138
 // Intert Environment Function Prototype
 int setEngineCapacity(int x);					// Line 154
 float setMembershipDiscount(char &membership);	// Line 163
+int isMember(char &membership);
 float calcPrice(int engineCapacity, int laps, float membershipDiscount);	// Line 176
 
 int main() {
@@ -171,13 +172,15 @@ int setEngineCapacity(int x) {
 
 // 6 - Membership Discount Function
 float setMembershipDiscount(char &membership) {
-	std::cout << "Do you have a membership? (Y/N): ";
-	std::cin >> membership;
 	membership = toupper(membership);
 	
+}
+
+int isMember(char &membership) {
+	membership = toupper(membership);
+
 	if(membership == 'Y')
 		return 0.1;
-	
 	else
 		return 0;
 }
