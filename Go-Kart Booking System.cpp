@@ -163,14 +163,9 @@ std::string setRaceFormat(int x) {
 // 5 - Set Go-Kart Engine Capacity Function
 int setEngineCapacity(int cc) {
 	while (cc != 120 && cc != 200 && cc != 200) {
-		if (cc == 120 || cc == 200 || cc == 270) {
-		}
-		else {
-			std::cout << "Please input valid engine capacity: ";
-			std::cin >> cc;
-		}	
-	}
-	
+		std::cout << "Please input valid engine capacity: ";
+		std::cin >> cc;
+	}	
 	return cc;
 }
 
