@@ -4,46 +4,108 @@
 #include <iomanip>
 #include <cctype>
 
-void booking(int &bookingType);
-std::string setRaceFormat(int);
+std::string setBooking();
+void driver(std::string &bookingType, std::string driverName[], int driverAge[], char license[]); 
+std::string setRaceFormat(std::string &bookingType);
 std::string setEnvironment();
 
 int main() {
-	int bookingType;
 	std::string raceFormat, environment, track;
 
-	booking(bookingType);
+	std::string bookingType = setBooking(); //Type 1 Function
 
-	raceFormat = setRaceFormat(bookingType);
+	std::string driverName[5];
+	int driverAge[5];
+	char license[5];
+	int driverCount;
+	
+	driver(bookingType, driverName, driverAge, license); 
 
-	environment = setEnvironment();
+	raceFormat = setRaceFormat(bookingType, setEnvironment());
 
 	system("pause");
 	return 0;
 }
 
-void booking(int &bookingType) {
+std::string setBooking() {
+	int bookingTypeID;
+	std::string bookingType;
+
 	std::cout << "\n\t\t1 - Solo\n"
 		  << "\t\t2 - Group (Maximum 5)\n"
 		  << "\t\tPlease Choose your desired booking (1 - 2): ";
-	std::cin >> bookingType;
+	std::cin >> bookingTypeID;
 
-	while (bookingType != 1 && bookingType != 2) {
+	while (bookingTypeID != 1 && bookingTypeID != 2) {
 		std::cout << "\n\t\tPlease enter valid booking type: ";
-		std::cin >> bookingType;
+		std::cin >> bookingTypeID;
+	}
+
+	if (bookingTypeID == 1) {
+		return "Solo";
+	}
+
+	else {
+		return "Group";
 	}
 }
 
-std::string setRaceFormat(int bookingType) {
+void driver(std::string &bookingType, std::string driverName[], int driverAge[], char license[]) {
+	int driverCount;
+	
+	if (bookingType == "Solo") {
+		driverCount = 1;
+		
+		std::cout << "\n\t\tDriver Name: ";
+		std::cin >> driverName[0];
+
+		std::cout << "\t\tDriver Age: ";
+		std::cin >> driverAge[0];
+
+		std::cout << "\t\tDo you have a driver's license? (Y/N): ";
+		std::cin >> license[0];
+	}
+	
+	else {
+		std::cout << "\t\tPlease enter the number of drivers (2 - 5): ";
+		std::cin >> driverCount;
+
+		while (driverCount < 2 || driverCount > 5) {
+			std::cout << "\t\tPlease enter a valid number of drivers: ";
+			std::cin >> driverCount;
+		}
+	
+		for (int i = 0; i < driverCount; i++) {
+		
+		std::cout << "\n\t\tDriver #" << (i+1) << " Name: ";
+		std::cin >> driverName[i];
+
+		std::cout << "\t\tDriver #" << (i+1) << " Age: ";
+		std::cin >> driverAge[i];
+
+		std::cout << "\t\tDoes Driver #" << (i+1) << " has a license? (Y/N): ";
+		std::cin >> license[i];
+		}
+	}
+}
+
+
+std::string setRaceFormat(std::string &bookingType, std::string environment) {
 	int raceFormatID;	
 	std::string raceFormat;
 
-	std::cout << "\n\t\t1 - Circuit Race\n"
+	if (bookingType == "Solo") {
+		if (environment == "Indoor") {
+		std::cout << "\n\t\t1 - Circuit Race\n"
+			  << "\t\t2 - Sprint Race\n";
+		}
+	}
+	/*std::cout << "\n\t\t1 - Circuit Race\n"
 		  << "\t\t2 - Sprint Race\n"
 		  << "\t\t3 - Time Trial\n"
 		  << "\t\t4 - Drag Race\n";
 
-	if (bookingType == 1) {
+	if (bookingType == "Solo") {
 		std::cout << "\n\t\tPlease choose the race format (1-4): ";
 		std::cin >> raceFormatID;
 
@@ -78,7 +140,7 @@ std::string setRaceFormat(int bookingType) {
 			default: return "Elimination Race"; break;
 		}
 	}
-	
+	*/	
 	return "\n\t\tInvalid Race Format";
 }
 
@@ -101,4 +163,47 @@ std::string setEnvironment() {
 	}
 
 	return "Invalid Environment";
+}
+
+std::string setTrack(std::string &bookingType, std::string &raceFormat, std::string &environment) {
+	std::string track;
+
+	if (bookingType == "Solo") {
+		if (raceFormat == "Circuit Race") {
+			std::cout << "\n\t\tAvailable Track: Section 9 Circuit\n"
+					<< "\t\tDefaulting to said track";
+			track == "Section 9 Circuit";
+		}
+		
+		if (raceFormat == "Sprint Race") {
+			
+		}
+	}
+
+	else {
+
+	}
+}
+
+float setMembershipDiscount(char membership) {
+	if(toupper(membership) == 'Y')
+		return 0.1;
+	else
+		return 0;
+}
+
+int setEngineCapacity(int cc) {
+	while (cc != 120 && cc != 200 && cc != 200) {
+		std::cout << "Please input valid engine capacity: ";
+		std::cin >> cc;
+	}	
+	return cc;
+}
+
+float calcPrice(int engineCapacity, int laps, float membershipDiscount,float gearPrice) {
+	const float PRICEPERCC = 0.3;
+	float kartPrice = engineCapacity * PRICEPERCC;
+	float totalKartPrice = kartPrice * laps;
+	float finalPrice = (totalKartPrice + gearPrice) * (1 - membershipDiscount);
+	return finalPrice;
 }
