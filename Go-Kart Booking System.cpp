@@ -33,11 +33,12 @@ int main() {
 	int engineCapacityID;
 	char membership;
 	int laps = 1;
-    std:: string setTrack(int trackID);
-    std:: string setEnvironment(const std::string & trackName);
-    float getHelmetPrice(const std::string & size);
-    float getShoePrice(int size);
-    int trackID;
+
+	std:: string setTrack(int trackID);
+	std:: string setEnvironment(const std::string & trackName);
+	float getHelmetPrice(const std::string & size);
+	float getShoePrice(int size);
+	int trackID;
     
 	std::cout << "Welcome to the Go-Kart Booking System!" << std::endl;
 
