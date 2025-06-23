@@ -43,14 +43,22 @@ int main() {
 	std::cin >> bookingType;
 
 	booking(bookingType, driverCount, driverAge, driverName, license);
-	
+
 	std::cout << "\nRacing Formats\n"
 		  << "1 - Circuit\n"
 		  << "2 - Sprint\n"
 		  << "3 - Time Trial\n"
-		  << "4 - Drag\n"
-	 	  << "5 - Elimination\n";
-	std::cout << "Please enter your desired racing format (1-5): ";
+		  << "4 - Drag\n";
+
+	if (bookingType == 1) {	
+		std::cout << "Please enter your desired racing format (1-4): ";
+	}
+	
+	else {
+		std::cout << "5 - Elimination\n";
+		std::cout << "Please enter your desired racing format (1-5): ";
+	}
+
 	std::cin >> racingFormatID;
 	
 	while (std::cin.fail() || racingFormatID < 1 || racingFormatID > 5) {
