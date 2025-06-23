@@ -22,8 +22,8 @@ std::string setRaceFormat(int x);				// Line 138
 // Insert Track Selection Function Prototype
 // Intert Environment Function Prototype
 int setEngineCapacity(int x);					// Line 154
-float setMembershipDiscount(char &membership);	// Line 163
 int isMember(char &membership);
+float setMembershipDiscount(char &membership);	// Line 163
 float calcPrice(int engineCapacity, int laps, float membershipDiscount);	// Line 176
 
 int main() {
@@ -59,9 +59,9 @@ int main() {
 		std::cin >> racingFormatID;
 	}
 
-    std::string raceFormat = setRaceFormat(racingFormatID);
+	std::string raceFormat = setRaceFormat(racingFormatID);
 
-    std::cout << "You have chosen: " << raceFormat << std::endl;
+	std::cout << "You have chosen: " << raceFormat << std::endl;
 
 	std::cout << "\nGo-Kart Engine Capacities:\n"
 			  << "120cc\n"
@@ -92,7 +92,7 @@ int main() {
 	std::cout << "\nTotal price: RM " << price << std::endl;
 	
 	system("pause"); // To prevent the console from closing immediately
-    return 0;
+	return 0;
 }
 
 // 1 - Booking Type Function
@@ -173,12 +173,9 @@ int setEngineCapacity(int x) {
 // 6 - Membership Discount Function
 float setMembershipDiscount(char &membership) {
 	membership = toupper(membership);
-	
 }
 
 int isMember(char &membership) {
-	membership = toupper(membership);
-
 	if(membership == 'Y')
 		return 0.1;
 	else
