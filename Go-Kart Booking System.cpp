@@ -5,9 +5,10 @@
 #include <cctype>
 
 std::string setBooking();
-void driver(std::string &bookingType, std::string driverName[], int driverAge[], char license[]); 
+int driver(std::string &bookingType, std::string driverName[], int driverAge[], char license[]); 
 std::string setRaceFormat(std::string &bookingType);
 std::string setTrack(std::string bookingType, std::string raceFormat);
+void setEngineCapacity(int driverCount, std::string driverName[], int driverAge[], char license[], int engineCapacity[]);
 
 int main() {
 	std::string raceFormat, track;
@@ -18,12 +19,16 @@ int main() {
 	int driverAge[5];
 	char license[5];
 	int driverCount;
+
+	int engineCapacity[5];
 	
-	driver(bookingType, driverName, driverAge, license);
+	driverCount = driver(bookingType, driverName, driverAge, license);
 
 	raceFormat = setRaceFormat(bookingType);
 
 	track = setTrack(bookingType, raceFormat);
+
+	setEngineCapacity(driverCount, driverName, driverAge, license, engineCapacity);
 
 	system("pause");
 	return 0;
@@ -52,7 +57,7 @@ std::string setBooking() {
 	}
 }
 
-void driver(std::string &bookingType, std::string driverName[], int driverAge[], char license[]) {
+int driver(std::string &bookingType, std::string driverName[], int driverAge[], char license[]) {
 	int driverCount;
 	
 	if (bookingType == "Solo") {
@@ -89,6 +94,8 @@ void driver(std::string &bookingType, std::string driverName[], int driverAge[],
 		std::cin >> license[i];
 		}
 	}
+
+	return driverCount;
 }
 
 std::string setRaceFormat(std::string &bookingType) {
@@ -243,9 +250,39 @@ std::string setTrack(std::string bookingType, std::string raceFormat) {
 	return track;
 }
 
-int setEngineCapacity(int driverCount, int driverAge[], char license[]) {
+void setEngineCapacity(int driverCount, std::string driverName[], int driverAge[], char license[], int engineCapacity[]) {
 	for (int i = 0; i < driverCount; i++) {
+		std::cout << "\n\t\tDriver :" << driverName[i]
+			  << "\n\t\tGo-Kart Engine Capacities Available:\n";
 
+		if (driverAge[i] < 13) {
+			std::cout << "\t\tUnder 13: Go-Kart must be under 120CCs\n"
+				  << "\t\tDefaulting to 120CCs\n";
+			engineCapacity[i] = 120;
+		}
+
+		else { // DriverAge > 13
+			std::cout << "\t\t1 - 120CCs\n"
+				  << "\t\t2 - 200CCs\n";
+
+			if (license[i] == 'Y') {
+				std::cout << "\t\t3 - 270CCs\n";
+			}
+
+			std::cout << "\t\tChoose your desired engine capacity (1 - 3): ";
+			std::cin >> engineCapacity[i];
+		 
+			while (engineCapacity[i] < 1 || engineCapacity[i] > 3) {
+				std::cout << "\t\tPlease enter a valid engine capacity (1 - 3): ";
+				std::cin >> engineCapacity[i];
+			}
+
+			switch (engineCapacity[i]) {
+				case 1: engineCapacity[i] = 120;
+				case 2: engineCapacity[i] = 200;
+				default: engineCapacity[i] = 270;
+			}
+		}
 	}
 }
 
@@ -254,14 +291,6 @@ float setMembershipDiscount(char membership) {
 		return 0.1;
 	else
 		return 0;
-}
-
-int setEngineCapacity(int cc) {
-	while (cc != 120 && cc != 200 && cc != 200) {
-		std::cout << "Please input valid engine capacity: ";
-		std::cin >> cc;
-	}	
-	return cc;
 }
 
 float calcPrice(int engineCapacity, int laps, float gearPrice, float membershipDiscount) {
