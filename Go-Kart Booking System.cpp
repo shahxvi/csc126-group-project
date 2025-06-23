@@ -184,11 +184,11 @@ std::string setTrack(std::string bookingType, std::string raceFormat) {
 			std::cout << "\n\t\tAvailable Track:\n"
 				  << "\t\t1 - Section 9 Circuit\n"
 				  << "\t\t2 - Blackrock Circuit\n"
-				  << "\t\tPlease choose your track";
+				  << "\t\tPlease choose your track: ";
 			std::cin >> trackID;
 			
 			while (trackID < 1 || trackID > 2) {
-				std::cout << "\t\tPlease choose a valid track (1-2)";
+				std::cout << "\t\tPlease choose a valid track (1-2): ";
 				std::cin >> trackID;
 			}
 
@@ -210,7 +210,7 @@ std::string setTrack(std::string bookingType, std::string raceFormat) {
 				  << "\t\t2 - Chrono Pass\n"
 				  << "\t\t3 - Rushline Dash\n"
 				  << "\t\t4 - Blackrock Circuit\n"
-				  << "\t\tPlease choose your track";
+				  << "\t\tPlease choose your track: ";
 			std::cin >> trackID;
 
 			while (trackID < 1 || trackID > 4) {
@@ -241,6 +241,12 @@ std::string setTrack(std::string bookingType, std::string raceFormat) {
 	}
 
 	return track;
+}
+
+int setEngineCapacity(int driverCount, int driverAge[], char license[]) {
+	for (int i = 0; i < driverCount; i++) {
+
+	}
 }
 
 float setMembershipDiscount(char membership) {
