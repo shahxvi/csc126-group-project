@@ -187,8 +187,8 @@ float setMembershipDiscount(char &membership) {
 
 // 7 - Price Calculation Function
 float calcPrice(int engineCapacity, int laps, float membershipDiscount) {
-	float pricePerCC = 0.5;
-	float kartPrice = engineCapacity * pricePerCC;
+	const float PRICEPERCC = 0.3;
+	float kartPrice = engineCapacity * PRICEPERCC;
 	//float totalGearPrice = ;
 	float totalKartPrice = kartPrice * laps;
 	float finalPrice = (totalKartPrice) * (1 - membershipDiscount);
