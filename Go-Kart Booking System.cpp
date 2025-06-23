@@ -57,6 +57,8 @@ std::string setBooking() {
 	}
 }
 
+// This was originally intended as a void function but for the setEngineCapacity function to work it needs the driverCount parameter
+// and this function just so happens to be perfect for that 
 int driver(std::string &bookingType, std::string driverName[], int driverAge[], char license[]) {
 	int driverCount;
 	
