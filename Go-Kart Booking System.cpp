@@ -18,12 +18,11 @@
 #include <iomanip>
 
 void booking(int &bookingType, int &driverCount, int driverAge[], std::string driverName[], char license[]);	//line 88
-std::string setRaceFormat(int x);				// Line 138
+std::string setRaceFormat(int x);						// Line 138
 // Insert Track Selection Function Prototype
 // Intert Environment Function Prototype
-int setEngineCapacity(int x);					// Line 154
-int isMember(char &membership);
-float setMembershipDiscount(char &membership);	// Line 163
+int setEngineCapacity(int x);							// Line 154
+float setMembershipDiscount(char &membership);					// Line 172
 float calcPrice(int engineCapacity, int laps, float membershipDiscount);	// Line 176
 
 int main() {
@@ -46,15 +45,15 @@ int main() {
 	booking(bookingType, driverCount, driverAge, driverName, license);
 	
 	std::cout << "\nRacing Formats\n"
-			  << "1 - Circuit\n"
-		      << "2 - Sprint\n"
-		  	  << "3 - Time Trial\n"
-		  	  << "4 - Drag\n"
-		  	  << "5 - Elimination\n";
-    std::cout << "Please enter your desired racing format (1-5): ";
-    std::cin >> racingFormatID;
+		  << "1 - Circuit\n"
+		  << "2 - Sprint\n"
+		  << "3 - Time Trial\n"
+		  << "4 - Drag\n"
+	 	  << "5 - Elimination\n";
+	std::cout << "Please enter your desired racing format (1-5): ";
+	std::cin >> racingFormatID;
 	
-	while (racingFormatID < 1 || racingFormatID > 5) {
+	while (std::cin.fail() || racingFormatID < 1 || racingFormatID > 5) {
 		std::cout << "Please choose correct racing format (1-5): ";
 		std::cin >> racingFormatID;
 	}
@@ -163,6 +162,11 @@ std::string setRaceFormat(int x) {
 
 // 5 - Set Go-Kart Engine Capacity Function
 int setEngineCapacity(int x) {
+	while (std::cin.fail() || x != 120 && x != 200) {
+		std::cout << "Please input valid engine capacity: ";
+		std::cin >> x;
+	}	
+	
 	if (x == 120)
 		return 120;
 	if (x == 200)
@@ -172,11 +176,7 @@ int setEngineCapacity(int x) {
 
 // 6 - Membership Discount Function
 float setMembershipDiscount(char &membership) {
-	membership = toupper(membership);
-}
-
-int isMember(char &membership) {
-	if(membership == 'Y')
+	if(toupper(membership) == 'Y')
 		return 0.1;
 	else
 		return 0;
