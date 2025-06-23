@@ -164,7 +164,6 @@ std::string setRaceFormat(int x) {
 int setEngineCapacity(int cc) {
 	while (cc != 120 && cc != 200 && cc != 200) {
 		if (cc == 120 || cc == 200 || cc == 270) {
-			return cc;
 		}
 		else {
 			std::cout << "Please input valid engine capacity: ";
