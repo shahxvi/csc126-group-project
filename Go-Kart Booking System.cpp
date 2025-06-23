@@ -7,10 +7,10 @@
 std::string setBooking();
 void driver(std::string &bookingType, std::string driverName[], int driverAge[], char license[]); 
 std::string setRaceFormat(std::string &bookingType);
-std::string setEnvironment();
+std::string setTrack(std::string bookingType, std::string raceFormat);
 
 int main() {
-	std::string raceFormat, environment, track;
+	std::string raceFormat, track;
 
 	std::string bookingType = setBooking(); //Type 1 Function
 
@@ -19,9 +19,11 @@ int main() {
 	char license[5];
 	int driverCount;
 	
-	driver(bookingType, driverName, driverAge, license); 
+	driver(bookingType, driverName, driverAge, license);
 
-	raceFormat = setRaceFormat(bookingType, setEnvironment());
+	raceFormat = setRaceFormat(bookingType);
+
+	track = setTrack(bookingType, raceFormat);
 
 	system("pause");
 	return 0;
@@ -89,36 +91,22 @@ void driver(std::string &bookingType, std::string driverName[], int driverAge[],
 	}
 }
 
-
-std::string setRaceFormat(std::string &bookingType, std::string environment) {
+std::string setRaceFormat(std::string &bookingType) {
 	int raceFormatID;	
 	std::string raceFormat;
 
-	if (bookingType == "Solo") {
-		if (environment == "Indoor") {
-		std::cout << "\n\t\t1 - Circuit Race\n"
-			  << "\t\t2 - Sprint Race\n";
-		}
-	}
-	/*std::cout << "\n\t\t1 - Circuit Race\n"
+	std::cout << "\n\t\t1 - Circuit Race\n"
 		  << "\t\t2 - Sprint Race\n"
 		  << "\t\t3 - Time Trial\n"
 		  << "\t\t4 - Drag Race\n";
 
 	if (bookingType == "Solo") {
-		std::cout << "\n\t\tPlease choose the race format (1-4): ";
+		std::cout << "\n\t\tplease choose the race format (1-4): ";
 		std::cin >> raceFormatID;
 
 		while (raceFormatID < 1 || raceFormatID > 4) {
 			std::cout << "\n\t\tPlease enter valid race format (1-4): ";
 			std::cin >> raceFormatID;
-		}
-
-		switch (raceFormatID) {
-			case 1: return "Circuit Race"; break;
-			case 2: return "Sprint Race"; break;
-			case 3: return "Time Trial"; break;
-			default : return "Drag Race"; break;
 		}
 	}
 
@@ -131,58 +119,128 @@ std::string setRaceFormat(std::string &bookingType, std::string environment) {
 			std::cout << "\n\t\tPlease enter valid race format (1-5): ";
 			std::cin >> raceFormatID;
 		}
-
-		switch (raceFormatID) {
-			case 1: return "Circuit Race"; break;
-			case 2: return "Sprint Race"; break;
-			case 3: return "Time Trial"; break;
-			case 4: return "Drag Race"; break;
-			default: return "Elimination Race"; break;
-		}
 	}
-	*/	
+	
+	switch (raceFormatID) {
+		case 1: return "Circuit Race"; break;
+		case 2: return "Sprint Race"; break;
+		case 3: return "Time Trial"; break;
+		case 4: return "Drag Race"; break;
+		case 5: return "Elimination Race"; break;
+	}
+
 	return "\n\t\tInvalid Race Format";
 }
 
-std::string setEnvironment() {
-	int environmentID;
 
-	std::cout << "\n\t\t1 - Indoor\n"
-		  << "\t\t2 - Outdoor\n"
-		  << "\t\tPlease enter your desired racing environment (1/2): ";
-	std::cin >> environmentID;
-
-	while (environmentID < 1 || environmentID > 2) {
-		std::cout << "\n\t\tPlease enter valid racing environment (1/2): ";
-		std::cin >> environmentID;
-	}
-
-	switch (environmentID) {
-		case 1: return "Indoor";
-		default: return "Outdoor";
-	}
-
-	return "Invalid Environment";
-}
-
-std::string setTrack(std::string &bookingType, std::string &raceFormat, std::string &environment) {
+std::string setTrack(std::string bookingType, std::string raceFormat) {
 	std::string track;
+	int trackID;
 
 	if (bookingType == "Solo") {
 		if (raceFormat == "Circuit Race") {
 			std::cout << "\n\t\tAvailable Track: Section 9 Circuit\n"
-					<< "\t\tDefaulting to said track";
-			track == "Section 9 Circuit";
+				  << "\t\tDefaulting to said track";
+			track = "Section 9 Circuit";
 		}
 		
-		if (raceFormat == "Sprint Race") {
-			
+		else if (raceFormat == "Sprint Race") {
+			std::cout << "\n\t\tAvailable Track: Rushline Dash\n"
+				  << "\t\tDefaulting to said track";
+			track = "Rushline Dash";
+		}
+
+		else if (raceFormat == "Time Trial") {
+			std::cout << "\n\t\tAvailable Track:\n"
+				  << "\t\t1 - Section 9 Circuit\n"
+				  << "\t\t2 - Chrono Pass\n"
+				  << "\t\t3 - Rushline Dash\n"
+				  << "\t\t4 - Blackrock Circuit\n"
+				  << "\t\tPlease choose your track";
+			std::cin >> trackID;
+
+			while (trackID < 1 || trackID > 4) {
+				std::cout << "\t\tPlease choose a valid track (1-4): ";
+				std::cin >> trackID;
+			}
+
+			switch (trackID) {
+				case 1: track = "Section 9 Circuit";
+				case 2: track = "Chrono Pass";
+				case 3: track = "Rushline Dash";
+				default: track = "Blackrock Circuit";
+			}
+		}
+
+		else {
+			std::cout << "\n\t\tAvailable Track: Torque Strip\n"
+					<< "\t\tDefaulting to said track";
+			track = "Torque Strip";
 		}
 	}
 
-	else {
+	else { //Group
+		if (raceFormat == "Circuit Race") {
+			std::cout << "\n\t\tAvailable Track:\n"
+				  << "\t\t1 - Section 9 Circuit\n"
+				  << "\t\t2 - Blackrock Circuit\n"
+				  << "\t\tPlease choose your track";
+			std::cin >> trackID;
+			
+			while (trackID < 1 || trackID > 2) {
+				std::cout << "\t\tPlease choose a valid track (1-2)";
+				std::cin >> trackID;
+			}
 
+			switch (trackID) {
+				case 1: track = "Section 9 Circuit";
+				default: track = "Blackrock Circuit";
+			}
+		}
+		
+		else if (raceFormat == "Sprint Race") {
+			std::cout << "\n\t\tAvailable Track: Rushline Dash\n"
+				  << "\t\tDefaulting to said track";
+			track = "Rushline Dash";
+		}
+
+		else if (raceFormat == "Time Trial") {
+			std::cout << "\n\t\tAvailable Track:\n"
+				  << "\t\t1 - Section 9 Circuit\n"
+				  << "\t\t2 - Chrono Pass\n"
+				  << "\t\t3 - Rushline Dash\n"
+				  << "\t\t4 - Blackrock Circuit\n"
+				  << "\t\tPlease choose your track";
+			std::cin >> trackID;
+
+			while (trackID < 1 || trackID > 4) {
+				std::cout << "\t\tPlease choose a valid track (1-4): ";
+				std::cin >> trackID;
+			}
+
+			switch (trackID) {
+				case 1: track = "Section 9 Circuit";
+				case 2: track = "Chrono Pass";
+				case 3: track = "Rushline Dash";
+				default: track = "Blackrock Circuit";
+			}
+		}
+
+		else if (raceFormat == "Drag Race") {
+			std::cout << "\n\t\tAvailable Track: Torque Strip\n"
+					<< "\t\tDefaulting to said track";
+			track = "Torque Strip";
+		}
+
+		else { // Elimination Race
+			std::cout << "\n\t\tAvailable Track: Blackrock Circuit\n"
+				  << "\t\tDefaulting to said track";
+			track = "Blackrock Circuit";
+	
+		}
 	}
+
+	return track;
 }
 
 float setMembershipDiscount(char membership) {
@@ -200,7 +258,7 @@ int setEngineCapacity(int cc) {
 	return cc;
 }
 
-float calcPrice(int engineCapacity, int laps, float membershipDiscount,float gearPrice) {
+float calcPrice(int engineCapacity, int laps, float gearPrice, float membershipDiscount) {
 	const float PRICEPERCC = 0.3;
 	float kartPrice = engineCapacity * PRICEPERCC;
 	float totalKartPrice = kartPrice * laps;
