@@ -18,10 +18,10 @@
 #include <iomanip>
 
 void booking(int &bookingType, int &driverCount, int driverAge[], std::string driverName[], char license[]);	//line 88
-std::string setRaceFormat(int x);						// Line 138
-// Insert Track Selection Function Prototype
-// Intert Environment Function Prototype
-int setEngineCapacity(int x);							// Line 154
+std::string setRaceFormat(int x);								// Line 138
+std::string setTrack(int trackID);								// Line 219
+std:: string setEnvironment(const std:: string & trackName);	// Line 231
+int setEngineCapacity(int x);									// Line 154
 float setMembershipDiscount(char &membership);					// Line 172
 float calcPrice(int engineCapacity, int laps, float membershipDiscount,float gearPrice);	// Line 176
 
@@ -51,10 +51,10 @@ int main() {
 	booking(bookingType, driverCount, driverAge, driverName, license);
 
 	std::cout << "\nRacing Formats\n"
-		  << "1 - Circuit\n"
-		  << "2 - Sprint\n"
-		  << "3 - Time Trial\n"
-		  << "4 - Drag\n";
+			  << "1 - Circuit\n"
+			  << "2 - Sprint\n"
+			  << "3 - Time Trial\n"
+			  << "4 - Drag\n";
 
 	if (bookingType == 1) {	
 		std::cout << "Please enter your desired racing format (1-4): ";
@@ -99,33 +99,22 @@ int main() {
 		std::cout<<"Suit Size (any text): ";
 		std::cin>>suitSize[i];
 		
-		std::cout<<" Shoe size (20-35): ";
+		std::cout<<"Shoe size (20-35): ";
 		std::cin>> shoeSize[i];
 		
 		helmetPrice[i]=getHelmetPrice(helmetSize[i]);
 		shoePrice[i]=getShoePrice(shoeSize[i]);
 		
 		if (helmetPrice[i] == 0){
-			std::cout<<"Invalid helmet size,defaulting to RM0.\n";
+			std::cout<<"Invalid helmet size, defaulting to RM 0.\n";
 		}
 		if(shoePrice[i]==0){
-			std::cout<<"Invalid shoe size,defaulting to RM0.\n";
+			std::cout<<"Invalid shoe size, defaulting to RM 0.\n";
 		}
 		totalGearPrice += helmetPrice[i] + shoePrice[i];
 	}
 	
 	float membershipDiscount = setMembershipDiscount(membership);
-
-	if (driverCount == 1) { 
-		std::cout << "==================================";
-		std::cout << "\nDriver's Name: " << driverName[0] << std::endl;
-		std::cout << "Driver's Age: " << driverAge[0] << std::endl;
-		std::cout << "Driver's License: " << license[0] << std::endl;	
-	}
-
-	else {
-	
-	}
 	
 	float price = calcPrice(engineCapacity, laps, membershipDiscount,totalGearPrice);
 	
@@ -145,6 +134,17 @@ int main() {
 	
 	std:: cout<<"You have chose track: "<<trackName<<std::endl;
 	std::cout<<"Environment: "<<environment<<std::endl;       
+	
+	if (driverCount == 1) { 
+		std::cout << "==================================";
+		std::cout << "\nDriver's Name: " << driverName[0] << std::endl;
+		std::cout << "Driver's Age: " << driverAge[0] << std::endl;
+		std::cout << "Driver's License: " << license[0] << std::endl;	
+	}
+
+	else {
+	
+	}
 	
 	system("pause"); // To prevent the console from closing immediately
 	return 0;
@@ -199,7 +199,6 @@ void booking(int &bookingType, int &driverCount, int driverAge[], std::string dr
 	}
 }
 
-
 // 2 - Set Race Format Function
 std::string setRaceFormat(int x) {
     switch (x) {
@@ -214,6 +213,26 @@ std::string setRaceFormat(int x) {
         default:
             	return "Elimination Race";
     }
+}
+
+// 3 - Track Selectin Function
+std::string setTrack(int trackID) {
+	switch(trackID){
+	case 1: return "Section 9 Circuit";
+	case 2: return "Chrono Pass";
+	case 3: return "Rushline Dash";
+	case 4: return "Torque Strip";
+	case 5: return"Blackrock Circuit";
+	default:return "Unkwon Track";
+    }
+}
+
+// 4 - Environment Function
+std:: string setEnvironment(const std:: string & trackName) {
+	if(trackName == "Section 9 circuit" || trackName == "Chrono Pass")
+		return "Indoor";
+	else
+		return"Outdoor";
 }
 
 // 5 - Set Go-Kart Engine Capacity Function
@@ -242,47 +261,25 @@ float calcPrice(int engineCapacity, int laps, float membershipDiscount,float gea
 	return finalPrice;
 }
 
-//8-Track Selectin Function
-std::string setTrack(int trackID){
-	switch(trackID){
-	case 1: return "Section 9 Circuit";
-	case 2: return "Chrono Pass";
-	case 3: return "Rushline Dash";
-	case 4: return "Torque Strip";
-	case 5: return"Blackrock Circuit";
-	default:return "Unkwon Track";
-    }
-}
-
-//9-Enviroment Funtion
-std:: string setEnvironment(const std:: string & trackName){
-	if(trackName == "Section 9 circuit" || trackName == "Chrono Pass"){
-		return "Indoor";
-	}
-	else {
-		return"Outdoor";
-	}
-}
-
-//10-Racing Gear Rental Fuction
-float getHelmetPrice(const std:: string & size){
+//8 - Racing Gear Rental Fuction
+float getHelmetPrice(const std:: string & size) {
 	if(size== "S")
-	return 2;
+		return 2;
 	else if (size=="M")
-	return 4;
+		return 4;
 	else if (size=="L")
-	return 6;
+		return 6;
 	else if (size=="XL")
-	return 8;
+		return 8;
 	else 
-	return 0;
+		return 0;
 }
 
-float getShoePrice(int size){
+float getShoePrice(int size) {
 	if(size >=20 && size <= 25)
-	return 3;
+		return 3;
 	else if(size > 25 && size<=35)
-	return 6;
+		return 6;
 	else
-	return 0;
+		return 0;
 }
