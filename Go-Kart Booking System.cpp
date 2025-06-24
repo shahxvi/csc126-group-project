@@ -1,285 +1,378 @@
-// CSC126 Group Project
-// Go-Kart Booking System
-
-// IRFAN SHAH BIN MAIZUL HISHAM       (2025171523)  (RCDCS1101A) (shahxvi)
-// SHAHRIN AREFF SHAH BIN SHAH RIZAL  (2025151503)  (RCDCS1101A) (rinnnnnnn17)
-// MUHAMMAD BIN ABDUL AZIZ            (2025507823)  (RCDCS1101B) (Kundoo)
-
-// SUPERVISED BY MADAM NORA YANTI BINTI CHE JAN
-
-// READ THIS BEFORE MAKING ANY CHANGES:
-// Function Prototypes are defined at the top of the code after the headings.
-// Each function should be defined below the main function.
-// This ensures readability and maintainability of the code.
-// Please update the comment line of the prototype function.
-
 #include <iostream>
 #include <string>
+#include <cmath>
 #include <iomanip>
+#include <cctype>
 
-void booking(int &bookingType, int &driverCount, int driverAge[], std::string driverName[], char license[]);	//line 88
-std::string setRaceFormat(int x);								// Line 138
-std::string setTrack(int trackID);								// Line 219
-std:: string setEnvironment(const std:: string & trackName);	// Line 231
-int setEngineCapacity(int x);									// Line 154
-float setMembershipDiscount(char &membership);					// Line 172
-float calcPrice(int engineCapacity, int laps, float membershipDiscount,float gearPrice);	// Line 176
+std::string setBooking();
+int driver(std::string &bookingType, std::string driverName[], int driverAge[], char license[]); 
+std::string setRaceFormat(std::string &bookingType);
+std::string setTrack(std::string bookingType, std::string raceFormat);
+void setEngineCapacity(int driverCount, std::string driverName[], int driverAge[], char license[], int engineCapacity[]);
+void racingGear(int driverCount, std::string driverName[], std::string helmetSize[], std::string suitSize[], int shoeSize[]);
 
 int main() {
-	int bookingType, driverCount, driverAge[5];
+	std::string raceFormat, track;
+
+	std::string bookingType = setBooking(); //Type 1 Function
+
 	std::string driverName[5];
+	int driverAge[5];
 	char license[5];
-	int racingFormatID;
-	int engineCapacityID;
-	char membership;
-	int laps = 1;
+	int driverCount;
 
-	std:: string setTrack(int trackID);
-	std:: string setEnvironment(const std::string & trackName);
-	float getHelmetPrice(const std::string & size);
-	float getShoePrice(int size);
-	int trackID;
-    
-	std::cout << "Welcome to the Go-Kart Booking System!" << std::endl;
+	int engineCapacity[5];
 
-	std::cout << "\nBooking Type:\n"
-		  	  << "1. Solo\n"
-			  << "2. Group (Max 5)\n";
-	std::cout << "Please choose your booking type: ";
-	std::cin >> bookingType;
+	driverCount = driver(bookingType, driverName, driverAge, license);
 
-	booking(bookingType, driverCount, driverAge, driverName, license);
+	raceFormat = setRaceFormat(bookingType);
 
-	std::cout << "\nRacing Formats\n"
-			  << "1 - Circuit\n"
-			  << "2 - Sprint\n"
-			  << "3 - Time Trial\n"
-			  << "4 - Drag\n";
+	track = setTrack(bookingType, raceFormat);
 
-	if (bookingType == 1) {	
-		std::cout << "Please enter your desired racing format (1-4): ";
-	}
+	setEngineCapacity(driverCount, driverName, driverAge, license, engineCapacity);
 	
-	else {
-		std::cout << "5 - Elimination\n";
-		std::cout << "Please enter your desired racing format (1-5): ";
-	}
+	std::string helmetSize[5], suitSize[5]; int shoeSize[5];
+	int helmetPrice[5], suitPrice[5], shoePrice[5];	
 
-	std::cin >> racingFormatID;
-	
-	while (std::cin.fail() || racingFormatID < 1 || racingFormatID > 5) {
-		std::cout << "Please choose correct racing format (1-5): ";
-		std::cin >> racingFormatID;
-	}
+	racingGear(driverCount, driverName, helmetSize, suitSize, shoeSize);
 
-	std::string raceFormat = setRaceFormat(racingFormatID);
-
-	std::cout << "You have chosen: " << raceFormat << std::endl;
-
-	std::cout << "\nGo-Kart Engine Capacities:\n"
-			  << "120cc\n"
-		  	  << "200cc\n"
-			  << "270cc\n";
-	std::cout << "Please enter your desired Go-Kart engine Capacity (120, 200, 270): ";
-	std::cin >> engineCapacityID;
-	
-	int engineCapacity = setEngineCapacity(engineCapacityID);
-
-	std::cout << "You have chosen: " << engineCapacity << "cc" << std::endl;
-	
-	std:: string helmetSize[5],suitSize[5];
-	int shoeSize[5];
-	float helmetPrice[5],shoePrice[5],totalGearPrice = 0;
-	for(int i=0; i< driverCount;i++){
-		std::cout<<"\nDriver "<<(i+1)<<" Gear Rental :\n";
-		
-		std::cout<<"Helmet size(S/M/L/XL): ";
-		std::cin>> helmetSize[i];
-		
-		std::cout<<"Suit Size (any text): ";
-		std::cin>>suitSize[i];
-		
-		std::cout<<"Shoe size (20-35): ";
-		std::cin>> shoeSize[i];
-		
-		helmetPrice[i]=getHelmetPrice(helmetSize[i]);
-		shoePrice[i]=getShoePrice(shoeSize[i]);
-		
-		if (helmetPrice[i] == 0){
-			std::cout<<"Invalid helmet size, defaulting to RM 0.\n";
-		}
-		if(shoePrice[i]==0){
-			std::cout<<"Invalid shoe size, defaulting to RM 0.\n";
-		}
-		totalGearPrice += helmetPrice[i] + shoePrice[i];
-	}
-	
-	float membershipDiscount = setMembershipDiscount(membership);
-	
-	float price = calcPrice(engineCapacity, laps, membershipDiscount,totalGearPrice);
-	
-	std::cout << "\nTotal price: RM " << price << std::endl;
-	
-	std::cout<<"\nAvailable Tracks :\n"
-	         <<"1. Section 9 Circuit\n"
-	         <<"2. Chrono Pass\n"
-	         <<"3. Rushline Dash\n"
-	         <<"4.Torque Strip\n"
-	         <<"5. Blackrock Circuit\n";
-	std::cout<<"Please choose a track (1-5): ";
-	std::cin>>trackID; 
-	
-	std:: string trackName = setTrack(trackID);
-	std:: string environment = setEnvironment(trackName);
-	
-	std:: cout<<"You have chose track: "<<trackName<<std::endl;
-	std::cout<<"Environment: "<<environment<<std::endl;       
-	
-	if (driverCount == 1) { 
-		std::cout << "==================================";
-		std::cout << "\nDriver's Name: " << driverName[0] << std::endl;
-		std::cout << "Driver's Age: " << driverAge[0] << std::endl;
-		std::cout << "Driver's License: " << license[0] << std::endl;	
-	}
-
-	else {
-	
-	}
-	
-	system("pause"); // To prevent the console from closing immediately
+	system("pause");
 	return 0;
 }
 
-// 1 - Booking Type Function
-void booking(int &bookingType, int &driverCount, int driverAge[], std::string driverName[], char license[]) {
-	
-	while (bookingType < 1 || bookingType > 2) {
-		std::cout << "Please choose a valid booking type (1 or 2): ";
-		std::cin >> bookingType;
+std::string setBooking() {
+	int bookingTypeID;
+	std::string bookingType;
+
+	std::cout << "\n\t\t1 - Solo\n"
+		  << "\t\t2 - Group (Maximum 5)\n"
+		  << "\t\tPlease Choose your desired booking (1 - 2): ";
+	std::cin >> bookingTypeID;
+
+	while (bookingTypeID != 1 && bookingTypeID != 2) {
+		std::cout << "\n\t\tPlease enter valid booking type: ";
+		std::cin >> bookingTypeID;
 	}
 
-	// Solo Booking
-	if(bookingType == 1) {
+	if (bookingTypeID == 1) {
+		return "Solo";
+	}
+
+	else {
+		return "Group";
+	}
+}
+
+// This was originally intended as a void function but for the setEngineCapacity function to work it needs the driverCount parameter
+// and this function just so happens to be perfect for that 
+int driver(std::string &bookingType, std::string driverName[], int driverAge[], char license[]) {
+	int driverCount;
+	
+	if (bookingType == "Solo") {
 		driverCount = 1;
-		std::cout << "\nPlease enter your name: ";
+		
+		std::cout << "\n\t\tDriver Name: ";
 		std::cin >> driverName[0];
-		
-		std::cout << "Please enter your age: ";
+
+		std::cout << "\t\tDriver Age: ";
 		std::cin >> driverAge[0];
-		
-		// Will check driver age at the set engine capacity function
-		
-		std::cout << "Do you have a driving license? (Y/N): ";
+
+		std::cout << "\t\tDo you have a driver's license? (Y/N): ";
 		std::cin >> license[0];
-		license[0] = toupper(license[0]);
 	}
 	
-	else {	// Group Booking
-		std::cout << "Please enter the total number of drivers: ";
+	else {
+		std::cout << "\t\tPlease enter the number of drivers (2 - 5): ";
 		std::cin >> driverCount;
-		
+
 		while (driverCount < 2 || driverCount > 5) {
-			std::cout << "Please enter a valid number of drivers (1-5): ";
+			std::cout << "\t\tPlease enter a valid number of drivers: ";
 			std::cin >> driverCount;
 		}
-
+	
 		for (int i = 0; i < driverCount; i++) {
-			std::cout << "Please enter the name of driver " << (i + 1) << ": ";
-			std::cin >> driverName[i];
+		
+		std::cout << "\n\t\tDriver #" << (i+1) << " Name: ";
+		std::cin >> driverName[i];
+
+		std::cout << "\t\tDriver #" << (i+1) << " Age: ";
+		std::cin >> driverAge[i];
+
+		std::cout << "\t\tDoes Driver #" << (i+1) << " has a license? (Y/N): ";
+		std::cin >> license[i];
+		}
+	}
+
+	return driverCount;
+}
+
+std::string setRaceFormat(std::string &bookingType) {
+	int raceFormatID;	
+	std::string raceFormat;
+
+	std::cout << "\n\t\t1 - Circuit Race\n"
+		  << "\t\t2 - Sprint Race\n"
+		  << "\t\t3 - Time Trial\n"
+		  << "\t\t4 - Drag Race\n";
+
+	if (bookingType == "Solo") {
+		std::cout << "\n\t\tplease choose the race format (1-4): ";
+		std::cin >> raceFormatID;
+
+		while (raceFormatID < 1 || raceFormatID > 4) {
+			std::cout << "\n\t\tPlease enter valid race format (1-4): ";
+			std::cin >> raceFormatID;
+		}
+	}
+
+	else {
+		std::cout << "\t\t5 - Elimination Race"
+                	  << "\n\t\tPlease choose the race format (1-5): ";
+		std::cin >> raceFormatID;
+		
+		while (raceFormatID < 1 || raceFormatID > 5) {
+			std::cout << "\n\t\tPlease enter valid race format (1-5): ";
+			std::cin >> raceFormatID;
+		}
+	}
+	
+	switch (raceFormatID) {
+		case 1: return "Circuit Race"; break;
+		case 2: return "Sprint Race"; break;
+		case 3: return "Time Trial"; break;
+		case 4: return "Drag Race"; break;
+		case 5: return "Elimination Race"; break;
+	}
+
+	return "\n\t\tInvalid Race Format";
+}
+
+
+std::string setTrack(std::string bookingType, std::string raceFormat) {
+	std::string track;
+	int trackID;
+
+	if (bookingType == "Solo") {
+		if (raceFormat == "Circuit Race") {
+			std::cout << "\n\t\tAvailable Track: Section 9 Circuit\n"
+				  << "\t\tDefaulting to said track\n";
+			track = "Section 9 Circuit";
+		}
+		
+		else if (raceFormat == "Sprint Race") {
+			std::cout << "\n\t\tAvailable Track: Rushline Dash\n"
+				  << "\t\tDefaulting to said track\n";
+			track = "Rushline Dash";
+		}
+
+		else if (raceFormat == "Time Trial") {
+			std::cout << "\n\t\tAvailable Track:\n"
+				  << "\t\t1 - Section 9 Circuit\n"
+				  << "\t\t2 - Chrono Pass\n"
+				  << "\t\t3 - Rushline Dash\n"
+				  << "\t\t4 - Blackrock Circuit\n"
+				  << "\t\tPlease choose your track";
+			std::cin >> trackID;
+
+			while (trackID < 1 || trackID > 4) {
+				std::cout << "\t\tPlease choose a valid track (1-4): ";
+				std::cin >> trackID;
+			}
+
+			switch (trackID) {
+				case 1: track = "Section 9 Circuit";
+				case 2: track = "Chrono Pass";
+				case 4: track = "Rushline Dash";
+				default: track = "Blackrock Circuit";
+			}
+		}
+
+		else {
+			std::cout << "\n\t\tAvailable Track: Torque Strip\n"
+					<< "\t\tDefaulting to said track\n";
+			track = "Torque Strip";
+		}
+	}
+
+	else { //Group
+		if (raceFormat == "Circuit Race") {
+			std::cout << "\n\t\tAvailable Track:\n"
+				  << "\t\t1 - Section 9 Circuit\n"
+				  << "\t\t2 - Blackrock Circuit\n"
+				  << "\t\tPlease choose your track: ";
+			std::cin >> trackID;
 			
-			std::cout << "Please enter the age of driver " << (i + 1) << ": ";
-			std::cin >> driverAge[i];
-			
-			// Will check driver age at the set engine capacity function
-			
-			std::cout << "Does driver " << (i + 1) << " has a driving license? (Y/N): ";
-			std::cin >> license[i];
-			license[i] = toupper(license[i]);
+			while (trackID < 1 || trackID > 2) {
+				std::cout << "\t\tPlease choose a valid track (1-2): ";
+				std::cin >> trackID;
+			}
+
+			switch (trackID) {
+				case 1: track = "Section 9 Circuit";
+				default: track = "Blackrock Circuit";
+			}
+		}
+		
+		else if (raceFormat == "Sprint Race") {
+			std::cout << "\n\t\tAvailable Track: Rushline Dash\n"
+				  << "\t\tDefaulting to said track\n";
+			track = "Rushline Dash";
+		}
+
+		else if (raceFormat == "Time Trial") {
+			std::cout << "\n\t\tAvailable Track:\n"
+				  << "\t\t1 - Section 9 Circuit\n"
+				  << "\t\t2 - Chrono Pass\n"
+				  << "\t\t3 - Rushline Dash\n"
+				  << "\t\t4 - Blackrock Circuit\n"
+				  << "\t\tPlease choose your track: ";
+			std::cin >> trackID;
+
+			while (trackID < 1 || trackID > 4) {
+				std::cout << "\t\tPlease choose a valid track (1-4): ";
+				std::cin >> trackID;
+			}
+
+			switch (trackID) {
+				case 1: track = "Section 9 Circuit";
+				case 2: track = "Chrono Pass";
+				case 3: track = "Rushline Dash";
+				default: track = "Blackrock Circuit";
+			}
+		}
+
+		else if (raceFormat == "Drag Race") {
+			std::cout << "\n\t\tAvailable Track: Torque Strip\n"
+					<< "\t\tDefaulting to said track\n";
+			track = "Torque Strip";
+		}
+
+		else { // Elimination Race
+			std::cout << "\n\t\tAvailable Track: Blackrock Circuit\n"
+				  << "\t\tDefaulting to said track\n";
+			track = "Blackrock Circuit";
+	
+		}
+	}
+
+	return track;
+}
+
+void setEngineCapacity(int driverCount, std::string driverName[], int driverAge[], char license[], int engineCapacity[]) {
+	for (int i = 0; i < driverCount; i++) {
+		std::cout << "\n\t\tDriver : " << driverName[i]
+			  << "\n\t\tGo-Kart Engine Capacities Available:\n";
+
+		if (driverAge[i] < 13) {
+			std::cout << "\t\tUnder 13: Go-Kart must be under 120CCs\n"
+				  << "\t\tDefaulting to 120CCs\n";
+			engineCapacity[i] = 120;
+		}
+
+		else { // DriverAge > 13
+			std::cout << "\t\t1 - 120CCs\n"
+				  << "\t\t2 - 200CCs\n";
+
+			if (license[i] == 'Y') {
+				std::cout << "\t\t3 - 270CCs\n";
+				std::cout << "\t\tChoose your desired engine capacity (1 - 3): ";
+				std::cin >> engineCapacity[i];
+					
+				while (engineCapacity[i] < 1 || engineCapacity[i] > 3) {
+					std::cout << "\t\tPlease enter a valid engine capacity (1 - 3): ";
+					std::cin >> engineCapacity[i];
+				}
+			}
+
+			std::cout << "\t\tChoose your desired engine capacity (1 - 2): ";
+			std::cin >> engineCapacity[i];
+		 
+			while (engineCapacity[i] < 1 || engineCapacity[i] > 2) {
+				std::cout << "\t\tPlease enter a valid engine capacity (1 - 2): ";
+				std::cin >> engineCapacity[i];
+			}
+
+			switch (engineCapacity[i]) {
+				case 1: engineCapacity[i] = 120;
+				case 2: engineCapacity[i] = 200;
+				default: engineCapacity[i] = 270;
+			}
 		}
 	}
 }
 
-// 2 - Set Race Format Function
-std::string setRaceFormat(int x) {
-    switch (x) {
-       	case 1:
-         	return "Circuit Race";
-        case 2:
-            	return "Sprint Race";
-        case 3:
-            	return "Time Trial";
-        case 4:
-		return "Drag Race";
-        default:
-            	return "Elimination Race";
-    }
+void racingGear(int driverCount, std::string driverName[], std::string helmetSize[], std::string suitSize[], int shoeSize[]) {
+	std::cout << "\n\t\tRacing Gears:\n"
+		  << "\t\t\t\tHelmets\t\tSuits\t\tShoes\n"
+		  << "\t\tSize S:\t\tRM2\t\tRM5\t\tSize 20 - 25 cm: RM3\n"
+		  << "\t\tSize M:\t\tRM4\t\tRM10\t\tSize 25 - 35 cm: RM6\n"
+		  << "\t\tSize L:\t\tRM6\t\tRM15\n"
+		  << "\t\tSize XL\t\tRM8\t\tRM20\n";
+
+	for (int i = 0; i < driverCount; i++) {
+		std::cout << "\n\t\tDriver : " << driverName[i]
+			  << "\n\t\tPlease choose your helmet size (S/M/L/XL): ";
+		std::cin >> helmetSize[i];
+
+		while (helmetSize[i] != "S" && helmetSize[i] != "M" && helmetSize[i] != "L" && helmetSize[i] != "XL") {
+			std::cout << "\n\t\tPlease choose a valid helmet size (S/M/L/XL): ";
+			std::cin >> helmetSize[i];
+		} 
+
+		std::cout << "\n\t\tPlease choose your suit size (S/M/L/XL): ";
+		std::cin >> suitSize[i];
+
+		while (suitSize[i] != "S" && suitSize[i] != "M" && suitSize[i] != "L" && suitSize[i] != "XL") {
+			std::cout << "\n\t\tPlease choose a valid suit size (S/M/L/XL): ";
+			std::cin >> suitSize[i];
+		} 
+
+		std::cout << "\n\t\tPlease choose your shoe size (20 - 35): ";
+		std::cin >> shoeSize[i];
+		
+		while (shoeSize[i] < 20 || shoeSize[i] > 35) {
+			std::cout << "\n\t\tPlease choose a valid shoe size (20 - 35): ";
+			std::cin >> shoeSize[i];
+		} 
+	}
 }
 
-// 3 - Track Selectin Function
-std::string setTrack(int trackID) {
-	switch(trackID){
-	case 1: return "Section 9 Circuit";
-	case 2: return "Chrono Pass";
-	case 3: return "Rushline Dash";
-	case 4: return "Torque Strip";
-	case 5: return"Blackrock Circuit";
-	default:return "Unkwon Track";
-    }
+int setLaps(int driverCount, std::string raceFormat) {
+	int laps;
+	if (raceFormat == "Circuit Race") {
+		std::cout << "\n\t\tAvailable number of laps: 2, 3, 4"
+				<< "\n\t\tHow many laps do you want?";
+		std::cin >> laps;
+	}
+	else if (raceFormat == "Sprint Race") {
+		std::cout << "\n\t\tSprint Races and Drag Races only have 1 lap\n";
+		laps = 1;
+	}
+	else if (raceFormat == "Time Trial") {
+		std::cout << "\n\t\tAvailable number of laps: Unlimited"
+				<< "\n\t\tHow many laps do you want?";
+		std::cin >> laps;
+	}
+	else {
+		if (raceFormat == "Elimination Race") {
+			std::cout << "\n\t\tNumber of laps corresponds with the number of drivers"
+				  << "\n\t\tHow many laps do you want?";
+			std::cin >> laps;
+		}
+	}
 }
 
-// 4 - Environment Function
-std:: string setEnvironment(const std:: string & trackName) {
-	if(trackName == "Section 9 circuit" || trackName == "Chrono Pass")
-		return "Indoor";
-	else
-		return"Outdoor";
-}
-
-// 5 - Set Go-Kart Engine Capacity Function
-int setEngineCapacity(int cc) {
-	while (cc != 120 && cc != 200 && cc != 200) {
-		std::cout << "Please input valid engine capacity: ";
-		std::cin >> cc;
-	}	
-	return cc;
-}
-
-// 6 - Membership Discount Function
-float setMembershipDiscount(char &membership) {
+float setMembershipDiscount(char membership) {
 	if(toupper(membership) == 'Y')
 		return 0.1;
 	else
 		return 0;
 }
 
-// 7 - Price Calculation Function
-float calcPrice(int engineCapacity, int laps, float membershipDiscount,float gearPrice) {
+float calcPrice(int engineCapacity, int laps, float gearPrice, float membershipDiscount) {
 	const float PRICEPERCC = 0.3;
 	float kartPrice = engineCapacity * PRICEPERCC;
 	float totalKartPrice = kartPrice * laps;
 	float finalPrice = (totalKartPrice + gearPrice) * (1 - membershipDiscount);
 	return finalPrice;
-}
-
-//8 - Racing Gear Rental Fuction
-float getHelmetPrice(const std:: string & size) {
-	if(size== "S")
-		return 2;
-	else if (size=="M")
-		return 4;
-	else if (size=="L")
-		return 6;
-	else if (size=="XL")
-		return 8;
-	else 
-		return 0;
-}
-
-float getShoePrice(int size) {
-	if(size >=20 && size <= 25)
-		return 3;
-	else if(size > 25 && size<=35)
-		return 6;
-	else
-		return 0;
 }
