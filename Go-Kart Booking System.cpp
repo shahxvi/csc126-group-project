@@ -337,6 +337,30 @@ void racingGear(int driverCount, std::string driverName[], std::string helmetSiz
 	}
 }
 
+int setLaps(int driverCount, std::string raceFormat) {
+	int laps;
+	if (raceFormat == "Circuit Race") {
+		std::cout << "\n\t\tAvailable number of laps: 2, 3, 4"
+				<< "\n\t\tHow many laps do you want?";
+		std::cin >> laps;
+	}
+	else if (raceFormat == "Sprint Race") {
+		std::cout << "\n\t\tSprint Races and Drag Races only have 1 lap\n";
+		laps = 1;
+	}
+	else if (raceFormat == "Time Trial") {
+		std::cout << "\n\t\tAvailable number of laps: Unlimited"
+				<< "\n\t\tHow many laps do you want?";
+		std::cin >> laps;
+	}
+	else {
+		if (raceFormat == "Elimination Race") {
+			std::cout << "\n\t\tNumber of laps corresponds with the number of drivers"
+				  << "\n\t\tHow many laps do you want?";
+			std::cin >> laps;
+		}
+	}
+}
 
 float setMembershipDiscount(char membership) {
 	if(toupper(membership) == 'Y')
