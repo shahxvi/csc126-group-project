@@ -182,7 +182,7 @@ std::string setTrack(std::string bookingType, std::string raceFormat) {
 			switch (trackID) {
 				case 1: track = "Section 9 Circuit";
 				case 2: track = "Chrono Pass";
-				case 3: track = "Rushline Dash";
+				case 4: track = "Rushline Dash";
 				default: track = "Blackrock Circuit";
 			}
 		}
