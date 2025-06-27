@@ -10,6 +10,9 @@ std::string setRaceFormat(std::string &bookingType);
 std::string setTrack(std::string bookingType, std::string raceFormat);
 void setEngineCapacity(int driverCount, std::string driverName[], int driverAge[], char license[], int engineCapacity[]);
 void racingGear(int driverCount, std::string driverName[], std::string helmetSize[], std::string suitSize[], int shoeSize[]);
+int setLaps(int driverCount, std::string raceFormat);
+float setMembershipDiscount();
+float calcPrice(int engineCapacity[], int laps, float gearPrice[], float membershipDiscount);
 
 int main() {
 	std::string raceFormat, track;
@@ -35,6 +38,14 @@ int main() {
 	int helmetPrice[5], suitPrice[5], shoePrice[5];	
 
 	racingGear(driverCount, driverName, helmetSize, suitSize, shoeSize);
+
+	int laps = setLaps(driverCount, raceFormat);
+
+	float membershipDiscount = setMembershipDiscount();
+
+	float gearPrice[5];
+
+	float total = calcPrice(engineCapacity, laps, gearPrice, membershipDiscount);
 
 	system("pause");
 	return 0;
@@ -301,7 +312,9 @@ void setEngineCapacity(int driverCount, std::string driverName[], int driverAge[
 	}
 }
 
-void racingGear(int driverCount, std::string driverName[], std::string helmetSize[], std::string suitSize[], int shoeSize[]) {
+void racingGear(int driverCount, std::string driverName[], std::string helmetSize[], std::string suitSize[], int shoeSize[], float &gearPrice[]) {
+	float helmetPrice[5], suitPrice[5], shoePrice[5];
+
 	std::cout << "\n\t\tRacing Gears:\n"
 		  << "\t\t\t\tHelmets\t\tSuits\t\tShoes\n"
 		  << "\t\tSize S:\t\tRM2\t\tRM5\t\tSize 20 - 25 cm: RM3\n"
@@ -313,11 +326,24 @@ void racingGear(int driverCount, std::string driverName[], std::string helmetSiz
 		std::cout << "\n\t\tDriver : " << driverName[i]
 			  << "\n\t\tPlease choose your helmet size (S/M/L/XL): ";
 		std::cin >> helmetSize[i];
-
+		
 		while (helmetSize[i] != "S" && helmetSize[i] != "M" && helmetSize[i] != "L" && helmetSize[i] != "XL") {
 			std::cout << "\n\t\tPlease choose a valid helmet size (S/M/L/XL): ";
 			std::cin >> helmetSize[i];
 		} 
+		
+		if (helmetSize[i] == "S") {
+			helmetPrice[i] = 2;
+		}
+		else if (helmetSize[i] == "M") {
+			helmetPrice[i] = 4;
+		}
+		else if (helmetSize[i] == "L") {
+			helmetPrice[i] = 6;
+		}
+		else if (helmetSize[i] == "XL") {
+			helmetPrice[i] = 8;
+		}
 
 		std::cout << "\n\t\tPlease choose your suit size (S/M/L/XL): ";
 		std::cin >> suitSize[i];
@@ -327,6 +353,7 @@ void racingGear(int driverCount, std::string driverName[], std::string helmetSiz
 			std::cin >> suitSize[i];
 		} 
 
+
 		std::cout << "\n\t\tPlease choose your shoe size (20 - 35): ";
 		std::cin >> shoeSize[i];
 		
@@ -335,6 +362,8 @@ void racingGear(int driverCount, std::string driverName[], std::string helmetSiz
 			std::cin >> shoeSize[i];
 		} 
 	}
+
+
 }
 
 int setLaps(int driverCount, std::string raceFormat) {
@@ -344,7 +373,7 @@ int setLaps(int driverCount, std::string raceFormat) {
 				<< "\n\t\tHow many laps do you want?";
 		std::cin >> laps;
 	}
-	else if (raceFormat == "Sprint Race") {
+	else if (raceFormat == "Sprint Race" || raceFormat == "Drag Race") {
 		std::cout << "\n\t\tSprint Races and Drag Races only have 1 lap\n";
 		laps = 1;
 	}
@@ -362,17 +391,27 @@ int setLaps(int driverCount, std::string raceFormat) {
 	}
 }
 
-float setMembershipDiscount(char membership) {
-	if(toupper(membership) == 'Y')
+float setMembershipDiscount() {
+	char membership;	
+
+	std::cout << "\n\t\tDo you have a membership? (Y/N): ";
+	std::cin >> membership;
+
+	if(std::toupper(membership) == 'Y')
 		return 0.1;
 	else
 		return 0;
+	return 0;
 }
 
-float calcPrice(int engineCapacity, int laps, float gearPrice, float membershipDiscount) {
+float calcPrice(int engineCapacity, int laps, int driverCount, float gearPrice[], float membershipDiscount) {
 	const float PRICEPERCC = 0.3;
 	float kartPrice = engineCapacity * PRICEPERCC;
 	float totalKartPrice = kartPrice * laps;
-	float finalPrice = (totalKartPrice + gearPrice) * (1 - membershipDiscount);
+	float totalGearPrice;
+	for (i = 0; i < driverCount; i++) {
+		totalGearPrice += gearPrice[i];
+	}
+	float finalPrice = (totalKartPrice + totalGearPrice * (1 - membershipDiscount);
 	return finalPrice;
 }
