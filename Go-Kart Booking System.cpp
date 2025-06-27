@@ -352,6 +352,20 @@ void racingGear(int driverCount, std::string driverName[], std::string helmetSiz
 			std::cout << "\n\t\tPlease choose a valid suit size (S/M/L/XL): ";
 			std::cin >> suitSize[i];
 		} 
+		
+		if (suitSize[i] == "S") {
+			suitPrice[i] = 5;
+		}
+		else if (suitSize[i] == "M") {
+			suitPrice[i] = 10;
+		}
+		else if (suitSize[i] == "L") {
+			suitPrice[i] = 15;
+		}
+		else if (suitSize[i] == "XL") {
+			suitPrice[i] = 20;
+		
+		} 
 
 
 		std::cout << "\n\t\tPlease choose your shoe size (20 - 35): ";
@@ -361,8 +375,13 @@ void racingGear(int driverCount, std::string driverName[], std::string helmetSiz
 			std::cout << "\n\t\tPlease choose a valid shoe size (20 - 35): ";
 			std::cin >> shoeSize[i];
 		} 
-	}
-
+		
+		if (shoeSize[i] == "20-25") {
+			shoePrice[i] = 3;
+		}
+		else if (shoeSize[i] == "25-30") {
+			shoePrice[i] = 6;
+		}
 
 }
 
