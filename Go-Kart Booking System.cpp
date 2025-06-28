@@ -345,6 +345,7 @@ void racingGear(int driverCount, std::string driverName[], std::string helmetSiz
 			helmetPrice[i] = 8;
 		}
 
+
 		std::cout << "\n\t\tPlease choose your suit size (S/M/L/XL): ";
 		std::cin >> suitSize[i];
 
@@ -364,9 +365,7 @@ void racingGear(int driverCount, std::string driverName[], std::string helmetSiz
 		}
 		else if (suitSize[i] == "XL") {
 			suitPrice[i] = 20;
-		
 		} 
-
 
 		std::cout << "\n\t\tPlease choose your shoe size (20 - 35): ";
 		std::cin >> shoeSize[i];
@@ -376,13 +375,12 @@ void racingGear(int driverCount, std::string driverName[], std::string helmetSiz
 			std::cin >> shoeSize[i];
 		} 
 		
-		if (shoeSize[i] == "20-25") {
+		if (shoeSize[i] <= 25) {
 			shoePrice[i] = 3;
 		}
-		else if (shoeSize[i] == "25-30") {
+		else if (shoeSize[i] >= 25) {
 			shoePrice[i] = 6;
 		}
-
 }
 
 int setLaps(int driverCount, std::string raceFormat) {
@@ -427,7 +425,7 @@ float calcPrice(int engineCapacity, int laps, int driverCount, float gearPrice[]
 	const float PRICEPERCC = 0.3;
 	float kartPrice = engineCapacity * PRICEPERCC;
 	float totalKartPrice = kartPrice * laps;
-	float totalGearPrice;
+	float totalGearPrice = helmetPrice + suitPrice + shoePrice;
 	for (i = 0; i < driverCount; i++) {
 		totalGearPrice += gearPrice[i];
 	}
