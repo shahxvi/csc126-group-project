@@ -378,7 +378,7 @@ void racingGear(int driverCount, std::string driverName[], std::string helmetSiz
 		if (shoeSize[i] <= 25) {
 			shoePrice[i] = 3;
 		}
-		else if (shoeSize[i] >= 25) {
+		else if (shoeSize[i] >= 26) {
 			shoePrice[i] = 6;
 		}
 }
