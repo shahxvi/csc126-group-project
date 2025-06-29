@@ -238,7 +238,6 @@ std::string setRaceFormat(std::string &bookingType) { //Race Format
 	}
 }
 
-
 std::string setTrack(std::string &bookingType, std::string &raceFormat) { //Track
 	std::string track;
 	int trackID;
