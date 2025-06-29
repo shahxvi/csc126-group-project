@@ -24,29 +24,31 @@ int main() {
 	
 	do {
 		displayMenu();
-		std::cout << "Choose your option: ";
+		std::cout << "\n\t\tChoose your option: ";
 		std::cin >> menu;
 	
 		while (std::cin.fail() || menu < 0 || menu > 5) {
-			std::cout << "Please enter the valid option (0 - 5):";
+			std::cout << "\n\t\tPlease enter the valid option (0 - 5): ";
 			std::cin >> menu;
 		}
 
 		if (menu == 0)
 			return 0;
-
 		if (menu == 2) 
 			displayRaceFormat();
-			
 		if (menu == 3)
 			displayTrackList();
-			
 		if (menu == 4)
 			displayRacingGear();
-			
 		if (menu == 5)	
 			displayEngineCapacities();
-			
+
+	} while (menu != 1);
+
+	char continueChoice;
+	int customer = 0;
+
+	do {
 		std::string raceFormat, track;
 
 		std::string bookingType = setBooking(); //Type 1 Function
@@ -78,9 +80,12 @@ int main() {
 
 		float totalPrice = calcPrice(engineCapacity, laps, driverCount, totalGearPrice, membershipDiscount);
 
-		//std::cout << "Continue for another customer? (Y/N): ";
+		customer++;
 
-	} while (menu != 0);
+		std::cout << "Continue for another customer? (Y/N): ";
+		std::cin >> continueChoice;
+
+	} while (std::toupper(continueChoice) != 'Y');
 
 	std::cout << "Total Income: RM _";
 	
@@ -94,17 +99,17 @@ void displayMenu() {
     		  << "\n\t\t1 - Start Booking"
     		  << "\n\t\t2 - Race Format"
     		  << "\n\t\t3 - Track List"
-			  << "\n\t\t4 - Racing Gear Size & Price"
+		  << "\n\t\t4 - Racing Gear Size & Price"
     		  << "\n\t\t5 - Go-Kart Engine Capacities"
     		  << "\n\t\t0 - Exit\n";
 }
 
 void displayRaceFormat() {
-	std::cout << "\n\t\tAvailable Format:"
+	std::cout << "\n\t\tAvailable Race Format:"
 			  << "\n\t\t1 - Circuit Race"
 			  << "\n\t\t2 - Sprint Race"
 			  << "\n\t\t3 - Time Trial"
-			  << "\n\t\t4 - Drag Race";
+			  << "\n\t\t4 - Drag Race\n";
 }
 
 void displayTrackList() {
