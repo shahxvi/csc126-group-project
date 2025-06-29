@@ -4,6 +4,11 @@
 #include <iomanip>
 #include <cctype>
 
+void displayMenu();
+void displayRaceFormat();
+void displayTrackList();
+void displayRacingGear();
+void displayEngineCapacities();
 std::string setBooking();																									//Booking Function
 int driver(std::string &bookingType, std::string driverName[], int driverAge[], char license[]); 							//Driver Data Function
 std::string setRaceFormat(std::string &bookingType);																		//Race Format Function
@@ -15,39 +20,118 @@ float setMembershipDiscount();																								//Membership Function
 float calcPrice(int engineCapacity[], int laps, int driverCount, float gearPrice, float membershipDiscount);				//Price Function
 
 int main() {
-	std::string raceFormat, track;
-
-	std::string bookingType = setBooking(); //Type 1 Function
+	int menu;
 	
-	std::string driverName[5];
-	int driverAge[5];
-	char license[5];
-	int driverCount;
+	do {
+		displayMenu();
+		std::cout << "Choose your option: ";
+		std::cin >> menu;
+		
+		switch (menu) {
+			case 1: {
+				std::string raceFormat, track;
 
-	driverCount = driver(bookingType, driverName, driverAge, license);
-
-	raceFormat = setRaceFormat(bookingType);
-
-	track = setTrack(bookingType, raceFormat);
-
-	int engineCapacity[5];
-
-	setEngineCapacity(driverCount, driverName, driverAge, license, engineCapacity);
+				std::string bookingType = setBooking(); //Type 1 Function
 	
-	int laps = setLaps(driverCount, raceFormat);
-	
-	std::string helmetSize[5], suitSize[5]; int shoeSize[5];
-	int helmetPrice[5], suitPrice[5], shoePrice[5];
-	float gearPrice;
+				std::string driverName[5];
+				int driverAge[5];
+				char license[5];
+				int driverCount;
 
-	racingGear(driverCount, driverName);
-	
-	float membershipDiscount = setMembershipDiscount();
-	
-	float totalPrice = calcPrice(engineCapacity, laps, driverCount, gearPrice, membershipDiscount);
+				driverCount = driver(bookingType, driverName, driverAge, license);
 
+				raceFormat = setRaceFormat(bookingType);
+
+				track = setTrack(bookingType, raceFormat);
+
+				int engineCapacity[5];
+
+				setEngineCapacity(driverCount, driverName, driverAge, license, engineCapacity);
+	
+				int laps = setLaps(driverCount, raceFormat);
+	
+				std::string helmetSize[5], suitSize[5]; int shoeSize[5];
+				int helmetPrice[5], suitPrice[5], shoePrice[5];
+				float gearPrice;
+
+				racingGear(driverCount, driverName);
+	
+				float membershipDiscount = setMembershipDiscount();
+	
+				float totalPrice = calcPrice(engineCapacity, laps, driverCount, gearPrice, membershipDiscount);
+				break;
+			}
+			
+			case 2: {
+				displayRaceFormat();
+				break;
+			}
+			
+			case 3: {
+				displayTrackList();
+				break;
+			}
+			
+			case 4: {
+				displayRacingGear();
+				break;
+			}
+			
+			case 5: {
+				displayEngineCapacities();
+				break;
+			}
+			
+			while (menu > 5) {
+				std::cout << "Please enter the valid option (1 - 5):";
+				std::cin >> menu;
+			}
+		}
+	} while (menu != 0);
+	
 	system("pause");
 	return 0;
+}
+
+void displayMenu() {
+	std::cout << "\n\t\tGo-Kart Booking System:"
+    		  << "\n\t\t1 - Start Booking"
+    		  << "\n\t\t2 - Race Format"
+    		  << "\n\t\t3 - Track List"
+			  << "\n\t\t4 - Racing Gear Size & Price"
+    		  << "\n\t\t5 - Go-Kart Engine Capacities"
+    		  << "\n\t\t0 - Exit\n";
+}
+
+void displayRaceFormat() {
+	std::cout << "\n\t\tAvailable Format:"
+			  << "\n\t\t1 - Circuit Race"
+			  << "\n\t\t2 - Sprint Race"
+			  << "\n\t\t3 - Time Trial"
+			  << "\n\t\t4 - Drag Race";
+}
+
+void displayTrackList() {
+    std::cout << "\n\t\tAvailable Tracks:"
+    		  << "\n\t\t1- Section 9 Circuit"
+    		  << "\n\t\t2- Chrono Pass"
+    		  << "\n\t\t3- Rushline Dash"
+    		  << "\n\t\t4- Blackrock Circuit"
+    		  << "\n\t\t5- Torque Strip\n";
+}
+
+void displayRacingGear() {
+    std::cout << "\n\t\tRacing Gears:"
+    		  << "\n\t\tHelmets (S - RM 2, M - RM 4, L - RM 6, XL - RM 8)"
+    		  << "\n\t\tSuits (S - RM 5, M - RM 10, L - RM 15, XL - RM 20)"
+    		  << "\n\t\tShoes (20-25cm - RM 3, 26-35cm - RM 6)\n";
+}
+
+void displayEngineCapacities() {
+	std::cout << "\n\t\tAvailable Engine Capacities:"
+			  << "\n\t\t1 - 100cc"
+			  << "\n\t\t2 - 200cc"
+			  << "\n\t\t3 - 270cc (with license)\n";
 }
 
 std::string setBooking() { //Booking
@@ -56,7 +140,7 @@ std::string setBooking() { //Booking
 
 	std::cout << "\n\t\t1 - Solo\n"
 			  << "\t\t2 - Group (Maximum 5)\n"
-			  << "\t\tPlease Choose your desired booking (1 - 2): ";
+			  << "\t\tPlease choose your desired booking (1 - 2): ";
 	std::cin >> bookingTypeID;
 
 	while (bookingTypeID != 1 && bookingTypeID != 2) {
@@ -347,8 +431,8 @@ float racingGear(int driverCount, std::string driverName[]) { //Racing Gear
 
 	std::cout << "\n\t\tRacing Gears:"
 		 	  << "\n\t\t\t\tHelmets\t\tSuits\t\tShoes\nx"
-			  << "\n\t\tSize S:\t\tRM 2\t\tRM 5\t\tSize 20 - 25 cm: RM 3"
-			  << "\n\t\tSize M:\t\tRM 4\t\tRM 10\t\tSize 25 - 35 cm: RM 6"
+			  << "\n\t\tSize S:\t\tRM 2\t\tRM 5\t\tSize 20-25 cm: RM 3"
+			  << "\n\t\tSize M:\t\tRM 4\t\tRM 10\t\tSize 25-35 cm: RM 6"
 			  << "\n\t\tSize L:\t\tRM 6\t\tRM 15"
 			  << "\n\t\tSize XL\t\tRM 8\t\tRM 20\n";
 
