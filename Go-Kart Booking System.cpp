@@ -84,6 +84,10 @@ int main() {
 
 		std::cout << "Continue for another customer? (Y/N): ";
 		std::cin >> continueChoice;
+		 while (std::cin.fail() || (std::toupper(continueChoice) != 'Y' && std::toupper(continueChoice) != 'N')) {
+            std::cout << "\n\t\tPlease enter Y or N: ";
+            std::cin >> continueChoice;
+    }
 
 	} while (std::toupper(continueChoice) == 'Y');
 
@@ -482,7 +486,7 @@ float racingGear(int driverCount, std::string driverName[], std::string helmetSi
 		std::cout << "\n\t\tPlease choose your shoe size (20 - 35): ";
 		std::cin >> shoeSize[i];
 		
-		while (shoeSize[i] < 20 || shoeSize[i] > 35) {
+		while (std :: cin.fail() || (shoeSize[i] < 20 || shoeSize[i] > 35)){
 			std::cout << "\n\t\tPlease choose a valid shoe size (20 - 35): ";
 			std::cin >> shoeSize[i];
 		}
