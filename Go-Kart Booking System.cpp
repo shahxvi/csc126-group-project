@@ -85,10 +85,11 @@ int main() {
 
 		std::cout << "Continue for another customer? (Y/N): ";
 		std::cin >> continueChoice;
-		 while (std::cin.fail() || (std::toupper(continueChoice) != 'Y' && std::toupper(continueChoice) != 'N')) {
-            std::cout << "\n\t\tPlease enter Y or N: ";
-            std::cin >> continueChoice;
-    }
+
+			while (std::cin.fail() || std::toupper(continueChoice) != 'Y' && std::toupper(continueChoice) != 'N') {
+            			std::cout << "\n\t\tPlease enter Y or N: ";
+            			std::cin >> continueChoice;
+    			}
 
 	} while (std::toupper(continueChoice) == 'Y');
 
@@ -101,24 +102,24 @@ int main() {
 
 void displayMenu() {
 	std::cout << "\n\t   _____         __ __         __    ___            __    _             ____         __          "
-			  << "\n\t  / ___/__  ____/ //_/__ _____/ /_  / _ )___  ___  / /__ (_)__  ___ _  / __/_ _____ / /____ __ _ "
-			  << "\n\t / (_ / _ \\/___/ ,< / _ `/ __/ __/ / _  / _ \\/ _ \\/  '_// / _ \\/ _ `/ _\\ \\/ // (_-</ __/ -_)  ' \\"
-			  << "\n\t \\___/\\___/   /_/|_|\\_,_/_/  \\__/ /____/\\___/\\___/_/\\_\\/_/_//_/\\_, / /___/\\_, /___/\\__/\\__/_/_/_/"
-			  << "\n\t                                                              /___/      /___/                   "
+		  << "\n\t  / ___/__  ____/ //_/__ _____/ /_  / _ )___  ___  / /__ (_)__  ___ _  / __/_ _____ / /____ __ _ "
+		  << "\n\t / (_ / _ \\/___/ ,< / _ `/ __/ __/ / _  / _ \\/ _ \\/  '_// / _ \\/ _ `/ _\\ \\/ // (_-</ __/ -_)  ' \\"
+		  << "\n\t \\___/\\___/   /_/|_|\\_,_/_/  \\__/ /____/\\___/\\___/_/\\_\\/_/_//_/\\_, / /___/\\_, /___/\\__/\\__/_/_/_/"
+		  << "\n\t                                                              /___/      /___/                   "
     		  << "\n\t\t1 - Start Booking"
     		  << "\n\t\t2 - Race Formats"
     		  << "\n\t\t3 - Track Lists"
-		  	  << "\n\t\t4 - Racing Gear Sizes & Prices"
+		  << "\n\t\t4 - Racing Gear Sizes & Prices"
     		  << "\n\t\t5 - Go-Kart Engine Capacities"
     		  << "\n\t\t0 - Exit\n";
 }
 
 void displayRaceFormat() {
 	std::cout << "\n\t\tAvailable Race Formats:"
-			  << "\n\t\t1 - Circuit Race"
-			  << "\n\t\t2 - Sprint Race"
-			  << "\n\t\t3 - Time Trial"
-			  << "\n\t\t4 - Drag Race\n";
+		  << "\n\t\t1 - Circuit Race"
+		  << "\n\t\t2 - Sprint Race"
+		  << "\n\t\t3 - Time Trial"
+		  << "\n\t\t4 - Drag Race\n";
 }
 
 void displayTrackList() {
@@ -141,9 +142,9 @@ void displayRacingGear() {
 
 void displayEngineCapacities() {
 	std::cout << "\n\t\tAvailable Engine Capacities:"
-			  << "\n\t\t1 - 100cc"
-			  << "\n\t\t2 - 200cc"
-			  << "\n\t\t3 - 270cc (with license)\n";
+		  << "\n\t\t1 - 100cc"
+		  << "\n\t\t2 - 200cc"
+		  << "\n\t\t3 - 270cc (with license)\n";
 }
 
 std::string setBooking() { //Booking
@@ -151,8 +152,8 @@ std::string setBooking() { //Booking
 	std::string bookingType;
 
 	std::cout << "\n\t\t1 - Solo\n"
-			  << "\t\t2 - Group (Maximum 5)\n"
-			  << "\t\tPlease choose your desired booking (1 - 2): ";
+		  << "\t\t2 - Group (Maximum 5)\n"
+		  << "\t\tPlease choose your desired booking (1 - 2): ";
 	std::cin >> bookingTypeID;
 
 	while (std:: cin.fail() || (bookingTypeID != 1 && bookingTypeID != 2)){
