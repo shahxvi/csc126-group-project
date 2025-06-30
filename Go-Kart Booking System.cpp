@@ -85,7 +85,7 @@ int main() {
 
 		customer++;
 
-		std::cout << "Continue for another customer? (Y/N): ";
+		std::cout << "\n\t\tContinue for another customer? (Y/N): ";
 		std::cin >> continueChoice;
 
 			while (std::cin.fail() || std::toupper(continueChoice) != 'Y' && std::toupper(continueChoice) != 'N') {
@@ -97,7 +97,7 @@ int main() {
 
 	} while (std::toupper(continueChoice) == 'Y');
 
-	std::cout << "Total Income: RM _";
+	std::cout << "\nTotal Income: RM _";
 	
 	system("pause");
 
@@ -185,7 +185,8 @@ int driver(std::string &bookingType, std::string driverName[], int driverAge[], 
 		driverCount = 1;
 		
 		std::cout << "\n\t\tDriver Name: ";
-		std::cin >> driverName[0];
+		std::cin.ignore();
+		std::getline(std::cin, driverName[0]);
 
 		std::cout << "\t\tDriver Age: ";
 		std::cin >> driverAge[0];
@@ -207,7 +208,8 @@ int driver(std::string &bookingType, std::string driverName[], int driverAge[], 
 		
 		for (int i = 0; i < driverCount; i++) {
 			std::cout << "\n\t\tDriver #" << (i+1) << " Name: ";
-			std::cin >> driverName[i];
+			std::cin.ignore();
+			std::getline(std::cin, driverName[i]);
 
 			std::cout << "\t\tDriver #" << (i+1) << " Age: ";
 			std::cin >> driverAge[i];
