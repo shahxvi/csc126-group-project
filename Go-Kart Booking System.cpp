@@ -466,12 +466,7 @@ int setLaps(int driverCount, std::string &raceFormat) { //Laps
 float racingGear(int driverCount, std::string driverName[], std::string helmetSize[], std::string suitSize[], int shoeSize[], float helmetPrice[], float suitPrice[], float shoePrice[], float gearPrice[]) { //Racing Gearh
 	float totalGearPrice = 0;
 
-	std::cout << "\n\t\tRacing Gears:"
-		 	  << "\n\t\t\t\tHelmets\t\tSuits\t\tShoes\n"
-			  << "\n\t\tSize S:\t\tRM 2\t\tRM 5\t\tSize 20-25 cm: RM 3"
-			  << "\n\t\tSize M:\t\tRM 4\t\tRM 10\t\tSize 25-35 cm: RM 6"
-			  << "\n\t\tSize L:\t\tRM 6\t\tRM 15"
-			  << "\n\t\tSize XL\t\tRM 8\t\tRM 20\n";
+	displayRacingGear();
 
 	for (int i = 0; i < driverCount; i++) {
 		std::cout << "\n\t\tDriver: " << driverName[i]
