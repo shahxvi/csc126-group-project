@@ -29,6 +29,8 @@ int main() {
 		std::cin >> menu;
 	
 		while (std::cin.fail() || menu < 0 || menu > 5) {
+			std::cin.clear();
+			std::cin.ignore(1000, '\n');
 			std::cout << "\n\t\tPlease enter the valid option (0 - 5): ";
 			std::cin >> menu;
 		}
@@ -87,6 +89,8 @@ int main() {
 		std::cin >> continueChoice;
 
 			while (std::cin.fail() || std::toupper(continueChoice) != 'Y' && std::toupper(continueChoice) != 'N') {
+				std::cin.clear();
+				std::cin.ignore(1000, '\n');
             			std::cout << "\n\t\tPlease enter Y or N: ";
             			std::cin >> continueChoice;
     			}
@@ -157,6 +161,8 @@ std::string setBooking() { //Booking
 	std::cin >> bookingTypeID;
 
 	while (std:: cin.fail() || (bookingTypeID != 1 && bookingTypeID != 2)){
+		std::cin.clear();
+		std::cin.ignore(1000, '\n');
 		std::cout << "\n\t\tPlease enter valid booking type (1 - 2): ";
 		std::cin >> bookingTypeID;
 	}
@@ -193,6 +199,8 @@ int driver(std::string &bookingType, std::string driverName[], int driverAge[], 
 		std::cin >> driverCount;
 
 		while (std::cin.fail() || (driverCount < 2 || driverCount > 5)) {
+			std::cin.clear();
+			std::cin.ignore(1000, '\n');
 			std::cout << "\t\tPlease enter a valid number of drivers: ";
 			std::cin >> driverCount;
 		}
@@ -225,6 +233,8 @@ std::string setRaceFormat(std::string &bookingType) { //Race Format
 		std::cin >> raceFormatID;
 
 		while (std :: cin.fail() || (raceFormatID < 1 || raceFormatID > 4)) {
+			std::cin.clear();
+			std::cin.ignore(1000, '\n');
 			std::cout << "\n\t\tPlease enter valid race format (1 - 4): ";
 			std::cin >> raceFormatID;
 		}
@@ -235,19 +245,21 @@ std::string setRaceFormat(std::string &bookingType) { //Race Format
                   << "\n\t\tPlease choose the race format (1 - 5): ";
 		std::cin >> raceFormatID;
 		
-		while (std :: cin.fail() || (raceFormatID < 1 || raceFormatID > 5)){
+		while (std:: cin.fail() || (raceFormatID < 1 || raceFormatID > 5)){
+			std::cin.clear();
+			std::cin.ignore(1000, '\n');
 			std::cout << "\n\t\tPlease enter valid race format (1 - 5): ";
 			std::cin >> raceFormatID;
 		}
 	}
 	
 	switch (raceFormatID) {
-		case 1: return "Circuit Race";
-		case 2: return "Sprint Race";
-		case 3: return "Time Trial";
-		case 4: return "Drag Race";
-		case 5: return "Elimination Race";
-		default: return "Invalid Race Format";
+		case 1: return "Circuit Race"; break;
+		case 2: return "Sprint Race"; break;
+		case 3: return "Time Trial"; break;
+		case 4: return "Drag Race"; break;
+		case 5: return "Elimination Race"; break;
+		default: return "Invalid Race Format"; break;
 	}
 }
 
@@ -278,15 +290,17 @@ std::string setTrack(std::string &bookingType, std::string &raceFormat) { //Trac
 			std::cin >> trackID;
 
 			while (std::cin.fail()|| trackID < 1 || trackID > 4){
+				std::cin.clear();
+				std::cin.ignore(1000, '\n');
 				std::cout << "\t\tPlease choose a valid track (1 - 4): ";
 				std::cin >> trackID;
 			}
 
 			switch (trackID) {
-				case 1: track = "Section 9 Circuit";
-				case 2: track = "Chrono Pass";
-				case 3: track = "Rushline Dash";
-				default: track = "Blackrock Circuit";
+				case 1: track = "Section 9 Circuit"; break;
+				case 2: track = "Chrono Pass"; break;
+				case 3: track = "Rushline Dash"; break;
+				default: track = "Blackrock Circuit"; break;
 			}
 		}
 
@@ -306,13 +320,15 @@ std::string setTrack(std::string &bookingType, std::string &raceFormat) { //Trac
 			std::cin >> trackID;
 			
 			while (std::cin.fail() || trackID < 1 || trackID > 2){
+				std::cin.clear();
+				std::cin.ignore(1000, '\n');
 				std::cout << "\t\tPlease choose a valid track (1-2): ";
 				std::cin >> trackID;
 			}
 
 			switch (trackID) {
-				case 1: track = "Section 9 Circuit";
-				default: track = "Blackrock Circuit";
+				case 1: track = "Section 9 Circuit"; break;
+				default: track = "Blackrock Circuit"; break;
 			}
 		}
 		
@@ -332,15 +348,17 @@ std::string setTrack(std::string &bookingType, std::string &raceFormat) { //Trac
 			std::cin >> trackID;
 
 			while (std::cin.fail() || trackID < 1 || trackID > 4) {
+				std::cin.clear();
+				std::cin.ignore(1000, '\n');
 				std::cout << "\t\tPlease choose a valid track (1 - 4): ";
 				std::cin >> trackID;
 			}
 
 			switch (trackID) {
-				case 1: track = "Section 9 Circuit";
-				case 2: track = "Chrono Pass";
-				case 3: track = "Rushline Dash";
-				default: track = "Blackrock Circuit";
+				case 1: track = "Section 9 Circuit"; break;
+				case 2: track = "Chrono Pass"; break;
+				case 3: track = "Rushline Dash"; break;
+				default: track = "Blackrock Circuit"; break;
 			}
 		}
 
@@ -381,6 +399,8 @@ void setEngineCapacity(int driverCount, std::string driverName[], int driverAge[
 				std::cin >> engineCapacity[i];
 					
 				while (std::cin.fail() || engineCapacity[i] < 1 || engineCapacity[i] > 3){
+					std::cin.clear();
+					std::cin.ignore(1000, '\n');
 					std::cout << "\t\tPlease enter a valid engine capacity (1 - 3): ";
 					std::cin >> engineCapacity[i];
 				}
@@ -391,15 +411,17 @@ void setEngineCapacity(int driverCount, std::string driverName[], int driverAge[
 				std::cin >> engineCapacity[i];
 		 
 				while (std::cin.fail() || engineCapacity[i] < 1 || engineCapacity[i] > 2){
+					std::cin.clear();
+					std::cin.ignore(1000, '\n');
 					std::cout << "\t\tPlease enter a valid engine capacity (1 - 2): ";
 					std::cin >> engineCapacity[i];
 				}
 			}
 
 			switch (engineCapacity[i]) {
-				case 1: engineCapacity[i] = 120;
-				case 2: engineCapacity[i] = 200;
-				default: engineCapacity[i] = 270;
+				case 1: engineCapacity[i] = 120; break;
+				case 2: engineCapacity[i] = 200; break;
+				default: engineCapacity[i] = 270; break;
 			}
 		}
 	}
@@ -451,6 +473,8 @@ float racingGear(int driverCount, std::string driverName[], std::string helmetSi
 		std::cin >> helmetSize[i];
 		
 		while (std::cin.fail() || helmetSize[i] != "S" && helmetSize[i] != "M" && helmetSize[i] != "L" && helmetSize[i] != "XL") {
+			std::cin.clear();
+			std::cin.ignore(1000, '\n');
 			std::cout << "\n\t\tPlease choose a valid helmet size (S/M/L/XL): ";
 			std::cin >> helmetSize[i];
 		}
@@ -471,6 +495,8 @@ float racingGear(int driverCount, std::string driverName[], std::string helmetSi
 		std::cin >> suitSize[i];
 
 		while (std::cin.fail() || suitSize[i] != "S" && suitSize[i] != "M" && suitSize[i] != "L" && suitSize[i] != "XL"){
+			std::cin.clear();
+			std::cin.ignore(1000, '\n');
 			std::cout << "\n\t\tPlease choose a valid suit size (S/M/L/XL): ";
 			std::cin >> suitSize[i];
 		}
@@ -491,6 +517,8 @@ float racingGear(int driverCount, std::string driverName[], std::string helmetSi
 		std::cin >> shoeSize[i];
 		
 		while (std::cin.fail() || shoeSize[i] < 20 || shoeSize[i] > 35){
+			std::cin.clear();
+			std::cin.ignore(1000, '\n');
 			std::cout << "\n\t\tPlease choose a valid shoe size (20 - 35): ";
 			std::cin >> shoeSize[i];
 		}
