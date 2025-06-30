@@ -9,8 +9,8 @@ void displayRaceFormat();
 void displayTrackList();
 void displayRacingGear();
 void displayEngineCapacities();
-std::string setBooking();
 
+std::string setBooking();
 int driver(std::string &bookingType, std::string driverName[], int driverAge[], char license[]);
 std::string setRaceFormat(std::string &bookingType);
 std::string setTrack(std::string &bookingType, std::string &raceFormat);
