@@ -276,23 +276,23 @@ std::string setTrack(std::string &bookingType, std::string &raceFormat) { //Trac
 	if (bookingType == "Solo") {
 		if (raceFormat == "Circuit Race") {
 			std::cout << "\n\t\tAvailable Track: Section 9 Circuit"
-					  << "\n\t\tDefaulting to said track\n";
+				  << "\n\t\tDefaulting to said track\n";
 			track = "Section 9 Circuit";
 		}
 		
 		else if (raceFormat == "Sprint Race") {
 			std::cout << "\n\t\tAvailable Track: Rushline Dash"
-				  	  << "\n\t\tDefaulting to said track\n";
+				  << "\n\t\tDefaulting to said track\n";
 			track = "Rushline Dash";
 		}
 
 		else if (raceFormat == "Time Trial") {
 			std::cout << "\n\t\tAvailable Track:"
-				  	  << "\n\t\t1 - Section 9 Circuit"
-				  	  << "\n\t\t2 - Chrono Pass"
-				  	  << "\n\t\t3 - Rushline Dash"
-				  	  << "\n\t\t4 - Blackrock Circuit"
-				  	  << "\n\t\tPlease choose your track (1 - 4): ";
+				  << "\n\t\t1 - Section 9 Circuit"
+				  << "\n\t\t2 - Chrono Pass"
+				  << "\n\t\t3 - Rushline Dash"
+				  << "\n\t\t4 - Blackrock Circuit"
+				  << "\n\t\tPlease choose your track (1 - 4): ";
 			std::cin >> trackID;
 
 			while (std::cin.fail()|| trackID < 1 || trackID > 4){
@@ -320,9 +320,9 @@ std::string setTrack(std::string &bookingType, std::string &raceFormat) { //Trac
 	else { //Group
 		if (raceFormat == "Circuit Race") {
 			std::cout << "\n\t\tAvailable Track:"
-				  	  << "\n\t\t1 - Section 9 Circuit"
-				  	  << "\n\t\t2 - Blackrock Circuit"
-				 	  << "\n\t\tPlease choose your track (1 - 2): ";
+				  << "\n\t\t1 - Section 9 Circuit"
+				  << "\n\t\t2 - Blackrock Circuit"
+				  << "\n\t\tPlease choose your track (1 - 2): ";
 			std::cin >> trackID;
 			
 			while (std::cin.fail() || trackID < 1 || trackID > 2){
@@ -346,11 +346,11 @@ std::string setTrack(std::string &bookingType, std::string &raceFormat) { //Trac
 
 		else if (raceFormat == "Time Trial") {
 			std::cout << "\n\t\tAvailable Track:"
-					  << "\n\t\t1 - Section 9 Circuit"
-				 	  << "\n\t\t2 - Chrono Pass"
-					  << "\n\t\t3 - Rushline Dash"
-					  << "\n\t\t4 - Blackrock Circuit"
-					  << "\n\t\tPlease choose your track: ";
+				  << "\n\t\t1 - Section 9 Circuit"
+				  << "\n\t\t2 - Chrono Pass"
+				  << "\n\t\t3 - Rushline Dash"
+				  << "\n\t\t4 - Blackrock Circuit"
+				  << "\n\t\tPlease choose your track: ";
 			std::cin >> trackID;
 
 			while (std::cin.fail() || trackID < 1 || trackID > 4) {
@@ -370,13 +370,13 @@ std::string setTrack(std::string &bookingType, std::string &raceFormat) { //Trac
 
 		else if (raceFormat == "Drag Race") {
 			std::cout << "\n\t\tAvailable Track: Torque Strip"
-					  << "\n\t\tDefaulting to said track\n";
+				  << "\n\t\tDefaulting to said track\n";
 			track = "Torque Strip";
 		}
 
 		else { // Elimination Race
 			std::cout << "\n\t\tAvailable Track: Blackrock Circuit"
-					  << "\n\t\tDefaulting to said track\n";
+				  << "\n\t\tDefaulting to said track\n";
 			track = "Blackrock Circuit";
 		}
 	}
@@ -412,7 +412,7 @@ void setEngineCapacity(int driverCount, std::string driverName[], int driverAge[
 				}
 			}
 			
-			else {
+			else { // Does not have a license
 				std::cout << "\n\t\tChoose your desired engine capacity (1 - 2): ";
 				std::cin >> engineCapacity[i];
 		 
@@ -470,7 +470,7 @@ float racingGear(int driverCount, std::string driverName[], std::string helmetSi
 
 	for (int i = 0; i < driverCount; i++) {
 		std::cout << "\n\t\tDriver: " << driverName[i]
-			  	  << "\n\t\tPlease choose your helmet size (S/M/L/XL): ";
+			  << "\n\t\tPlease choose your helmet size (S/M/L/XL): ";
 		std::cin >> helmetSize[i];
 		
 		while (std::cin.fail() || helmetSize[i] != "S" && helmetSize[i] != "M" && helmetSize[i] != "L" && helmetSize[i] != "XL") {
@@ -482,16 +482,13 @@ float racingGear(int driverCount, std::string driverName[], std::string helmetSi
 		
 		if (helmetSize[i] == "S")
 			helmetPrice[i] = 2;
-
-		else if (helmetSize[i] == "M")
+		if (helmetSize[i] == "M")
 			helmetPrice[i] = 4;
-
-		else if (helmetSize[i] == "L")
+		if (helmetSize[i] == "L")
 			helmetPrice[i] = 6;
-		
-		else if (helmetSize[i] == "XL")
+		if (helmetSize[i] == "XL")
 			helmetPrice[i] = 8;
-			
+
 		std::cout << "\n\t\tPlease choose your suit size (S/M/L/XL): ";
 		std::cin >> suitSize[i];
 
@@ -504,14 +501,11 @@ float racingGear(int driverCount, std::string driverName[], std::string helmetSi
 		
 		if (suitSize[i] == "S")
 			suitPrice[i] = 5;
-	
-		else if (suitSize[i] == "M")
+		if (suitSize[i] == "M")
 			suitPrice[i] = 10;
-		
-		else if (suitSize[i] == "L")
+		if (suitSize[i] == "L")
 			suitPrice[i] = 15;
-		
-		else if (suitSize[i] == "XL")
+		if (suitSize[i] == "XL")
 			suitPrice[i] = 20;
 
 		std::cout << "\n\t\tPlease choose your shoe size (20 - 35): ";
@@ -526,7 +520,6 @@ float racingGear(int driverCount, std::string driverName[], std::string helmetSi
 		
 		if (shoeSize[i] <= 25)
 			shoePrice[i] = 3;
-	
 		else 
 			shoePrice[i] = 6;
 
