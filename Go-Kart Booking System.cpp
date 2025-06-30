@@ -95,17 +95,21 @@ int main() {
 }
 
 void displayMenu() {
-	std::cout << "\n\t\tGo-Kart Booking System:"
+	std::cout << "\n\t   _____         __ __         __    ___            __    _             ____         __          "
+			  << "\n\t  / ___/__  ____/ //_/__ _____/ /_  / _ )___  ___  / /__ (_)__  ___ _  / __/_ _____ / /____ __ _ "
+			  << "\n\t / (_ / _ \\/___/ ,< / _ `/ __/ __/ / _  / _ \\/ _ \\/  '_// / _ \\/ _ `/ _\\ \\/ // (_-</ __/ -_)  ' \\"
+			  << "\n\t \\___/\\___/   /_/|_|\\_,_/_/  \\__/ /____/\\___/\\___/_/\\_\\/_/_//_/\\_, / /___/\\_, /___/\\__/\\__/_/_/_/"
+			  << "\n\t                                                              /___/      /___/                   "
     		  << "\n\t\t1 - Start Booking"
-    		  << "\n\t\t2 - Race Format"
-    		  << "\n\t\t3 - Track List"
-		  << "\n\t\t4 - Racing Gear Size & Price"
+    		  << "\n\t\t2 - Race Formats"
+    		  << "\n\t\t3 - Track Lists"
+		  	  << "\n\t\t4 - Racing Gear Sizes & Prices"
     		  << "\n\t\t5 - Go-Kart Engine Capacities"
     		  << "\n\t\t0 - Exit\n";
 }
 
 void displayRaceFormat() {
-	std::cout << "\n\t\tAvailable Race Format:"
+	std::cout << "\n\t\tAvailable Race Formats:"
 			  << "\n\t\t1 - Circuit Race"
 			  << "\n\t\t2 - Sprint Race"
 			  << "\n\t\t3 - Time Trial"
@@ -114,18 +118,18 @@ void displayRaceFormat() {
 
 void displayTrackList() {
     std::cout << "\n\t\tAvailable Tracks:"
-    		  << "\n\t\t1- Section 9 Circuit"
-    		  << "\n\t\t2- Chrono Pass"
-    		  << "\n\t\t3- Rushline Dash"
-    		  << "\n\t\t4- Blackrock Circuit"
-    		  << "\n\t\t5- Torque Strip\n";
+    		  << "\n\t\t1 - Section 9 Circuit"
+    		  << "\n\t\t2 - Chrono Pass"
+    		  << "\n\t\t3 - Rushline Dash"
+    		  << "\n\t\t4 - Blackrock Circuit"
+    		  << "\n\t\t5 - Torque Strip\n";
 }
 
 void displayRacingGear() {
     std::cout << "\n\t\tRacing Gears:"
-    		  << "\n\t\tHelmets (S - RM 2, M - RM 4, L - RM 6, XL - RM 8)"
-    		  << "\n\t\tSuits (S - RM 5, M - RM 10, L - RM 15, XL - RM 20)"
-    		  << "\n\t\tShoes (20-25cm - RM 3, 26-35cm - RM 6)\n";
+    		  << "\n\t\t1 - Helmets\t (S - RM 2 | M - RM 4  | L - RM 6  | XL - RM 8 )"
+    		  << "\n\t\t2 - Suits\t (S - RM 5 | M - RM 10 | L - RM 15 | XL - RM 20)"
+    		  << "\n\t\t3 - Shoes\t (20-25cm - RM 3 | 26-35cm - RM 6)\n";
 }
 
 void displayEngineCapacities() {
@@ -427,7 +431,7 @@ float racingGear(int driverCount, std::string driverName[], std::string helmetSi
 	float totalGearPrice = 0;
 
 	std::cout << "\n\t\tRacing Gears:"
-		 	  << "\n\t\t\t\tHelmets\t\tSuits\t\tShoes\nx"
+		 	  << "\n\t\t\t\tHelmets\t\tSuits\t\tShoes\n"
 			  << "\n\t\tSize S:\t\tRM 2\t\tRM 5\t\tSize 20-25 cm: RM 3"
 			  << "\n\t\tSize M:\t\tRM 4\t\tRM 10\t\tSize 25-35 cm: RM 6"
 			  << "\n\t\tSize L:\t\tRM 6\t\tRM 15"
