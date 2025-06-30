@@ -85,7 +85,7 @@ int main() {
 		std::cout << "Continue for another customer? (Y/N): ";
 		std::cin >> continueChoice;
 
-	} while (std::toupper(continueChoice) != 'Y');
+	} while (std::toupper(continueChoice) == 'Y');
 
 	std::cout << "Total Income: RM _";
 	
