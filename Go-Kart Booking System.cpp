@@ -387,17 +387,17 @@ std::string setTrack(std::string &bookingType, std::string &raceFormat) { //Trac
 void setEngineCapacity(int driverCount, std::string driverName[], int driverAge[], char license[], int engineCapacity[]) { //Engine
 	for (int i = 0; i < driverCount; i++) {
 		std::cout << "\n\t\tDriver : " << driverName[i]
-			  	  << "\n\t\tGo-Kart Engine Capacities Available:";
+			  << "\n\t\tGo-Kart Engine Capacities Available:";
 
 		if (driverAge[i] < 13) {
-			std::cout << "\n\t\tUnder 13: Go-Kart must be under 120cc"
-				 	  << "\n\t\tDefaulting to 120cc\n";
+			std::cout << "\n\t\tUnder 13: Go-Kart must be under 200cc"
+				  << "\n\t\tDefaulting to 120cc\n";
 			engineCapacity[i] = 120;
 		}
 
 		else { // DriverAge > 13
 			std::cout << "\n\t\t1 - 120cc"
-				  	  << "\n\t\t2 - 200cc";
+				  << "\n\t\t2 - 200cc";
 
 			if (license[i] == 'Y') {
 				std::cout << "\n\t\t3 - 270cc";
