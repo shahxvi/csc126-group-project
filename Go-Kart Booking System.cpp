@@ -191,7 +191,7 @@ int driver(std::string &bookingType, std::string driverName[], int driverAge[], 
 		std::cout << "\t\tPlease enter the number of drivers (2 - 5): ";
 		std::cin >> driverCount;
 
-		while (std:: cin.fail()(driverCount < 2 || driverCount > 5)) {
+		while (std::cin.fail() || (driverCount < 2 || driverCount > 5)) {
 			std::cout << "\t\tPlease enter a valid number of drivers: ";
 			std::cin >> driverCount;
 		}
@@ -223,7 +223,7 @@ std::string setRaceFormat(std::string &bookingType) { //Race Format
 		std::cout << "\n\t\tPlease choose the race format (1 - 4): ";
 		std::cin >> raceFormatID;
 
-		while (std :: cin.fail()(raceFormatID < 1 || raceFormatID > 4)) {
+		while (std :: cin.fail() || (raceFormatID < 1 || raceFormatID > 4)) {
 			std::cout << "\n\t\tPlease enter valid race format (1 - 4): ";
 			std::cin >> raceFormatID;
 		}
@@ -234,7 +234,7 @@ std::string setRaceFormat(std::string &bookingType) { //Race Format
                   << "\n\t\tPlease choose the race format (1 - 5): ";
 		std::cin >> raceFormatID;
 		
-		while (std :: cin.fail()(raceFormatID < 1 || raceFormatID > 5)){
+		while (std :: cin.fail() || (raceFormatID < 1 || raceFormatID > 5)){
 			std::cout << "\n\t\tPlease enter valid race format (1 - 5): ";
 			std::cin >> raceFormatID;
 		}
@@ -276,7 +276,7 @@ std::string setTrack(std::string &bookingType, std::string &raceFormat) { //Trac
 				  	  << "\n\t\tPlease choose your track (1 - 4): ";
 			std::cin >> trackID;
 
-			while (std :: cin.fail()(trackID < 1 || trackID > 4)){
+			while (std::cin.fail()|| trackID < 1 || trackID > 4){
 				std::cout << "\t\tPlease choose a valid track (1 - 4): ";
 				std::cin >> trackID;
 			}
@@ -304,7 +304,7 @@ std::string setTrack(std::string &bookingType, std::string &raceFormat) { //Trac
 				 	  << "\n\t\tPlease choose your track (1 - 2): ";
 			std::cin >> trackID;
 			
-			while (std :: cin.fail()(trackID < 1 || trackID > 2)){
+			while (std::cin.fail() || trackID < 1 || trackID > 2){
 				std::cout << "\t\tPlease choose a valid track (1-2): ";
 				std::cin >> trackID;
 			}
@@ -330,7 +330,7 @@ std::string setTrack(std::string &bookingType, std::string &raceFormat) { //Trac
 					  << "\n\t\tPlease choose your track: ";
 			std::cin >> trackID;
 
-			while (std :: cin.fail()(trackID < 1 || trackID > 4)) {
+			while (std::cin.fail() || trackID < 1 || trackID > 4) {
 				std::cout << "\t\tPlease choose a valid track (1 - 4): ";
 				std::cin >> trackID;
 			}
@@ -379,7 +379,7 @@ void setEngineCapacity(int driverCount, std::string driverName[], int driverAge[
 				std::cout << "\n\t\tChoose your desired engine capacity (1 - 3): ";
 				std::cin >> engineCapacity[i];
 					
-				while (std :: cin.fail()(engineCapacity[i] < 1 || engineCapacity[i] > 3)){
+				while (std::cin.fail() || engineCapacity[i] < 1 || engineCapacity[i] > 3){
 					std::cout << "\t\tPlease enter a valid engine capacity (1 - 3): ";
 					std::cin >> engineCapacity[i];
 				}
@@ -389,7 +389,7 @@ void setEngineCapacity(int driverCount, std::string driverName[], int driverAge[
 				std::cout << "\n\t\tChoose your desired engine capacity (1 - 2): ";
 				std::cin >> engineCapacity[i];
 		 
-				while (std :: cin.fail()(engineCapacity[i] < 1 || engineCapacity[i] > 2)){
+				while (std::cin.fail() || engineCapacity[i] < 1 || engineCapacity[i] > 2){
 					std::cout << "\t\tPlease enter a valid engine capacity (1 - 2): ";
 					std::cin >> engineCapacity[i];
 				}
@@ -449,7 +449,7 @@ float racingGear(int driverCount, std::string driverName[], std::string helmetSi
 			  	  << "\n\t\tPlease choose your helmet size (S/M/L/XL): ";
 		std::cin >> helmetSize[i];
 		
-		while (std :: cin.fail()(helmetSize[i] != "S" && helmetSize[i] != "M" && helmetSize[i] != "L" && helmetSize[i] != "XL")) {
+		while (std::cin.fail() || helmetSize[i] != "S" && helmetSize[i] != "M" && helmetSize[i] != "L" && helmetSize[i] != "XL") {
 			std::cout << "\n\t\tPlease choose a valid helmet size (S/M/L/XL): ";
 			std::cin >> helmetSize[i];
 		}
@@ -469,7 +469,7 @@ float racingGear(int driverCount, std::string driverName[], std::string helmetSi
 		std::cout << "\n\t\tPlease choose your suit size (S/M/L/XL): ";
 		std::cin >> suitSize[i];
 
-		while (std :: cin.fail()(suitSize[i] != "S" && suitSize[i] != "M" && suitSize[i] != "L" && suitSize[i] != "XL")){
+		while (std::cin.fail() || suitSize[i] != "S" && suitSize[i] != "M" && suitSize[i] != "L" && suitSize[i] != "XL"){
 			std::cout << "\n\t\tPlease choose a valid suit size (S/M/L/XL): ";
 			std::cin >> suitSize[i];
 		}
@@ -489,7 +489,7 @@ float racingGear(int driverCount, std::string driverName[], std::string helmetSi
 		std::cout << "\n\t\tPlease choose your shoe size (20 - 35): ";
 		std::cin >> shoeSize[i];
 		
-		while (std :: cin.fail() || (shoeSize[i] < 20 || shoeSize[i] > 35)){
+		while (std::cin.fail() || shoeSize[i] < 20 || shoeSize[i] > 35){
 			std::cout << "\n\t\tPlease choose a valid shoe size (20 - 35): ";
 			std::cin >> shoeSize[i];
 		}
