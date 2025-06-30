@@ -83,6 +83,10 @@ int main() {
 
 		float totalPrice = calcPrice(engineCapacity, laps, driverCount, totalGearPrice, membershipDiscount);
 
+		// Add
+		// summary
+		// here
+
 		customer++;
 
 		std::cout << "\n\t\tContinue for another customer? (Y/N): ";
