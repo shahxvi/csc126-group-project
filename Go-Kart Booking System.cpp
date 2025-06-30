@@ -9,15 +9,16 @@ void displayRaceFormat();
 void displayTrackList();
 void displayRacingGear();
 void displayEngineCapacities();
-std::string setBooking();																									//Booking Function
-int driver(std::string &bookingType, std::string driverName[], int driverAge[], char license[]); 							//Driver Data Function
-std::string setRaceFormat(std::string &bookingType);																		//Race Format Function
-std::string setTrack(std::string &bookingType, std::string &raceFormat);													//Track Function
-void setEngineCapacity(int driverCount, std::string driverName[], int driverAge[], char license[], int engineCapacity[]);	//Engine Function
-int setLaps(int driverCount, std::string &raceFormat);																		//laps Function
-float racingGear(int driverCount, std::string driverName[], std::string helmetSize[], std::string suitSize[], int shoeSize[], float helmetPrice[], float suitPrice[], float shoePrice[], float gearPrice[]); 
-float setMembershipDiscount();																								//Membership Function
-float calcPrice(int engineCapacity[], int laps, int driverCount, float gearPrice, float membershipDiscount);				//Price Function
+std::string setBooking();
+
+int driver(std::string &bookingType, std::string driverName[], int driverAge[], char license[]);
+std::string setRaceFormat(std::string &bookingType);
+std::string setTrack(std::string &bookingType, std::string &raceFormat);
+void setEngineCapacity(int driverCount, std::string driverName[], int driverAge[], char license[], int engineCapacity[]);
+int setLaps(int driverCount, std::string &raceFormat);
+float racingGear(int driverCount, std::string driverName[], std::string helmetSize[], std::string suitSize[], int shoeSize[], float helmetPrice[], float suitPrice[], float shoePrice[], float gearPrice[]);
+float setMembershipDiscount();
+float calcPrice(int engineCapacity[], int laps, int driverCount, float gearPrice, float membershipDiscount);	
 
 int main() {
 	int menu;
@@ -122,10 +123,12 @@ void displayTrackList() {
 }
 
 void displayRacingGear() {
-    std::cout << "\n\t\tRacing Gears:"
-    		  << "\n\t\tHelmets (S - RM 2, M - RM 4, L - RM 6, XL - RM 8)"
-    		  << "\n\t\tSuits (S - RM 5, M - RM 10, L - RM 15, XL - RM 20)"
-    		  << "\n\t\tShoes (20-25cm - RM 3, 26-35cm - RM 6)\n";
+	std::cout << "\n\t\tRacing Gears:"
+		  << "\n\t\t\t\tHelmets\t\tSuits\t\tShoes\n"
+		  << "\n\t\tSize S:\t\tRM 2\t\tRM 5\t\tSize 20-25 cm: RM 3"
+		  << "\n\t\tSize M:\t\tRM 4\t\tRM 10\t\tSize 25-35 cm: RM 6"
+		  << "\n\t\tSize L:\t\tRM 6\t\tRM 15"
+		  << "\n\t\tSize XL\t\tRM 8\t\tRM 20\n";
 }
 
 void displayEngineCapacities() {
@@ -427,7 +430,7 @@ float racingGear(int driverCount, std::string driverName[], std::string helmetSi
 	float totalGearPrice = 0;
 
 	std::cout << "\n\t\tRacing Gears:"
-		 	  << "\n\t\t\t\tHelmets\t\tSuits\t\tShoes\nx"
+		 	  << "\n\t\t\t\tHelmets\t\tSuits\t\tShoes\n"
 			  << "\n\t\tSize S:\t\tRM 2\t\tRM 5\t\tSize 20-25 cm: RM 3"
 			  << "\n\t\tSize M:\t\tRM 4\t\tRM 10\t\tSize 25-35 cm: RM 6"
 			  << "\n\t\tSize L:\t\tRM 6\t\tRM 15"
