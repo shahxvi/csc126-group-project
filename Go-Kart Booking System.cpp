@@ -561,11 +561,11 @@ float racingGear(int driverCount, std::string driverName[], std::string helmetSi
 	for (int i = 0; i < driverCount; i++) {
 		std::cout << "\n\t\tDriver: " << driverName[i];
 
-		selectHelmet(i, helmetSize, helmetPrice);
+		helmetPrice[i] = selectHelmet(i, helmetSize, helmetPrice);
 
-		selectSuit (i, suitSize, suitPrice);
+		suitPrice[i] = selectSuit (i, suitSize, suitPrice);
 
-		selectShoe (i, shoeSize, shoePrice);
+		shoePrice[i] = selectShoe (i, shoeSize, shoePrice);
 
 		gearPrice[i] = helmetPrice[i] + suitPrice[i] + shoePrice[i];
 
