@@ -57,7 +57,6 @@ int main() {
 	float totalIncome = 0;
 
 	do {
-		std::string raceFormat, track;
 
 		std::string bookingType = setBooking(); //Type 1 Function
 
@@ -68,9 +67,9 @@ int main() {
 
 		driverCount = driver(bookingType, driverName, driverAge, license);
 
-		raceFormat = setRaceFormat(bookingType);
+		std::string raceFormat = setRaceFormat(bookingType);
 
-		track = setTrack(bookingType, raceFormat);
+		std::string track = setTrack(bookingType, raceFormat);
 
 		int engineCapacity[5];
 
@@ -225,6 +224,13 @@ int driver(std::string &bookingType, std::string driverName[], int driverAge[], 
 
 		std::cout << "\t\tDo you have a driver's license? (Y/N): ";
 		std::cin >> license[0];
+		
+		while(!isalpha(license[0]) || isdigit(license[0])) {
+			std::cin.clear();
+			std::cin.ignore(1000, '\n');
+			std::cout << "\t\tPlease enter a valid input (Y/N): ";
+			std::cin >> license[0];
+		}
 	}
 	
 	else {
@@ -238,9 +244,10 @@ int driver(std::string &bookingType, std::string driverName[], int driverAge[], 
 			std::cin >> driverCount;
 		}
 		
+		std::cin.ignore();
+
 		for (int i = 0; i < driverCount; i++) {
 			std::cout << "\n\t\tDriver #" << (i+1) << " Name: ";
-			std::cin.ignore();
 			std::getline(std::cin, driverName[i]);
 
 			std::cout << "\t\tDriver #" << (i+1) << " Age: ";
@@ -248,6 +255,13 @@ int driver(std::string &bookingType, std::string driverName[], int driverAge[], 
 
 			std::cout << "\t\tDoes Driver #" << (i+1) << " has a license? (Y/N): ";
 			std::cin >> license[i];
+			
+			while(!isalpha(license[i]) || isdigit(license[i])) {
+				std::cin.clear();
+				std::cin.ignore(1000, '\n');
+				std::cout << "\t\tPlease enter a valid input (Y/N): ";
+				std::cin >> license[i];
+			}
 		}
 	}
 	return driverCount;
