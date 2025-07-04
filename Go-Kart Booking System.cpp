@@ -538,7 +538,7 @@ float racingGear(int driverCount, std::string driverName[], std::string helmetSi
 	return totalGearPrice;
 }
 
-float setMembershipDiscount() { //Membership
+float setMembershipDiscount() {
 	char membership;	
 
 	std::cout << "\n\t\tDo you have a membership? (Y/N): ";
@@ -550,7 +550,7 @@ float setMembershipDiscount() { //Membership
 		return 0.0;
 }
 
-float calcPrice(int engineCapacity[], int laps, int driverCount, float totalGearPrice, float membershipDiscount) { //Price
+float calcPrice(int engineCapacity[], int laps, int driverCount, float totalGearPrice, float membershipDiscount) {
 	const float pricePerCC = 0.3;
 	float totalKartPrice = 0;
 	
