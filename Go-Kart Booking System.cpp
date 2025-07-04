@@ -51,6 +51,7 @@ int main() {
 
 	char continueChoice;
 	int customer = 0;
+	float totalIncome = 0;
 
 	do {
 		std::string raceFormat, track;
@@ -84,10 +85,27 @@ int main() {
 
 		float totalPrice = calcPrice(engineCapacity, laps, driverCount, totalGearPrice, membershipDiscount);
 
-		// Add
-		// summary
-		// here
+		std::cout << "\n\t\tRace Format: " << raceFormat
+			  << "\n\t\tTrack: " << track << "\n";
 
+
+		for (int i = 0; i < driverCount; i++) {
+			std::cout << "\n\t\tDriver: " << driverName[i]
+				  << "\n\t\tAge: " << driverAge[i]
+				  << "\n\t\tHas License: " << license[i]
+				  << "\n\t\tEngine Capacity :" << engineCapacity[i] << "cc"
+				  << "\n\t\tHelmet Size: " << helmetSize[i]
+				  << "\n\t\tHelmet Price: RM" << helmetPrice[i]
+				  << "\n\t\tSuit Size: " << suitSize[i]
+				  << "\n\t\tSuitPrice: RM" << suitPrice[i]
+				  << "\n\t\tShoe Size : " << shoeSize[i] << "cm"
+				  << "\n\t\tShoe Price: RM" << shoePrice[i]
+				  << "\n\t\tTotal Gear Price: RM" << totalGearPrice;
+		}
+		
+		std::cout << "\n\t\tTotal : RM" << totalPrice;
+
+		totalIncome += totalPrice;
 		customer++;
 
 		std::cout << "\n\t\tContinue for another customer? (Y/N): ";
@@ -102,7 +120,7 @@ int main() {
 
 	} while (std::toupper(continueChoice) == 'Y');
 
-	std::cout << "\nTotal Income: RM _";
+	std::cout << "\nTotal Income: RM " << totalIncome << "\n";
 	
 	system("pause");
 
