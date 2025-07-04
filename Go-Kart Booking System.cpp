@@ -3,12 +3,13 @@
 #include <cmath>
 #include <iomanip>
 #include <cctype>
+#include <algorithm>
 
 void displayMenu();
 void displayRaceFormat();
 void displayTrackList();
 void displayRacingGear();
-void displayEngineCapacities();
+void displayEngineCapacities(int age, char license);
 
 std::string setBooking();
 int driver(std::string &bookingType, std::string driverName[], int driverAge[], char license[]);
@@ -44,7 +45,7 @@ int main() {
 		if (menu == 4)
 			displayRacingGear();
 		if (menu == 5)	
-			displayEngineCapacities();
+			displayEngineCapacities(18, 'Y');
 
 	} while (menu != 1);
 
@@ -148,11 +149,14 @@ void displayRacingGear() {
 		  << "\n\t\tSize XL\t\tRM 8\t\tRM 20\n";
 }
 
-void displayEngineCapacities() {
-	std::cout << "\n\t\tAvailable Engine Capacities:"
-		  << "\n\t\t1 - 100cc"
-		  << "\n\t\t2 - 200cc"
-		  << "\n\t\t3 - 270cc (with license)\n";
+void displayEngineCapacities(int age, char license) {
+	std::cout << "\n\t\tAvailable Engine Capacities:";
+	std::cout << "\n\t\t1 - 100cc (Under 13)";
+	if (age >= 18) {
+		std::cout << "\n\t\t2 - 200cc";
+		if (license == 'Y')
+			std::cout << "\n\t\t3 - 270cc (Requires License)\n";
+	}
 }
 
 std::string setBooking() { //Booking
@@ -386,8 +390,9 @@ std::string setTrack(std::string &bookingType, std::string &raceFormat) { //Trac
 
 void setEngineCapacity(int driverCount, std::string driverName[], int driverAge[], char license[], int engineCapacity[]) { //Engine
 	for (int i = 0; i < driverCount; i++) {
-		std::cout << "\n\t\tDriver : " << driverName[i]
-			  << "\n\t\tGo-Kart Engine Capacities Available:";
+		std::cout << "\n\t\tDriver : " << driverName[i];
+
+		displayEngineCapacities(driverAge[i], license[i]);
 
 		if (driverAge[i] < 13) {
 			std::cout << "\n\t\tUnder 13: Go-Kart must be under 200cc"
@@ -396,11 +401,8 @@ void setEngineCapacity(int driverCount, std::string driverName[], int driverAge[
 		}
 
 		else { // DriverAge > 13
-			std::cout << "\n\t\t1 - 120cc"
-				  << "\n\t\t2 - 200cc";
 
 			if (license[i] == 'Y') {
-				std::cout << "\n\t\t3 - 270cc";
 				std::cout << "\n\t\tChoose your desired engine capacity (1 - 3): ";
 				std::cin >> engineCapacity[i];
 					
@@ -473,11 +475,14 @@ float racingGear(int driverCount, std::string driverName[], std::string helmetSi
 			  << "\n\t\tPlease choose your helmet size (S/M/L/XL): ";
 		std::cin >> helmetSize[i];
 		
+		std::transform(helmetSize[i].begin(), helmetSize[i].end(), helmetSize[i].begin(), ::toupper);
+
 		while (std::cin.fail() || helmetSize[i] != "S" && helmetSize[i] != "M" && helmetSize[i] != "L" && helmetSize[i] != "XL") {
 			std::cin.clear();
 			std::cin.ignore(1000, '\n');
 			std::cout << "\n\t\tPlease choose a valid helmet size (S/M/L/XL): ";
 			std::cin >> helmetSize[i];
+			std::transform(helmetSize[i].begin(), helmetSize[i].end(), helmetSize[i].begin(), ::toupper);
 		}
 		
 		if (helmetSize[i] == "S")
@@ -492,11 +497,14 @@ float racingGear(int driverCount, std::string driverName[], std::string helmetSi
 		std::cout << "\n\t\tPlease choose your suit size (S/M/L/XL): ";
 		std::cin >> suitSize[i];
 
-		while (std::cin.fail() || suitSize[i] != "S" && suitSize[i] != "M" && suitSize[i] != "L" && suitSize[i] != "XL"){
+		std::transform(suitSize[i].begin(), suitSize[i].end(), suitSize[i].begin(), ::toupper);
+
+		while (std::cin.fail() || (suitSize[i] != "S" && suitSize[i] != "M" && suitSize[i] != "L" && suitSize[i] != "XL")){
 			std::cin.clear();
 			std::cin.ignore(1000, '\n');
 			std::cout << "\n\t\tPlease choose a valid suit size (S/M/L/XL): ";
 			std::cin >> suitSize[i];
+			std::transform(suitSize[i].begin(), suitSize[i].end(), suitSize[i].begin(), ::toupper);
 		}
 		
 		if (suitSize[i] == "S")
