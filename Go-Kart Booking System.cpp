@@ -180,7 +180,7 @@ void displayEngineCapacities(int age, char license) {
 	}
 }
 
-std::string setBooking() { //Booking
+std::string setBooking() {
 	int bookingTypeID;
 	std::string bookingType;
 
@@ -207,7 +207,7 @@ std::string setBooking() { //Booking
 
 // This was originally intended as a void function but for the setEngineCapacity function to work it needs the driverCount parameter
 // and this function just so happens to be perfect for that 
-int driver(std::string &bookingType, std::string driverName[], int driverAge[], char license[]) { //Driver Data
+int driver(std::string &bookingType, std::string driverName[], int driverAge[], char license[]) {
 	int driverCount;
 	
 	if (bookingType == "Solo") {
@@ -405,7 +405,7 @@ std::string setTrack(std::string &bookingType, std::string &raceFormat) { //Trac
 	return track;
 }
 
-void setEngineCapacity(int driverCount, std::string driverName[], int driverAge[], char license[], int engineCapacity[]) { //Engine
+void setEngineCapacity(int driverCount, std::string driverName[], int driverAge[], char license[], int engineCapacity[]) {
 	for (int i = 0; i < driverCount; i++) {
 		std::cout << "\n\t\tDriver : " << driverName[i];
 
@@ -414,40 +414,37 @@ void setEngineCapacity(int driverCount, std::string driverName[], int driverAge[
 		if (driverAge[i] < 13) {
 			std::cout << "\n\t\tUnder 13: Go-Kart must be under 200cc"
 				  << "\n\t\tDefaulting to 120cc\n";
-			engineCapacity[i] = 120;
+			engineCapacity[i] = 1;
 		}
 
-		else { // DriverAge > 13
-
-			if (license[i] == 'Y') {
-				std::cout << "\n\t\tChoose your desired engine capacity (1 - 3): ";
+		// Driver Age > 13
+		if (license[i] == 'Y') {
+			std::cout << "\n\t\tChoose your desired engine capacity (1 - 3): ";
+			std::cin >> engineCapacity[i];
+				
+			while (std::cin.fail() || engineCapacity[i] < 1 || engineCapacity[i] > 3){
+				std::cin.clear();
+				std::cin.ignore(1000, '\n');
+				std::cout << "\t\tPlease enter a valid engine capacity (1 - 3): ";
 				std::cin >> engineCapacity[i];
-					
-				while (std::cin.fail() || engineCapacity[i] < 1 || engineCapacity[i] > 3){
-					std::cin.clear();
-					std::cin.ignore(1000, '\n');
-					std::cout << "\t\tPlease enter a valid engine capacity (1 - 3): ";
-					std::cin >> engineCapacity[i];
-				}
 			}
-			
-			else { // Does not have a license
-				std::cout << "\n\t\tChoose your desired engine capacity (1 - 2): ";
+		}
+		else { // Driver does not have a license
+			std::cout << "\n\t\tChoose your desired engine capacity (1 - 2): ";
+			std::cin >> engineCapacity[i];
+	 
+			while (std::cin.fail() || engineCapacity[i] < 1 || engineCapacity[i] > 2){
+				std::cin.clear();
+				std::cin.ignore(1000, '\n');
+				std::cout << "\t\tPlease enter a valid engine capacity (1 - 2): ";
 				std::cin >> engineCapacity[i];
-		 
-				while (std::cin.fail() || engineCapacity[i] < 1 || engineCapacity[i] > 2){
-					std::cin.clear();
-					std::cin.ignore(1000, '\n');
-					std::cout << "\t\tPlease enter a valid engine capacity (1 - 2): ";
-					std::cin >> engineCapacity[i];
-				}
 			}
+		}
 
-			switch (engineCapacity[i]) {
-				case 1: engineCapacity[i] = 120; break;
-				case 2: engineCapacity[i] = 200; break;
-				default: engineCapacity[i] = 270; break;
-			}
+		switch (engineCapacity[i]) {
+			case 1: engineCapacity[i] = 120; break;
+			case 2: engineCapacity[i] = 200; break;
+			default: engineCapacity[i] = 270; break;
 		}
 	}
 }
