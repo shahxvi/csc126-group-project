@@ -6,7 +6,7 @@
 #include <algorithm>
 
 void displayMenu();
-void displayRaceFormat();
+void displayRaceFormat(std::string bookingType);
 void displayTrackList();
 void displayRacingGear();
 void displayEngineCapacities(int age, char license);
@@ -39,7 +39,7 @@ int main() {
 		if (menu == 0)
 			return 0;
 		if (menu == 2) 
-			displayRaceFormat();
+			displayRaceFormat("Group");
 		if (menu == 3)
 			displayTrackList();
 		if (menu == 4)
@@ -123,12 +123,15 @@ void displayMenu() {
     		  << "\n\t\t0 - Exit\n";
 }
 
-void displayRaceFormat() {
+void displayRaceFormat(std::string bookingType) {
 	std::cout << "\n\t\tAvailable Race Formats:"
 		  << "\n\t\t1 - Circuit Race"
 		  << "\n\t\t2 - Sprint Race"
 		  << "\n\t\t3 - Time Trial"
-		  << "\n\t\t4 - Drag Race\n";
+		  << "\n\t\t4 - Drag Race";
+	if (bookingType == "Group") {
+		std::cout << "\n\t\t5 - Eliminationn Race (Group)\n";
+	}
 }
 
 void displayTrackList() {
@@ -229,14 +232,11 @@ int driver(std::string &bookingType, std::string driverName[], int driverAge[], 
 	return driverCount;
 }
 
-std::string setRaceFormat(std::string &bookingType) { //Race Format
+std::string setRaceFormat(std::string &bookingType) {
 	int raceFormatID;	
 	std::string raceFormat;
 
-	std::cout << "\n\t\t1 - Circuit Race"
-			  << "\n\t\t2 - Sprint Race"
-			  << "\n\t\t3 - Time Trial"
-			  << "\n\t\t4 - Drag Race";
+	displayRaceFormat(bookingType);
 
 	if (bookingType == "Solo") {
 		std::cout << "\n\t\tPlease choose the race format (1 - 4): ";
@@ -251,8 +251,7 @@ std::string setRaceFormat(std::string &bookingType) { //Race Format
 	}
 
 	else {
-		std::cout << "\n\t\t5 - Elimination Race"
-                  << "\n\t\tPlease choose the race format (1 - 5): ";
+                std::cout << "\n\t\tPlease choose the race format (1 - 5): ";
 		std::cin >> raceFormatID;
 		
 		while (std:: cin.fail() || (raceFormatID < 1 || raceFormatID > 5)){
@@ -439,7 +438,7 @@ int setLaps(int driverCount, std::string &raceFormat) { //Laps
 	int laps;
 	if (raceFormat == "Circuit Race") {
 		std::cout << "\n\t\tAvailable number of laps: 2, 3, 4"
-				  << "\n\t\tHow many laps do you want?";
+			  << "\n\t\tHow many laps do you want?";
 		std::cin >> laps;
 	}
 	
@@ -450,14 +449,14 @@ int setLaps(int driverCount, std::string &raceFormat) { //Laps
 	
 	else if (raceFormat == "Time Trial") {
 		std::cout << "\n\t\tAvailable number of laps: Unlimited"
-				  << "\n\t\tHow many laps do you want?";
+			  << "\n\t\tHow many laps do you want?";
 		std::cin >> laps;
 	}
 	
 	else {
 		if (raceFormat == "Elimination Race") {
 			std::cout << "\n\t\tNumber of laps corresponds with the number of drivers"
-				  	  << "\n\t\tHow many laps do you want?";
+			  	  << "\n\t\tHow many laps do you want?";
 			std::cin >> laps;
 		}
 	}
@@ -519,7 +518,7 @@ float racingGear(int driverCount, std::string driverName[], std::string helmetSi
 		std::cout << "\n\t\tPlease choose your shoe size (20 - 35): ";
 		std::cin >> shoeSize[i];
 		
-		while (std::cin.fail() || shoeSize[i] < 20 || shoeSize[i] > 35){
+		while (std::cin.fail() || (shoeSize[i] < 20 || shoeSize[i] > 35)){
 			std::cin.clear();
 			std::cin.ignore(1000, '\n');
 			std::cout << "\n\t\tPlease choose a valid shoe size (20 - 35): ";
