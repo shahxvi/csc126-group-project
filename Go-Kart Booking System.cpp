@@ -17,6 +17,9 @@ std::string setRaceFormat(std::string &bookingType);
 std::string setTrack(std::string &bookingType, std::string &raceFormat);
 void setEngineCapacity(int driverCount, std::string driverName[], int driverAge[], char license[], int engineCapacity[]);
 int setLaps(int driverCount, std::string &raceFormat);
+float selectHelmet(int i, std::string helmetSize[], float helmetPrice[]);
+float selectSuit(int i, std::string suitSize[], float suitPrice[]);
+float selectShoe(int i, int shoeSize[], float shoePrice[]);
 float racingGear(int driverCount, std::string driverName[], std::string helmetSize[], std::string suitSize[], int shoeSize[], float helmetPrice[], float suitPrice[], float shoePrice[], float gearPrice[]);
 float setMembershipDiscount();
 float calcPrice(int engineCapacity[], int laps, int driverCount, float gearPrice, float membershipDiscount);	
@@ -479,71 +482,90 @@ int setLaps(int driverCount, std::string &raceFormat) {
 	return laps;
 }
 
+float selectHelmet(int i, std::string helmetSize[], float helmetPrice[]) {
+	std::cout << "\n\t\tPlease choose your helmet size (S/M/L/XL): ";
+	std::cin >> helmetSize[i];
+	
+	std::transform(helmetSize[i].begin(), helmetSize[i].end(), helmetSize[i].begin(), ::toupper);
+
+	while (std::cin.fail() || (helmetSize[i] != "S" && helmetSize[i] != "M" && helmetSize[i] != "L" && helmetSize[i] != "XL")) {
+		std::cin.clear();
+		std::cin.ignore(1000, '\n');
+		std::cout << "\n\t\tPlease choose a valid helmet size (S/M/L/XL): ";
+		std::cin >> helmetSize[i];
+		std::transform(helmetSize[i].begin(), helmetSize[i].end(), helmetSize[i].begin(), ::toupper);
+	}
+	
+	if (helmetSize[i] == "S")
+		helmetPrice[i] = 2;
+	if (helmetSize[i] == "M")
+		helmetPrice[i] = 4;
+	if (helmetSize[i] == "L")
+		helmetPrice[i] = 6;
+	if (helmetSize[i] == "XL")
+		helmetPrice[i] = 8;
+
+	return helmetPrice[i];
+}
+
+float selectSuit (int i, std::string suitSize[], float suitPrice[]) {
+	std::cout << "\n\t\tPlease choose your suit size (S/M/L/XL): ";
+	std::cin >> suitSize[i];
+
+	std::transform(suitSize[i].begin(), suitSize[i].end(), suitSize[i].begin(), ::toupper);
+
+	while (std::cin.fail() || (suitSize[i] != "S" && suitSize[i] != "M" && suitSize[i] != "L" && suitSize[i] != "XL")){
+		std::cin.clear();
+		std::cin.ignore(1000, '\n');
+		std::cout << "\n\t\tPlease choose a valid suit size (S/M/L/XL): ";
+		std::cin >> suitSize[i];
+		std::transform(suitSize[i].begin(), suitSize[i].end(), suitSize[i].begin(), ::toupper);
+	}
+	
+	if (suitSize[i] == "S")
+		suitPrice[i] = 5;
+	if (suitSize[i] == "M")
+		suitPrice[i] = 10;
+	if (suitSize[i] == "L")
+		suitPrice[i] = 15;
+	if (suitSize[i] == "XL")
+		suitPrice[i] = 20;
+	
+	return suitPrice[i];
+}
+
+float selectShoe (int i, int shoeSize[], float shoePrice[]) {
+	std::cout << "\n\t\tPlease choose your shoe size (20 - 35): ";
+	std::cin >> shoeSize[i];
+	
+	while (std::cin.fail() || (shoeSize[i] < 20 || shoeSize[i] > 35)){
+		std::cin.clear();
+		std::cin.ignore(1000, '\n');
+		std::cout << "\n\t\tPlease choose a valid shoe size (20 - 35): ";
+		std::cin >> shoeSize[i];
+	}
+	
+	if (shoeSize[i] <= 25)
+		shoePrice[i] = 3;
+	else 
+		shoePrice[i] = 6;
+
+	return shoePrice[i];
+}
+
 float racingGear(int driverCount, std::string driverName[], std::string helmetSize[], std::string suitSize[], int shoeSize[], float helmetPrice[], float suitPrice[], float shoePrice[], float gearPrice[]) { //Racing Gearh
 	float totalGearPrice = 0;
 
 	displayRacingGear();
 
 	for (int i = 0; i < driverCount; i++) {
-		std::cout << "\n\t\tDriver: " << driverName[i]
-			  << "\n\t\tPlease choose your helmet size (S/M/L/XL): ";
-		std::cin >> helmetSize[i];
-		
-		std::transform(helmetSize[i].begin(), helmetSize[i].end(), helmetSize[i].begin(), ::toupper);
+		std::cout << "\n\t\tDriver: " << driverName[i];
 
-		while (std::cin.fail() || (helmetSize[i] != "S" && helmetSize[i] != "M" && helmetSize[i] != "L" && helmetSize[i] != "XL")) {
-			std::cin.clear();
-			std::cin.ignore(1000, '\n');
-			std::cout << "\n\t\tPlease choose a valid helmet size (S/M/L/XL): ";
-			std::cin >> helmetSize[i];
-			std::transform(helmetSize[i].begin(), helmetSize[i].end(), helmetSize[i].begin(), ::toupper);
-		}
-		
-		if (helmetSize[i] == "S")
-			helmetPrice[i] = 2;
-		if (helmetSize[i] == "M")
-			helmetPrice[i] = 4;
-		if (helmetSize[i] == "L")
-			helmetPrice[i] = 6;
-		if (helmetSize[i] == "XL")
-			helmetPrice[i] = 8;
+		selectHelmet(i, helmetSize, helmetPrice);
 
-		std::cout << "\n\t\tPlease choose your suit size (S/M/L/XL): ";
-		std::cin >> suitSize[i];
+		selectSuit (i, suitSize, suitPrice);
 
-		std::transform(suitSize[i].begin(), suitSize[i].end(), suitSize[i].begin(), ::toupper);
-
-		while (std::cin.fail() || (suitSize[i] != "S" && suitSize[i] != "M" && suitSize[i] != "L" && suitSize[i] != "XL")){
-			std::cin.clear();
-			std::cin.ignore(1000, '\n');
-			std::cout << "\n\t\tPlease choose a valid suit size (S/M/L/XL): ";
-			std::cin >> suitSize[i];
-			std::transform(suitSize[i].begin(), suitSize[i].end(), suitSize[i].begin(), ::toupper);
-		}
-		
-		if (suitSize[i] == "S")
-			suitPrice[i] = 5;
-		if (suitSize[i] == "M")
-			suitPrice[i] = 10;
-		if (suitSize[i] == "L")
-			suitPrice[i] = 15;
-		if (suitSize[i] == "XL")
-			suitPrice[i] = 20;
-
-		std::cout << "\n\t\tPlease choose your shoe size (20 - 35): ";
-		std::cin >> shoeSize[i];
-		
-		while (std::cin.fail() || (shoeSize[i] < 20 || shoeSize[i] > 35)){
-			std::cin.clear();
-			std::cin.ignore(1000, '\n');
-			std::cout << "\n\t\tPlease choose a valid shoe size (20 - 35): ";
-			std::cin >> shoeSize[i];
-		}
-		
-		if (shoeSize[i] <= 25)
-			shoePrice[i] = 3;
-		else 
-			shoePrice[i] = 6;
+		selectShoe (i, shoeSize, shoePrice);
 
 		gearPrice[i] = helmetPrice[i] + suitPrice[i] + shoePrice[i];
 
