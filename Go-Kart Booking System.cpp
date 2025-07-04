@@ -29,7 +29,7 @@ int main() {
 		std::cout << "\n\t\tChoose your option: ";
 		std::cin >> menu;
 	
-		while (std::cin.fail() || menu < 0 || menu > 5) {
+		while (std::cin.fail() || (menu < 0 || menu > 5)) {
 			std::cin.clear();
 			std::cin.ignore(1000, '\n');
 			std::cout << "\n\t\tPlease enter the valid option (0 - 5): ";
