@@ -417,8 +417,7 @@ void setEngineCapacity(int driverCount, std::string driverName[], int driverAge[
 			engineCapacity[i] = 1;
 		}
 
-		// Driver Age > 13
-		if (license[i] == 'Y') {
+		else if (driverAge[i] > 13 && license[i] == 'Y') {
 			std::cout << "\n\t\tChoose your desired engine capacity (1 - 3): ";
 			std::cin >> engineCapacity[i];
 				
@@ -429,7 +428,8 @@ void setEngineCapacity(int driverCount, std::string driverName[], int driverAge[
 				std::cin >> engineCapacity[i];
 			}
 		}
-		else { // Driver does not have a license
+
+		else if (driverAge[i] > 13 && license[i] != 'Y') {
 			std::cout << "\n\t\tChoose your desired engine capacity (1 - 2): ";
 			std::cin >> engineCapacity[i];
 	 
@@ -453,7 +453,7 @@ int setLaps(int driverCount, std::string &raceFormat) { //Laps
 	int laps;
 	if (raceFormat == "Circuit Race") {
 		std::cout << "\n\t\tAvailable number of laps: 2, 3, 4"
-			  << "\n\t\tHow many laps do you want?";
+			  << "\n\t\tHow many laps do you want? : ";
 		std::cin >> laps;
 	}
 	
@@ -464,16 +464,16 @@ int setLaps(int driverCount, std::string &raceFormat) { //Laps
 	
 	else if (raceFormat == "Time Trial") {
 		std::cout << "\n\t\tAvailable number of laps: Unlimited"
-			  << "\n\t\tHow many laps do you want?";
+			  << "\n\t\tHow many laps do you want? : ";
 		std::cin >> laps;
 	}
 	
 	else {
-		if (raceFormat == "Elimination Race") {
-			std::cout << "\n\t\tNumber of laps corresponds with the number of drivers"
-			  	  << "\n\t\tHow many laps do you want?";
-			std::cin >> laps;
-		}
+		std::cout << "\n\t\tNumber of laps corresponds with the number of drivers";
+		laps = driverCount - 1;
+		std::cout << "\n\t\tLaps = Driver Count - 1"
+			  << "\n\t\tLaps = " << driverCount << " - 1"
+			  << "\n\t\tLaps = " << laps;
 	}
 	
 	return laps;
