@@ -477,7 +477,7 @@ float racingGear(int driverCount, std::string driverName[], std::string helmetSi
 		
 		std::transform(helmetSize[i].begin(), helmetSize[i].end(), helmetSize[i].begin(), ::toupper);
 
-		while (std::cin.fail() || helmetSize[i] != "S" && helmetSize[i] != "M" && helmetSize[i] != "L" && helmetSize[i] != "XL") {
+		while (std::cin.fail() || (helmetSize[i] != "S" && helmetSize[i] != "M" && helmetSize[i] != "L" && helmetSize[i] != "XL")) {
 			std::cin.clear();
 			std::cin.ignore(1000, '\n');
 			std::cout << "\n\t\tPlease choose a valid helmet size (S/M/L/XL): ";
