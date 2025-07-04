@@ -449,7 +449,7 @@ void setEngineCapacity(int driverCount, std::string driverName[], int driverAge[
 	}
 }
 
-int setLaps(int driverCount, std::string &raceFormat) { //Laps
+int setLaps(int driverCount, std::string &raceFormat) {
 	int laps;
 	if (raceFormat == "Circuit Race") {
 		std::cout << "\n\t\tAvailable number of laps: 2, 3, 4"
