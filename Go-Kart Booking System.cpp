@@ -468,7 +468,7 @@ int setLaps(int driverCount, std::string &raceFormat) { //Laps
 		std::cin >> laps;
 	}
 	
-	else {
+	else { // Elimination Race
 		std::cout << "\n\t\tNumber of laps corresponds with the number of drivers";
 		laps = driverCount - 1;
 		std::cout << "\n\t\tLaps = Driver Count - 1"
