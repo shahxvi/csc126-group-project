@@ -306,12 +306,12 @@ std::string setRaceFormat(std::string& bookingType)
 	}
 	
 	switch (raceFormatID) {
-		case 1: return "Circuit Race"; break;
-		case 2: return "Sprint Race"; break;
-		case 3: return "Time Trial"; break;
-		case 4: return "Drag Race"; break;
-		case 5: return "Elimination Race"; break;
-		default: return "Invalid Race Format"; break;
+		case 1: return "Circuit Race";
+		case 2: return "Sprint Race";
+		case 3: return "Time Trial";
+		case 4: return "Drag Race";
+		case 5: return "Elimination Race";
+		default: return "Invalid Race Format";
 	}
 }
 
