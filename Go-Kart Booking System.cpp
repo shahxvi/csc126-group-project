@@ -613,7 +613,7 @@ float calcPrice(int engineCapacity[], int laps, int driverCount, float totalGear
 	float totalKartPrice = 0;
 	
 	for (int i = 0; i < driverCount; i++)
-		totalKartPrice += engineCapacity[i] * pricePerCC * laps;
+		totalKartPrice += (engineCapacity[i] * pricePerCC) * laps;
 	
 	float finalPrice = (totalKartPrice + totalGearPrice) * (1 - membershipDiscount);
 	return finalPrice;
