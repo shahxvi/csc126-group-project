@@ -31,8 +31,8 @@ float racingGear(int driverCount, std::string driverName[], std::string helmetSi
 float setMembershipDiscount();
 float calcPrice(int engineCapacity[], int laps, int driverCount, float gearPrice, float membershipDiscount);	
 
-int main() {
-
+int main()
+{
 	// Main Selection Menu
 	int menu;
 	
@@ -147,7 +147,8 @@ int main() {
 	return 0;
 }
 
-void displayMenu() {
+void displayMenu()
+{
 	std::cout << "\t_________            ______ __             _____  ________            ______ _____                 ________              _____                 "
 		  << "\n\t__  ____/_____       ___  //_/_____ _________  /_ ___  __ )______________  /____(_)_____________ _ __  ___/____  __________  /____________ ___ "
 		  << "\n\t_  / __ _  __ \\________  ,<  _  __ `/_  ___/  __/ __  __  |  __ \\  __ \\_  //_/_  /__  __ \\_  __ `/ _____ \\__  / / /_  ___/  __/  _ \\_  __ `__ \\"
@@ -162,7 +163,8 @@ void displayMenu() {
     		  << "\n\t\t\t0 - Exit\n";
 }
 
-void displayRaceFormat(std::string bookingType) {
+void displayRaceFormat(std::string bookingType)
+{
 	std::cout << "\n\t\t\tAvailable Race Formats:"
 		  << "\n\t\t\t1 - Circuit Race"
 		  << "\n\t\t\t2 - Sprint Race"
@@ -173,7 +175,8 @@ void displayRaceFormat(std::string bookingType) {
 	}
 }
 
-void displayTrackList() {
+void displayTrackList()
+{
 	std::cout << "\n\t\t\tAvailable Tracks:"
     		  << "\n\t\t\t1 - Section 9 Circuit"
     		  << "\n\t\t\t2 - Chrono Pass"
@@ -182,7 +185,8 @@ void displayTrackList() {
     		  << "\n\t\t\t5 - Torque Strip\n";
 }
 
-void displayRacingGear() {
+void displayRacingGear()
+{
 	std::cout << "\n\t\t\tRacing Gears:"
 		  << "\n\t\t\t\t\t\tHelmets\t\t\tSuits\t\t\tShoes\n"
 		  << "\n\t\t\tSize S:\t\t\tRM 2\t\t\tRM 5\t\t\tSize 20-25 cm: RM 3"
@@ -191,7 +195,8 @@ void displayRacingGear() {
 		  << "\n\t\t\tSize XL\t\t\tRM 8\t\t\tRM 20\n";
 }
 
-void displayEngineCapacities(int age, char license) {
+void displayEngineCapacities(int age, char license)
+{ 
 	std::cout << "\n\t\t\tAvailable Engine Capacities:";
 	std::cout << "\n\t\t\t1 - 100cc (Under 13)";
 	if (age >= 18) {
@@ -201,7 +206,8 @@ void displayEngineCapacities(int age, char license) {
 	}
 }
 
-std::string setBooking() {
+std::string setBooking()
+{
 	int bookingTypeID;
 	std::string bookingType;
 
@@ -228,7 +234,8 @@ std::string setBooking() {
 
 // This was originally intended as a void function but for the setEngineCapacity function to work it needs the driverCount parameter
 // and this function just so happens to be perfect for that 
-int driver(std::string &bookingType, std::string driverName[], int driverAge[], char license[]) {
+int driver(std::string &bookingType, std::string driverName[], int driverAge[], char license[])
+{
 	int driverCount;
 	
 	if (bookingType == "Solo") {
@@ -286,7 +293,8 @@ int driver(std::string &bookingType, std::string driverName[], int driverAge[], 
 	return driverCount;
 }
 
-std::string setRaceFormat(std::string &bookingType) {
+std::string setRaceFormat(std::string &bookingType)
+{
 	int raceFormatID;	
 	std::string raceFormat;
 
@@ -326,7 +334,8 @@ std::string setRaceFormat(std::string &bookingType) {
 	}
 }
 
-std::string setTrack(std::string &bookingType, std::string &raceFormat) { //Track
+std::string setTrack(std::string &bookingType, std::string &raceFormat)
+{
 	std::string track;
 	int trackID;
 
@@ -441,7 +450,8 @@ std::string setTrack(std::string &bookingType, std::string &raceFormat) { //Trac
 	return track;
 }
 
-void setEngineCapacity(int driverCount, std::string driverName[], int driverAge[], char license[], int engineCapacity[]) {
+void setEngineCapacity(int driverCount, std::string driverName[], int driverAge[], char license[], int engineCapacity[])
+{
 	for (int i = 0; i < driverCount; i++) {
 		std::cout << "\n\t\t\tDriver : " << driverName[i];
 
@@ -515,7 +525,8 @@ int setLaps(int driverCount, std::string &raceFormat) {
 	return laps;
 }
 
-float selectHelmet(int i, std::string helmetSize[], float helmetPrice[]) {
+float selectHelmet(int i, std::string helmetSize[], float helmetPrice[])
+{
 	std::cout << "\n\t\t\tPlease choose your helmet size (S/M/L/XL): ";
 	std::cin >> helmetSize[i];
 	
@@ -541,7 +552,8 @@ float selectHelmet(int i, std::string helmetSize[], float helmetPrice[]) {
 	return helmetPrice[i];
 }
 
-float selectSuit (int i, std::string suitSize[], float suitPrice[]) {
+float selectSuit (int i, std::string suitSize[], float suitPrice[])
+{
 	std::cout << "\n\t\t\tPlease choose your suit size (S/M/L/XL): ";
 	std::cin >> suitSize[i];
 
@@ -567,7 +579,8 @@ float selectSuit (int i, std::string suitSize[], float suitPrice[]) {
 	return suitPrice[i];
 }
 
-float selectShoe (int i, int shoeSize[], float shoePrice[]) {
+float selectShoe (int i, int shoeSize[], float shoePrice[])
+{
 	std::cout << "\n\t\t\tPlease choose your shoe size (20 - 35): ";
 	std::cin >> shoeSize[i];
 	
@@ -586,7 +599,8 @@ float selectShoe (int i, int shoeSize[], float shoePrice[]) {
 	return shoePrice[i];
 }
 
-float racingGear(int driverCount, std::string driverName[], std::string helmetSize[], std::string suitSize[], int shoeSize[], float helmetPrice[], float suitPrice[], float shoePrice[], float gearPrice[]) { //Racing Gearh
+float racingGear(int driverCount, std::string driverName[], std::string helmetSize[], std::string suitSize[], int shoeSize[], float helmetPrice[], float suitPrice[], float shoePrice[], float gearPrice[])
+{
 	float totalGearPrice = 0;
 
 	displayRacingGear();
@@ -607,7 +621,8 @@ float racingGear(int driverCount, std::string driverName[], std::string helmetSi
 	return totalGearPrice;
 }
 
-float setMembershipDiscount() {
+float setMembershipDiscount()
+{
 	char membership;	
 
 	std::cout << "\n\t\t\tDo you have a membership? (Y/N): ";
@@ -619,7 +634,8 @@ float setMembershipDiscount() {
 		return 0.0;
 }
 
-float calcPrice(int engineCapacity[], int laps, int driverCount, float totalGearPrice, float membershipDiscount) {
+float calcPrice(int engineCapacity[], int laps, int driverCount, float totalGearPrice, float membershipDiscount)
+{
 	const float pricePerCC = 0.3;
 	float totalKartPrice = 0;
 	
