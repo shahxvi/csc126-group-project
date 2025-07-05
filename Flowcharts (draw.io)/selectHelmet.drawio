@@ -42,7 +42,7 @@
                         <mxPoint x="504.5" y="715" as="sourcePoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="30" value="Input:&lt;br&gt;suitSize[i]" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#e3c800;strokeColor=#B09500;fontColor=#FFFFFF;strokeWidth=2;shadow=1;labelBackgroundColor=none;labelBorderColor=none;textShadow=0;" vertex="1" parent="1">
+                <mxCell id="30" value="Input:&lt;br&gt;helmetSize[i]" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#e3c800;strokeColor=#B09500;fontColor=#FFFFFF;strokeWidth=2;shadow=1;labelBackgroundColor=none;labelBorderColor=none;textShadow=0;" vertex="1" parent="1">
                     <mxGeometry x="444.16499999999996" y="765" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="31" value="" style="edgeStyle=none;html=1;strokeWidth=2;" edge="1" parent="1">
