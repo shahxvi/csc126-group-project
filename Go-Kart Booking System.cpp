@@ -1,3 +1,10 @@
+// CSC126 Group Project
+// Go-Kart Booking System
+
+// IRFAN SHAH BIN MAIZUL HISHAM		(2025171523) (shahxvi)
+// SHAHRIN AREFF SHAH BIN SHAH RIZAL	(2025151503) (rinnnnnn17)
+// MUHAMMAD BIN ABDUL AZIZ		(2025507823) (Kundoo)
+
 #include <iostream>
 #include <string>
 #include <cmath>
@@ -25,13 +32,15 @@ float setMembershipDiscount();
 float calcPrice(int engineCapacity[], int laps, int driverCount, float gearPrice, float membershipDiscount);	
 
 int main() {
+
+	// Main Selection Menu
 	int menu;
 	
 	do {
 		displayMenu();
 		std::cout << "\n\t\t\tChoose your option: ";
 		std::cin >> menu;
-	
+
 		while (std::cin.fail() || (menu < 0 || menu > 5)) {
 			std::cin.clear();
 			std::cin.ignore(1000, '\n');
@@ -43,7 +52,7 @@ int main() {
 			return 0;
 		if (menu == 2) {
 			system("cls");
-			displayRaceFormat("Group");
+			displayRaceFormat("Group");	// Parameters to allow the menu to show every option
 		}
 		if (menu == 3) {
 			system("cls");
@@ -55,11 +64,12 @@ int main() {
 		}
 		if (menu == 5) {
 			system("cls");
-			displayEngineCapacities(18, 'Y');
+			displayEngineCapacities(18, 'Y');	// Parameters to allow the menu to show every option
 		}
 
 	} while (menu != 1);
 
+	// Go-Kart Booking System Crux
 	char continueChoice;
 	int customer = 0;
 	float totalIncome = 0;
