@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="Fp96KT5mVXTfN0SuO6Ad" name="Page-1">
-        <mxGraphModel dx="1042" dy="802" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="1">
+        <mxGraphModel dx="1136" dy="1385" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="1">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -22,8 +22,14 @@
                 <mxCell id="18" value="Input:&lt;br&gt;suitSize[i]" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#e3c800;strokeColor=#B09500;fontColor=#FFFFFF;strokeWidth=2;shadow=1;labelBackgroundColor=none;labelBorderColor=none;textShadow=0;" vertex="1" parent="1">
                     <mxGeometry x="111.66499999999999" y="320" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="20" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;&lt;font style=&quot;&quot; face=&quot;monospace&quot;&gt;&lt;span style=&quot;font-size: 0px; white-space-collapse: collapse;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;std::transform(suitSize[i].begin(), suitSize[i].end(), suitSize[i].begin(), ::toupper)&lt;/span&gt;&lt;/font&gt;std::transform(suitSize[i].begin(), suitSize[i].end(), suitSize[i].begin(), ::toupper)&lt;/font&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#fa6800;strokeColor=#C73500;fontColor=#000000;strokeWidth=2;shadow=1;labelBackgroundColor=none;labelBorderColor=none;" vertex="1" parent="1">
+                <mxCell id="26" value="" style="edgeStyle=none;html=1;strokeWidth=2;" edge="1" parent="1" source="20" target="25">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;&lt;font style=&quot;&quot; face=&quot;monospace&quot;&gt;&lt;span style=&quot;font-size: 0px; white-space-collapse: collapse;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;std::transform(suitSize[i].begin(), suitSize[i].end(), suitSize[i].begin(), ::toupper)&lt;/span&gt;&lt;/font&gt;transform(suitSize[i].begin(), suitSize[i].end(), suitSize[i].begin(), ::toupper)&lt;/font&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#fa6800;strokeColor=#C73500;fontColor=#000000;strokeWidth=2;shadow=1;labelBackgroundColor=none;labelBorderColor=none;" vertex="1" parent="1">
                     <mxGeometry x="-49.58" y="430" width="442.5" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="&lt;span style=&quot;color: rgb(255, 255, 255);&quot;&gt;cin.fail() ||&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;color: rgb(255, 255, 255);&quot;&gt;(suitSize[i] != &quot;S&quot; &amp;amp;&amp;amp; suitSize[i] != &quot;M&quot; &amp;amp;&amp;amp; suitSize[i] != &quot;L&quot; &amp;amp;&amp;amp; suitSize[i] != &quot;XL&quot;)&lt;/span&gt;" style="rhombus;whiteSpace=wrap;html=1;fillColor=#6a00ff;strokeColor=#3700CC;fontColor=#ffffff;strokeWidth=2;shadow=1;labelBackgroundColor=none;labelBorderColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="46.65999999999998" y="540" width="250" height="250" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
