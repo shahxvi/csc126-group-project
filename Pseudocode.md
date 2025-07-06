@@ -1,4 +1,4 @@
-        FUNCTION float selectHelmet (int i, string helmetSize[], float helmetPrice[])
+        FUNCTION float selectHelmet (INTEGER i, STRING helmetSize[], FLOAT helmetPrice[])
                 PROMPT "Please choose your helmet size (S/M/L/XL): "
                 READ helmetSize[i]
 
@@ -27,6 +27,17 @@
                 RETURN helmetPrice[i]
         END FUNCTION
 
+        FUNCTION FLOAT calculateTotalGearPrice(INTEGER& driverCount, FLOAT helmetPrice[], FLOAT suitPrice[], FLOAT gearPrice[])
+                DECLARE totalGearPrice
+                SET totalGearPrice = 0
+
+                FOR INTEGER i = 0, i < driverCount, i++
+                        gearPrice[i] = helmetPrice[i] + suitPrice[i] + shoePrice [i]
+                        totalGearPrice += gearPrice[i]
+                END FOR
+        RETURN totalGearPrice
+        END FUNCTION
+        
         FUNCTION FLOAT setMembershipDiscount ()
                 DECLARE CHAR membership
                 PROMPT "Do you have a membership? (Y/N): "
@@ -39,7 +50,7 @@
                 END IF
         END FUNCTION
         
-        FUNCTION FLOAT calcPrice (int engineCapacity[], int laps, int driverCount, float totalGearPrice, float membershipDiscount)
+        FUNCTION FLOAT calculatePrice (int engineCapacity[], int laps, int driverCount, float totalGearPrice, float membershipDiscount)
                 SET pricePerCC = 03
                 SET totalKartPrice = 0
 
