@@ -294,8 +294,8 @@ std::string setRaceFormat(std::string& bookingType)
 		}
 	}
 	else {
-                std::cout << "\n\t\t\tPlease choose the race format (1 - 5): ";
-		std::cin >> raceFormatID;
+            std::cout << "\n\t\t\tPlease choose the race format (1 - 5): ";
+			std::cin >> raceFormatID;
 		
 		while (std:: cin.fail() || (raceFormatID < 1 || raceFormatID > 5)){
 			std::cin.clear();
