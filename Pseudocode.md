@@ -26,6 +26,18 @@
 
                 RETURN helmetPrice[i]
         END FUNCTION
+
+        FUNCTION FLOAT setMembershipDiscount ()
+                DECLARE CHAR membership
+                PROMPT "Do you have a membership? (Y/N): "
+                SET membership = getValidCharacterInput()
+
+                IF membership == 'Y' THEN
+                        RETURN 0.1
+                ELSE
+                        RETURN 0.0
+                END IF
+        END FUNCTION
         
         FUNCTION FLOAT calcPrice (int engineCapacity[], int laps, int driverCount, float totalGearPrice, float membershipDiscount)
                 SET pricePerCC = 03
