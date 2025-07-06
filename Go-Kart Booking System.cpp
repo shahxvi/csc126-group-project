@@ -20,8 +20,9 @@ void displayEngineCapacities(int age, char license);
 
 int getValidIntegerInput (std::string inputType, int minValue, int maxValue);
 char getValidCharacterInput();
-std::string setBooking();
-int driver(std::string& bookingType, std::string driverName[], int driverAge[], char license[]);
+std::string getBookingType();
+int getDriverCount(std::string& bookingType);
+void getDriverDetails(int& driverCount, std::string driverName[], int driverAge[], char license[]);
 std::string setRaceFormat(std::string& bookingType);
 std::string setTrack(std::string& bookingType, std::string& raceFormat);
 void setEngineCapacity(int driverCount, std::string driverName[], int driverAge[], char license[], int engineCapacity[]);
@@ -64,35 +65,44 @@ int main()
 
 	} while (menu != 1);
 
-	// Go-Kart Booking System Crux
 	char continueChoice;
 	int customer = 0;
 	float totalIncome = 0;
 
 	do {
+		//Initializations (in order)
+		std::string bookingType;
 
-		std::string bookingType = setBooking(); //Type 1 Function
-
+		int driverCount;
 		std::string driverName[5];
 		int driverAge[5];
 		char license[5];
-		int driverCount = 0;
 
-		driverCount = driver(bookingType, driverName, driverAge, license);
-
-		std::string raceFormat = setRaceFormat(bookingType);
-
-		std::string track = setTrack(bookingType, raceFormat);
-
+		std::string raceFormat;
+		std::string track;
+		
 		int engineCapacity[5];
 
-		setEngineCapacity(driverCount, driverName, driverAge, license, engineCapacity);
-
-		int laps = setLaps(driverCount, raceFormat);
+		int laps;
 
 		std::string helmetSize[5], suitSize[5]; int shoeSize[5];
 		float helmetPrice[5], suitPrice[5], shoePrice[5];
 		float gearPrice[5];
+
+		// The Crux of the Go-Kart Booking System
+		bookingType = getBookingType();
+		
+		driverCount = getDriverCount(bookingType);
+
+		getDriverDetails(driverCount, driverName, driverAge, license);
+
+		raceFormat = setRaceFormat(bookingType);
+
+		track = setTrack(bookingType, raceFormat);
+
+		setEngineCapacity(driverCount, driverName, driverAge, license, engineCapacity);
+
+		laps = setLaps(driverCount, raceFormat);
 
 		float totalGearPrice = racingGear(driverCount, driverName, helmetSize, suitSize, shoeSize, helmetPrice, suitPrice, shoePrice, gearPrice); 
 
@@ -102,7 +112,6 @@ int main()
 
 		std::cout << "\n\t\t\tRace Format: " << raceFormat
 			  << "\n\t\t\tTrack: " << track << "\n";
-
 
 		for (int i = 0; i < driverCount; i++) {
 			std::cout << "\n\t\t\tDriver: " << driverName[i]
@@ -115,6 +124,7 @@ int main()
 				  << "\n\t\t\tSuitPrice: RM" << suitPrice[i]
 				  << "\n\t\t\tShoe Size : " << shoeSize[i] << "cm"
 				  << "\n\t\t\tShoe Price: RM" << shoePrice[i]
+				  << "\n\t\t\tMembership Discount: " << membershipDiscount * 100
 				  << "\n\t\t\tTotal Gear Price: RM" << totalGearPrice;
 		}
 		
@@ -221,7 +231,7 @@ char getValidCharacterInput()
 	return std::toupper(input[0]);
 }
 
-std::string setBooking()
+std::string getBookingType()
 {
 	int bookingTypeID;
 
@@ -238,20 +248,16 @@ std::string setBooking()
 	}
 }
 
-// This was originally intended as a void function but for the setEngineCapacity function to work it needs the driverCount parameter
-// and this function just so happens to be perfect for that 
-int driver(std::string& bookingType, std::string driverName[], int driverAge[], char license[])
+int getDriverCount(std::string& bookingType)
 {
-	int driverCount;
-	
-	if (bookingType == "Solo") {
-		driverCount = 1;
-	}
-	else {
-		std::cout << "\t\t\tPlease enter the number of drivers (2 - 5): ";
-		driverCount = getValidIntegerInput("number of drivers", 2, 5);
-	}
+	if (bookingType == "Solo")
+		return 1;
+	std::cout << "\t\t\tPlease enter the number of drivers (2 - 5): ";
+	return getValidIntegerInput("number of drivers", 2, 5);
+}
 
+void getDriverDetails(int& driverCount, std::string driverName[], int driverAge[], char license[])
+{
 	for (int i = 0; i < driverCount; i++) {
 		std::cin.ignore();
 		std::cout << "\n\t\t\tDriver #" << (i+1) << " Name: ";
@@ -263,7 +269,6 @@ int driver(std::string& bookingType, std::string driverName[], int driverAge[], 
 		std::cout << "\t\t\tDoes Driver #" << (i+1) << " has a license? (Y/N): ";
 		license[i] = getValidCharacterInput();
 	}
-	return driverCount;
 }
 
 std::string setRaceFormat(std::string& bookingType)
