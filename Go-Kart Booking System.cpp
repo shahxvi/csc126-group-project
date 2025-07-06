@@ -406,7 +406,7 @@ int setLaps(int driverCount, std::string& raceFormat) {
 	int laps;
 	if (raceFormat == "Circuit Race") {
 		std::cout << "\n\t\t\tAvailable number of laps: 2, 3, 4"
-			  << "\n\t\t\tHow many laps do you want? : ";
+			  << "\n\t\t\tHow many laps would you like? (2/3/4): ";
 		std::cin >> laps;
 	}
 	else if (raceFormat == "Sprint Race" || raceFormat == "Drag Race") {
@@ -415,7 +415,7 @@ int setLaps(int driverCount, std::string& raceFormat) {
 	}
 	else if (raceFormat == "Time Trial") {
 		std::cout << "\n\t\t\tAvailable number of laps: Unlimited"
-			  << "\n\t\t\tHow many laps do you want? : ";
+			  << "\n\t\t\tHow many laps would you like?: ";
 		std::cin >> laps;
 	}
 	else { // Elimination Race
