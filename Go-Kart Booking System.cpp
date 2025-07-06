@@ -206,6 +206,19 @@ void displayEngineCapacities(int age, char license)
 	}
 }
 
+int getValidIntegerInput (std::string inputType, int minValue, int maxValue)
+{
+	int userInput;
+	std::cin >> userInput;
+	while (std::cin.fail() || (userInput < minValue || userInput > maxValue)) {
+		std::cin.clear();
+		std::cin.ignore(1000, '\n');
+		std::cout << "\t\t\tPlease enter a valid " << inputType << " (" << minValue << " - " << maxValue << "): ";
+		std::cin >> userInput;
+	}
+	return userInput;
+}
+
 std::string setBooking()
 {
 	int bookingTypeID;
@@ -214,19 +227,11 @@ std::string setBooking()
 	std::cout << "\n\t\t\t1 - Solo\n"
 		  << "\t\t\t2 - Group (Maximum 5)\n"
 		  << "\t\t\tPlease choose your desired booking (1 - 2): ";
-	std::cin >> bookingTypeID;
-
-	while (std:: cin.fail() || (bookingTypeID != 1 && bookingTypeID != 2)){
-		std::cin.clear();
-		std::cin.ignore(1000, '\n');
-		std::cout << "\n\t\t\tPlease enter valid booking type (1 - 2): ";
-		std::cin >> bookingTypeID;
-	}
+	bookingTypeID = getValidIntegerInput("booking type", 1, 2);
 
 	if (bookingTypeID == 1) {
 		return "Solo";
 	}
-
 	else {
 		return "Group";
 	}
@@ -243,17 +248,10 @@ int driver(std::string& bookingType, std::string driverName[], int driverAge[], 
 	}
 	else {
 		std::cout << "\t\t\tPlease enter the number of drivers (2 - 5): ";
-		std::cin >> driverCount;
-
-		while (std::cin.fail() || (driverCount < 2 || driverCount > 5)) {
-			std::cin.clear();
-			std::cin.ignore(1000, '\n');
-			std::cout << "\t\t\tPlease enter a valid number of drivers: ";
-			std::cin >> driverCount;
-		}
-
-		std::cin.ignore();
+		driverCount = getValidIntegerInput("number of drivers", 2, 5);
 	}
+
+	std::cin.ignore();
 
 	for (int i = 0; i < driverCount; i++) {
 		std::cout << "\n\t\t\tDriver #" << (i+1) << " Name: ";
@@ -284,25 +282,11 @@ std::string setRaceFormat(std::string& bookingType)
 
 	if (bookingType == "Solo") {
 		std::cout << "\n\t\t\tPlease choose the race format (1 - 4): ";
-		std::cin >> raceFormatID;
-
-		while (std :: cin.fail() || (raceFormatID < 1 || raceFormatID > 4)) {
-			std::cin.clear();
-			std::cin.ignore(1000, '\n');
-			std::cout << "\n\t\t\tPlease enter valid race format (1 - 4): ";
-			std::cin >> raceFormatID;
-		}
+		raceFormatID = getValidIntegerInput("race format", 1, 4);
 	}
 	else {
-            std::cout << "\n\t\t\tPlease choose the race format (1 - 5): ";
-			std::cin >> raceFormatID;
-		
-		while (std:: cin.fail() || (raceFormatID < 1 || raceFormatID > 5)){
-			std::cin.clear();
-			std::cin.ignore(1000, '\n');
-			std::cout << "\n\t\t\tPlease enter valid race format (1 - 5): ";
-			std::cin >> raceFormatID;
-		}
+        	std::cout << "\n\t\t\tPlease choose the race format (1 - 5): ";
+		raceFormatID = getValidIntegerInput("race format", 1, 5);
 	}
 	
 	switch (raceFormatID) {
@@ -319,31 +303,24 @@ std::string setTrack(std::string& bookingType, std::string& raceFormat)
 {
 	int trackID;
 
-	if (bookingType == "Solo" || raceFormat == "Circuit Race") {
+	if (bookingType == "Solo" && raceFormat == "Circuit Race") {
 		std::cout << "\n\t\t\tAvailable Track: Section 9 Circuit"
 			  << "\n\t\t\tDefaulting to said track\n";
 		return "Section 9 Circuit";
 	}
-	else if (bookingType == "Solo" || raceFormat == "Sprint Race") {
+	else if (bookingType == "Solo" && raceFormat == "Sprint Race") {
 		std::cout << "\n\t\t\tAvailable Track: Rushline Dash"
 			  << "\n\t\t\tDefaulting to said track\n";
 		return "Rushline Dash";
 	}
-	else if (bookingType == "Solo" || raceFormat == "Time Trial") {
+	else if (bookingType == "Solo" && raceFormat == "Time Trial") {
 		std::cout << "\n\t\t\tAvailable Track:"
 			  << "\n\t\t\t1 - Section 9 Circuit"
 			  << "\n\t\t\t2 - Chrono Pass"
 			  << "\n\t\t\t3 - Rushline Dash"
 			  << "\n\t\t\t4 - Blackrock Circuit"
 			  << "\n\t\t\tPlease choose your track (1 - 4): ";
-		std::cin >> trackID;
-
-		while (std::cin.fail()|| trackID < 1 || trackID > 4){
-			std::cin.clear();
-			std::cin.ignore(1000, '\n');
-			std::cout << "\t\t\tPlease choose a valid track (1 - 4): ";
-			std::cin >> trackID;
-		}
+		trackID = getValidIntegerInput("track", 1, 4);
 
 		switch (trackID) {
 			case 1: return "Section 9 Circuit";
@@ -352,25 +329,18 @@ std::string setTrack(std::string& bookingType, std::string& raceFormat)
 			default: return "Blackrock Circuit";
 		}
 	}
-	else if (bookingType == "Solo" || raceFormat == "Drag Race") {
+	else if (bookingType == "Solo" && raceFormat == "Drag Race") {
 		std::cout << "\n\t\t\tAvailable Track: Torque Strip"
-				  << "\n\t\t\tDefaulting to said track\n";
+			  << "\n\t\t\tDefaulting to said track\n";
 		return "Torque Strip";
 	}
 
-	else if (bookingType == "Group" || raceFormat == "Circuit Race") {
+	else if (bookingType == "Group" && raceFormat == "Circuit Race") {
 		std::cout << "\n\t\t\tAvailable Track:"
 			  << "\n\t\t\t1 - Section 9 Circuit"
 			  << "\n\t\t\t2 - Blackrock Circuit"
 			  << "\n\t\t\tPlease choose your track (1 - 2): ";
-		std::cin >> trackID;
-		
-		while (std::cin.fail() || trackID < 1 || trackID > 2){
-			std::cin.clear();
-			std::cin.ignore(1000, '\n');
-			std::cout << "\t\t\tPlease choose a valid track (1-2): ";
-			std::cin >> trackID;
-		}
+		trackID = getValidIntegerInput("track", 1, 2);
 
 		switch (trackID) {
 			case 1: return "Section 9 Circuit";
@@ -391,14 +361,7 @@ std::string setTrack(std::string& bookingType, std::string& raceFormat)
 			  << "\n\t\t\t3 - Rushline Dash"
 			  << "\n\t\t\t4 - Blackrock Circuit"
 			  << "\n\t\t\tPlease choose your track: ";
-		std::cin >> trackID;
-
-		while (std::cin.fail() || trackID < 1 || trackID > 4) {
-			std::cin.clear();
-			std::cin.ignore(1000, '\n');
-			std::cout << "\t\t\tPlease choose a valid track (1 - 4): ";
-			std::cin >> trackID;
-		}
+		trackID = getValidIntegerInput("track", 1, 4);
 
 		switch (trackID) {
 			case 1: return "Section 9 Circuit";
@@ -435,40 +398,21 @@ void setEngineCapacity(int driverCount, std::string driverName[], int driverAge[
 			engineCapacity[i] = 120;
 			continue;
 		}
-
+		// Over 13 without License
+		if (license[i] != 'Y') {
+			std::cout << "\n\t\t\tChoose your desired engine capacity (1 - 2): ";
+			engineCapacity[i] = getValidIntegerInput("engine capacity", 1 , 2);
+		}
 		// Over 13 with License
 		if (license[i] == 'Y') {
-			std::cout << "\n\t\t\tChoose your desired engine capacity (1 - 3): ";
-			std::cin >> engineCapacity[i];
-				
-			while (std::cin.fail() || engineCapacity[i] < 1 || engineCapacity[i] > 3) {
-				std::cin.clear();
-				std::cin.ignore(1000, '\n');
-				std::cout << "\t\t\tPlease enter a valid engine capacity (1 - 3): ";
-				std::cin >> engineCapacity[i];
-			}
-			switch (engineCapacity[i]) {
-				case 1: engineCapacity[i] = 120; break;
-				case 2: engineCapacity[i] = 200; break;
-				default: engineCapacity[i] = 270; break;
-			}
-			continue;
-		}
-		
-		// Over 13 without License
-		std::cout << "\n\t\t\tChoose your desired engine capacity (1 - 2): ";
-		std::cin >> engineCapacity[i];
- 
-		while (std::cin.fail() || engineCapacity[i] < 1 || engineCapacity[i] > 2) {
-			std::cin.clear();
-			std::cin.ignore(1000, '\n');
-			std::cout << "\t\t\tPlease enter a valid engine capacity (1 - 2): ";
-			std::cin >> engineCapacity[i];
+		std::cout << "\n\t\t\tChoose your desired engine capacity (1 - 3): ";
+		engineCapacity[i] = getValidIntegerInput("engine capacity", 1 , 3);
 		}
 
 		switch (engineCapacity[i]) {
 			case 1: engineCapacity[i] = 120; break;
-			default: engineCapacity[i] = 200; break;
+			case 2: engineCapacity[i] = 200; break;
+			default: engineCapacity[i] = 270; break;
 		}
 	}
 }
