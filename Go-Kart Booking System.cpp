@@ -87,22 +87,23 @@ int main()
 		std::cout << "\n\t\t\tRace Format: " << raceFormat
 			  << "\n\t\t\tTrack: " << track << "\n";
 
+		std::cout << std::fixed << std::showpoint;
 		for (int i = 0; i < driverCount; i++) {
 			std::cout << "\n\t\t\tDriver: " << driverName[i]
 				  << "\n\t\t\tAge: " << driverAge[i]
 				  << "\n\t\t\tHas License: " << license[i]
 				  << "\n\t\t\tEngine Capacity :" << engineCapacity[i] << "cc"
 				  << "\n\t\t\tHelmet Size: " << helmetSize[i]
-				  << "\n\t\t\tHelmet Price: RM" << helmetPrice[i]
+				  << "\n\t\t\tHelmet Price: RM" <<  std::setprecision(2) << helmetPrice[i]
 				  << "\n\t\t\tSuit Size: " << suitSize[i]
-				  << "\n\t\t\tSuitPrice: RM" << suitPrice[i]
+				  << "\n\t\t\tSuitPrice: RM" <<  std::setprecision(2) << suitPrice[i]
 				  << "\n\t\t\tShoe Size : " << shoeSize[i] << "cm"
-				  << "\n\t\t\tShoe Price: RM" << shoePrice[i]
+				  << "\n\t\t\tShoe Price: RM" << std::setprecision(2) << shoePrice[i]
 				  << "\n\t\t\tMembership Discount: " << membershipDiscount * 100
-				  << "\n\t\t\tTotal Gear Price: RM" << totalGearPrice;
+				  << "\n\t\t\tTotal Gear Price: RM" <<  std::setprecision(2) << totalGearPrice;
 		}
 		
-		std::cout << "\n\t\t\tTotal : RM" << totalPrice;
+		std::cout << "\n\t\t\tTotal : RM" <<  std::setprecision(2) << totalPrice;
 
 		totalIncome += totalPrice;
 		customer++;
@@ -112,7 +113,7 @@ int main()
 
 	} while (std::toupper(continueChoice) == 'Y');
 
-	std::cout << "\n\t\t\tTotal Income: RM " << totalIncome << "\n";
+	std::cout << "\n\t\t\tTotal Income: RM " <<  std::setprecision(2) << totalIncome << "\n";
 	
 	system("pause");
 
