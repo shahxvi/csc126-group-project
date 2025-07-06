@@ -18,6 +18,8 @@ void displayTrackList();
 void displayRacingGear();
 void displayEngineCapacities(int age, char license);
 
+int getValidIntegerInput (std::string inputType, int minValue, int maxValue);
+char getValidCharacterInput();
 std::string setBooking();
 int driver(std::string& bookingType, std::string driverName[], int driverAge[], char license[]);
 std::string setRaceFormat(std::string& bookingType);
@@ -129,14 +131,7 @@ int main()
 		customer++;
 
 		std::cout << "\n\t\t\tContinue for another customer? (Y/N): ";
-		std::cin >> continueChoice;
-
-			while (std::cin.fail() || std::toupper(continueChoice) != 'Y' && std::toupper(continueChoice) != 'N') {
-				std::cin.clear();
-				std::cin.ignore(1000, '\n');
-            			std::cout << "\n\t\t\tPlease enter Y or N: ";
-            			std::cin >> continueChoice;
-    			}
+		continueChoice = getValidCharacterInput();
 
 	} while (std::toupper(continueChoice) == 'Y');
 
@@ -206,17 +201,31 @@ void displayEngineCapacities(int age, char license)
 	}
 }
 
-int getValidIntegerInput (std::string inputType, int minValue, int maxValue)
+int getValidIntegerInput(std::string inputType, int minValue, int maxValue)
 {
-	int userInput;
-	std::cin >> userInput;
-	while (std::cin.fail() || (userInput < minValue || userInput > maxValue)) {
+	int intInput;
+	std::cin >> intInput;
+	while (std::cin.fail() || (intInput < minValue || intInput > maxValue)) {
 		std::cin.clear();
 		std::cin.ignore(1000, '\n');
 		std::cout << "\t\t\tPlease enter a valid " << inputType << " (" << minValue << " - " << maxValue << "): ";
-		std::cin >> userInput;
+		std::cin >> intInput;
 	}
-	return userInput;
+	return intInput;
+}
+
+char getValidCharacterInput()
+{
+	std::string input;
+	std::cin >> input;
+
+	while (input.length() != 1 || !std::isalpha(input[0])) {
+		std::cin.clear();
+		std::cin.ignore(1000, '\n');
+		std::cout << "\t\t\tPlease enter a valid input (Y/N): ";
+		std::cin >> input;
+	}
+	return std::toupper(input[0]);
 }
 
 std::string setBooking()
@@ -261,14 +270,7 @@ int driver(std::string& bookingType, std::string driverName[], int driverAge[], 
 		std::cin >> driverAge[i];
 
 		std::cout << "\t\t\tDoes Driver #" << (i+1) << " has a license? (Y/N): ";
-		std::cin >> license[i];
-		
-		while(!isalpha(license[i]) || isdigit(license[i])) {
-			std::cin.clear();
-			std::cin.ignore(1000, '\n');
-			std::cout << "\t\t\tPlease enter a valid input (Y/N): ";
-			std::cin >> license[i];
-		}
+		license[i] = getValidCharacterInput();
 	}
 	return driverCount;
 }
@@ -548,9 +550,9 @@ float setMembershipDiscount()
 	char membership;	
 
 	std::cout << "\n\t\t\tDo you have a membership? (Y/N): ";
-	std::cin >> membership;
+	membership = getValidCharacterInput();
 
-	if(std::toupper(membership) == 'Y')
+	if(membership == 'Y')
 		return 0.1;
 	else
 		return 0.0;
