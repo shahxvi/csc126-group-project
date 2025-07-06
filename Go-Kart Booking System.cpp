@@ -29,7 +29,7 @@ float selectSuit(int i, std::string suitSize[], float suitPrice[]);
 float selectShoe(int i, int shoeSize[], float shoePrice[]);
 float racingGear(int driverCount, std::string driverName[], std::string helmetSize[], std::string suitSize[], int shoeSize[], float helmetPrice[], float suitPrice[], float shoePrice[], float gearPrice[]);
 float setMembershipDiscount();
-float calcPrice(int engineCapacity[], int laps, int driverCount, float gearPrice, float membershipDiscount);	
+float calculatePrice(int engineCapacity[], int laps, int driverCount, float gearPrice, float membershipDiscount);	
 
 int main()
 {
@@ -103,7 +103,7 @@ int main()
 
 		float membershipDiscount = setMembershipDiscount();
 
-		float totalPrice = calcPrice(engineCapacity, laps, driverCount, totalGearPrice, membershipDiscount);
+		float totalPrice = calculatePrice(engineCapacity, laps, driverCount, totalGearPrice, membershipDiscount);
 
 		std::cout << "\n\t\t\tRace Format: " << raceFormat
 			  << "\n\t\t\tTrack: " << track << "\n";
@@ -556,7 +556,7 @@ float setMembershipDiscount()
 		return 0.0;
 }
 
-float calcPrice(int engineCapacity[], int laps, int driverCount, float totalGearPrice, float membershipDiscount)
+float calculatePrice(int engineCapacity[], int laps, int driverCount, float totalGearPrice, float membershipDiscount)
 {
 	const float pricePerCC = 0.3;
 	float totalKartPrice = 0;
