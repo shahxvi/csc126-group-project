@@ -31,7 +31,7 @@ float selectSuit(int i, std::string suitSize[], float suitPrice[]);
 float selectShoe(int i, int shoeSize[], float shoePrice[]);
 float racingGear(int driverCount, std::string driverName[], std::string helmetSize[], std::string suitSize[], int shoeSize[], float helmetPrice[], float suitPrice[], float shoePrice[], float gearPrice[]);
 float setMembershipDiscount();
-float calculatePrice(int engineCapacity[], int laps, int driverCount, float gearPrice, float membershipDiscount);	
+float calculatePrice(int engineCapacity[], int laps, int driverCount, float gearPrice, float membershipDiscount);
 
 int main()
 {
@@ -41,14 +41,7 @@ int main()
 	do {
 		displayMenu();
 		std::cout << "\n\t\t\tChoose your option: ";
-		std::cin >> menu;
-
-		while (std::cin.fail() || (menu < 0 || menu > 5)) {
-			std::cin.clear();
-			std::cin.ignore(1000, '\n');
-			std::cout << "\n\t\t\tPlease enter the valid option (0 - 5): ";
-			std::cin >> menu;
-		}
+		menu = getValidIntegerInput("option", 0, 5);
 
 		if (menu == 0)
 			return 0;
@@ -80,10 +73,10 @@ int main()
 
 		std::string bookingType = setBooking(); //Type 1 Function
 
-		std::string driverName[5];
-		int driverAge[5];
-		char license[5];
-		int driverCount;
+		std::string driverName[5] = {0};
+		int driverAge[5] = {0};
+		char license[5] = {0};
+		int driverCount = 0;
 
 		driverCount = driver(bookingType, driverName, driverAge, license);
 
@@ -91,15 +84,15 @@ int main()
 
 		std::string track = setTrack(bookingType, raceFormat);
 
-		int engineCapacity[5];
+		int engineCapacity[5] = {0};
 
 		setEngineCapacity(driverCount, driverName, driverAge, license, engineCapacity);
 
 		int laps = setLaps(driverCount, raceFormat);
 
-		std::string helmetSize[5], suitSize[5]; int shoeSize[5];
-		float helmetPrice[5], suitPrice[5], shoePrice[5];
-		float gearPrice[5];
+		std::string helmetSize[5] = {0}, suitSize[5] = {0}; int shoeSize[5] = {0};
+		float helmetPrice[5] = {0}, suitPrice[5] = {0}, shoePrice[5] = {0};
+		float gearPrice[5] = {0};
 
 		float totalGearPrice = racingGear(driverCount, driverName, helmetSize, suitSize, shoeSize, helmetPrice, suitPrice, shoePrice, gearPrice); 
 
