@@ -205,7 +205,7 @@ void displayRacingGear()
 	std::cout << "\n\t\t\tRacing Gears:"
 		  	  << "\n\t\t\t\t\t\tHelmets\t\t\tSuits\t\t\tShoes\n"
 			  << "\n\t\t\tSize S:\t\t\tRM 2\t\t\tRM 5\t\t\tSize 20-25 cm: RM 3"
-			  << "\n\t\t\tSize M:\t\t\tRM 4\t\t\tRM 10\t\t\tSize 25-35 cm: RM 6"
+			  << "\n\t\t\tSize M:\t\t\tRM 4\t\t\tRM 10\t\t\tSize 26-35 cm: RM 6"
 			  << "\n\t\t\tSize L:\t\t\tRM 6\t\t\tRM 15"
 			  << "\n\t\t\tSize XL\t\t\tRM 8\t\t\tRM 20\n";
 }
