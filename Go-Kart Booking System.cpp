@@ -28,10 +28,11 @@ std::string setRaceFormat(std::string& bookingType);
 std::string setTrack(std::string& bookingType, std::string& raceFormat);
 void setEngineCapacity(int driverCount, std::string driverName[], int driverAge[], char license[], int engineCapacity[]);
 int setLaps(int driverCount, std::string& raceFormat);
+void driverGear(int& i, std::string driverName[]);
 float selectHelmet(int i, std::string helmetSize[], float helmetPrice[]);
 float selectSuit(int i, std::string suitSize[], float suitPrice[]);
 float selectShoe(int i, int shoeSize[], float shoePrice[]);
-float racingGear(int driverCount, std::string driverName[], std::string helmetSize[], std::string suitSize[], int shoeSize[], float helmetPrice[], float suitPrice[], float shoePrice[], float gearPrice[]);
+float calculateTotalGearPrice(int& driverCount, float helmetPrice[], float suitPrice[], float shoePrice[], float gearPrice[]);
 float setMembershipDiscount();
 float calculatePrice(int engineCapacity[], int laps, int driverCount, float gearPrice, float membershipDiscount);
 
@@ -78,38 +79,50 @@ int main()
 
 		laps = setLaps(driverCount, raceFormat);
 
-		float totalGearPrice = racingGear(driverCount, driverName, helmetSize, suitSize, shoeSize, helmetPrice, suitPrice, shoePrice, gearPrice); 
+		for (int i = 0; i < driverCount; i++) {
+			driverGear(i, driverName);
+			selectHelmet(i,helmetSize, helmetPrice);
+			selectSuit(i,suitSize, suitPrice);
+			selectShoe(i, shoeSize, shoePrice);
+		}
+
+		float totalGearPrice = calculateTotalGearPrice(driverCount, helmetPrice, suitPrice, shoePrice, gearPrice);
 
 		float membershipDiscount = setMembershipDiscount();
 
 		float totalPrice = calculatePrice(engineCapacity, laps, driverCount, totalGearPrice, membershipDiscount);
+
+		system("cls");
 
 		std::cout << "\n\t\t\tRace Format: " << raceFormat
 			  << "\n\t\t\tTrack: " << track << "\n";
 
 		std::cout << std::fixed << std::showpoint;
 		for (int i = 0; i < driverCount; i++) {
-			std::cout << "\n\t\t\tDriver: " << driverName[i]
-				  << "\n\t\t\tAge: " << driverAge[i]
-				  << "\n\t\t\tHas License: " << license[i]
-				  << "\n\t\t\tEngine Capacity :" << engineCapacity[i] << "cc"
-				  << "\n\t\t\tHelmet Size: " << helmetSize[i]
-				  << "\n\t\t\tHelmet Price: RM" <<  std::setprecision(2) << helmetPrice[i]
-				  << "\n\t\t\tSuit Size: " << suitSize[i]
-				  << "\n\t\t\tSuitPrice: RM" <<  std::setprecision(2) << suitPrice[i]
-				  << "\n\t\t\tShoe Size : " << shoeSize[i] << "cm"
-				  << "\n\t\t\tShoe Price: RM" << std::setprecision(2) << shoePrice[i]
-				  << "\n\t\t\tMembership Discount: " << membershipDiscount * 100
-				  << "\n\t\t\tTotal Gear Price: RM" <<  std::setprecision(2) << totalGearPrice;
+			std::cout << "\n\t\t\tDriver\t\t\t: " << driverName[i]
+				  << "\n\t\t\tAge\t\t\t: " << driverAge[i]
+				  << "\n\t\t\tHas License\t\t: " << license[i]
+				  << "\n\t\t\tEngine Capacity\t\t: " << engineCapacity[i] << "cc"
+				  << "\n\t\t\tHelmet Size\t\t: " << helmetSize[i]
+				  << "\n\t\t\tHelmet Price\t\t: RM" <<  std::setprecision(2) << helmetPrice[i]
+				  << "\n\t\t\tSuit Size\t\t: " << suitSize[i]
+				  << "\n\t\t\tSuit Price\t\t: RM" <<  std::setprecision(2) << suitPrice[i]
+				  << "\n\t\t\tShoe Size\t\t: " << shoeSize[i] << "cm"
+				  << "\n\t\t\tShoe Price\t\t: RM" << std::setprecision(2) << shoePrice[i]
+				  << "\n\t\t\tGear Price\t\t: RM" <<  std::setprecision(2) << gearPrice[i] << "\n";
 		}
 		
-		std::cout << "\n\t\t\tTotal : RM" <<  std::setprecision(2) << totalPrice;
+		std::cout << "\n\t\t\tTotal Gear Price: RM" <<  std::setprecision(2) << totalGearPrice
+			  << "\n\t\t\tMembership Discount\t: " << membershipDiscount * 100 << "%"
+			  << "\n\t\t\tTotal : RM" <<  std::setprecision(2) << totalPrice;
 
 		totalIncome += totalPrice;
 		customer++;
 
 		std::cout << "\n\t\t\tContinue for another customer? (Y/N): ";
 		continueChoice = getValidCharacterInput();
+
+		system("cls");
 
 	} while (std::toupper(continueChoice) == 'Y');
 
@@ -415,6 +428,13 @@ int setLaps(int driverCount, std::string& raceFormat) {
 	return laps;
 }
 
+void driverGear(int& i, std::string driverName[])
+{
+	displayRacingGear();
+
+	std::cout << "\n\t\t\tDriver: " << driverName[i];
+}
+
 float selectHelmet(int i, std::string helmetSize[], float helmetPrice[])
 {
 	std::cout << "\n\t\t\tPlease choose your helmet size (S/M/L/XL): ";
@@ -489,23 +509,13 @@ float selectShoe(int i, int shoeSize[], float shoePrice[])
 	return shoePrice[i];
 }
 
-float racingGear(int driverCount, std::string driverName[], std::string helmetSize[], std::string suitSize[], int shoeSize[], float helmetPrice[], float suitPrice[], float shoePrice[], float gearPrice[])
+
+float calculateTotalGearPrice(int& driverCount, float helmetPrice[], float suitPrice[], float shoePrice[], float gearPrice[])
 {
 	float totalGearPrice = 0;
-
-	displayRacingGear();
-
+	
 	for (int i = 0; i < driverCount; i++) {
-		std::cout << "\n\t\t\tDriver: " << driverName[i];
-
-		helmetPrice[i] = selectHelmet(i, helmetSize, helmetPrice);
-
-		suitPrice[i] = selectSuit(i, suitSize, suitPrice);
-
-		shoePrice[i] = selectShoe(i, shoeSize, shoePrice);
-
 		gearPrice[i] = helmetPrice[i] + suitPrice[i] + shoePrice[i];
-
 		totalGearPrice += gearPrice[i];
 	}
 	return totalGearPrice;
