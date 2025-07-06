@@ -469,7 +469,7 @@ float selectHelmet(int i, std::string helmetSize[], float helmetPrice[])
 	return helmetPrice[i];
 }
 
-float selectSuit (int i, std::string suitSize[], float suitPrice[])
+float selectSuit(int i, std::string suitSize[], float suitPrice[])
 {
 	std::cout << "\n\t\t\tPlease choose your suit size (S/M/L/XL): ";
 	std::cin >> suitSize[i];
@@ -496,7 +496,7 @@ float selectSuit (int i, std::string suitSize[], float suitPrice[])
 	return suitPrice[i];
 }
 
-float selectShoe (int i, int shoeSize[], float shoePrice[])
+float selectShoe(int i, int shoeSize[], float shoePrice[])
 {
 	std::cout << "\n\t\t\tPlease choose your shoe size (20 - 35): ";
 	std::cin >> shoeSize[i];
@@ -527,9 +527,9 @@ float racingGear(int driverCount, std::string driverName[], std::string helmetSi
 
 		helmetPrice[i] = selectHelmet(i, helmetSize, helmetPrice);
 
-		suitPrice[i] = selectSuit (i, suitSize, suitPrice);
+		suitPrice[i] = selectSuit(i, suitSize, suitPrice);
 
-		shoePrice[i] = selectShoe (i, shoeSize, shoePrice);
+		shoePrice[i] = selectShoe(i, shoeSize, shoePrice);
 
 		gearPrice[i] = helmetPrice[i] + suitPrice[i] + shoePrice[i];
 
