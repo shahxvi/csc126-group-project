@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="wNLyEXlQUMfCtWeiGslE" name="Page-1">
-        <mxGraphModel dx="332" dy="635" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="369" dy="663" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -13,16 +13,16 @@
                         <mxPoint x="319.58" y="370" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="4" value="Input:&lt;br&gt;intInput" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=2;fillColor=#e3c800;fontColor=#FFFFFF;strokeColor=#B09500;" vertex="1" parent="1">
+                <mxCell id="4" value="Input:&lt;br&gt;input" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=2;fillColor=#e3c800;fontColor=#FFFFFF;strokeColor=#B09500;" vertex="1" parent="1">
                     <mxGeometry x="260" y="370" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="5" value="cin.fail() ||&lt;br&gt;(intInput &amp;lt; min Value || intInput &amp;gt; maxValue)" style="rhombus;whiteSpace=wrap;html=1;strokeWidth=2;fillColor=#6a00ff;fontColor=#ffffff;strokeColor=#3700CC;" vertex="1" parent="1">
+                <mxCell id="5" value="input.length() != 1&lt;br&gt;||&lt;br&gt;!std::islpha(input[0])" style="rhombus;whiteSpace=wrap;html=1;strokeWidth=2;fillColor=#6a00ff;fontColor=#ffffff;strokeColor=#3700CC;" vertex="1" parent="1">
                     <mxGeometry x="240" y="480" width="160" height="160" as="geometry"/>
                 </mxCell>
-                <mxCell id="6" value="Prompt:&lt;br&gt;&quot;Please enter a valid &quot;, inputType,&lt;br&gt;&quot; ( &quot;, minValue, &quot; - &quot; maxValue, &quot;) :&quot;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=2;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;" vertex="1" parent="1">
+                <mxCell id="6" value="Prompt:&lt;br&gt;&quot;Please enter a valid input (Y/N): &quot;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=2;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;" vertex="1" parent="1">
                     <mxGeometry x="440" y="530" width="250" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="8" value="Input:&lt;br&gt;intInput" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=2;fillColor=#e3c800;fontColor=#FFFFFF;strokeColor=#B09500;" vertex="1" parent="1">
+                <mxCell id="8" value="Input:&lt;br&gt;input" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=2;fillColor=#e3c800;fontColor=#FFFFFF;strokeColor=#B09500;" vertex="1" parent="1">
                     <mxGeometry x="505" y="660" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="9" value="" style="edgeStyle=none;html=1;strokeWidth=2;shadow=1;textShadow=1;spacing=2;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" target="8">
@@ -31,7 +31,7 @@
                         <mxPoint x="564.5799999999999" y="640" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="10" value="return intInput" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fillColor=#d80073;fontColor=#ffffff;strokeColor=#A50040;" vertex="1" parent="1">
+                <mxCell id="10" value="return std::toupper(input[0])" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fillColor=#d80073;fontColor=#ffffff;strokeColor=#A50040;" vertex="1" parent="1">
                     <mxGeometry x="220" y="750" width="200" height="120" as="geometry"/>
                 </mxCell>
                 <mxCell id="11" value="" style="edgeStyle=none;html=1;strokeWidth=2;shadow=1;textShadow=1;spacing=2;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" target="5">
