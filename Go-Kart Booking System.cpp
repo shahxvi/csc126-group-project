@@ -318,23 +318,32 @@ std::string setTrack(std::string& bookingType, std::string& raceFormat)
 {
 	int trackID;
 
-	//Circuit Race
-	if (bookingType == "Solo" && raceFormat == "Circuit Race") {
-		std::cout << "\n\t\t\tAvailable Track: Section 9 Circuit"
-			  << "\n\t\t\tDefaulting to said track\n";
-		return "Section 9 Circuit";
-	}
-	else if (bookingType == "Group" && raceFormat == "Circuit Race") {
+	if (bookingType == "Group" && raceFormat == "Circuit Race") {
 		std::cout << "\n\t\t\tAvailable Track:"
 			  << "\n\t\t\t1 - Section 9 Circuit"
 			  << "\n\t\t\t2 - Blackrock Circuit"
 			  << "\n\t\t\tPlease choose your track (1 - 2): ";
 		trackID = getValidIntegerInput("track", 1, 2);
-
-		switch (trackID) {
-			case 1: return "Section 9 Circuit";
-			default: return "Blackrock Circuit";
-		}
+	}
+	else if (raceFormat == "Time Trial") {
+		std::cout << "\n\t\t\tAvailable Track:"
+			  << "\n\t\t\t1 - Section 9 Circuit"
+			  << "\n\t\t\t2 - Blackrock Circuit"
+			  << "\n\t\t\t3 - Rushline Dash"
+			  << "\n\t\t\t4 - Chrono Pass"
+			  << "\n\t\t\tPlease choose your track (1 - 4): ";
+		trackID = getValidIntegerInput("track", 1, 4);
+	}
+	switch (trackID) {
+		case 1: return "Section 9 Circuit";
+		case 2: return "Blackrock Circuit";
+		case 3: return "Rushline Dash";
+		default: return "Chrono Pass";
+	}
+	if (bookingType == "Solo" && raceFormat == "Circuit Race") {
+		std::cout << "\n\t\t\tAvailable Track: Section 9 Circuit"
+			  << "\n\t\t\tDefaulting to said track\n";
+		return "Section 9 Circuit";
 	}
 	else if (raceFormat == "Elimination Race") {
 		std::cout << "\n\t\t\tAvailable Track: Blackrock Circuit"
@@ -345,22 +354,6 @@ std::string setTrack(std::string& bookingType, std::string& raceFormat)
 		std::cout << "\n\t\t\tAvailable Track: Rushline Dash"
 			  << "\n\t\t\tDefaulting to said track\n";
 		return "Rushline Dash";
-	}
-	else if (raceFormat == "Time Trial") {
-		std::cout << "\n\t\t\tAvailable Track:"
-			  << "\n\t\t\t1 - Section 9 Circuit"
-			  << "\n\t\t\t2 - Chrono Pass"
-			  << "\n\t\t\t3 - Rushline Dash"
-			  << "\n\t\t\t4 - Blackrock Circuit"
-			  << "\n\t\t\tPlease choose your track (1 - 4): ";
-		trackID = getValidIntegerInput("track", 1, 4);
-
-		switch (trackID) {
-			case 1: return "Section 9 Circuit";
-			case 2: return "Chrono Pass";
-			case 3: return "Rushline Dash";
-			default: return "Blackrock Circuit";
-		}
 	}
 	else if (raceFormat == "Drag Race") {
 		std::cout << "\n\t\t\tAvailable Track: Torque Strip"
