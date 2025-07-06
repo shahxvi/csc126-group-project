@@ -173,7 +173,7 @@ void displayMenu()
     		  << "\n\t\t\t1 - Start Booking"
     		  << "\n\t\t\t2 - Race Formats"
     		  << "\n\t\t\t3 - Track Lists"
-		  << "\n\t\t\t4 - Racing Gear Sizes & Prices"
+		  	  << "\n\t\t\t4 - Racing Gear Sizes & Prices"
     		  << "\n\t\t\t5 - Go-Kart Engine Capacities"
     		  << "\n\t\t\t0 - Exit\n";
 }
