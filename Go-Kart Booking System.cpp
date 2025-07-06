@@ -12,6 +12,7 @@
 #include <cctype>
 #include <algorithm>
 
+void menu();
 void displayMenu();
 void displayRaceFormat(std::string bookingType);
 void displayTrackList();
@@ -36,34 +37,7 @@ float calculatePrice(int engineCapacity[], int laps, int driverCount, float gear
 
 int main()
 {
-	// Main Selection Menu
-	int menu;
-	
-	do {
-		displayMenu();
-		std::cout << "\n\t\t\tChoose your option: ";
-		menu = getValidIntegerInput("option", 0, 5);
-
-		if (menu == 0)
-			return 0;
-		if (menu == 2) {
-			system("cls");
-			displayRaceFormat("Group");	// Parameters to allow the menu to show every option
-		}
-		if (menu == 3) {
-			system("cls");
-			displayTrackList();
-		}
-		if (menu == 4) {
-			system("cls");
-			displayRacingGear();
-		}
-		if (menu == 5) {
-			system("cls");
-			displayEngineCapacities(18, 'Y');	// Parameters to allow the menu to show every option
-		}
-
-	} while (menu != 1);
+	menu();
 
 	char continueChoice;
 	int customer = 0;
@@ -143,6 +117,35 @@ int main()
 	system("pause");
 
 	return 0;
+}
+
+void menu()
+{
+	int menu;
+	
+	do {
+		displayMenu();
+		std::cout << "\n\t\t\tChoose your option: ";
+		menu = getValidIntegerInput("option", 0, 5);
+
+		if (menu == 2) {
+			system("cls");
+			displayRaceFormat("Group");	// Parameters to allow the menu to show every option
+		}
+		if (menu == 3) {
+			system("cls");
+			displayTrackList();
+		}
+		if (menu == 4) {
+			system("cls");
+			displayRacingGear();
+		}
+		if (menu == 5) {
+			system("cls");
+			displayEngineCapacities(18, 'Y');	// Parameters to allow the menu to show every option
+		}
+
+	} while (menu != 1 && menu != 0);
 }
 
 void displayMenu()
