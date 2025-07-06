@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram name="Page-1" id="Rn_51gsRaB02Dr3b2L31">
-        <mxGraphModel dx="930" dy="663" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+        <mxGraphModel dx="937" dy="1172" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -60,7 +60,7 @@
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="ctiVgHBL_NUAtJyN5x7s-21" value="&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;Prompt:&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;&quot;Please choose the race format (1 - 5); &quot;&lt;/font&gt;&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#008a00;strokeColor=#005700;fontColor=#ffffff;strokeWidth=2;" parent="1" vertex="1">
-                    <mxGeometry y="385" width="256" height="60" as="geometry"/>
+                    <mxGeometry x="28.47" y="385" width="256" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="ctiVgHBL_NUAtJyN5x7s-32" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="ctiVgHBL_NUAtJyN5x7s-23" target="ctiVgHBL_NUAtJyN5x7s-34" edge="1">
                     <mxGeometry relative="1" as="geometry">
@@ -68,7 +68,7 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="ctiVgHBL_NUAtJyN5x7s-23" value="&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;Input:&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;raceFormatID&lt;/font&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=#fa6800;fontColor=#FFFFFF;strokeColor=#C73500;" parent="1" vertex="1">
-                    <mxGeometry x="68" y="480" width="120" height="60" as="geometry"/>
+                    <mxGeometry x="96.47" y="480" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="ctiVgHBL_NUAtJyN5x7s-38" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="ctiVgHBL_NUAtJyN5x7s-34" target="ctiVgHBL_NUAtJyN5x7s-37" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
