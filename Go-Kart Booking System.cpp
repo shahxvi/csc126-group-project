@@ -223,15 +223,15 @@ void displayEngineCapacities(int age, char license)
 
 int getValidIntegerInput(std::string inputType, int minValue, int maxValue)
 {
-	int intInput;
-	std::cin >> intInput;
-	while (std::cin.fail() || (intInput < minValue || intInput > maxValue)) {
+	int input;
+	std::cin >> input;
+	while (std::cin.fail() || (input < minValue || input > maxValue)) {
 		std::cin.clear();
 		std::cin.ignore(1000, '\n');
 		std::cout << "\t\t\tPlease enter a valid " << inputType << " (" << minValue << " - " << maxValue << "): ";
-		std::cin >> intInput;
+		std::cin >> input;
 	}
-	return intInput;
+	return input;
 }
 
 char getValidCharacterInput()
