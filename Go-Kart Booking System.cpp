@@ -290,7 +290,7 @@ void getDriverDetails(int& driverCount, std::string driverName[], int driverAge[
 
 std::string setRaceFormat(std::string& bookingType)
 {
-	int raceFormatID;	
+	int raceFormatID;
 	std::string raceFormat;
 
 	displayRaceFormat(bookingType);
