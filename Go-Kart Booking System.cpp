@@ -73,9 +73,9 @@ int main()
 
 		std::string bookingType = setBooking(); //Type 1 Function
 
-		std::string driverName[5] = {0};
-		int driverAge[5] = {0};
-		char license[5] = {0};
+		std::string driverName[5];
+		int driverAge[5];
+		char license[5];
 		int driverCount = 0;
 
 		driverCount = driver(bookingType, driverName, driverAge, license);
@@ -84,15 +84,15 @@ int main()
 
 		std::string track = setTrack(bookingType, raceFormat);
 
-		int engineCapacity[5] = {0};
+		int engineCapacity[5];
 
 		setEngineCapacity(driverCount, driverName, driverAge, license, engineCapacity);
 
 		int laps = setLaps(driverCount, raceFormat);
 
-		std::string helmetSize[5] = {0}, suitSize[5] = {0}; int shoeSize[5] = {0};
-		float helmetPrice[5] = {0}, suitPrice[5] = {0}, shoePrice[5] = {0};
-		float gearPrice[5] = {0};
+		std::string helmetSize[5], suitSize[5]; int shoeSize[5];
+		float helmetPrice[5], suitPrice[5], shoePrice[5];
+		float gearPrice[5];
 
 		float totalGearPrice = racingGear(driverCount, driverName, helmetSize, suitSize, shoeSize, helmetPrice, suitPrice, shoePrice, gearPrice); 
 
@@ -224,7 +224,6 @@ char getValidCharacterInput()
 std::string setBooking()
 {
 	int bookingTypeID;
-	std::string bookingType;
 
 	std::cout << "\n\t\t\t1 - Solo\n"
 		  << "\t\t\t2 - Group (Maximum 5)\n"
@@ -253,9 +252,8 @@ int driver(std::string& bookingType, std::string driverName[], int driverAge[], 
 		driverCount = getValidIntegerInput("number of drivers", 2, 5);
 	}
 
-	std::cin.ignore();
-
 	for (int i = 0; i < driverCount; i++) {
+		std::cin.ignore();
 		std::cout << "\n\t\t\tDriver #" << (i+1) << " Name: ";
 		std::getline(std::cin, driverName[i]);
 
@@ -279,7 +277,7 @@ std::string setRaceFormat(std::string& bookingType)
 		std::cout << "\n\t\t\tPlease choose the race format (1 - 4): ";
 		raceFormatID = getValidIntegerInput("race format", 1, 4);
 	}
-	else {
+	else if (bookingType == "Group") {
         	std::cout << "\n\t\t\tPlease choose the race format (1 - 5): ";
 		raceFormatID = getValidIntegerInput("race format", 1, 5);
 	}
@@ -298,17 +296,35 @@ std::string setTrack(std::string& bookingType, std::string& raceFormat)
 {
 	int trackID;
 
+	//Circuit Race
 	if (bookingType == "Solo" && raceFormat == "Circuit Race") {
 		std::cout << "\n\t\t\tAvailable Track: Section 9 Circuit"
 			  << "\n\t\t\tDefaulting to said track\n";
 		return "Section 9 Circuit";
 	}
-	else if (bookingType == "Solo" && raceFormat == "Sprint Race") {
+	else if (bookingType == "Group" && raceFormat == "Circuit Race") {
+		std::cout << "\n\t\t\tAvailable Track:"
+			  << "\n\t\t\t1 - Section 9 Circuit"
+			  << "\n\t\t\t2 - Blackrock Circuit"
+			  << "\n\t\t\tPlease choose your track (1 - 2): ";
+		trackID = getValidIntegerInput("track", 1, 2);
+
+		switch (trackID) {
+			case 1: return "Section 9 Circuit";
+			default: return "Blackrock Circuit";
+		}
+	}
+	else if (raceFormat == "Elimination Race") {
+		std::cout << "\n\t\t\tAvailable Track: Blackrock Circuit"
+			  << "\n\t\t\tDefaulting to said track\n";
+		return "Blackrock Circuit";
+	}
+	else if (raceFormat == "Sprint Race") {
 		std::cout << "\n\t\t\tAvailable Track: Rushline Dash"
 			  << "\n\t\t\tDefaulting to said track\n";
 		return "Rushline Dash";
 	}
-	else if (bookingType == "Solo" && raceFormat == "Time Trial") {
+	else if (raceFormat == "Time Trial") {
 		std::cout << "\n\t\t\tAvailable Track:"
 			  << "\n\t\t\t1 - Section 9 Circuit"
 			  << "\n\t\t\t2 - Chrono Pass"
@@ -324,58 +340,10 @@ std::string setTrack(std::string& bookingType, std::string& raceFormat)
 			default: return "Blackrock Circuit";
 		}
 	}
-	else if (bookingType == "Solo" && raceFormat == "Drag Race") {
+	else if (raceFormat == "Drag Race") {
 		std::cout << "\n\t\t\tAvailable Track: Torque Strip"
 			  << "\n\t\t\tDefaulting to said track\n";
 		return "Torque Strip";
-	}
-
-	else if (bookingType == "Group" && raceFormat == "Circuit Race") {
-		std::cout << "\n\t\t\tAvailable Track:"
-			  << "\n\t\t\t1 - Section 9 Circuit"
-			  << "\n\t\t\t2 - Blackrock Circuit"
-			  << "\n\t\t\tPlease choose your track (1 - 2): ";
-		trackID = getValidIntegerInput("track", 1, 2);
-
-		switch (trackID) {
-			case 1: return "Section 9 Circuit";
-			default: return "Blackrock Circuit";
-		}
-	}
-	
-	else if (bookingType == "Group" || raceFormat == "Sprint Race") {
-		std::cout << "\n\t\t\tAvailable Track: Rushline Dash"
-				  << "\n\t\t\tDefaulting to said track\n";
-		return "Rushline Dash";
-	}
-
-	else if (bookingType == "Group" || raceFormat == "Time Trial") {
-		std::cout << "\n\t\t\tAvailable Track:"
-			  << "\n\t\t\t1 - Section 9 Circuit"
-			  << "\n\t\t\t2 - Chrono Pass"
-			  << "\n\t\t\t3 - Rushline Dash"
-			  << "\n\t\t\t4 - Blackrock Circuit"
-			  << "\n\t\t\tPlease choose your track: ";
-		trackID = getValidIntegerInput("track", 1, 4);
-
-		switch (trackID) {
-			case 1: return "Section 9 Circuit";
-			case 2: return "Chrono Pass";
-			case 3: return "Rushline Dash";
-			default: return "Blackrock Circuit";
-		}
-	}
-
-	else if (bookingType == "Group" || raceFormat == "Drag Race") {
-		std::cout << "\n\t\t\tAvailable Track: Torque Strip"
-			  << "\n\t\t\tDefaulting to said track\n";
-		return "Torque Strip";
-	}
-
-	else if (bookingType == "Group" || raceFormat == "Elimination Race") {
-		std::cout << "\n\t\t\tAvailable Track: Blackrock Circuit"
-			  << "\n\t\t\tDefaulting to said track\n";
-		return "Blackrock Circuit";
 	}
 	return "Track"; // Should never get to this point
 }
@@ -419,26 +387,22 @@ int setLaps(int driverCount, std::string& raceFormat) {
 			  << "\n\t\t\tHow many laps do you want? : ";
 		std::cin >> laps;
 	}
-	
 	else if (raceFormat == "Sprint Race" || raceFormat == "Drag Race") {
 		std::cout << "\n\t\t\tSprint Races and Drag Races only have 1 lap\n";
 		laps = 1;
 	}
-	
 	else if (raceFormat == "Time Trial") {
 		std::cout << "\n\t\t\tAvailable number of laps: Unlimited"
 			  << "\n\t\t\tHow many laps do you want? : ";
 		std::cin >> laps;
 	}
-	
 	else { // Elimination Race
 		std::cout << "\n\t\t\tNumber of laps corresponds with the number of drivers";
 		laps = driverCount - 1;
 		std::cout << "\n\t\t\tLaps = Driver Count - 1"
 			  << "\n\t\t\tLaps = " << driverCount << " - 1"
-			  << "\n\t\t\tLaps = " << laps;
+			  << "\n\t\t\tLaps = " << laps << "\n";
 	}
-	
 	return laps;
 }
 
