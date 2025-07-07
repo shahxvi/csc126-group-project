@@ -1,0 +1,150 @@
+<mxfile host="65bd71144e">
+    <diagram name="Page-1" id="Rn_51gsRaB02Dr3b2L31">
+        <mxGraphModel dx="937" dy="1172" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="ctiVgHBL_NUAtJyN5x7s-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="ctiVgHBL_NUAtJyN5x7s-1" target="ctiVgHBL_NUAtJyN5x7s-2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="ctiVgHBL_NUAtJyN5x7s-1" value="setRaceFormat (&amp;amp;bookingType)" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fillColor=#d80073;fontColor=#ffffff;strokeColor=#A50040;" parent="1" vertex="1">
+                    <mxGeometry x="330" y="40" width="190" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="ctiVgHBL_NUAtJyN5x7s-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="ctiVgHBL_NUAtJyN5x7s-2" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="425" y="250" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="ctiVgHBL_NUAtJyN5x7s-2" value="&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;Declare:&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;raceFormatID, raceFormat&lt;/font&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=#fa6800;fontColor=#FFFFFF;strokeColor=#C73500;" parent="1" vertex="1">
+                    <mxGeometry x="365" y="150" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="ctiVgHBL_NUAtJyN5x7s-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" target="ctiVgHBL_NUAtJyN5x7s-6" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="425" y="310.0000000000002" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="ctiVgHBL_NUAtJyN5x7s-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="ctiVgHBL_NUAtJyN5x7s-6" target="ctiVgHBL_NUAtJyN5x7s-8" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="ctiVgHBL_NUAtJyN5x7s-12" value="True" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="ctiVgHBL_NUAtJyN5x7s-9" vertex="1" connectable="0">
+                    <mxGeometry x="-0.0692" y="-2" relative="1" as="geometry">
+                        <mxPoint x="-1" y="-2" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="ctiVgHBL_NUAtJyN5x7s-22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="ctiVgHBL_NUAtJyN5x7s-6" target="ctiVgHBL_NUAtJyN5x7s-21" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="ctiVgHBL_NUAtJyN5x7s-33" value="False" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="ctiVgHBL_NUAtJyN5x7s-22" vertex="1" connectable="0">
+                    <mxGeometry x="-0.0561" y="3" relative="1" as="geometry">
+                        <mxPoint y="-2" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="ctiVgHBL_NUAtJyN5x7s-6" value="bookingType == &quot;Solo&quot;" style="rhombus;whiteSpace=wrap;html=1;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="351" y="350" width="150" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="ctiVgHBL_NUAtJyN5x7s-11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="ctiVgHBL_NUAtJyN5x7s-8" target="ctiVgHBL_NUAtJyN5x7s-10" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="ctiVgHBL_NUAtJyN5x7s-8" value="&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;Prompt:&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;&quot;Please choose the race format (1 - 4): &quot;&lt;/font&gt;&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#008a00;strokeColor=#005700;fontColor=#ffffff;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="560" y="385" width="260" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="ctiVgHBL_NUAtJyN5x7s-14" value="" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;edgeStyle=orthogonalEdgeStyle;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="ctiVgHBL_NUAtJyN5x7s-10" target="ctiVgHBL_NUAtJyN5x7s-34" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="690" y="570" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="ctiVgHBL_NUAtJyN5x7s-10" value="raceFormatID =&lt;br&gt;getValidIntegerInput(&quot;race format&quot;, 1, 4)" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=#fa6800;fontColor=#FFFFFF;strokeColor=#C73500;" parent="1" vertex="1">
+                    <mxGeometry x="570" y="480" width="240" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="ctiVgHBL_NUAtJyN5x7s-24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="ctiVgHBL_NUAtJyN5x7s-21" target="ctiVgHBL_NUAtJyN5x7s-23" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="ctiVgHBL_NUAtJyN5x7s-21" value="&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;Prompt:&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;&quot;Please choose the race format (1 - 5); &quot;&lt;/font&gt;&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#008a00;strokeColor=#005700;fontColor=#ffffff;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="28.47" y="385" width="256" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="ctiVgHBL_NUAtJyN5x7s-32" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="ctiVgHBL_NUAtJyN5x7s-23" target="ctiVgHBL_NUAtJyN5x7s-34" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="400" y="570" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="ctiVgHBL_NUAtJyN5x7s-23" value="&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;Input:&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;raceFormatID&lt;/font&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=#fa6800;fontColor=#FFFFFF;strokeColor=#C73500;" parent="1" vertex="1">
+                    <mxGeometry x="96.47" y="480" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="ctiVgHBL_NUAtJyN5x7s-38" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="ctiVgHBL_NUAtJyN5x7s-34" target="ctiVgHBL_NUAtJyN5x7s-37" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="ctiVgHBL_NUAtJyN5x7s-34" value="raceFormatID" style="whiteSpace=wrap;html=1;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="365" y="580" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="ctiVgHBL_NUAtJyN5x7s-40" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="ctiVgHBL_NUAtJyN5x7s-37" target="ctiVgHBL_NUAtJyN5x7s-39" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="ctiVgHBL_NUAtJyN5x7s-44" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="ctiVgHBL_NUAtJyN5x7s-37" target="ctiVgHBL_NUAtJyN5x7s-42" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="ctiVgHBL_NUAtJyN5x7s-37" value="= 1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="385" y="680" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="ctiVgHBL_NUAtJyN5x7s-39" value="return &quot;Circuit Race&quot;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fillColor=#d80073;fontColor=#ffffff;strokeColor=#A50040;" parent="1" vertex="1">
+                    <mxGeometry x="510" y="692.5" width="140" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="ctiVgHBL_NUAtJyN5x7s-41" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="ctiVgHBL_NUAtJyN5x7s-42" target="ctiVgHBL_NUAtJyN5x7s-43" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="ctiVgHBL_NUAtJyN5x7s-48" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="ctiVgHBL_NUAtJyN5x7s-42" target="ctiVgHBL_NUAtJyN5x7s-46" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="ctiVgHBL_NUAtJyN5x7s-42" value="= 2" style="rhombus;whiteSpace=wrap;html=1;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="385" y="800" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="ctiVgHBL_NUAtJyN5x7s-43" value="return &quot;Sprint Race&quot;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fillColor=#d80073;fontColor=#ffffff;strokeColor=#A50040;" parent="1" vertex="1">
+                    <mxGeometry x="510" y="812.5" width="140" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="ctiVgHBL_NUAtJyN5x7s-45" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="ctiVgHBL_NUAtJyN5x7s-46" target="ctiVgHBL_NUAtJyN5x7s-47" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="ctiVgHBL_NUAtJyN5x7s-55" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="ctiVgHBL_NUAtJyN5x7s-46" target="ctiVgHBL_NUAtJyN5x7s-53" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="ctiVgHBL_NUAtJyN5x7s-46" value="= 3" style="rhombus;whiteSpace=wrap;html=1;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="385" y="923" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="ctiVgHBL_NUAtJyN5x7s-47" value="return &quot;Time Trial&quot;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fillColor=#d80073;fontColor=#ffffff;strokeColor=#A50040;" parent="1" vertex="1">
+                    <mxGeometry x="510" y="935.5" width="140" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="ctiVgHBL_NUAtJyN5x7s-52" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="ctiVgHBL_NUAtJyN5x7s-53" target="ctiVgHBL_NUAtJyN5x7s-54" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="ctiVgHBL_NUAtJyN5x7s-59" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="ctiVgHBL_NUAtJyN5x7s-53" target="ctiVgHBL_NUAtJyN5x7s-57" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="ctiVgHBL_NUAtJyN5x7s-53" value="= 4" style="rhombus;whiteSpace=wrap;html=1;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="385" y="1040" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="ctiVgHBL_NUAtJyN5x7s-54" value="return &quot;Drag Race&quot;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fillColor=#d80073;fontColor=#ffffff;strokeColor=#A50040;" parent="1" vertex="1">
+                    <mxGeometry x="510" y="1052.5" width="140" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="ctiVgHBL_NUAtJyN5x7s-56" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="ctiVgHBL_NUAtJyN5x7s-57" target="ctiVgHBL_NUAtJyN5x7s-58" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="ctiVgHBL_NUAtJyN5x7s-64" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="ctiVgHBL_NUAtJyN5x7s-57" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="425" y="1260" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="ctiVgHBL_NUAtJyN5x7s-57" value="= 5" style="rhombus;whiteSpace=wrap;html=1;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="385" y="1150" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="ctiVgHBL_NUAtJyN5x7s-58" value="return &quot;Elimination Race&quot;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fillColor=#d80073;fontColor=#ffffff;strokeColor=#A50040;" parent="1" vertex="1">
+                    <mxGeometry x="510" y="1162.5" width="150" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="ctiVgHBL_NUAtJyN5x7s-63" value="return &quot;Invalid Race Format&quot;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fillColor=#d80073;fontColor=#ffffff;strokeColor=#A50040;" parent="1" vertex="1">
+                    <mxGeometry x="356" y="1260" width="140" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="displayRaceFormat(bookingType)" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" parent="1" vertex="1">
+                    <mxGeometry x="300" y="250" width="250" height="60" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
