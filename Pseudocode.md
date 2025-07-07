@@ -88,7 +88,7 @@
 
                 WHILE std::toupper(continueChoice) == 'Y'
 
-                OUTPUT "Total Income: RM ", std::setprecision(2), totalIncome,
+                OUTPUT "Total Income: RM ", std::setprecision(2), totalIncome
 
                 RETURN 0
         END FUNCTION        
