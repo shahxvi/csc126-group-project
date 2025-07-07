@@ -1,3 +1,120 @@
+        FUNCTION INTEGER main()
+                CALL menu()
+
+                DECLARE CHARACTER continueChoice
+                DECLARE INTEGER customer = 0
+                DECLARE FLOAT totalIncome = 0
+
+                DO
+                        //Initializations (in order)
+                        STRING bookingType
+
+                        DECLARE INTEGER driverCount
+                        DECLARE STRING driverName[5]
+                        DECLARE INTEGER driverAge[5]
+                        DECLARE CHARACTER license[5]
+
+                        DECLARE STRING raceFormat
+                        DECLARE STRING track
+                        
+                        DECLARE INTEGER engineCapacity[5]
+
+                        DECLARE INTEGER laps
+
+                        DECLARE STRING helmetSize[5], suitSize[5]
+                        DECLARE INTEGER shoeSize[5]
+                        DECLARE FLOAT helmetPrice[5], suitPrice[5], shoePrice[5]
+                        DECLARE FLOAT gearPrice[5]
+
+                        // The Crux of the Go-Kart Booking System
+                        SET bookingType = getBookingType()
+                        
+                        SET driverCount = getDriverCount(bookingType)
+
+                        CALL getDriverDetails(driverCount, driverName, driverAge, license)
+
+                        SET raceFormat = setRaceFormat(bookingType)
+
+                        SET track = setTrack(bookingType, raceFormat)
+
+                        SET setEngineCapacity(driverCount, driverName, driverAge, license, engineCapacity)
+
+                        SET laps = setLaps(driverCount, raceFormat)
+
+                        FOR INTEGER i = 0; i < driverCount; i++
+                                CALL driverGear(i, driverName)
+                                CALL selectHelmet(i,helmetSize, helmetPrice)
+                                CALL selectSuit(i,suitSize, suitPrice)
+                                CALL selectShoe(i, shoeSize, shoePrice)
+                        END FOR
+
+                        DECLARE FLOAT totalGearPrice
+                        SET totalGearPrice = calculateTotalGearPrice(driverCount, helmetPrice, suitPrice, shoePrice, gearPrice)
+
+                        DECLARE FLOAT membershipDiscount
+                        SET membershipDiscount = setMembershipDiscount()
+
+                        DECLARE FLOAT totalPrice
+                        SET totalPrice = calculatePrice(engineCapacity, laps, driverCount, totalGearPrice, membershipDiscount)
+
+                        OUTPUT "Race Format: ", raceFormat
+                        OUTPUT "Track: ", track
+
+                        std::cout << std::fixed << std::showpoint;
+
+                        FOR INTEGER i = 0; i < driverCount; i++
+                                OUTPUT "Driver: ", driverName[i]
+                                OUTPUT "Age: ", driverAge[i]
+                                OUTPUT "Has License: ", license[i]
+                                OUTPUT "Engine Capacity: ", engineCapacity[i], "cc"
+                                OUTPUT "Helmet Size: ", helmetSize[i]
+                                OUTPUT "Helmet Price: RM", std::setprecision(2), helmetPrice[i]
+                                OUTPUT "Suit Size: ", suitSize[i]
+                                OUTPUT "Suit Pricet: RM", std::setprecision(2), suitPrice[i]
+                                OUTPUT "Shoe Size: ", shoeSize[i], "cm"
+                                OUTPUT "Shoe Price: RM", std::setprecision(2), shoePrice[i]
+                                OUTPUT "Gear Price: RM", std::setprecision(2), gearPrice[i]
+                        END FOR
+                        
+                        OUTPUT "Total Gear Price: RM", std::setprecision(2), totalGearPrice
+                        OUTPUT "Membership Discount\t: ", membershipDiscount * 100, "%"
+                        OUTPUT "Total : RM", std::setprecision(2), totalPrice
+
+                        totalIncome += totalPrice
+                        customer++
+
+                        PROMPT "Continue for another customer? (Y/N): "
+                        SET continueChoice = getValidCharacterInput()
+
+                WHILE std::toupper(continueChoice) == 'Y'
+
+                OUTPUT "Total Income: RM ", std::setprecision(2), totalIncome,
+
+                RETURN 0
+        END FUNCTION        
+
+        MODULE menu()
+                DECLARE INTEGER menu
+                
+                DO
+                        CALL displayMenu()
+                        PROMPT "Choose your option: "
+                        SET menu = getValidIntegerInput("option", 0, 5)
+
+                        IF menu == 2 THEN
+                                displayRaceFormat("Group")
+                        END IF
+                        IF menu == 3 THEN
+                                displayTrackList()
+                        END IF
+                        IF menu == 4 THEN
+                                displayRacingGear()
+                        END IF
+                        IF menu == 5 THEN
+                                displayEngineCapacities(18, 'Y')
+                        END IF
+                WHILE menu != 1 && menu != 0
+        END MODULE
 
         FUNCTION INTEGER getValidIntegerInput(STRING inputType, INTEGER minValue, INTEGER maxValue)
                 int input;
