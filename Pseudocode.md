@@ -1,16 +1,131 @@
 
+        FUNCTION INTEGER getValidIntegerInput(STRING inputType, INTEGER minValue, INTEGER maxValue)
+                int input;
+                READ input;
+                WHILE std::cin.fail() || (input < minValue || input > maxValue)
+                        PROMPT "\t\t\tPlease enter a valid " << inputType << " (" << minValue << " - " << maxValue << "): "
+                        READ input
+                END WHILE
+                RETURN input
+        END FUNCTION
 
+        FUNCTION CHARACTER getValidCharacterInput()
+                STRING input
+                READ input
 
+                WHILE input.length() != 1 || !std::isalpha(input[0])
+                        PROMPT "Please enter a valid input (Y/N): "
+                        READ input
+                END WHILE
 
+                RETURN std::toupper(input[0])
+        END FUNCTION
 
+        STRING getBookingType()
+                DECLARE INTEGER bookingTypeID
 
+                DISPLAY "1 - Solo"
+                DISPLAY "2 - Group (Maximum 5)"
+                PROMPT "Please choose your desired booking (1 - 2): "
+                SET bookingTypeID = getValidIntegerInput("booking type", 1, 2)
+
+                IF bookingTypeID == 1 THEN
+                        RETURN "Solo"
+                ELSE
+                        RETURN "Group"
+                END IF
+        END FUNCTION
+
+        FUNCTION INTEGER getDriverCount(STRING& bookingType)
+                IF bookingType == "Solo" THEN
+                        RETURN 1
+                END IF
+                PROMPT "Please enter the number of drivers (2 - 5): "
+                RETURN getValidIntegerInput("number of drivers", 2, 5)
+        END FUNCTION
+
+        MODULE getDriverDetails(INTEGER& driverCount, STRING driverName[], INTEGER driverAge[], CHARACTER license[])
+                FOR int i = 0; i < driverCount; i++
+                        PROMPT "Driver #", (i+1), " Name: "
+                        READ driverName[i]
+
+                        PROMPT "Driver #", (i+1), " Age: "
+                        READ driverAge[i]
+
+                        PROMPT "Does Driver #", (i+1), " has a license? (Y/N): "
+                        SET license[i] = getValidCharacterInput()
+                END FOR
+        END MODULE
+
+        FUNCTION STRING setRaceFormat(STRING& bookingType)
+                DECLARE INTEGER raceFormatID
+                DECLARE STRING raceFormat
+
+                CALL displayRaceFormat(bookingType)
+
+                IF bookingType == "Solo" THEN
+                        PROMPT "Please choose the race format (1 - 4): "
+                        SET raceFormatID = getValidIntegerInput("race format", 1, 4);
+                ELSE IF bookingType == "Group" THEN
+                        PROMPT "Please choose the race format (1 - 5): "
+                        SET raceFormatID = getValidIntegerInput("race format", 1, 5)
+                END IF 
+
+                switch (raceFormatID) 
+                        case 1: return "Circuit Race";
+                        case 2: return "Sprint Race";
+                        case 3: return "Time Trial";
+                        case 4: return "Drag Race";
+                        case 5: return "Elimination Race";
+                        default: return "Invalid Race Format";
+        END FUNCTION 
 
         FUNCTION STRING setTrack(STRING& bookingType, STRING& raceFormat)
                 DECLARE INTEGER trackID
 
                 IF bookingType == "Group" AND raceFormat == "Circuit Race" THEN
-                        DISPLAY "
+                        DISPLAY "Available Track:"
+                        DISPLAY "1 - Section 9 Circuit"
+                        DISPLAY "2 - Blackrock Circuit"
+                        PROMPT "Please choose your track (1 - 2): "
+                        SET trackID = getValidIntegerInput("track, 1, 2)
+                ELSE IF raceFormat == "Time Trial" THEN
+                        DISPLAY "Available Track:"
+                        DISPLAY "1 - Section 9 Circuit"
+                        DISPLAY "2 - Blackrock Circuit"
+                        DISPLAY "3 - Rushline Dash"
+                        DISPLAY "4 - Chrono Pass"
+                        PROMPT "Please choose your track (1 - 4): "
+                        SET trackID = getValidIntegerInput("track, 1, 4)
+                END IF
 
+                IF trackID = 1 THEN RETURN "Section 9 Circuit"
+                ELSE IF trackID = 2 THEN RETURN "Blackrock Circuit"
+                ELSE IF trackID = 3 THEN RETURN "Rushline Dash"
+                ELSE RETURN "Chrono Pass"
+                END IF 
+
+                IF bookingType == "Solo" AND raceFormat == "Circuit Race" THEN
+                        DISPLAY "Available Track: Section 9 Circuit"
+                        DISPLAY "Defaulting to said track"
+                        RETURN "Section 9 Circuit"
+                ELSE IF raceFormat == "Elimination Race" THEN
+		        DISPLAY "Available Track: Blackrock Circuit"
+			DISPLAY "Defaulting to said track"
+                        RETURN "Blackrock Circuit"
+                ELSE IF raceFormat == "Sprint Race" THEN
+		        DISPLAY "Available Track: Rushline Dash"
+			DISPLAY "Defaulting to said track"
+                        RETURN "Rushline Dash"
+                ELSE IF raceFormat == "Drag Race" THEN
+		        DISPLAY "Available Track: Torque Strip"
+			DISPLAY "Defaulting to said track"
+                        RETURN "Torque Strip"
+                END IF
+
+                RETURN "Track"
+        END FUNCTION
+                        
         MODULE setEngineCapacity(INTEGER driverCount, STRING driverName[], INTEGER driverAge[], CHARACTER license[])
                 FOR INTEGER i = 0, i < driverCount, i++
                         DISPLAY "Driver : ", driverName[i]
