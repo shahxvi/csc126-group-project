@@ -188,7 +188,7 @@
                         SET raceFormatID = getValidIntegerInput("race format", 1, 5)
                 END IF 
 
-                switch (raceFormatID) 
+                SWITCH (raceFormatID) 
                         case 1: return "Circuit Race";
                         case 2: return "Sprint Race";
                         case 3: return "Time Trial";
@@ -216,27 +216,27 @@
                         SET trackID = getValidIntegerInput("track, 1, 4)
                 END IF
 
-                IF trackID = 1 THEN RETURN "Section 9 Circuit"
-                ELSE IF trackID = 2 THEN RETURN "Blackrock Circuit"
-                ELSE IF trackID = 3 THEN RETURN "Rushline Dash"
-                ELSE RETURN "Chrono Pass"
-                END IF 
+                SWITCH (trackID)
+                        case 1: return "Section 9 Circuit";
+                        case 2: return "Blackrock Circuit";
+                        case 3: return "Rushline Dash";
+                        default: return "Chrono Pass";
 
                 IF bookingType == "Solo" AND raceFormat == "Circuit Race" THEN
                         DISPLAY "Available Track: Section 9 Circuit"
                         DISPLAY "Defaulting to said track"
                         RETURN "Section 9 Circuit"
                 ELSE IF raceFormat == "Elimination Race" THEN
-		        DISPLAY "Available Track: Blackrock Circuit"
-			DISPLAY "Defaulting to said track"
+                        DISPLAY "Available Track: Blackrock Circuit"
+                        DISPLAY "Defaulting to said track"
                         RETURN "Blackrock Circuit"
                 ELSE IF raceFormat == "Sprint Race" THEN
-		        DISPLAY "Available Track: Rushline Dash"
-			DISPLAY "Defaulting to said track"
+                        DISPLAY "Available Track: Rushline Dash"
+                        DISPLAY "Defaulting to said track"
                         RETURN "Rushline Dash"
                 ELSE IF raceFormat == "Drag Race" THEN
-		        DISPLAY "Available Track: Torque Strip"
-			DISPLAY "Defaulting to said track"
+                        DISPLAY "Available Track: Torque Strip"
+                        DISPLAY "Defaulting to said track"
                         RETURN "Torque Strip"
                 END IF
 
@@ -264,13 +264,10 @@
                                 SET engineCapacity[i] = getValidIntegerInput("engine capacity", 1, 3)
                         END IF
 
-                        IF engineCapacity[i] = 1 THEN
-                                engineCapacity = 120
-                        ELSE IF enginecapacity[i] = 2 THEN
-                                engineCapacity = 200
-                        ELSE
-                                engineCapacity = 270
-                        END IF
+                        SWITCH (engineCapacity[i])
+                                case 1: engineCapacity[i] = 120; break;
+                                case 2: engineCapacity[i] = 200; break;
+                                default: engineCapacity[i] = 270; break;
                 END FOR
         END MODULE
 
@@ -402,7 +399,7 @@
                         RETURN 0.0
                 END IF
         END FUNCTION
-        
+
         FUNCTION FLOAT calculatePrice (int engineCapacity[], int laps, int driverCount, float totalGearPrice, float membershipDiscount)
                 SET pricePerCC = 03
                 SET totalKartPrice = 0
