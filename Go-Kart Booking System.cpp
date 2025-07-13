@@ -11,6 +11,7 @@
 #include <iomanip>
 #include <cctype>
 #include <algorithm>
+#define PRICEPERCC 0.3
 
 using std::string;
 using std::cout;
@@ -168,39 +169,40 @@ int main()
 
 void menu()
 {
-	int menu;
-	
+	enum menu {start = 1, format = 2, track = 3, gear = 4, engine = 5};
+	menu menuOption;
+
 	do {
 		displayMenu();
 		cout << "\n\t\t\tChoose your option: ";
-		menu = getValidIntegerInput("option", 0, 5);
+		menuOption = static_cast<menu>(getValidIntegerInput("option", 1, 5));
 
-		if (menu == 2) {
+		if (menuOption == format) {
 			system("cls");
 			displayRaceFormat("Group");	// Parameters to allow the menu to show every option
 			system("pause");
 			system("cls");
 		}
-		if (menu == 3) {
+		if (menuOption == track) {
 			system("cls");
 			displayTrackList();
 			system("pause");
 			system("cls");
 		}
-		if (menu == 4) {
+		if (menuOption == gear) {
 			system("cls");
 			displayRacingGear();
 			system("pause");
 			system("cls");
 		}
-		if (menu == 5) {
+		if (menuOption == engine) {
 			system("cls");
 			displayEngineCapacities(18, 'Y');	// Parameters to allow the menu to show every option
 			system("pause");
 			system("cls");
 		}
 
-	} while (menu != 1 && menu != 0);
+	} while (menuOption != start);
 }
 
 void displayMenu()
@@ -215,8 +217,7 @@ void displayMenu()
     	     << "\n\t\t\t2 - Race Formats"
     	     << "\n\t\t\t3 - Track Lists"
 	     << "\n\t\t\t4 - Racing Gear Sizes & Prices"
-    	     << "\n\t\t\t5 - Go-Kart Engine Capacities"
-    	     << "\n\t\t\t0 - Exit\n";
+    	     << "\n\t\t\t5 - Go-Kart Engine Capacities\n";
 }
 
 void displayRaceFormat(string bookingType)
@@ -563,8 +564,8 @@ float setMembershipDiscount()
 	membership = getValidCharacterInput();
 
 	if(membership == 'Y') {
-		return 0.1;
 		counter.membership++;
+		return 0.1;
 	}
 	else {
 		return 0.0;
@@ -573,7 +574,6 @@ float setMembershipDiscount()
 
 float calculatePrice(int engineCapacity[], int laps, int driverCount, float totalGearPrice, float membershipDiscount)
 {
-	const float PRICEPERCC = 0.3;
 	float totalKartPrice = 0;
 	
 	for (int i = 0; i < driverCount; i++)
