@@ -43,6 +43,9 @@ struct Counters {
 	int customer = 0;
 	float totalIncome = 0;
 	int membership = 0;
+	int cc120 = 0;
+	int cc200 = 0;	
+	int cc270 = 0;
 };
 
 Counters counter;
@@ -270,8 +273,8 @@ string getBookingType()
 	int bookingTypeID;
 
 	cout << "\n\t\t\t1 - Solo\n"
-		  << "\t\t\t2 - Group (Maximum 5)\n"
-		  << "\t\t\tPlease choose your desired booking (1 - 2): ";
+	     << "\t\t\t2 - Group (Maximum 5)\n"
+	     << "\t\t\tPlease choose your desired booking (1 - 2): ";
 	bookingTypeID = getValidIntegerInput("booking type", 1, 2);
 
 	if (bookingTypeID == 1) {
@@ -405,9 +408,9 @@ void setEngineCapacity(int driverCount, string driverName[], int driverAge[], ch
 		}
 
 		switch (engineCapacity[i]) {
-			case 1: engineCapacity[i] = 120; break;
-			case 2: engineCapacity[i] = 200; break;
-			default: engineCapacity[i] = 270; break;
+			case 1: engineCapacity[i] = 120; counter.cc120++; break;
+			case 2: engineCapacity[i] = 200; counter.cc200++; break;
+			default: engineCapacity[i] = 270; counter.cc270++; break;
 		}
 	}
 }
