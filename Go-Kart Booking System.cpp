@@ -42,6 +42,7 @@ float calculatePrice(int engineCapacity[], int laps, int driverCount, float gear
 struct Counters {
 	int customer = 0;
 	float totalIncome = 0;
+	int membership = 0;
 };
 
 Counters counter;
@@ -530,19 +531,22 @@ float setMembershipDiscount()
 	cout << "\n\t\t\tDo you have a membership? (Y/N): ";
 	membership = getValidCharacterInput();
 
-	if(membership == 'Y')
+	if(membership == 'Y') {
 		return 0.1;
-	else
+		counter.membership++;
+	}
+	else {
 		return 0.0;
+	}
 }
 
 float calculatePrice(int engineCapacity[], int laps, int driverCount, float totalGearPrice, float membershipDiscount)
 {
-	const float pricePerCC = 0.3;
+	const float PRICEPERCC = 0.3;
 	float totalKartPrice = 0;
 	
 	for (int i = 0; i < driverCount; i++)
-		totalKartPrice += (engineCapacity[i] * pricePerCC) * laps;
+		totalKartPrice += (engineCapacity[i] * PRICEPERCC) * laps;
 	
 	float finalPrice = (totalKartPrice + totalGearPrice) * (1 - membershipDiscount);
 	return finalPrice;
