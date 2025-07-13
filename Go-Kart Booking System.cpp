@@ -11,6 +11,7 @@
 #include <iomanip>
 #include <cctype>
 #include <algorithm>
+
 #define PRICEPERCC 0.3
 
 using std::string;
@@ -90,6 +91,8 @@ int main()
 
 		getDriverDetails(driverCount, driverName, driverAge, license);
 
+		system("cls");
+
 		raceFormat = setRaceFormat(bookingType);
 
 		track = setTrack(bookingType, raceFormat);
@@ -97,8 +100,9 @@ int main()
 		setEngineCapacity(driverCount, driverName, driverAge, license, engineCapacity);
 
 		laps = setLaps(driverCount, raceFormat);
-
+		
 		for (int i = 0; i < driverCount; i++) {
+			system("cls");
 			displayRacingGear();
 			cout << "\n\t\t\tDriver: " << driverName[i];
 			selectHelmet(i,helmetSize, helmetPrice);
@@ -114,27 +118,30 @@ int main()
 
 		system("cls");
 
+		// Summary for each customers
 		cout << "\n\t\t\tRace Format: " << raceFormat
 		     << "\n\t\t\tTrack: " << track << "\n";
 
-		std::cout << std::fixed << std::showpoint;
+		std::cout << std::fixed << std::showpoint << std::setprecision(2);
 		for (int i = 0; i < driverCount; i++) {
 			cout << "\n\t\t\tDriver\t\t\t: "	<< driverName[i]
 			     << "\n\t\t\tAge\t\t\t: "		<< driverAge[i]
 			     << "\n\t\t\tHas License\t\t: "	<< license[i]
 			     << "\n\t\t\tEngine Capacity\t\t: " << engineCapacity[i] << "cc"
+			     << "\n\t\t\tPrice per CC\t\t: " 	<< "RM" << PRICEPERCC << "/cc"
+			     << "\n\t\t\tGo-Kart Price\t\t: RM" << PRICEPERCC * engineCapacity[i] << "RM"
 			     << "\n\t\t\tHelmet Size\t\t: "	<< helmetSize[i]
-			     << "\n\t\t\tHelmet Price\t\t: RM"	<< std::setprecision(2) << helmetPrice[i]
+			     << "\n\t\t\tHelmet Price\t\t: RM"	<< helmetPrice[i]
 			     << "\n\t\t\tSuit Size\t\t: "	<< suitSize[i]
-			     << "\n\t\t\tSuit Price\t\t: RM"	<< std::setprecision(2) << suitPrice[i]
+			     << "\n\t\t\tSuit Price\t\t: RM"	<< suitPrice[i]
 			     << "\n\t\t\tShoe Size\t\t: "	<< shoeSize[i] << "cm"
-			     << "\n\t\t\tShoe Price\t\t: RM"	<< std::setprecision(2) << shoePrice[i]
-			     << "\n\t\t\tGear Price\t\t: RM"	<< std::setprecision(2) << gearPrice[i] << "\n";
+			     << "\n\t\t\tShoe Price\t\t: RM"	<< shoePrice[i]
+			     << "\n\t\t\tGear Price\t\t: RM"	<< gearPrice[i] << "\n";
 		}
-		
-		cout << "\n\t\t\tTotal Gear Price\t\t: RM" <<  std::setprecision(2) << totalGearPrice
+
+		cout << "\n\t\t\tTotal Gear Price\t: RM" << totalGearPrice
 			  << "\n\t\t\tMembership Discount\t: " << membershipDiscount * 100 << "%"
-			  << "\n\t\t\tTotal : RM" <<  std::setprecision(2) << totalPrice;
+			  << "\n\t\t\tTotal : RM" << totalPrice;
 
 		counter.totalIncome += totalPrice;
 		counter.customer+= driverCount;
@@ -146,8 +153,9 @@ int main()
 
 	} while (std::toupper(continueChoice) == 'Y');
 
-	cout << "\n\t\t\tTotal Number Driver Booked: " << counter.customer;
-	cout << "\n\t\t\tTotal Income: RM " <<  std::setprecision(2) << counter.totalIncome << endl;
+	// Overall Summary
+	cout << "\n\t\t\tTotal Number Drivers: " << counter.customer;
+	cout << "\n\t\t\tTotal Income: RM " << counter.totalIncome << endl;
 
 	cout << "\n\t\t\tTotal Number of 120cc Go-Kart Booked: " << counter.cc120;
 	cout << "\n\t\t\tTotal Number of 200cc Go-Kart Booked: " << counter.cc200;
@@ -175,11 +183,11 @@ void menu()
 	do {
 		displayMenu();
 		cout << "\n\t\t\tChoose your option: ";
-		menuOption = static_cast<menu>(getValidIntegerInput("option", 1, 5));
+		menuOption = static_cast<menu>(getValidIntegerInput("option", 1, 5)); // Converts integers into menu enums
 
 		if (menuOption == format) {
 			system("cls");
-			displayRaceFormat("Group");	// Parameters to allow the menu to show every option
+			displayRaceFormat("Group");		// Parameters to allow the menu to show every option
 			system("pause");
 			system("cls");
 		}
@@ -223,10 +231,10 @@ void displayMenu()
 void displayRaceFormat(string bookingType)
 {
 	cout << "\n\t\t\tAvailable Race Formats:"
-			  << "\n\t\t\t1 - Circuit Race"
-			  << "\n\t\t\t2 - Sprint Race"
-			  << "\n\t\t\t3 - Time Trial"
-			  << "\n\t\t\t4 - Drag Race";
+	     << "\n\t\t\t1 - Circuit Race"
+	     << "\n\t\t\t2 - Sprint Race"
+	     << "\n\t\t\t3 - Time Trial"
+	     << "\n\t\t\t4 - Drag Race";
 	if (bookingType == "Group") {
 		cout << "\n\t\t\t5 - Eliminationn Race (Group)\n";
 	}
@@ -320,6 +328,8 @@ int getDriverCount(string& bookingType)
 void getDriverDetails(int& driverCount, string driverName[], int driverAge[], char license[])
 {
 	for (int i = 0; i < driverCount; i++) {
+		system("cls");
+
 		cin.ignore();
 		cout << "\n\t\t\tDriver #" << (i+1) << " Name: ";
 		std::getline(cin, driverName[i]);
