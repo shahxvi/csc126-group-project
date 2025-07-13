@@ -14,6 +14,7 @@
 
 using std::string;
 using std::cout;
+using std::endl;
 using std::cin;
 
 void menu();
@@ -42,20 +43,26 @@ float calculatePrice(int engineCapacity[], int laps, int driverCount, float gear
 struct Counters {
 	int customer = 0;
 	float totalIncome = 0;
+	int solo = 0;
+	int group = 0;	
 	int membership = 0;
 	int cc120 = 0;
 	int cc200 = 0;	
 	int cc270 = 0;
+	int section9 = 0;
+	int blackrock = 0;
+	int rushlineDash = 0;
+	int choroPass = 0;
+	int torqueStrip = 0;
 };
-
 Counters counter;
 
 int main()
 {
-	menu();
-
 	char continueChoice;
 	do {
+		menu();
+
 		//Initializations (in order)
 		string bookingType;
 
@@ -109,19 +116,19 @@ int main()
 		cout << "\n\t\t\tRace Format: " << raceFormat
 		     << "\n\t\t\tTrack: " << track << "\n";
 
-		cout << std::fixed << std::showpoint;
+		std::cout << std::fixed << std::showpoint;
 		for (int i = 0; i < driverCount; i++) {
 			cout << "\n\t\t\tDriver\t\t\t: "	<< driverName[i]
 			     << "\n\t\t\tAge\t\t\t: "		<< driverAge[i]
 			     << "\n\t\t\tHas License\t\t: "	<< license[i]
 			     << "\n\t\t\tEngine Capacity\t\t: " << engineCapacity[i] << "cc"
 			     << "\n\t\t\tHelmet Size\t\t: "	<< helmetSize[i]
-			     << "\n\t\t\tHelmet Price\t\t: RM"	<<  std::setprecision(2) << helmetPrice[i]
+			     << "\n\t\t\tHelmet Price\t\t: RM"	<< std::setprecision(2) << helmetPrice[i]
 			     << "\n\t\t\tSuit Size\t\t: "	<< suitSize[i]
-			     << "\n\t\t\tSuit Price\t\t: RM"	<<  std::setprecision(2) << suitPrice[i]
+			     << "\n\t\t\tSuit Price\t\t: RM"	<< std::setprecision(2) << suitPrice[i]
 			     << "\n\t\t\tShoe Size\t\t: "	<< shoeSize[i] << "cm"
 			     << "\n\t\t\tShoe Price\t\t: RM"	<< std::setprecision(2) << shoePrice[i]
-			     << "\n\t\t\tGear Price\t\t: RM"	<<  std::setprecision(2) << gearPrice[i] << "\n";
+			     << "\n\t\t\tGear Price\t\t: RM"	<< std::setprecision(2) << gearPrice[i] << "\n";
 		}
 		
 		cout << "\n\t\t\tTotal Gear Price\t\t: RM" <<  std::setprecision(2) << totalGearPrice
@@ -129,7 +136,7 @@ int main()
 			  << "\n\t\t\tTotal : RM" <<  std::setprecision(2) << totalPrice;
 
 		counter.totalIncome += totalPrice;
-		counter.customer++;
+		counter.customer+= driverCount;
 
 		cout << "\n\t\t\tContinue for another customer? (Y/N): ";
 		continueChoice = getValidCharacterInput();
@@ -138,9 +145,23 @@ int main()
 
 	} while (std::toupper(continueChoice) == 'Y');
 
-	cout << "\n\t\t\tTotal Income: RM " <<  std::setprecision(2) << counter.totalIncome << "\n";
-	
-	system("pause");
+	cout << "\n\t\t\tTotal Number Driver Booked: " << counter.customer;
+	cout << "\n\t\t\tTotal Income: RM " <<  std::setprecision(2) << counter.totalIncome << endl;
+
+	cout << "\n\t\t\tTotal Number of 120cc Go-Kart Booked: " << counter.cc120;
+	cout << "\n\t\t\tTotal Number of 200cc Go-Kart Booked: " << counter.cc200;
+	cout << "\n\t\t\tTotal Number of 270cc Go-Kart Booked: " << counter.cc270 << endl;
+
+	cout << "\n\t\t\tTotal Number of members: " << counter.membership <<  endl;
+
+	cout << "\n\t\t\tTotal Number of Section 9 Circuit booking: " << counter.section9;
+	cout << "\n\t\t\tTotal Number of Blackrock Circuit booking: " << counter.blackrock;
+	cout << "\n\t\t\tTotal Number of Rushline Dash booking: " << counter.rushlineDash;
+	cout << "\n\t\t\tTotal Number of Chorno Pass booking: " << counter.choroPass;
+	cout << "\n\t\t\tTotal Number of Torque Strip booking: " << counter.torqueStrip;
+
+	cout << endl;
+	cout << "\n\t\t\t" << system("pause");
 
 	return 0;
 }
@@ -185,17 +206,17 @@ void menu()
 void displayMenu()
 {
 	cout << "\t_________            ______ __             _____  ________            ______ _____                 ________              _____                 "
-		  << "\n\t__  ____/_____       ___  //_/_____ _________  /_ ___  __ )______________  /____(_)_____________ _ __  ___/____  __________  /____________ ___ "
-		  << "\n\t_  / __ _  __ \\________  ,<  _  __ `/_  ___/  __/ __  __  |  __ \\  __ \\_  //_/_  /__  __ \\_  __ `/ _____ \\__  / / /_  ___/  __/  _ \\_  __ `__ \\"
-		  << "\n\t/ /_/ / / /_/ //_____/  /| | / /_/ /_  /   / /_   _  /_/ // /_/ / /_/ /  ,<  _  / _  / / /  /_/ /  ____/ /_  /_/ /_(__  )/ /_ /  __/  / / / / /"
-		  << "\n\t\\____/  \\____/       /_/ |_| \\__,_/ /_/    \\__/   /_____/ \\____/\\____//_/|_| /_/  /_/ /_/_\\__, /   /____/ _\\__, / /____/ \\__/ \\___//_/ /_/ /_/ "
-		  << "\n\t                                                                                         /____/           /____/                               "
-    		  << "\n\t\t\t1 - Start Booking"
-    		  << "\n\t\t\t2 - Race Formats"
-    		  << "\n\t\t\t3 - Track Lists"
-		  << "\n\t\t\t4 - Racing Gear Sizes & Prices"
-    		  << "\n\t\t\t5 - Go-Kart Engine Capacities"
-    		  << "\n\t\t\t0 - Exit\n";
+	     << "\n\t__  ____/_____       ___  //_/_____ _________  /_ ___  __ )______________  /____(_)_____________ _ __  ___/____  __________  /____________ ___ "
+	     << "\n\t_  / __ _  __ \\________  ,<  _  __ `/_  ___/  __/ __  __  |  __ \\  __ \\_  //_/_  /__  __ \\_  __ `/ _____ \\__  / / /_  ___/  __/  _ \\_  __ `__ \\"
+	     << "\n\t/ /_/ / / /_/ //_____/  /| | / /_/ /_  /   / /_   _  /_/ // /_/ / /_/ /  ,<  _  / _  / / /  /_/ /  ____/ /_  /_/ /_(__  )/ /_ /  __/  / / / / /"
+	     << "\n\t\\____/  \\____/       /_/ |_| \\__,_/ /_/    \\__/   /_____/ \\____/\\____//_/|_| /_/  /_/ /_/_\\__, /   /____/ _\\__, / /____/ \\__/ \\___//_/ /_/ /_/ "
+	     << "\n\t                                                                                         /____/           /____/                               "
+	     << "\n\t\t\t1 - Start Booking"
+    	     << "\n\t\t\t2 - Race Formats"
+    	     << "\n\t\t\t3 - Track Lists"
+	     << "\n\t\t\t4 - Racing Gear Sizes & Prices"
+    	     << "\n\t\t\t5 - Go-Kart Engine Capacities"
+    	     << "\n\t\t\t0 - Exit\n";
 }
 
 void displayRaceFormat(string bookingType)
@@ -278,9 +299,11 @@ string getBookingType()
 	bookingTypeID = getValidIntegerInput("booking type", 1, 2);
 
 	if (bookingTypeID == 1) {
+		counter.solo++;
 		return "Solo";
 	}
 	else {
+		counter.group++;
 		return "Group";
 	}
 }
@@ -355,29 +378,33 @@ string setTrack(string& bookingType, string& raceFormat)
 		trackID = getValidIntegerInput("track", 1, 4);
 	}
 	switch (trackID) {
-		case 1: return "Section 9 Circuit";
-		case 2: return "Blackrock Circuit";
-		case 3: return "Rushline Dash";
-		default: return "Chrono Pass";
+		case 1: counter.section9++; return "Section 9 Circuit";
+		case 2: counter.blackrock++; return "Blackrock Circuit";
+		case 3: counter.rushlineDash++; return "Rushline Dash";
+		default: counter.choroPass++; return "Chrono Pass";
 	}
 	if (bookingType == "Solo" && raceFormat == "Circuit Race") {
 		cout << "\n\t\t\tAvailable Track: Section 9 Circuit"
-			  << "\n\t\t\tDefaulting to said track\n";
+		     << "\n\t\t\tDefaulting to said track\n";
+		counter.section9++;
 		return "Section 9 Circuit";
 	}
 	else if (raceFormat == "Elimination Race") {
 		cout << "\n\t\t\tAvailable Track: Blackrock Circuit"
-			  << "\n\t\t\tDefaulting to said track\n";
+		     << "\n\t\t\tDefaulting to said track\n";
+		counter.blackrock++;
 		return "Blackrock Circuit";
 	}
 	else if (raceFormat == "Sprint Race") {
 		cout << "\n\t\t\tAvailable Track: Rushline Dash"
 			  << "\n\t\t\tDefaulting to said track\n";
+		counter.rushlineDash++;
 		return "Rushline Dash";
 	}
 	else if (raceFormat == "Drag Race") {
 		cout << "\n\t\t\tAvailable Track: Torque Strip"
 			  << "\n\t\t\tDefaulting to said track\n";
+		counter.torqueStrip++;
 		return "Torque Strip";
 	}
 	return "Track"; // Should never get to this point
@@ -394,6 +421,7 @@ void setEngineCapacity(int driverCount, string driverName[], int driverAge[], ch
 			cout << "\n\t\t\tDriver under 13: Go-Kart must be under 200cc"
 				  << "\n\t\t\tDefaulting to 120cc\n";
 			engineCapacity[i] = 120;
+			counter.cc120++;
 			continue;
 		}
 		// Over 13 without License
