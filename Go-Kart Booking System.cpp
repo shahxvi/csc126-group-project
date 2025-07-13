@@ -1,9 +1,9 @@
 // CSC126 Group Project
 // Go-Kart Booking System
 
-// IRFAN SHAH BIN MAIZUL HISHAM			(2025171523) (shahxvi)
+// IRFAN SHAH BIN MAIZUL HISHAM		(2025171523) (shahxvi)
 // SHAHRIN AREFF SHAH BIN SHAH RIZAL	(2025151503) (rinnnnnn17)
-// MUHAMMAD BIN ABDUL AZIZ				(2025507823) (Kundoo)
+// MUHAMMAD BIN ABDUL AZIZ		(2025507823) (Kundoo)
 
 #include <iostream>
 #include <string>
@@ -12,55 +12,60 @@
 #include <cctype>
 #include <algorithm>
 
+using std::string;
+
 void menu();
 void displayMenu();
-void displayRaceFormat(std::string bookingType);
+void displayRaceFormat(string bookingType);
 void displayTrackList();
 void displayRacingGear();
 void displayEngineCapacities(int age, char license);
 
-int getValidIntegerInput (std::string inputType, int minValue, int maxValue);
+int getValidIntegerInput (string inputType, int minValue, int maxValue);
 char getValidCharacterInput();
-std::string getBookingType();
-int getDriverCount(std::string& bookingType);
-void getDriverDetails(int& driverCount, std::string driverName[], int driverAge[], char license[]);
-std::string setRaceFormat(std::string& bookingType);
-std::string setTrack(std::string& bookingType, std::string& raceFormat);
-void setEngineCapacity(int driverCount, std::string driverName[], int driverAge[], char license[], int engineCapacity[]);
-int setLaps(int driverCount, std::string& raceFormat);
-void driverGear(int& i, std::string driverName[]);
-float selectHelmet(int i, std::string helmetSize[], float helmetPrice[]);
-float selectSuit(int i, std::string suitSize[], float suitPrice[]);
+string getBookingType();
+int getDriverCount(string& bookingType);
+void getDriverDetails(int& driverCount, string driverName[], int driverAge[], char license[]);
+string setRaceFormat(string& bookingType);
+string setTrack(string& bookingType, string& raceFormat);
+void setEngineCapacity(int driverCount, string driverName[], int driverAge[], char license[], int engineCapacity[]);
+int setLaps(int driverCount, string& raceFormat);
+float selectHelmet(int i, string helmetSize[], float helmetPrice[]);
+float selectSuit(int i, string suitSize[], float suitPrice[]);
 float selectShoe(int i, int shoeSize[], float shoePrice[]);
 float calculateTotalGearPrice(int& driverCount, float helmetPrice[], float suitPrice[], float shoePrice[], float gearPrice[]);
 float setMembershipDiscount();
 float calculatePrice(int engineCapacity[], int laps, int driverCount, float gearPrice, float membershipDiscount);
+
+struct Counters {
+	int customer = 0;
+	float totalIncome = 0;
+};
+
+Counters counter;
 
 int main()
 {
 	menu();
 
 	char continueChoice;
-	int customer = 0;
-	float totalIncome = 0;
-
 	do {
 		//Initializations (in order)
-		std::string bookingType;
+		string bookingType;
 
 		int driverCount;
-		std::string driverName[5];
+		string driverName[5];
 		int driverAge[5];
 		char license[5];
 
-		std::string raceFormat;
-		std::string track;
+		string raceFormat;
+		string track;
 		
 		int engineCapacity[5];
 
 		int laps;
 
-		std::string helmetSize[5], suitSize[5]; int shoeSize[5];
+		string helmetSize[5], suitSize[5]; int shoeSize[5];
 		float helmetPrice[5], suitPrice[5], shoePrice[5];
 		float gearPrice[5];
 
@@ -80,7 +85,8 @@ int main()
 		laps = setLaps(driverCount, raceFormat);
 
 		for (int i = 0; i < driverCount; i++) {
-			driverGear(i, driverName);
+			displayRacingGear();
+			std::cout << "\n\t\t\tDriver: " << driverName[i];
 			selectHelmet(i,helmetSize, helmetPrice);
 			selectSuit(i,suitSize, suitPrice);
 			selectShoe(i, shoeSize, shoePrice);
@@ -95,29 +101,29 @@ int main()
 		system("cls");
 
 		std::cout << "\n\t\t\tRace Format: " << raceFormat
-			  << "\n\t\t\tTrack: " << track << "\n";
+		     << "\n\t\t\tTrack: " << track << "\n";
 
 		std::cout << std::fixed << std::showpoint;
 		for (int i = 0; i < driverCount; i++) {
-			std::cout << "\n\t\t\tDriver\t\t\t: " << driverName[i]
-				  << "\n\t\t\tAge\t\t\t: " << driverAge[i]
-				  << "\n\t\t\tHas License\t\t: " << license[i]
-				  << "\n\t\t\tEngine Capacity\t\t: " << engineCapacity[i] << "cc"
-				  << "\n\t\t\tHelmet Size\t\t: " << helmetSize[i]
-				  << "\n\t\t\tHelmet Price\t\t: RM" <<  std::setprecision(2) << helmetPrice[i]
-				  << "\n\t\t\tSuit Size\t\t: " << suitSize[i]
-				  << "\n\t\t\tSuit Price\t\t: RM" <<  std::setprecision(2) << suitPrice[i]
-				  << "\n\t\t\tShoe Size\t\t: " << shoeSize[i] << "cm"
-				  << "\n\t\t\tShoe Price\t\t: RM" << std::setprecision(2) << shoePrice[i]
-				  << "\n\t\t\tGear Price\t\t: RM" <<  std::setprecision(2) << gearPrice[i] << "\n";
+			std::cout << "\n\t\t\tDriver\t\t\t: "	<< driverName[i]
+			     << "\n\t\t\tAge\t\t\t: "		<< driverAge[i]
+			     << "\n\t\t\tHas License\t\t: "	<< license[i]
+			     << "\n\t\t\tEngine Capacity\t\t: " << engineCapacity[i] << "cc"
+			     << "\n\t\t\tHelmet Size\t\t: "	<< helmetSize[i]
+			     << "\n\t\t\tHelmet Price\t\t: RM"	<<  std::setprecision(2) << helmetPrice[i]
+			     << "\n\t\t\tSuit Size\t\t: "	<< suitSize[i]
+			     << "\n\t\t\tSuit Price\t\t: RM"	<<  std::setprecision(2) << suitPrice[i]
+			     << "\n\t\t\tShoe Size\t\t: "	<< shoeSize[i] << "cm"
+			     << "\n\t\t\tShoe Price\t\t: RM"	<< std::setprecision(2) << shoePrice[i]
+			     << "\n\t\t\tGear Price\t\t: RM"	<<  std::setprecision(2) << gearPrice[i] << "\n";
 		}
 		
-		std::cout << "\n\t\t\tTotal Gear Price: RM" <<  std::setprecision(2) << totalGearPrice
+		std::cout << "\n\t\t\tTotal Gear Price\t\t: RM" <<  std::setprecision(2) << totalGearPrice
 			  << "\n\t\t\tMembership Discount\t: " << membershipDiscount * 100 << "%"
 			  << "\n\t\t\tTotal : RM" <<  std::setprecision(2) << totalPrice;
 
-		totalIncome += totalPrice;
-		customer++;
+		counter.totalIncome += totalPrice;
+		counter.customer++;
 
 		std::cout << "\n\t\t\tContinue for another customer? (Y/N): ";
 		continueChoice = getValidCharacterInput();
@@ -126,7 +132,7 @@ int main()
 
 	} while (std::toupper(continueChoice) == 'Y');
 
-	std::cout << "\n\t\t\tTotal Income: RM " <<  std::setprecision(2) << totalIncome << "\n";
+	std::cout << "\n\t\t\tTotal Income: RM " <<  std::setprecision(2) << counter.totalIncome << "\n";
 	
 	system("pause");
 
@@ -145,18 +151,26 @@ void menu()
 		if (menu == 2) {
 			system("cls");
 			displayRaceFormat("Group");	// Parameters to allow the menu to show every option
+			system("pause");
+			system("cls");
 		}
 		if (menu == 3) {
 			system("cls");
 			displayTrackList();
+			system("pause");
+			system("cls");
 		}
 		if (menu == 4) {
 			system("cls");
 			displayRacingGear();
+			system("pause");
+			system("cls");
 		}
 		if (menu == 5) {
 			system("cls");
 			displayEngineCapacities(18, 'Y');	// Parameters to allow the menu to show every option
+			system("pause");
+			system("cls");
 		}
 
 	} while (menu != 1 && menu != 0);
@@ -178,7 +192,7 @@ void displayMenu()
     		  << "\n\t\t\t0 - Exit\n";
 }
 
-void displayRaceFormat(std::string bookingType)
+void displayRaceFormat(string bookingType)
 {
 	std::cout << "\n\t\t\tAvailable Race Formats:"
 			  << "\n\t\t\t1 - Circuit Race"
@@ -221,7 +235,7 @@ void displayEngineCapacities(int age, char license)
 	}
 }
 
-int getValidIntegerInput(std::string inputType, int minValue, int maxValue)
+int getValidIntegerInput(string inputType, int minValue, int maxValue)
 {
 	int input;
 	std::cin >> input;
@@ -236,7 +250,7 @@ int getValidIntegerInput(std::string inputType, int minValue, int maxValue)
 
 char getValidCharacterInput()
 {
-	std::string input;
+	string input;
 	std::cin >> input;
 
 	while (input.length() != 1 || !std::isalpha(input[0])) {
@@ -248,7 +262,7 @@ char getValidCharacterInput()
 	return std::toupper(input[0]);
 }
 
-std::string getBookingType()
+string getBookingType()
 {
 	int bookingTypeID;
 
@@ -265,7 +279,7 @@ std::string getBookingType()
 	}
 }
 
-int getDriverCount(std::string& bookingType)
+int getDriverCount(string& bookingType)
 {
 	if (bookingType == "Solo")
 		return 1;
@@ -273,7 +287,7 @@ int getDriverCount(std::string& bookingType)
 	return getValidIntegerInput("number of drivers", 2, 5);
 }
 
-void getDriverDetails(int& driverCount, std::string driverName[], int driverAge[], char license[])
+void getDriverDetails(int& driverCount, string driverName[], int driverAge[], char license[])
 {
 	for (int i = 0; i < driverCount; i++) {
 		std::cin.ignore();
@@ -288,10 +302,10 @@ void getDriverDetails(int& driverCount, std::string driverName[], int driverAge[
 	}
 }
 
-std::string setRaceFormat(std::string& bookingType)
+string setRaceFormat(string& bookingType)
 {
 	int raceFormatID;
-	std::string raceFormat;
+	string raceFormat;
 
 	displayRaceFormat(bookingType);
 
@@ -300,7 +314,7 @@ std::string setRaceFormat(std::string& bookingType)
 		raceFormatID = getValidIntegerInput("race format", 1, 4);
 	}
 	else if (bookingType == "Group") {
-        	std::cout << "\n\t\t\tPlease choose the race format (1 - 5): ";
+		std::cout << "\n\t\t\tPlease choose the race format (1 - 5): ";
 		raceFormatID = getValidIntegerInput("race format", 1, 5);
 	}
 	
@@ -314,7 +328,7 @@ std::string setRaceFormat(std::string& bookingType)
 	}
 }
 
-std::string setTrack(std::string& bookingType, std::string& raceFormat)
+string setTrack(string& bookingType, string& raceFormat)
 {
 	int trackID;
 
@@ -363,7 +377,7 @@ std::string setTrack(std::string& bookingType, std::string& raceFormat)
 	return "Track"; // Should never get to this point
 }
 
-void setEngineCapacity(int driverCount, std::string driverName[], int driverAge[], char license[], int engineCapacity[])
+void setEngineCapacity(int driverCount, string driverName[], int driverAge[], char license[], int engineCapacity[])
 {
 	for (int i = 0; i < driverCount; i++) {
 		std::cout << "\n\t\t\tDriver : " << driverName[i];
@@ -395,7 +409,7 @@ void setEngineCapacity(int driverCount, std::string driverName[], int driverAge[
 	}
 }
 
-int setLaps(int driverCount, std::string& raceFormat) {
+int setLaps(int driverCount, string& raceFormat) {
 	int laps;
 	if (raceFormat == "Circuit Race") {
 		std::cout << "\n\t\t\tAvailable number of laps: 2, 3, 4"
@@ -421,14 +435,7 @@ int setLaps(int driverCount, std::string& raceFormat) {
 	return laps;
 }
 
-void driverGear(int& i, std::string driverName[])
-{
-	displayRacingGear();
-
-	std::cout << "\n\t\t\tDriver: " << driverName[i];
-}
-
-float selectHelmet(int i, std::string helmetSize[], float helmetPrice[])
+float selectHelmet(int i, string helmetSize[], float helmetPrice[])
 {
 	std::cout << "\n\t\t\tPlease choose your helmet size (S/M/L/XL): ";
 	std::cin >> helmetSize[i];
@@ -455,7 +462,7 @@ float selectHelmet(int i, std::string helmetSize[], float helmetPrice[])
 	return helmetPrice[i];
 }
 
-float selectSuit(int i, std::string suitSize[], float suitPrice[])
+float selectSuit(int i, string suitSize[], float suitPrice[])
 {
 	std::cout << "\n\t\t\tPlease choose your suit size (S/M/L/XL): ";
 	std::cin >> suitSize[i];
