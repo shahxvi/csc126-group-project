@@ -1,11 +1,9 @@
         FUNCTION INTEGER main()
-                CALL menu()
-
                 DECLARE CHARACTER continueChoice
-                DECLARE INTEGER customer = 0
-                DECLARE FLOAT totalIncome = 0
 
                 DO
+                        CALL menu()
+
                         //Initializations (in order)
                         STRING bookingType
 
@@ -42,10 +40,11 @@
                         SET laps = setLaps(driverCount, raceFormat)
 
                         FOR INTEGER i = 0; i < driverCount; i++
-                                CALL driverGear(i, driverName)
-                                CALL selectHelmet(i,helmetSize, helmetPrice)
-                                CALL selectSuit(i,suitSize, suitPrice)
-                                CALL selectShoe(i, shoeSize, shoePrice)
+                                CALL displayRacingGear()
+                                DISPLAY "Driver: ", driverName[i]
+                                selectHelmet(i,helmetSize, helmetPrice)
+                                selectSuit(i,suitSize, suitPrice)
+                                selectShoe(i, shoeSize, shoePrice)
                         END FOR
 
                         DECLARE FLOAT totalGearPrice
@@ -60,28 +59,31 @@
                         OUTPUT "Race Format: ", raceFormat
                         OUTPUT "Track: ", track
 
-                        std::cout << std::fixed << std::showpoint;
+                        DISPLAY "Race Format: ", raceFormat
+                        DISPLAY "Track: ", track
 
                         FOR INTEGER i = 0; i < driverCount; i++
                                 OUTPUT "Driver: ", driverName[i]
                                 OUTPUT "Age: ", driverAge[i]
                                 OUTPUT "Has License: ", license[i]
-                                OUTPUT "Engine Capacity: ", engineCapacity[i], "cc"
-                                OUTPUT "Helmet Size: ", helmetSize[i]
-                                OUTPUT "Helmet Price: RM", std::setprecision(2), helmetPrice[i]
+                                OUTPUT "Engine Capacity: ", engineCapacity[i] << "cc"
+                                OUTPUT "Price per CC: RM", PRICEPERCC, "/cc"
+                                OUTPUT "Go-Kart Price: RM ", PRICEPERCC * engineCapacity[i]
+                                OUTPUT "Helmet Size: ",	helmetSize[i]
+                                OUTPUT "Helmet Price: RM ", helmetPrice[i]
                                 OUTPUT "Suit Size: ", suitSize[i]
-                                OUTPUT "Suit Pricet: RM", std::setprecision(2), suitPrice[i]
+                                OUTPUT "Suit Price: RM ", suitPrice[i]
                                 OUTPUT "Shoe Size: ", shoeSize[i], "cm"
-                                OUTPUT "Shoe Price: RM", std::setprecision(2), shoePrice[i]
-                                OUTPUT "Gear Price: RM", std::setprecision(2), gearPrice[i]
+                                OUTPUT "Shoe Price: RM ", shoePrice[i]
+                                OUTPUT "Gear Price: RM ", gearPrice[i]
                         END FOR
                         
-                        OUTPUT "Total Gear Price: RM", std::setprecision(2), totalGearPrice
+                        OUTPUT "Total Gear Price: RM", totalGearPrice
                         OUTPUT "Membership Discount\t: ", membershipDiscount * 100, "%"
                         OUTPUT "Total : RM", std::setprecision(2), totalPrice
 
-                        totalIncome += totalPrice
-                        customer++
+                        counter.totalIncome += totalPrice
+                        counter.customer += driverCount; 
 
                         PROMPT "Continue for another customer? (Y/N): "
                         SET continueChoice = getValidCharacterInput()
@@ -90,30 +92,94 @@
 
                 OUTPUT "Total Income: RM ", std::setprecision(2), totalIncome
 
+                OUTPUT "Total Number Drivers: ", counter.customer
+                OUTPUT "Total Income: RM ", counter.totalIncome
+                OUTPUT "Total Number of 120cc Go-Kart Booked: ", counter.cc120
+                OUTPUT "Total Number of 200cc Go-Kart Booked: ", counter.cc200
+                OUTPUT "Total Number of 270cc Go-Kart Booked: ", counter.cc270
+
+                OUTPUT "Total Number of members: ", counter.membership
+
+                OUTPUT "Total Number of Section 9 Circuit booking: ", counter.section9
+                OUTPUT "Total Number of Blackrock Circuit booking: ", counter.blackrock
+                OUTPUT "Total Number of Rushline Dash booking: ", counter.rushlineDash
+                OUTPUT "Total Number of Chrono Pass booking: ", counter.choroPass
+                OUTPUT "Total Number of Torque Strip booking: ", counter.torqueStrip
+
                 RETURN 0
         END FUNCTION        
 
         MODULE menu()
-                DECLARE INTEGER menu
+	        DECLARE ENUMERATION menu {start = 1, format = 2, track = 3, gear = 4, engine = 5}
                 
+                DECLARE menu menuOption
+
                 DO
                         CALL displayMenu()
                         PROMPT "Choose your option: "
                         SET menu = getValidIntegerInput("option", 0, 5)
 
-                        IF menu == 2 THEN
-                                displayRaceFormat("Group")
+                        IF menuOption == format THEN
+                               Option displayRaceFormat("Group")
                         END IF
-                        IF menu == 3 THEN
-                                displayTrackList()
+                        IF menuOption == track THEN
+                               Option displayTrackList()
                         END IF
-                        IF menu == 4 THEN
-                                displayRacingGear()
+                        IF menuOption == gear THEN
+                               Option displayRacingGear()
                         END IF
-                        IF menu == 5 THEN
+                        IF menuOption == engine THEN
                                 displayEngineCapacities(18, 'Y')
                         END IF
-                WHILE menu != 1 && menu != 0
+                WHILE menuOption != start
+        END MODULE
+
+        MODULE displayMenu()
+                DISPLAY "Go-Kart Booking System"
+                DISPLAY "1 - Start Booking"
+                DISPLAY "2 - Race Formats"
+                DISPLAY "3 - Track Lists"
+                DISPLAY "4 - Racing Gear Sizes & Prices"
+                DISPLAY "5 - Go-Kart Engine Capacities"
+        END MODULE
+
+        MODULE displayRaceFormat(STRING bookingType)
+                DISPLAY "Available Race Formats:"
+                DISPLAY "1 - Circuit Race"
+                DISPLAY "2 - Sprint Race"
+                DISPLAY "3 - Time Trial"
+                DISPLAY "4 - Drag Race"
+                IF bookingType == "Group" THEN
+                     DISPLAY "5 - Eliminationn Race (Group)"
+                END IF
+        END MODULE 
+
+        MODULE displayTrackList()
+                DISPLAY "Available Tracks:"
+                DISPLAY "1 - Section 9 Circuit"
+                DISPLAY "2 - Chrono Pass"
+                DISPLAY "3 - Rushline Dash"
+                DISPLAY "4 - Blackrock Circuit"
+                DISPLAY "5 - Torque Strip"
+        END MODULE
+
+        MODULE displayRacingGear()
+                DISPLAY "Racing Gears:"
+                DISPLAY "        Helmets  Suits  Shoes"
+                DISPLAY "Size S:  RM 2    RM 5   Size 20-25 cm: RM 3"
+                DISPLAY "Size M:  RM 4    RM 10  Size 26-35 cm: RM 6"
+                DISPLAY "Size L:  RM 6    RM 15"
+                DISPLAY "Size XL  RM 8    RM 20"
+        END MODULE
+
+        MODULE displayEngineCapacities(INTEGER age, CHARACTER license)
+                DISPLAY "Available Engine Capacities:"
+                DISPLAY "1 - 100cc (Under 13)"
+                IF age >= 18 THEN
+                        DISPLAY "2 - 200cc"
+                        if (license == 'Y')
+                                DISPLAY "3 - 270cc (Requires License)"
+                END IF
         END MODULE
 
         FUNCTION INTEGER getValidIntegerInput(STRING inputType, INTEGER minValue, INTEGER maxValue)
@@ -138,7 +204,7 @@
                 RETURN std::toupper(input[0])
         END FUNCTION
 
-        STRING getBookingType()
+        FUNCTION STRING getBookingType()
                 DECLARE INTEGER bookingTypeID
 
                 DISPLAY "1 - Solo"
@@ -147,8 +213,10 @@
                 SET bookingTypeID = getValidIntegerInput("booking type", 1, 2)
 
                 IF bookingTypeID == 1 THEN
+                        SET counter.solo++
                         RETURN "Solo"
                 ELSE
+                        SET counter.group++
                         RETURN "Group"
                 END IF
         END FUNCTION
@@ -189,12 +257,12 @@
                 END IF 
 
                 SWITCH (raceFormatID) 
-                        case 1: return "Circuit Race";
-                        case 2: return "Sprint Race";
-                        case 3: return "Time Trial";
-                        case 4: return "Drag Race";
-                        case 5: return "Elimination Race";
-                        default: return "Invalid Race Format";
+                        CASE 1: RETURN "Circuit Race";
+                        CASE 2: RETURN "Sprint Race";
+                        CASE 3: RETURN "Time Trial";
+                        CASE 4: RETURN "Drag Race";
+                        CASE 5: RETURN "Elimination Race";
+                        DEFAULT: RETURN "Invalid Race Format";
         END FUNCTION 
 
         FUNCTION STRING setTrack(STRING& bookingType, STRING& raceFormat)
@@ -217,26 +285,30 @@
                 END IF
 
                 SWITCH (trackID)
-                        case 1: return "Section 9 Circuit";
-                        case 2: return "Blackrock Circuit";
-                        case 3: return "Rushline Dash";
-                        default: return "Chrono Pass";
+                        CASE 1: counter.section9++; RETURN "Section 9 Circuit";
+                        CASE 2: counter.blackrock++; RETURN "Blackrock Circuit";
+                        CASE 3: counter.rushlineDash++; RETURN "Rushline Dash";
+                        DEFAULT: counter.choroPass++; RETURN "Chrono Pass";
 
                 IF bookingType == "Solo" AND raceFormat == "Circuit Race" THEN
                         DISPLAY "Available Track: Section 9 Circuit"
                         DISPLAY "Defaulting to said track"
+                        SET counter.section9++
                         RETURN "Section 9 Circuit"
                 ELSE IF raceFormat == "Elimination Race" THEN
                         DISPLAY "Available Track: Blackrock Circuit"
                         DISPLAY "Defaulting to said track"
+                        SET counter.blackrock++
                         RETURN "Blackrock Circuit"
                 ELSE IF raceFormat == "Sprint Race" THEN
                         DISPLAY "Available Track: Rushline Dash"
                         DISPLAY "Defaulting to said track"
+                        SET counter.rushlineDash++
                         RETURN "Rushline Dash"
                 ELSE IF raceFormat == "Drag Race" THEN
                         DISPLAY "Available Track: Torque Strip"
                         DISPLAY "Defaulting to said track"
+                        SET counter.torqueStrip++
                         RETURN "Torque Strip"
                 END IF
 
@@ -253,6 +325,7 @@
                                 DISPLAY "Driver under 13: Go-Kart must be under 200cc"
                                 DISPLAY "Defaulting to 120cc"
                                 SET engineCapacity[i] = 120
+			        SET counter.cc120++
                                 CONTINUE
                         END IF
                         IF license[i] != 'Y' THEN
@@ -265,9 +338,9 @@
                         END IF
 
                         SWITCH (engineCapacity[i])
-                                case 1: engineCapacity[i] = 120; break;
-                                case 2: engineCapacity[i] = 200; break;
-                                default: engineCapacity[i] = 270; break;
+                                CASE 1: engineCapacity[i] = 120, SET counter.cc120++, BREAK
+                                CASE 2: engineCapacity[i] = 200, SET counter.cc200++, BREAK
+                                DEFAULT: engineCapacity[i] = 270, SET counter.cc270++, BREAK
                 END FOR
         END MODULE
 
@@ -364,7 +437,7 @@
                 PROMPT "Please choose your shoe size (20 - 35): "
                 READ shoeSize[i]
 
-                WHILE std::cin.fail() || (shoeSize[i] < 20 || shoeSizep[i] > 35
+                WHILE std::cin.fail() || (shoeSize[i] < 20 || shoeSizep[i] > 35)
                         PROMPT "Please choose a valid shoe size (20 - 35): "
                         READ shoeSize[i]
                 END WHILE
@@ -388,19 +461,20 @@
         RETURN totalGearPrice
         END FUNCTION
 
-        FUNCTION FLOAT setMembershipDiscount ()
+        FUNCTION FLOAT setMembershipDiscount()
                 DECLARE CHAR membership
                 PROMPT "Do you have a membership? (Y/N): "
                 SET membership = getValidCharacterInput()
 
                 IF membership == 'Y' THEN
+                        SET counter.membership++
                         RETURN 0.1
                 ELSE
                         RETURN 0.0
                 END IF
         END FUNCTION
 
-        FUNCTION FLOAT calculatePrice (int engineCapacity[], int laps, int driverCount, float totalGearPrice, float membershipDiscount)
+        FUNCTION FLOAT calculatePrice(int engineCapacity[], int laps, int driverCount, float totalGearPrice, float membershipDiscount)
                 SET pricePerCC = 03
                 SET totalKartPrice = 0
 

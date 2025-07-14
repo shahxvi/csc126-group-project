@@ -144,7 +144,7 @@ int main()
 			  << "\n\t\t\tTotal : RM " << totalPrice;
 
 		counter.totalIncome += totalPrice;
-		counter.customer+= driverCount;
+		counter.customer += driverCount;
 
 		cout << "\n\t\t\tContinue for another customer? (Y/N): ";
 		continueChoice = getValidCharacterInput();
@@ -224,7 +224,7 @@ void displayMenu()
 	     << "\n\t\t\t1 - Start Booking"
     	     << "\n\t\t\t2 - Race Formats"
     	     << "\n\t\t\t3 - Track Lists"
-	     	 << "\n\t\t\t4 - Racing Gear Sizes & Prices"
+	     << "\n\t\t\t4 - Racing Gear Sizes & Prices"
     	     << "\n\t\t\t5 - Go-Kart Engine Capacities\n";
 }
 
