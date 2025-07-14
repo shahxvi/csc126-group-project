@@ -40,7 +40,6 @@
                         SET laps = setLaps(driverCount, raceFormat)
 
                         FOR INTEGER i = 0; i < driverCount; i++
-                                CALL displayRacingGear()
                                 DISPLAY "Driver: ", driverName[i]
                                 selectHelmet(i,helmetSize, helmetPrice)
                                 selectSuit(i,suitSize, suitPrice)
@@ -89,8 +88,6 @@
                         SET continueChoice = getValidCharacterInput()
 
                 WHILE std::toupper(continueChoice) == 'Y'
-
-                OUTPUT "Total Income: RM ", std::setprecision(2), totalIncome
 
                 OUTPUT "Total Number Drivers: ", counter.customer
                 OUTPUT "Total Income: RM ", counter.totalIncome
