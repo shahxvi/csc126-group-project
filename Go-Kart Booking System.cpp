@@ -128,20 +128,20 @@ int main()
 			     << "\n\t\t\tAge\t\t\t: "		<< driverAge[i]
 			     << "\n\t\t\tHas License\t\t: "	<< license[i]
 			     << "\n\t\t\tEngine Capacity\t\t: " << engineCapacity[i] << "cc"
-			     << "\n\t\t\tPrice per CC\t\t: " 	<< "RM" << PRICEPERCC << "/cc"
-			     << "\n\t\t\tGo-Kart Price\t\t: RM" << PRICEPERCC * engineCapacity[i] << "RM"
+			     << "\n\t\t\tPrice per CC\t\t: " 	<< "RM " << PRICEPERCC << "/cc"
+			     << "\n\t\t\tGo-Kart Price\t\t: RM " << PRICEPERCC * engineCapacity[i]
 			     << "\n\t\t\tHelmet Size\t\t: "	<< helmetSize[i]
-			     << "\n\t\t\tHelmet Price\t\t: RM"	<< helmetPrice[i]
+			     << "\n\t\t\tHelmet Price\t\t: RM "	<< helmetPrice[i]
 			     << "\n\t\t\tSuit Size\t\t: "	<< suitSize[i]
-			     << "\n\t\t\tSuit Price\t\t: RM"	<< suitPrice[i]
+			     << "\n\t\t\tSuit Price\t\t: RM "	<< suitPrice[i]
 			     << "\n\t\t\tShoe Size\t\t: "	<< shoeSize[i] << "cm"
-			     << "\n\t\t\tShoe Price\t\t: RM"	<< shoePrice[i]
-			     << "\n\t\t\tGear Price\t\t: RM"	<< gearPrice[i] << "\n";
+			     << "\n\t\t\tShoe Price\t\t: RM "	<< shoePrice[i]
+			     << "\n\t\t\tGear Price\t\t: RM "	<< gearPrice[i] << "\n";
 		}
 
-		cout << "\n\t\t\tTotal Gear Price\t: RM" << totalGearPrice
+		cout << "\n\t\t\tTotal Gear Price\t: RM " << totalGearPrice
 			  << "\n\t\t\tMembership Discount\t: " << membershipDiscount * 100 << "%"
-			  << "\n\t\t\tTotal : RM" << totalPrice;
+			  << "\n\t\t\tTotal : RM " << totalPrice;
 
 		counter.totalIncome += totalPrice;
 		counter.customer+= driverCount;
@@ -166,7 +166,7 @@ int main()
 	cout << "\n\t\t\tTotal Number of Section 9 Circuit booking: " << counter.section9;
 	cout << "\n\t\t\tTotal Number of Blackrock Circuit booking: " << counter.blackrock;
 	cout << "\n\t\t\tTotal Number of Rushline Dash booking: " << counter.rushlineDash;
-	cout << "\n\t\t\tTotal Number of Chorno Pass booking: " << counter.choroPass;
+	cout << "\n\t\t\tTotal Number of Chrono Pass booking: " << counter.choroPass;
 	cout << "\n\t\t\tTotal Number of Torque Strip booking: " << counter.torqueStrip;
 
 	cout << endl;
@@ -224,7 +224,7 @@ void displayMenu()
 	     << "\n\t\t\t1 - Start Booking"
     	     << "\n\t\t\t2 - Race Formats"
     	     << "\n\t\t\t3 - Track Lists"
-	     << "\n\t\t\t4 - Racing Gear Sizes & Prices"
+	     	 << "\n\t\t\t4 - Racing Gear Sizes & Prices"
     	     << "\n\t\t\t5 - Go-Kart Engine Capacities\n";
 }
 
