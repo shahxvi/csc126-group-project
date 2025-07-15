@@ -3,7 +3,7 @@
 
 // IRFAN SHAH BIN MAIZUL HISHAM		(2025171523) (shahxvi)
 // SHAHRIN AREFF SHAH BIN SHAH RIZAL	(2025151503) (rinnnnnn17)
-// MUHAMMAD BIN ABDUL AZIZ		(2025507823) (Kundoo)
+// MUHAMMAD BIN ABDUL AZIZ			(2025507823) (Kundoo)
 
 #include <iostream>
 #include <string>
