@@ -3,7 +3,7 @@
 
 // IRFAN SHAH BIN MAIZUL HISHAM		(2025171523) (shahxvi)
 // SHAHRIN AREFF SHAH BIN SHAH RIZAL	(2025151503) (rinnnnnn17)
-// MUHAMMAD BIN ABDUL AZIZ			(2025507823) (Kundoo)
+// MUHAMMAD BIN ABDUL AZIZ		(2025507823) (Kundoo)
 
 #include <iostream>
 #include <string>
@@ -57,6 +57,8 @@ struct Counters {
 	int rushlineDash = 0;
 	int choroPass = 0;
 	int torqueStrip = 0;
+	float minTotalPrice = 99999;
+	float maxTotalPrice = -99999;
 };
 Counters counter;
 
@@ -101,6 +103,7 @@ int main()
 		setEngineCapacity(driverCount, driverName, driverAge, license, engineCapacity);
 
 		laps = setLaps(driverCount, raceFormat);
+		cout << "\n\t\t\t" << system("pause");
 		
 		for (int i = 0; i < driverCount; i++) {
 			system("cls");
@@ -147,6 +150,11 @@ int main()
 		counter.totalIncome += totalPrice;
 		counter.customer += driverCount;
 
+		if (totalPrice < counter.minTotalPrice)
+			counter.minTotalPrice = totalPrice;
+		if (totalPrice > counter.maxTotalPrice)
+			counter.maxTotalPrice = totalPrice;
+
 		cout << "\n\t\t\tContinue for another customer? (Y/N): ";
 		continueChoice = getValidCharacterInput();
 
@@ -168,7 +176,10 @@ int main()
 	cout << "\n\t\t\tTotal Number of Blackrock Circuit booking: " << counter.blackrock;
 	cout << "\n\t\t\tTotal Number of Rushline Dash booking: " << counter.rushlineDash;
 	cout << "\n\t\t\tTotal Number of Chrono Pass booking: " << counter.choroPass;
-	cout << "\n\t\t\tTotal Number of Torque Strip booking: " << counter.torqueStrip;
+	cout << "\n\t\t\tTotal Number of Torque Strip booking: " << counter.torqueStrip << endl;
+
+	cout << "\n\t\t\tMinumum amount of payment: " << counter.minTotalPrice;
+	cout << "\n\t\t\tMaximum amount of payment: " << counter.maxTotalPrice << endl;
 
 	cout << endl;
 	cout << "\n\t\t\t" << system("pause");
@@ -335,7 +346,7 @@ void getDriverDetails(int& driverCount, string driverName[], int driverAge[], ch
 		std::getline(cin, driverName[i]);
 
 		cout << "\t\t\tDriver #" << (i+1) << " Age: ";
-		cin >> driverAge[i];
+		driverAge[i] = getValidIntegerInput("age", 1, 100);
 
 		cout << "\t\t\tDoes Driver #" << (i+1) << " has a license? (Y/N): ";
 		license[i] = getValidCharacterInput();
