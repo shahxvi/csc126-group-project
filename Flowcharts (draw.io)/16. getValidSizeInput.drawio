@@ -1,0 +1,25 @@
+<mxfile host="65bd71144e">
+    <diagram id="gQEVzqmX4IWsrI7nIyBp" name="Page-1">
+        <mxGraphModel dx="609" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="getValidSizeInput&lt;br&gt;(inputType)" style="strokeWidth=3;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fillColor=#d80073;fontColor=#ffffff;strokeColor=#A50040;" vertex="1" parent="1">
+                    <mxGeometry x="230" y="60" width="116.67" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="Declare&lt;br&gt;string sizeInput" style="whiteSpace=wrap;html=1;fillColor=#e51400;fontColor=#ffffff;strokeColor=#B20000;strokeWidth=3;" vertex="1" parent="1">
+                    <mxGeometry x="230" y="180" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;Input:&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;sizeInput&lt;/font&gt;&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#e3c800;fontColor=#FFFFFF;strokeColor=#B09500;strokeWidth=3;" vertex="1" parent="1">
+                    <mxGeometry x="230" y="300" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="std::transform(sizeInput.begin(), sizeInput.end(), sizeInput.begin() ::toupper)" style="whiteSpace=wrap;html=1;fillColor=#fa6800;fontColor=#FFFFFF;strokeColor=#C73500;strokeWidth=3;" vertex="1" parent="1">
+                    <mxGeometry x="90" y="430" width="430" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="cin.fail() ||&lt;br&gt;(sizeInput != &quot;S&quot; &amp;amp;&amp;amp;&lt;br&gt;sizeInput != &quot;M&quot; &amp;amp;&amp;amp;&lt;br&gt;sizeInput != &quot;L&quot; &amp;amp;&amp;amp;&lt;br&gt;sizeInput != &quot;XL&quot;)" style="rhombus;whiteSpace=wrap;html=1;fillColor=#6a00ff;fontColor=#ffffff;strokeColor=#3700CC;strokeWidth=3;" vertex="1" parent="1">
+                    <mxGeometry x="215" y="560" width="180" height="180" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
