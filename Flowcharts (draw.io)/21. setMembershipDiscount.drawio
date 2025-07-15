@@ -1,65 +1,75 @@
-<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/27.0.9 Chrome/134.0.6998.205 Electron/35.4.0 Safari/537.36" version="27.0.9">
-  <diagram name="Page-1" id="wWm3oFifaIzlCJxBvwEI">
-    <mxGraphModel dx="1710" dy="860" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="1">
-      <root>
-        <mxCell id="0" />
-        <mxCell id="1" parent="0" />
-        <mxCell id="loMx2dHr52xI0PEySTr8-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;textShadow=0;strokeWidth=2;" parent="1" target="loMx2dHr52xI0PEySTr8-4" edge="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="250" y="150" as="sourcePoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="loMx2dHr52xI0PEySTr8-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;textShadow=0;strokeWidth=2;" parent="1" source="loMx2dHr52xI0PEySTr8-4" target="loMx2dHr52xI0PEySTr8-6" edge="1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="loMx2dHr52xI0PEySTr8-4" value="Declare:&lt;div&gt;char membership&lt;/div&gt;" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=#fa6800;fontColor=#FFFFFF;strokeColor=#C73500;textShadow=0;shadow=1;" parent="1" vertex="1">
-          <mxGeometry x="160" y="200" width="180" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="loMx2dHr52xI0PEySTr8-11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;textShadow=0;strokeWidth=2;" parent="1" source="loMx2dHr52xI0PEySTr8-6" target="loMx2dHr52xI0PEySTr8-10" edge="1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="loMx2dHr52xI0PEySTr8-6" value="Prompt:&lt;div&gt;&quot;Do you have a membership? (Y/N): &quot;&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#60a917;strokeColor=#2D7600;fontColor=#ffffff;strokeWidth=2;textShadow=0;shadow=1;" parent="1" vertex="1">
-          <mxGeometry x="120" y="300" width="260" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="loMx2dHr52xI0PEySTr8-13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;textShadow=0;strokeWidth=2;" parent="1" source="loMx2dHr52xI0PEySTr8-10" target="loMx2dHr52xI0PEySTr8-12" edge="1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="loMx2dHr52xI0PEySTr8-10" value="Input:&lt;div&gt;membership&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#E3C800;strokeColor=#B09500;fontColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=12;textShadow=0;shadow=1;" parent="1" vertex="1">
-          <mxGeometry x="120" y="410" width="260" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="loMx2dHr52xI0PEySTr8-15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;textShadow=0;strokeWidth=2;" parent="1" source="loMx2dHr52xI0PEySTr8-12" edge="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="380" y="575" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="loMx2dHr52xI0PEySTr8-16" value="True" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];textShadow=0;" parent="loMx2dHr52xI0PEySTr8-15" vertex="1" connectable="0">
-          <mxGeometry x="-0.1385" y="-1" relative="1" as="geometry">
-            <mxPoint y="-2" as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="loMx2dHr52xI0PEySTr8-18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;textShadow=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;strokeWidth=2;" parent="1" source="loMx2dHr52xI0PEySTr8-12" target="4" edge="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="114" y="575" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="loMx2dHr52xI0PEySTr8-19" value="False" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];textShadow=0;" parent="loMx2dHr52xI0PEySTr8-18" vertex="1" connectable="0">
-          <mxGeometry x="0.1067" relative="1" as="geometry">
-            <mxPoint x="19" as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="loMx2dHr52xI0PEySTr8-12" value="membership== &#39;Y&#39;" style="rhombus;whiteSpace=wrap;html=1;fillColor=#1ba1e2;strokeColor=#006EAF;strokeWidth=2;fontColor=#ffffff;textShadow=0;shadow=1;" parent="1" vertex="1">
-          <mxGeometry x="185" y="520" width="130" height="110" as="geometry" />
-        </mxCell>
-        <mxCell id="2" value="&lt;span style=&quot;color: rgb(255, 255, 255);&quot;&gt;setMembershipDiscount()&lt;/span&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fillColor=#d80073;fontColor=#ffffff;strokeColor=#A50040;shadow=1;" parent="1" vertex="1">
-          <mxGeometry x="166.66" y="70" width="166.67" height="80" as="geometry" />
-        </mxCell>
-        <mxCell id="3" value="&lt;span style=&quot;color: rgb(255, 255, 255);&quot;&gt;return 0.1&lt;/span&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fillColor=#d80073;fontColor=#ffffff;strokeColor=#A50040;shadow=1;" parent="1" vertex="1">
-          <mxGeometry x="380" y="525" width="166.67" height="100" as="geometry" />
-        </mxCell>
-        <mxCell id="4" value="&lt;span style=&quot;color: rgb(255, 255, 255);&quot;&gt;return 0.0&lt;/span&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fillColor=#d80073;fontColor=#ffffff;strokeColor=#A50040;shadow=1;" parent="1" vertex="1">
-          <mxGeometry x="-60" y="525" width="166.67" height="100" as="geometry" />
-        </mxCell>
-      </root>
-    </mxGraphModel>
-  </diagram>
+<mxfile host="65bd71144e">
+    <diagram name="Page-1" id="wWm3oFifaIzlCJxBvwEI">
+        <mxGraphModel dx="1560" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="1">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="loMx2dHr52xI0PEySTr8-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;textShadow=0;strokeWidth=3;" parent="1" target="loMx2dHr52xI0PEySTr8-4" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="250" y="150" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="loMx2dHr52xI0PEySTr8-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;textShadow=0;strokeWidth=3;" parent="1" source="loMx2dHr52xI0PEySTr8-4" target="loMx2dHr52xI0PEySTr8-6" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="loMx2dHr52xI0PEySTr8-4" value="Declare Character:&lt;br&gt;membership" style="whiteSpace=wrap;html=1;strokeWidth=3;fillColor=#e51400;fontColor=#ffffff;strokeColor=#B20000;textShadow=0;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="160" y="200" width="180" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="loMx2dHr52xI0PEySTr8-11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;textShadow=0;strokeWidth=3;" parent="1" source="loMx2dHr52xI0PEySTr8-6" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="250" y="410" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="loMx2dHr52xI0PEySTr8-6" value="&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;Prompt:&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;&quot;Do you have a membership? (Y/N): &quot;&lt;/font&gt;&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#008a00;strokeColor=#005700;fontColor=#ffffff;strokeWidth=3;textShadow=0;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="120" y="300" width="260" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="loMx2dHr52xI0PEySTr8-13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;textShadow=0;strokeWidth=3;" parent="1" target="loMx2dHr52xI0PEySTr8-12" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="250" y="470" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="loMx2dHr52xI0PEySTr8-15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;textShadow=0;strokeWidth=3;" parent="1" source="loMx2dHr52xI0PEySTr8-12" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="380" y="575" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="loMx2dHr52xI0PEySTr8-16" value="True" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];textShadow=0;" parent="loMx2dHr52xI0PEySTr8-15" vertex="1" connectable="0">
+                    <mxGeometry x="-0.1385" y="-1" relative="1" as="geometry">
+                        <mxPoint y="-2" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="loMx2dHr52xI0PEySTr8-18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;textShadow=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;strokeWidth=3;" parent="1" source="loMx2dHr52xI0PEySTr8-12" target="4" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="114" y="575" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="loMx2dHr52xI0PEySTr8-19" value="False" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];textShadow=0;" parent="loMx2dHr52xI0PEySTr8-18" vertex="1" connectable="0">
+                    <mxGeometry x="0.1067" relative="1" as="geometry">
+                        <mxPoint x="19" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="loMx2dHr52xI0PEySTr8-12" value="membership== &#39;Y&#39;" style="rhombus;whiteSpace=wrap;html=1;fillColor=#1ba1e2;strokeColor=#006EAF;strokeWidth=3;fontColor=#ffffff;textShadow=0;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="185" y="520" width="130" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="&lt;span style=&quot;color: rgb(255, 255, 255);&quot;&gt;return&lt;br&gt;0.0&lt;/span&gt;" style="strokeWidth=3;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fillColor=#d80073;fontColor=#ffffff;strokeColor=#A50040;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="-60" y="525" width="166.67" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;membership =&lt;br&gt;getValidCharacterInput()&lt;/font&gt;" style="whiteSpace=wrap;html=1;fillColor=#fa6800;fontColor=#000000;strokeColor=#C73500;strokeWidth=3;" vertex="1" parent="1">
+                    <mxGeometry x="174.99" y="410" width="150.01" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="" style="edgeStyle=none;html=1;strokeWidth=3;" edge="1" parent="1" source="6" target="8">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;counter.membership++&lt;/font&gt;" style="whiteSpace=wrap;html=1;fillColor=#fa6800;fontColor=#000000;strokeColor=#C73500;strokeWidth=3;" vertex="1" parent="1">
+                    <mxGeometry x="380" y="545" width="140" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="setMembershipDiscount()" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fillColor=#d80073;fontColor=#ffffff;strokeColor=#A50040;" vertex="1" parent="1">
+                    <mxGeometry x="166.66000000000003" y="50" width="166.67" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="return&lt;br&gt;0.1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fillColor=#d80073;fontColor=#ffffff;strokeColor=#A50040;" vertex="1" parent="1">
+                    <mxGeometry x="590" y="525" width="166.67" height="100" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
 </mxfile>
