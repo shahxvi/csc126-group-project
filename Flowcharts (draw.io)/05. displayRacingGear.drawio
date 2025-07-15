@@ -1,55 +1,55 @@
-<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/27.0.9 Chrome/134.0.6998.205 Electron/35.4.0 Safari/537.36" version="27.0.9">
-  <diagram name="Page-1" id="xAKDHn-aZkhPSKshvrGR">
-    <mxGraphModel dx="1329" dy="922" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
-      <root>
-        <mxCell id="0" />
-        <mxCell id="1" parent="0" />
-        <mxCell id="Ps8xBtBwY2rYOqrW1OCK-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Ps8xBtBwY2rYOqrW1OCK-1" target="Ps8xBtBwY2rYOqrW1OCK-2">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="Ps8xBtBwY2rYOqrW1OCK-1" value="displayRacingGear()" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fillColor=#d80073;fontColor=#ffffff;strokeColor=#A50040;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="368" y="40" width="115" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="Ps8xBtBwY2rYOqrW1OCK-6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Ps8xBtBwY2rYOqrW1OCK-2" target="Ps8xBtBwY2rYOqrW1OCK-4">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="Ps8xBtBwY2rYOqrW1OCK-2" value="Display:&lt;div&gt;&quot;Racing Gears&quot;&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#008a00;strokeColor=#005700;fontColor=#ffffff;strokeWidth=2;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="340" y="140" width="170" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="Ps8xBtBwY2rYOqrW1OCK-8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Ps8xBtBwY2rYOqrW1OCK-4" target="Ps8xBtBwY2rYOqrW1OCK-7">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="Ps8xBtBwY2rYOqrW1OCK-4" value="Display:&lt;div&gt;&quot;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;/span&gt;Helmets&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Suits&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Shoes&quot;&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#008a00;strokeColor=#005700;fontColor=#ffffff;strokeWidth=2;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="250" y="240" width="350" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="Ps8xBtBwY2rYOqrW1OCK-10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Ps8xBtBwY2rYOqrW1OCK-7" target="Ps8xBtBwY2rYOqrW1OCK-9">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="Ps8xBtBwY2rYOqrW1OCK-7" value="Display:&lt;div&gt;&quot;Size S:&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;RM 2&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;RM 5&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Size 20-25 cm: RM 3&quot;&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#008a00;strokeColor=#005700;fontColor=#ffffff;strokeWidth=2;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="250" y="340" width="350" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="Ps8xBtBwY2rYOqrW1OCK-13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Ps8xBtBwY2rYOqrW1OCK-9" target="Ps8xBtBwY2rYOqrW1OCK-11">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="Ps8xBtBwY2rYOqrW1OCK-9" value="Display:&lt;div&gt;&quot;Size M:&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;RM 4&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;RM 10&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Size 26-35 cm: RM 6&quot;&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#008a00;strokeColor=#005700;fontColor=#ffffff;strokeWidth=2;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="250.5" y="440" width="350" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="Ps8xBtBwY2rYOqrW1OCK-14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Ps8xBtBwY2rYOqrW1OCK-11" target="Ps8xBtBwY2rYOqrW1OCK-12">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="Ps8xBtBwY2rYOqrW1OCK-11" value="Display:&lt;div&gt;&quot;Size L:&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;RM 6&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;RM 15&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&quot;&lt;/span&gt;&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#008a00;strokeColor=#005700;fontColor=#ffffff;strokeWidth=2;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="250" y="540" width="350" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="Ps8xBtBwY2rYOqrW1OCK-16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Ps8xBtBwY2rYOqrW1OCK-12" target="Ps8xBtBwY2rYOqrW1OCK-15">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="Ps8xBtBwY2rYOqrW1OCK-12" value="Display:&lt;div&gt;&quot;Size XL:&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;RM 8&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;RM 20&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&quot;&lt;/span&gt;&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#008a00;strokeColor=#005700;fontColor=#ffffff;strokeWidth=2;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="250" y="640" width="350" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="Ps8xBtBwY2rYOqrW1OCK-15" value="End" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fillColor=#d80073;fontColor=#ffffff;strokeColor=#A50040;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="368" y="740" width="115" height="60" as="geometry" />
-        </mxCell>
-      </root>
-    </mxGraphModel>
-  </diagram>
+<mxfile host="65bd71144e">
+    <diagram name="Page-1" id="xAKDHn-aZkhPSKshvrGR">
+        <mxGraphModel dx="436" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="Ps8xBtBwY2rYOqrW1OCK-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;" parent="1" source="Ps8xBtBwY2rYOqrW1OCK-1" target="Ps8xBtBwY2rYOqrW1OCK-2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="Ps8xBtBwY2rYOqrW1OCK-1" value="displayRacingGear()" style="strokeWidth=3;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fillColor=#d80073;fontColor=#ffffff;strokeColor=#A50040;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="368" y="40" width="115" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="Ps8xBtBwY2rYOqrW1OCK-6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;" parent="1" source="Ps8xBtBwY2rYOqrW1OCK-2" target="Ps8xBtBwY2rYOqrW1OCK-4" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="Ps8xBtBwY2rYOqrW1OCK-2" value="&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;Display:&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;&quot;Racing Gears&quot;&lt;/font&gt;&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#008a00;strokeColor=#005700;fontColor=#ffffff;strokeWidth=3;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="340" y="140" width="170" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="Ps8xBtBwY2rYOqrW1OCK-8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;" parent="1" source="Ps8xBtBwY2rYOqrW1OCK-4" target="Ps8xBtBwY2rYOqrW1OCK-7" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="Ps8xBtBwY2rYOqrW1OCK-4" value="&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;Display:&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;&quot;Helmets&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Suits&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Shoes&quot;&lt;/font&gt;&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#008a00;strokeColor=#005700;fontColor=#ffffff;strokeWidth=3;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="240" width="350" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="Ps8xBtBwY2rYOqrW1OCK-10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;" parent="1" source="Ps8xBtBwY2rYOqrW1OCK-7" target="Ps8xBtBwY2rYOqrW1OCK-9" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="Ps8xBtBwY2rYOqrW1OCK-7" value="&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;Display:&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;&quot;Size S:&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;RM 2&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;RM 5&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Size 20-25 cm: RM 3&quot;&lt;/font&gt;&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#008a00;strokeColor=#005700;fontColor=#ffffff;strokeWidth=3;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="340" width="350" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="Ps8xBtBwY2rYOqrW1OCK-13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;" parent="1" source="Ps8xBtBwY2rYOqrW1OCK-9" target="Ps8xBtBwY2rYOqrW1OCK-11" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="Ps8xBtBwY2rYOqrW1OCK-9" value="&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;Display:&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;&quot;Size M:&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;RM 4&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;RM 10&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Size 26-35 cm: RM 6&quot;&lt;/font&gt;&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#008a00;strokeColor=#005700;fontColor=#ffffff;strokeWidth=3;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="250.5" y="440" width="350" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="Ps8xBtBwY2rYOqrW1OCK-14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;" parent="1" source="Ps8xBtBwY2rYOqrW1OCK-11" target="Ps8xBtBwY2rYOqrW1OCK-12" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="Ps8xBtBwY2rYOqrW1OCK-11" value="&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;Display:&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;&quot;Size L:&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;RM 6&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;RM 15&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&quot;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#008a00;strokeColor=#005700;fontColor=#ffffff;strokeWidth=3;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="540" width="350" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="Ps8xBtBwY2rYOqrW1OCK-16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;" parent="1" source="Ps8xBtBwY2rYOqrW1OCK-12" target="Ps8xBtBwY2rYOqrW1OCK-15" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="Ps8xBtBwY2rYOqrW1OCK-12" value="&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;Display:&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;&quot;Size XL:&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;RM 8&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;RM 20&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&quot;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#008a00;strokeColor=#005700;fontColor=#ffffff;strokeWidth=3;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="640" width="350" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="Ps8xBtBwY2rYOqrW1OCK-15" value="End" style="strokeWidth=3;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fillColor=#d80073;fontColor=#ffffff;strokeColor=#A50040;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="368" y="740" width="115" height="60" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
 </mxfile>

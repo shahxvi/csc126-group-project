@@ -89,6 +89,7 @@
 
                 WHILE std::toupper(continueChoice) == 'Y'
 
+
                 OUTPUT "Total Number Drivers: ", counter.customer
                 OUTPUT "Total Income: RM ", counter.totalIncome
                 OUTPUT "Total Number of 120cc Go-Kart Booked: ", counter.cc120
@@ -114,7 +115,7 @@
                 DO
                         CALL displayMenu()
                         PROMPT "Choose your option: "
-                        SET menu = getValidIntegerInput("option", 0, 5)
+                        SET menuOption = static_cast<menu>(getValidIntegerInput("option", 1, 5)); // Converts integers into menu enums
 
                         IF menuOption == format THEN
                                Option displayRaceFormat("Group")
@@ -174,8 +175,8 @@
                 DISPLAY "1 - 100cc (Under 13)"
                 IF age >= 18 THEN
                         DISPLAY "2 - 200cc"
-                        if (license == 'Y')
-                                DISPLAY "3 - 270cc (Requires License)"
+                IF (license == 'Y') THEN
+                        DISPLAY "3 - 270cc (Requires License)"
                 END IF
         END MODULE
 
@@ -364,14 +365,6 @@
                 END IF
                 RETURN LAPS
         END FUNCTION
-                        
-
-
-        MODULE driverGear(INTEGER& i, STRING driverName[])
-                displayRacingGear()
-
-                DISPLAY "Driver: ", driverName[i]
-        END MODULE
 
         FUNCTION float selectHelmet (INTEGER i, STRING helmetSize[], FLOAT helmetPrice[])
                 PROMPT "Please choose your helmet size (S/M/L/XL): "

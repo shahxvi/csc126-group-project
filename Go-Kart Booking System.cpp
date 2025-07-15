@@ -264,11 +264,10 @@ void displayEngineCapacities(int age, char license)
 { 
 	cout << "\n\t\t\tAvailable Engine Capacities:";
 	cout << "\n\t\t\t1 - 100cc (Under 13)";
-	if (age >= 18) {
+	if (age >= 18)
 		cout << "\n\t\t\t2 - 200cc";
-		if (license == 'Y')
-			cout << "\n\t\t\t3 - 270cc (Requires License)\n";
-	}
+	if (license == 'Y')
+		cout << "\n\t\t\t3 - 270cc (Requires License)\n";
 }
 
 int getValidIntegerInput(string inputType, int minValue, int maxValue)
