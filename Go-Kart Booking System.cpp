@@ -493,7 +493,8 @@ string getValidSizeInput(string inputType)
 		cin >> sizeInput;
 		std::transform(sizeInput.begin(), sizeInput.end(), sizeInput.begin(), ::toupper);
 	}
-
+	
+	return sizeInput;
 }
 float selectHelmet(int i, string helmetSize[], float helmetPrice[])
 {
