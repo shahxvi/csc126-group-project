@@ -35,6 +35,7 @@ string setRaceFormat(string& bookingType);
 string setTrack(string& bookingType, string& raceFormat);
 void setEngineCapacity(int driverCount, string driverName[], int driverAge[], char license[], int engineCapacity[]);
 int setLaps(int driverCount, string& raceFormat);
+string getValidSizeInput(string inputType);
 float selectHelmet(int i, string helmetSize[], float helmetPrice[]);
 float selectSuit(int i, string suitSize[], float suitPrice[]);
 float selectShoe(int i, int shoeSize[], float shoePrice[]);
@@ -479,21 +480,26 @@ int setLaps(int driverCount, string& raceFormat) {
 	return laps;
 }
 
+string getValidSizeInput(string inputType)
+{
+	string sizeInput;
+	cin >> sizeInput;
+	std::transform(sizeInput.begin(), sizeInput.end(), sizeInput.begin(), ::toupper);
+
+	while (cin.fail() || (sizeInput != "S" && sizeInput != "M" && sizeInput != "L" && sizeInput != "XL")) {
+		cin.clear();
+		cin.ignore(1000, '\n');
+		cout << "\n\t\t\tPlease choose a valid " << inputType << " (S/M/L/XL): ";
+		cin >> sizeInput;
+		std::transform(sizeInput.begin(), sizeInput.end(), sizeInput.begin(), ::toupper);
+	}
+
+}
 float selectHelmet(int i, string helmetSize[], float helmetPrice[])
 {
 	cout << "\n\t\t\tPlease choose your helmet size (S/M/L/XL): ";
-	cin >> helmetSize[i];
-	
-	std::transform(helmetSize[i].begin(), helmetSize[i].end(), helmetSize[i].begin(), ::toupper);
+	helmetSize[i] = getValidSizeInput("helmet size");
 
-	while (cin.fail() || (helmetSize[i] != "S" && helmetSize[i] != "M" && helmetSize[i] != "L" && helmetSize[i] != "XL")) {
-		cin.clear();
-		cin.ignore(1000, '\n');
-		cout << "\n\t\t\tPlease choose a valid helmet size (S/M/L/XL): ";
-		cin >> helmetSize[i];
-		std::transform(helmetSize[i].begin(), helmetSize[i].end(), helmetSize[i].begin(), ::toupper);
-	}
-	
 	if (helmetSize[i] == "S")
 		helmetPrice[i] = 2;
 	if (helmetSize[i] == "M")
@@ -509,7 +515,7 @@ float selectHelmet(int i, string helmetSize[], float helmetPrice[])
 float selectSuit(int i, string suitSize[], float suitPrice[])
 {
 	cout << "\n\t\t\tPlease choose your suit size (S/M/L/XL): ";
-	cin >> suitSize[i];
+	suitSize[i] = getValidSizeInput("suit size");
 
 	std::transform(suitSize[i].begin(), suitSize[i].end(), suitSize[i].begin(), ::toupper);
 
