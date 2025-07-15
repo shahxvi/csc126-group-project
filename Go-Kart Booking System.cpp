@@ -178,8 +178,8 @@ int main()
 	cout << "\n\t\t\tTotal Number of Chrono Pass booking: " << counter.choroPass;
 	cout << "\n\t\t\tTotal Number of Torque Strip booking: " << counter.torqueStrip << endl;
 
-	cout << "\n\t\t\tMinumum amount of payment: " << counter.minTotalPrice;
-	cout << "\n\t\t\tMaximum amount of payment: " << counter.maxTotalPrice << endl;
+	cout << "\n\t\t\tMinumum amount of payment: RM" << counter.minTotalPrice;
+	cout << "\n\t\t\tMaximum amount of payment: RM" << counter.maxTotalPrice << endl;
 
 	cout << endl;
 	cout << "\n\t\t\t" << system("pause");
