@@ -528,16 +528,6 @@ float selectSuit(int i, string suitSize[], float suitPrice[])
 {
 	cout << "\n\t\t\tPlease choose your suit size (S/M/L/XL): ";
 	suitSize[i] = getValidSizeInput("suit size");
-
-	std::transform(suitSize[i].begin(), suitSize[i].end(), suitSize[i].begin(), ::toupper);
-
-	while (cin.fail() || (suitSize[i] != "S" && suitSize[i] != "M" && suitSize[i] != "L" && suitSize[i] != "XL")){
-		cin.clear();
-		cin.ignore(1000, '\n');
-		cout << "\n\t\t\tPlease choose a valid suit size (S/M/L/XL): ";
-		cin >> suitSize[i];
-		std::transform(suitSize[i].begin(), suitSize[i].end(), suitSize[i].begin(), ::toupper);
-	}
 	
 	if (suitSize[i] == "S")
 		suitPrice[i] = 5;
