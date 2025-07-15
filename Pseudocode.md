@@ -55,6 +55,11 @@ FUNCTION INTEGER main
                 DECLARE FLOAT totalPrice
                 SET totalPrice = calculatePrice(engineCapacity, laps, driverCount, totalGearPrice, membershipDiscount)
 
+		IF totalPrice < counter.minTotalPrice THEN
+			counter.minTotalPrice = totalPrice
+		IF totalPrice > counter.maxTotalPrice THEN
+			counter.maxTotalPrice = totalPrice
+
                 OUTPUT "Race Format: ", raceFormat
                 OUTPUT "Track: ", track
 
@@ -103,6 +108,9 @@ FUNCTION INTEGER main
         OUTPUT "Total Number of Rushline Dash booking: ", counter.rushlineDash
         OUTPUT "Total Number of Chrono Pass booking: ", counter.choroPass
         OUTPUT "Total Number of Torque Strip booking: ", counter.torqueStrip
+
+	OUTPUT "Minumum amount of payment: RM", counter.minTotalPrice
+	OUTPUT "Maximum amount of payment: RM",counter.maxTotalPrice
 
         RETURN 0
 END FUNCTION        
