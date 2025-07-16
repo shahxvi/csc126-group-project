@@ -153,7 +153,7 @@ int main()
 		}
 
 		cout << "\n\t\t\tTotal Gear Price\t: RM " << totalGearPrice
-		     << "\n\t\t\tTotal Go-Kart Price\t: RM " << *pTotalKartPrice
+		     << "\n\t\t\tTotal Go-Kart Price\t: RM " << totalKartPrice
 		     << "\n\t\t\tSubtotal before discount: RM " << totalPrice / (1 - membershipDiscount)
 		     << "\n\t\t\tMembership Discount\t: " << membershipDiscount * 100 << "%"
 		     << "\n\t\t\tTotal\t\t\t: RM " << totalPrice;
