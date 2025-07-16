@@ -203,25 +203,25 @@ void menu()
 		if (menuOption == format) {
 			system("cls");
 			displayRaceFormat("Group");		// Parameters to allow the menu to show every option
-			system("pause");
+			cout << "\n\t\t\t" << system("pause");
 			system("cls");
 		}
 		if (menuOption == track) {
 			system("cls");
 			displayTrackList();
-			system("pause");
+			cout << "\n\t\t\t" << system("pause");
 			system("cls");
 		}
 		if (menuOption == gear) {
 			system("cls");
 			displayRacingGear();
-			system("pause");
+			cout << "\n\t\t\t" << system("pause");
 			system("cls");
 		}
 		if (menuOption == engine) {
 			system("cls");
 			displayEngineCapacities(18, 'Y');	// Parameters to allow the menu to show every option
-			system("pause");
+			cout << "\n\t\t\t" << system("pause");
 			system("cls");
 		}
 
