@@ -13,6 +13,7 @@
 #include <algorithm>
 
 #define PRICEPERCC 0.3
+#define MEMBERSHIPDISCOUNT 0.1
 
 using std::string;
 using std::cout;
@@ -40,7 +41,7 @@ float selectHelmet(int i, string helmetSize[], float helmetPrice[]);
 float selectSuit(int i, string suitSize[], float suitPrice[]);
 float selectShoe(int i, int shoeSize[], float shoePrice[]);
 float calculateTotalGearPrice(int& driverCount, float helmetPrice[], float suitPrice[], float shoePrice[], float gearPrice[]);
-float setMembershipDiscount();
+float setMembershipDiscount(int driverCount, string driverName[]);
 float calculatePrice(int engineCapacity[], int laps, int driverCount, float gearPrice, float membershipDiscount);
 
 struct Counters {
@@ -116,7 +117,7 @@ int main()
 
 		float totalGearPrice = calculateTotalGearPrice(driverCount, helmetPrice, suitPrice, shoePrice, gearPrice);
 
-		float membershipDiscount = setMembershipDiscount();
+		float membershipDiscount = setMembershipDiscount(driverCount, driverName);
 
 		float totalPrice = calculatePrice(engineCapacity, laps, driverCount, totalGearPrice, membershipDiscount);
 
@@ -140,12 +141,13 @@ int main()
 			     << "\n\t\t\tSuit Price\t\t: RM "	<< suitPrice[i]
 			     << "\n\t\t\tShoe Size\t\t: "	<< shoeSize[i] << "cm"
 			     << "\n\t\t\tShoe Price\t\t: RM "	<< shoePrice[i]
-			     << "\n\t\t\tGear Price\t\t: RM "	<< gearPrice[i] << "\n";
+			     << "\n\t\t\tGear Price\t\t: RM "	<< gearPrice[i] << endl;
 		}
 
 		cout << "\n\t\t\tTotal Gear Price\t: RM " << totalGearPrice
-			  << "\n\t\t\tMembership Discount\t: " << membershipDiscount * 100 << "%"
-			  << "\n\t\t\tTotal : RM " << totalPrice;
+		     << "\n\t\t\tSubtotal before discount: RM " << totalPrice / (1 - membershipDiscount)
+		     << "\n\t\t\tMembership Discount\t: " << membershipDiscount * 100 << "%"
+		     << "\n\t\t\tTotal\t\t\t: RM " << totalPrice;
 
 		counter.totalIncome += totalPrice;
 		counter.customer += driverCount;
@@ -543,7 +545,7 @@ float selectSuit(int i, string suitSize[], float suitPrice[])
 
 float selectShoe(int i, int shoeSize[], float shoePrice[])
 {
-	cout << "\n\t\t\tPlease choose your shoe size (20 - 35): ";
+	cout << "\n\t\t\tPlease choose your shoe size (20 - 35) cm: ";
 	cin >> shoeSize[i];
 	
 	while (cin.fail() || (shoeSize[i] < 20 || shoeSize[i] > 35)){
@@ -573,20 +575,23 @@ float calculateTotalGearPrice(int& driverCount, float helmetPrice[], float suitP
 	return totalGearPrice;
 }
 
-float setMembershipDiscount()
+float setMembershipDiscount(int driverCount, string driverName[])
 {
-	char membership;	
+	char membership[5];
+	float membershipDiscount = 0.1;
 
-	cout << "\n\t\t\tDo you have a membership? (Y/N): ";
-	membership = getValidCharacterInput();
+	for (int i = 0; i < driverCount; i++) {
+		cout << "\n\t\t\tDoes " << driverName[i] << " have a membership? (Y/N): ";
+		membership[i] = getValidCharacterInput();
 
-	if(membership == 'Y') {
-		counter.membership++;
-		return 0.1;
+		if(membership[i] == 'Y') {
+			counter.membership++;
+		}
 	}
-	else {
-		return 0.0;
+	if (counter.membership > 0) {
+		return MEMBERSHIPDISCOUNT;
 	}
+	return 0;
 }
 
 float calculatePrice(int engineCapacity[], int laps, int driverCount, float totalGearPrice, float membershipDiscount)
