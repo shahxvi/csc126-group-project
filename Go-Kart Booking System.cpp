@@ -393,7 +393,7 @@ string setTrack(string& bookingType, string& raceFormat)
 			  << "\n\t\t\tPlease choose your track (1 - 2): ";
 		trackID = getValidIntegerInput("track", 1, 2);
 	}
-	else if (raceFormat == "Time Trial") {
+	if (raceFormat == "Time Trial") {
 		cout << "\n\t\t\tAvailable Track:"
 			  << "\n\t\t\t1 - Section 9 Circuit"
 			  << "\n\t\t\t2 - Blackrock Circuit"
@@ -401,34 +401,39 @@ string setTrack(string& bookingType, string& raceFormat)
 			  << "\n\t\t\t4 - Chrono Pass"
 			  << "\n\t\t\tPlease choose your track (1 - 4): ";
 		trackID = getValidIntegerInput("track", 1, 4);
-	}
-	switch (trackID) {
-		case 1: counter.section9++; return "Section 9 Circuit";
-		case 2: counter.blackrock++; return "Blackrock Circuit";
-		case 3: counter.rushlineDash++; return "Rushline Dash";
-		default: counter.choroPass++; return "Chrono Pass";
+
+		switch (trackID) {
+			case 1: counter.section9++; return "Section 9 Circuit";
+			case 2: counter.blackrock++; return "Blackrock Circuit";
+			case 3: counter.rushlineDash++; return "Rushline Dash";
+			default: counter.choroPass++; return "Chrono Pass";
+		}
 	}
 	if (bookingType == "Solo" && raceFormat == "Circuit Race") {
 		cout << "\n\t\t\tAvailable Track: Section 9 Circuit"
 		     << "\n\t\t\tDefaulting to said track\n";
+		cout << "\n\t\t\t" << system("pause");
 		counter.section9++;
 		return "Section 9 Circuit";
 	}
-	else if (raceFormat == "Elimination Race") {
+	if (raceFormat == "Elimination Race") {
 		cout << "\n\t\t\tAvailable Track: Blackrock Circuit"
 		     << "\n\t\t\tDefaulting to said track\n";
+		cout << "\n\t\t\t" << system("pause");
 		counter.blackrock++;
 		return "Blackrock Circuit";
 	}
-	else if (raceFormat == "Sprint Race") {
+	if (raceFormat == "Sprint Race") {
 		cout << "\n\t\t\tAvailable Track: Rushline Dash"
-			  << "\n\t\t\tDefaulting to said track\n";
+		     << "\n\t\t\tDefaulting to said track\n";
+		cout << "\n\t\t\t" << system("pause");
 		counter.rushlineDash++;
 		return "Rushline Dash";
 	}
-	else if (raceFormat == "Drag Race") {
+	if (raceFormat == "Drag Race") {
 		cout << "\n\t\t\tAvailable Track: Torque Strip"
-			  << "\n\t\t\tDefaulting to said track\n";
+		     << "\n\t\t\tDefaulting to said track\n";
+		cout << "\n\t\t\t" << system("pause");
 		counter.torqueStrip++;
 		return "Torque Strip";
 	}
