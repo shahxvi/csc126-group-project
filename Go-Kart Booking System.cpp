@@ -578,7 +578,6 @@ float calculateTotalGearPrice(int& driverCount, float helmetPrice[], float suitP
 float setMembershipDiscount(int driverCount, string driverName[])
 {
 	char membership[5];
-	float membershipDiscount = 0.1;
 
 	for (int i = 0; i < driverCount; i++) {
 		cout << "\n\t\t\tDoes " << driverName[i] << " have a membership? (Y/N): ";
