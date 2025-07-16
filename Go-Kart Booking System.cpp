@@ -126,7 +126,8 @@ int main()
 
 		// Summary for each customers
 		cout << "\n\t\t\tRace Format: " << raceFormat
-		     << "\n\t\t\tTrack: " << track << "\n";
+		     << "\n\t\t\tTrack: " << track
+		     << "\n\t\t\tLaps: " << laps << "\n";
 
 		std::cout << std::fixed << std::showpoint << std::setprecision(2);
 		for (int i = 0; i < driverCount; i++) {
