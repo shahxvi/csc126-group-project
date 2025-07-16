@@ -65,30 +65,31 @@ Counters counter;
 
 int main()
 {
+	//Initializations (in order)
+	string bookingType;
+
+	int driverCount;
+	string driverName[5];
+	int driverAge[5];
+	char license[5];
+
+	string raceFormat;
+	string track;
+	
+	int engineCapacity[5];
+
+	int laps;
+
+	string helmetSize[5], suitSize[5]; int shoeSize[5];
+	float helmetPrice[5], suitPrice[5], shoePrice[5];
+	float gearPrice[5];
+
 	char continueChoice;
+	
+	// The Crux of the Go-Kart Booking System
 	do {
 		menu();
 
-		//Initializations (in order)
-		string bookingType;
-
-		int driverCount;
-		string driverName[5];
-		int driverAge[5];
-		char license[5];
-
-		string raceFormat;
-		string track;
-		
-		int engineCapacity[5];
-
-		int laps;
-
-		string helmetSize[5], suitSize[5]; int shoeSize[5];
-		float helmetPrice[5], suitPrice[5], shoePrice[5];
-		float gearPrice[5];
-
-		// The Crux of the Go-Kart Booking System
 		bookingType = getBookingType();
 		
 		driverCount = getDriverCount(bookingType);
