@@ -1,31 +1,32 @@
 DEFINE PRICEPERCC = 0.3
 DEFINE MEMBERSHIPDISCOUNT = 0.1
 
+
 FUNCTION INTEGER main
+        //Initializations (in order)
+        STRING bookingType
+
+        DECLARE INTEGER driverCount
+        DECLARE STRING driverName[5]
+        DECLARE INTEGER driverAge[5]
+        DECLARE CHARACTER license[5]
+
+        DECLARE STRING raceFormat
+        DECLARE STRING track
+        
+        DECLARE INTEGER engineCapacity[5]
+
+        DECLARE INTEGER laps
+
+        DECLARE STRING helmetSize[5], suitSize[5]
+        DECLARE INTEGER shoeSize[5]
+        DECLARE FLOAT helmetPrice[5], suitPrice[5], shoePrice[5]
+        DECLARE FLOAT gearPrice[5]
+
         DECLARE CHARACTER continueChoice
 
         DO
                 CALL menu()
-
-                //Initializations (in order)
-                STRING bookingType
-
-                DECLARE INTEGER driverCount
-                DECLARE STRING driverName[5]
-                DECLARE INTEGER driverAge[5]
-                DECLARE CHARACTER license[5]
-
-                DECLARE STRING raceFormat
-                DECLARE STRING track
-                
-                DECLARE INTEGER engineCapacity[5]
-
-                DECLARE INTEGER laps
-
-                DECLARE STRING helmetSize[5], suitSize[5]
-                DECLARE INTEGER shoeSize[5]
-                DECLARE FLOAT helmetPrice[5], suitPrice[5], shoePrice[5]
-                DECLARE FLOAT gearPrice[5]
 
                 // The Crux of the Go-Kart Booking System
                 SET bookingType = getBookingType()
