@@ -1,7 +1,6 @@
 DEFINE PRICEPERCC = 0.3
 DEFINE MEMBERSHIPDISCOUNT = 0.1
 
-
 FUNCTION INTEGER main
         //Initializations (in order)
         STRING bookingType
@@ -22,6 +21,10 @@ FUNCTION INTEGER main
         DECLARE INTEGER shoeSize[5]
         DECLARE FLOAT helmetPrice[5], suitPrice[5], shoePrice[5]
         DECLARE FLOAT gearPrice[5]
+        
+        DECLARE FLOAT kartPrice[5]
+        DECLARE FLOAT totalKartPrice = 0
+        DECLARE *pTotalKartPrice = &totalKartPrice
 
         DECLARE CHARACTER continueChoice
 
@@ -76,7 +79,7 @@ FUNCTION INTEGER main
                         OUTPUT "Has License: ", license[i]
                         OUTPUT "Engine Capacity: ", engineCapacity[i] << "cc"
                         OUTPUT "Price per CC: RM", PRICEPERCC, "/cc"
-                        OUTPUT "Go-Kart Price: RM ", PRICEPERCC * engineCapacity[i]
+                        OUTPUT "Go-Kart Price: RM ", PRICEPERCC * engineCapacity[i], " * ", laps, " laps = RM" kartPrice[i]
                         OUTPUT "Helmet Size: ",	helmetSize[i]
                         OUTPUT "Helmet Price: RM ", helmetPrice[i]
                         OUTPUT "Suit Size: ", suitSize[i]
@@ -87,6 +90,7 @@ FUNCTION INTEGER main
                 END FOR
                 
                 OUTPUT "Total Gear Price: RM", totalGearPrice
+                OUTPUT "Total Go-Kart Price: RM", *pTotalKartPrice
                 OUTPUT "Membership Discount\t: ", membershipDiscount * 100, "%"
                 OUTPUT "Total : RM", std::setprecision(2), totalPrice
 
@@ -464,12 +468,10 @@ FUNCTION FLOAT setMembershipDiscount(INTERGER driverCount, STRING driverName[])
 	RETURN 0
 END FUNCTION
 
-FUNCTION FLOAT calculatePrice(int engineCapacity[], int laps, int driverCount, float totalGearPrice, float membershipDiscount)
-        SET totalKartPrice = 0
-
+FUNCTION FLOAT calculatePrice(INTEGER engineCapacity[], INTEGER laps, INTEGER driverCount, FLOAT totalGearPrice, FLOAT membershipDiscount, FLOAT kartPrice[], float* pTotalKartPrice)
         FOR i = 0, i < driverCount, i++
-                totalKartPrice += (engineCapacity[i] * PRICEPERCC) * laps
+                kartPrice[i] = (engineCapacity[i] * PRICEPERCC) * laps
+		*pTotalKartPrice += kartPrice[i]
         END FOR
-        
-        finalPrice = (totalKartPrice + totalGearPrice) * (1 - membershipDiscount)
+        RETURN (*pTotalKartPrice + totalGearPrice) * (1 - membershipDiscount)
 END FUNCTION

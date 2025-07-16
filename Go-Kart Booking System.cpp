@@ -42,7 +42,7 @@ float selectSuit(int i, string suitSize[], float suitPrice[]);
 float selectShoe(int i, int shoeSize[], float shoePrice[]);
 float calculateTotalGearPrice(int& driverCount, float helmetPrice[], float suitPrice[], float shoePrice[], float gearPrice[]);
 float setMembershipDiscount(int driverCount, string driverName[]);
-float calculatePrice(int engineCapacity[], int laps, int driverCount, float totalGearPrice, float membershipDiscount, float *pTotalKartPrice);
+float calculatePrice(int engineCapacity[], int laps, int driverCount, float totalGearPrice, float membershipDiscount, float kartPrice[], float* pTotalKartPrice);
 
 struct Counters {
 	int customer = 0;
@@ -84,6 +84,7 @@ int main()
 	float helmetPrice[5], suitPrice[5], shoePrice[5];
 	float gearPrice[5];
 	
+	float kartPrice[5];
 	float totalKartPrice = 0;
 	float *pTotalKartPrice = &totalKartPrice;
 
@@ -108,7 +109,9 @@ int main()
 		setEngineCapacity(driverCount, driverName, driverAge, license, engineCapacity);
 
 		laps = setLaps(driverCount, raceFormat);
-		cout << "\n\t\t\t" << system("pause");
+
+		cout << "\n\t\t\t";
+		system("pause");
 		
 		for (int i = 0; i < driverCount; i++) {
 			system("cls");
@@ -123,7 +126,7 @@ int main()
 
 		float membershipDiscount = setMembershipDiscount(driverCount, driverName);
 
-		float totalPrice = calculatePrice(engineCapacity, laps, driverCount, totalGearPrice, membershipDiscount, pTotalKartPrice);
+		float totalPrice = calculatePrice(engineCapacity, laps, driverCount, totalGearPrice, membershipDiscount, kartPrice, pTotalKartPrice);
 
 		system("cls");
 
@@ -137,9 +140,9 @@ int main()
 			cout << "\n\t\t\tDriver\t\t\t: "	<< driverName[i]
 			     << "\n\t\t\tAge\t\t\t: "		<< driverAge[i]
 			     << "\n\t\t\tHas License\t\t: "	<< license[i]
-			     << "\n\t\t\tEngine Capacity\t\t: " << engineCapacity[i] << "cc"
-			     << "\n\t\t\tPrice per CC\t\t: " 	<< "RM " << PRICEPERCC << "/cc"
-			     << "\n\t\t\tGo-Kart Price\t\t: RM " << PRICEPERCC * engineCapacity[i]
+			     << "\n\t\t\tEngine Capacity\t\t: "	<< engineCapacity[i] << "cc"
+			     << "\n\t\t\tPrice per CC\t\t: RM "	<< PRICEPERCC << "/cc"
+			     << "\n\t\t\tGo-Kart Price\t\t: RM "<< PRICEPERCC * engineCapacity[i] << " * " << laps << " Laps = RM" << kartPrice[i]
 			     << "\n\t\t\tHelmet Size\t\t: "	<< helmetSize[i]
 			     << "\n\t\t\tHelmet Price\t\t: RM "	<< helmetPrice[i]
 			     << "\n\t\t\tSuit Size\t\t: "	<< suitSize[i]
@@ -150,7 +153,7 @@ int main()
 		}
 
 		cout << "\n\t\t\tTotal Gear Price\t: RM " << totalGearPrice
-		     << "\n\t\t\tTotal Kart Price\t: RM " << totalKartPrice
+		     << "\n\t\t\tTotal Go-Kart Price\t: RM " << *pTotalKartPrice
 		     << "\n\t\t\tSubtotal before discount: RM " << totalPrice / (1 - membershipDiscount)
 		     << "\n\t\t\tMembership Discount\t: " << membershipDiscount * 100 << "%"
 		     << "\n\t\t\tTotal\t\t\t: RM " << totalPrice;
@@ -410,28 +413,32 @@ string setTrack(string& bookingType, string& raceFormat)
 	if (bookingType == "Solo" && raceFormat == "Circuit Race") {
 		cout << "\n\t\t\tAvailable Track: Section 9 Circuit"
 		     << "\n\t\t\tDefaulting to said track\n";
-		cout << "\n\t\t\t" << system("pause");
+		cout << "\n\t\t\t";
+		system("pause");
 		counter.section9++;
 		return "Section 9 Circuit";
 	}
 	if (raceFormat == "Elimination Race") {
 		cout << "\n\t\t\tAvailable Track: Blackrock Circuit"
 		     << "\n\t\t\tDefaulting to said track\n";
-		cout << "\n\t\t\t" << system("pause");
+		cout << "\n\t\t\t";
+		system("pause");
 		counter.blackrock++;
 		return "Blackrock Circuit";
 	}
 	if (raceFormat == "Sprint Race") {
 		cout << "\n\t\t\tAvailable Track: Rushline Dash"
 		     << "\n\t\t\tDefaulting to said track\n";
-		cout << "\n\t\t\t" << system("pause");
+		cout << "\n\t\t\t";
+		system("pause");
 		counter.rushlineDash++;
 		return "Rushline Dash";
 	}
 	if (raceFormat == "Drag Race") {
 		cout << "\n\t\t\tAvailable Track: Torque Strip"
 		     << "\n\t\t\tDefaulting to said track\n";
-		cout << "\n\t\t\t" << system("pause");
+		cout << "\n\t\t\t";
+		system("pause");
 		counter.torqueStrip++;
 		return "Torque Strip";
 	}
@@ -602,11 +609,12 @@ float setMembershipDiscount(int driverCount, string driverName[])
 	return 0;
 }
 
-float calculatePrice(int engineCapacity[], int laps, int driverCount, float totalGearPrice, float membershipDiscount, float *pTotalKartPrice)
+float calculatePrice(int engineCapacity[], int laps, int driverCount, float totalGearPrice, float membershipDiscount, float kartPrice[], float* pTotalKartPrice)
 {
-	for (int i = 0; i < driverCount; i++)
-		*pTotalKartPrice += (engineCapacity[i] * PRICEPERCC) * laps;
-	
-	float finalPrice = (*pTotalKartPrice + totalGearPrice) * (1 - membershipDiscount);
-	return finalPrice;
+	for (int i = 0; i < driverCount; i++) {
+		kartPrice[i] = (engineCapacity[i] * PRICEPERCC) * laps;
+		*pTotalKartPrice += kartPrice[i];
+	}
+
+	return (*pTotalKartPrice + totalGearPrice) * (1 - membershipDiscount); //Total with Discount
 }
