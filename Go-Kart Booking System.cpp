@@ -85,8 +85,8 @@ int main()
 	float gearPrice[5];
 	
 	float kartPrice[5];
-	float totalKartPrice = 0;
-	float *pTotalKartPrice = &totalKartPrice;
+	float totalKartPrice;
+	float *pTotalKartPrice = &totalKartPrice; // Pointer
 
 	char continueChoice;
 	
@@ -603,7 +603,7 @@ float setMembershipDiscount(int driverCount, string driverName[])
 			counter.membership++;
 		}
 	}
-	if (counter.membership > 0) {
+	if (counter.membership > 1) {
 		return MEMBERSHIPDISCOUNT;
 	}
 	return 0;
@@ -611,6 +611,8 @@ float setMembershipDiscount(int driverCount, string driverName[])
 
 float calculatePrice(int engineCapacity[], int laps, int driverCount, float totalGearPrice, float membershipDiscount, float kartPrice[], float* pTotalKartPrice)
 {
+	*pTotalKartPrice = 0;
+
 	for (int i = 0; i < driverCount; i++) {
 		kartPrice[i] = (engineCapacity[i] * PRICEPERCC) * laps;
 		*pTotalKartPrice += kartPrice[i];

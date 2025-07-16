@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="DSDsXnFP1v6kwenmJiHx" name="Page-1">
-        <mxGraphModel dx="701" dy="354" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+        <mxGraphModel dx="728" dy="586" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -111,19 +111,21 @@
                 <mxCell id="156" value="totalPrice = calculatePrice (engineCapacity, laps, driverCount, totalGearPrice, membershipDiscount)" style="whiteSpace=wrap;html=1;fillColor=#fa6800;fontColor=#FFFFFF;strokeColor=#C73500;strokeWidth=3;textShadow=1;spacing=2;" parent="1" vertex="1">
                     <mxGeometry x="490" y="630" width="240" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="157" value="" style="edgeStyle=none;html=1;strokeWidth=3;shadow=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;textShadow=1;spacing=2;" parent="1" edge="1">
+                <mxCell id="157" value="" style="edgeStyle=none;html=1;strokeWidth=3;shadow=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;textShadow=1;spacing=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;rounded=0;curved=0;" parent="1" edge="1" target="304" source="156">
                     <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="609.58" y="710" as="sourcePoint"/>
-                        <mxPoint x="609.9200000000001" y="760" as="targetPoint"/>
+                        <mxPoint x="760" y="650" as="sourcePoint"/>
+                        <mxPoint x="760.34" y="700" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="860" y="670"/>
+                        </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="230" value="" style="edgeStyle=none;html=1;strokeWidth=3;" parent="1" source="158" target="161" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
+                <mxCell id="230" value="" style="edgeStyle=none;html=1;strokeWidth=3;" parent="1" target="161" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="520" y="790" as="sourcePoint"/>
+                    </mxGeometry>
                 </mxCell>
-                <mxCell id="158" value="Output:&lt;br&gt;&quot;Race Format&quot;, raceFormat" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;textShadow=1;spacing=2;strokeWidth=3;" parent="1" vertex="1">
-                    <mxGeometry x="510" y="760" width="200" height="60" as="geometry"/>
-                </mxCell>
-                <mxCell id="161" value="Output:&lt;br&gt;&quot;Track&quot;, track" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;textShadow=1;spacing=2;strokeWidth=3;" parent="1" vertex="1">
+                <mxCell id="161" value="Output:&lt;br&gt;&quot;Laps&quot;, track" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;textShadow=1;spacing=2;strokeWidth=3;" parent="1" vertex="1">
                     <mxGeometry x="225" y="760" width="200" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="162" value="i =0,&lt;br&gt;i &amp;lt; driverCount,&lt;br&gt;i++" style="rhombus;whiteSpace=wrap;html=1;fillColor=#6a00ff;fontColor=#ffffff;strokeColor=#3700CC;textShadow=1;spacing=2;strokeWidth=3;" parent="1" vertex="1">
@@ -203,7 +205,7 @@
                         <mxPoint x="1125" y="924.8199999999999" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="298" value="" style="edgeStyle=none;html=1;strokeWidth=3;" edge="1" parent="1" source="183" target="296">
+                <mxCell id="298" value="" style="edgeStyle=none;html=1;strokeWidth=3;" parent="1" source="183" target="296" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="183" value="&lt;span style=&quot;color: rgb(255, 255, 255);&quot;&gt;Output:&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;color: rgb(255, 255, 255);&quot;&gt;&quot;Engine Capactiy: &quot;, engineCapacity[i], &quot;cc&quot;&lt;/span&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;textShadow=1;spacing=2;strokeWidth=3;" parent="1" vertex="1">
@@ -290,7 +292,7 @@
                 <mxCell id="208" value="counter.totalIncome +=&lt;br&gt;totalPrice&lt;br&gt;&lt;span style=&quot;color: rgb(255, 255, 255);&quot;&gt;counter.customer +=&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;color: rgb(255, 255, 255);&quot;&gt;driverCount&lt;/span&gt;" style="whiteSpace=wrap;html=1;fillColor=#fa6800;fontColor=#FFFFFF;strokeColor=#C73500;strokeWidth=3;textShadow=1;spacing=2;" parent="1" vertex="1">
                     <mxGeometry x="1450" y="1240" width="180" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="283" value="" style="edgeStyle=none;html=1;strokeWidth=3;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;rounded=0;curved=0;" parent="1" edge="1" target="276" source="208">
+                <mxCell id="283" value="" style="edgeStyle=none;html=1;strokeWidth=3;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;rounded=0;curved=0;" parent="1" source="208" target="276" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="1280" y="1300" as="sourcePoint"/>
                         <mxPoint x="1280" y="1350" as="targetPoint"/>
@@ -533,26 +535,35 @@
                         <mxPoint x="1002" y="1269.71" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="299" value="" style="edgeStyle=none;html=1;strokeWidth=3;" edge="1" parent="1" source="296" target="297">
+                <mxCell id="299" value="" style="edgeStyle=none;html=1;strokeWidth=3;" parent="1" source="296" target="297" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="296" value="Output:&lt;br&gt;&quot;Price per CC: RM &quot;,&lt;br&gt;PRICEPERCC, &quot;cc&quot;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;textShadow=1;spacing=2;strokeWidth=3;" vertex="1" parent="1">
+                <mxCell id="296" value="Output:&lt;br&gt;&quot;Price per CC: RM &quot;,&lt;br&gt;PRICEPERCC, &quot;cc&quot;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;textShadow=1;spacing=2;strokeWidth=3;" parent="1" vertex="1">
                     <mxGeometry x="1350" y="895" width="200" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="300" value="" style="edgeStyle=none;html=1;strokeWidth=3;" edge="1" parent="1" source="297" target="171">
+                <mxCell id="300" value="" style="edgeStyle=none;html=1;strokeWidth=3;" parent="1" source="297" target="171" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="297" value="Output:&lt;br&gt;&quot;Go-Kart Price: RM&quot;,&lt;br&gt;PRICEPERCC * engineCapacity[i]&lt;br&gt;&quot; * &quot;, laps, &quot; = RM&quot;, kartPrice[i]" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;textShadow=1;spacing=2;strokeWidth=3;" vertex="1" parent="1">
+                <mxCell id="297" value="Output:&lt;br&gt;&quot;Go-Kart Price: RM&quot;,&lt;br&gt;PRICEPERCC * engineCapacity[i]&lt;br&gt;&quot; * &quot;, laps, &quot; = RM&quot;, kartPrice[i]" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;textShadow=1;spacing=2;strokeWidth=3;" parent="1" vertex="1">
                     <mxGeometry x="1350" y="1010" width="200" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="301" value="Output:&lt;br&gt;&quot;Total Go-Kart Price: RM&quot;,&lt;br&gt;*pTotalKartPrice" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;textShadow=1;spacing=2;strokeWidth=3;" vertex="1" parent="1">
+                <mxCell id="301" value="Output:&lt;br&gt;&quot;Total Go-Kart Price: RM&quot;,&lt;br&gt;*pTotalKartPrice" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;textShadow=1;spacing=2;strokeWidth=3;" parent="1" vertex="1">
                     <mxGeometry x="470" y="1240" width="225" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="302" value="" style="edgeStyle=none;html=1;strokeWidth=3;shadow=1;textShadow=1;spacing=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="301">
+                <mxCell id="302" value="" style="edgeStyle=none;html=1;strokeWidth=3;shadow=1;textShadow=1;spacing=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="301" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="690" y="1269.8400000000001" as="sourcePoint"/>
                         <mxPoint x="742" y="1269.8400000000001" as="targetPoint"/>
                     </mxGeometry>
+                </mxCell>
+                <mxCell id="303" value="Output:&lt;br&gt;&quot;Track&quot;, track" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;textShadow=1;spacing=2;strokeWidth=3;" vertex="1" parent="1">
+                    <mxGeometry x="510" y="760" width="200" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="305" value="" style="edgeStyle=none;html=1;strokeWidth=3;" edge="1" parent="1" source="304" target="303">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="304" value="Output:&lt;br&gt;&quot;Race Format&quot;, raceFormat" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;textShadow=1;spacing=2;strokeWidth=3;" vertex="1" parent="1">
+                    <mxGeometry x="760" y="760" width="200" height="60" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>

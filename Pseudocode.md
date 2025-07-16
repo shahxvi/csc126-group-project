@@ -23,7 +23,7 @@ FUNCTION INTEGER main
         DECLARE FLOAT gearPrice[5]
         
         DECLARE FLOAT kartPrice[5]
-        DECLARE FLOAT totalKartPrice = 0
+        DECLARE FLOAT totalKartPrice
         DECLARE *pTotalKartPrice = &totalKartPrice
 
         DECLARE CHARACTER continueChoice
@@ -469,6 +469,7 @@ FUNCTION FLOAT setMembershipDiscount(INTERGER driverCount, STRING driverName[])
 END FUNCTION
 
 FUNCTION FLOAT calculatePrice(INTEGER engineCapacity[], INTEGER laps, INTEGER driverCount, FLOAT totalGearPrice, FLOAT membershipDiscount, FLOAT kartPrice[], float* pTotalKartPrice)
+        *pTotalKartPrice = 0
         FOR i = 0, i < driverCount, i++
                 kartPrice[i] = (engineCapacity[i] * PRICEPERCC) * laps
 		*pTotalKartPrice += kartPrice[i]
