@@ -401,13 +401,6 @@ string setTrack(string& bookingType, string& raceFormat)
 			  << "\n\t\t\t4 - Chrono Pass"
 			  << "\n\t\t\tPlease choose your track (1 - 4): ";
 		trackID = getValidIntegerInput("track", 1, 4);
-
-		switch (trackID) {
-			case 1: counter.section9++; return "Section 9 Circuit";
-			case 2: counter.blackrock++; return "Blackrock Circuit";
-			case 3: counter.rushlineDash++; return "Rushline Dash";
-			default: counter.choroPass++; return "Chrono Pass";
-		}
 	}
 	if (bookingType == "Solo" && raceFormat == "Circuit Race") {
 		cout << "\n\t\t\tAvailable Track: Section 9 Circuit"
@@ -437,7 +430,12 @@ string setTrack(string& bookingType, string& raceFormat)
 		counter.torqueStrip++;
 		return "Torque Strip";
 	}
-	return "Track"; // Should never get to this point
+	switch (trackID) {
+		case 1: counter.section9++; return "Section 9 Circuit";
+		case 2: counter.blackrock++; return "Blackrock Circuit";
+		case 3: counter.rushlineDash++; return "Rushline Dash";
+		default: counter.choroPass++; return "Chrono Pass";
+	}
 }
 
 void setEngineCapacity(int driverCount, string driverName[], int driverAge[], char license[], int engineCapacity[])
