@@ -42,7 +42,7 @@ float selectSuit(int i, string suitSize[], float suitPrice[]);
 float selectShoe(int i, int shoeSize[], float shoePrice[]);
 float calculateTotalGearPrice(int& driverCount, float helmetPrice[], float suitPrice[], float shoePrice[], float gearPrice[]);
 float setMembershipDiscount(int driverCount, string driverName[]);
-float calculatePrice(int engineCapacity[], int laps, int driverCount, float gearPrice, float membershipDiscount);
+float calculatePrice(int engineCapacity[], int laps, int driverCount, float totalGearPrice, float membershipDiscount, float *pTotalKartPrice);
 
 struct Counters {
 	int customer = 0;
@@ -83,6 +83,9 @@ int main()
 	string helmetSize[5], suitSize[5]; int shoeSize[5];
 	float helmetPrice[5], suitPrice[5], shoePrice[5];
 	float gearPrice[5];
+	
+	float totalKartPrice = 0;
+	float *pTotalKartPrice = &totalKartPrice;
 
 	char continueChoice;
 	
@@ -120,7 +123,7 @@ int main()
 
 		float membershipDiscount = setMembershipDiscount(driverCount, driverName);
 
-		float totalPrice = calculatePrice(engineCapacity, laps, driverCount, totalGearPrice, membershipDiscount);
+		float totalPrice = calculatePrice(engineCapacity, laps, driverCount, totalGearPrice, membershipDiscount, pTotalKartPrice);
 
 		system("cls");
 
@@ -147,6 +150,7 @@ int main()
 		}
 
 		cout << "\n\t\t\tTotal Gear Price\t: RM " << totalGearPrice
+		     << "\n\t\t\tTotal Kart Price\t: RM " << totalKartPrice
 		     << "\n\t\t\tSubtotal before discount: RM " << totalPrice / (1 - membershipDiscount)
 		     << "\n\t\t\tMembership Discount\t: " << membershipDiscount * 100 << "%"
 		     << "\n\t\t\tTotal\t\t\t: RM " << totalPrice;
@@ -598,13 +602,11 @@ float setMembershipDiscount(int driverCount, string driverName[])
 	return 0;
 }
 
-float calculatePrice(int engineCapacity[], int laps, int driverCount, float totalGearPrice, float membershipDiscount)
+float calculatePrice(int engineCapacity[], int laps, int driverCount, float totalGearPrice, float membershipDiscount, float *pTotalKartPrice)
 {
-	float totalKartPrice = 0;
-	
 	for (int i = 0; i < driverCount; i++)
-		totalKartPrice += (engineCapacity[i] * PRICEPERCC) * laps;
+		*pTotalKartPrice += (engineCapacity[i] * PRICEPERCC) * laps;
 	
-	float finalPrice = (totalKartPrice + totalGearPrice) * (1 - membershipDiscount);
+	float finalPrice = (*pTotalKartPrice + totalGearPrice) * (1 - membershipDiscount);
 	return finalPrice;
 }
