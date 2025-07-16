@@ -1,3 +1,6 @@
+DEFINE PRICEPERCC = 0.3
+DEFINE MEMBERSHIPDISCOUNT = 0.1
+
 FUNCTION INTEGER main
         DECLARE CHARACTER continueChoice
 
@@ -442,25 +445,29 @@ FUNCTION FLOAT calculateTotalGearPrice(INTEGER& driverCount, FLOAT helmetPrice[]
 RETURN totalGearPrice
 END FUNCTION
 
-FUNCTION FLOAT setMembershipDiscount()
-        DECLARE CHAR membership
-        PROMPT "Do you have a membership? (Y/N): "
-        SET membership = getValidCharacterInput()
+FUNCTION FLOAT setMembershipDiscount(INTERGER driverCount, STRING driverName[])
+	DELCARE CHARACTER membership[5];
 
-        IF membership == 'Y' THEN
-                SET counter.membership++
-                RETURN 0.1
-        ELSE
-                RETURN 0.0
-        END IF
+	for (int i = 0; i < driverCount; i++) {
+		DISPLAY "Does ", driverName[i], " have a membership? (Y/N): "
+		SET membership[i] = getValidCharacterInput()
+
+		IF membership[i] == 'Y' THEN
+			counter.membership++
+		END IF 
+	}
+	IF counter.membership > 0 THEN
+		return MEMBERSHIPDISCOUNT;
+	END IF
+
+	RETURN 0
 END FUNCTION
 
 FUNCTION FLOAT calculatePrice(int engineCapacity[], int laps, int driverCount, float totalGearPrice, float membershipDiscount)
-        SET pricePerCC = 03
         SET totalKartPrice = 0
 
         FOR i = 0, i < driverCount, i++
-                totalKartPrice += (engineCapacity[i] * pricePerCC) * laps
+                totalKartPrice += (engineCapacity[i] * PRICEPERCC) * laps
         END FOR
         
         finalPrice = (totalKartPrice + totalGearPrice) * (1 - membershipDiscount)
