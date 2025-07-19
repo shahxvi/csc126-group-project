@@ -224,7 +224,7 @@ FUNCTION STRING getValidSizeInput(string inputType)
 	std::transform(sizeInput.begin(), sizeInput.end(), sizeInput.begin(), ::toupper)
 
 	WHILE (cin.fail() || (sizeInput != "S" && sizeInput != "M" && sizeInput != "L" && sizeInput != "XL"))
-		PROMPT "\n\t\t\tPlease choose a valid " << inputType << " (S/M/L/XL): "
+		PROMPT "\n\t\t\tPlease choose a valid ", inputType, " (S/M/L/XL): "
 		READ sizeInput
 		std::transform(sizeInput.begin(), sizeInput.end(), sizeInput.begin(), ::toupper)
 	END WHILE
@@ -291,6 +291,7 @@ FUNCTION STRING setRaceFormat(STRING& bookingType)
                 CASE 4: RETURN "Drag Race";
                 CASE 5: RETURN "Elimination Race";
                 DEFAULT: RETURN "Invalid Race Format";
+        END SWITCH
 END FUNCTION 
 
 FUNCTION STRING setTrack(STRING& bookingType, STRING& raceFormat)
@@ -302,7 +303,8 @@ FUNCTION STRING setTrack(STRING& bookingType, STRING& raceFormat)
                 DISPLAY "2 - Blackrock Circuit"
                 PROMPT "Please choose your track (1 - 2): "
                 SET trackID = getValidIntegerInput("track, 1, 2)
-        ELSE IF raceFormat == "Time Trial" THEN
+        END IF
+        IF raceFormat == "Time Trial" THEN
                 DISPLAY "Available Track:"
                 DISPLAY "1 - Section 9 Circuit"
                 DISPLAY "2 - Blackrock Circuit"
@@ -311,36 +313,37 @@ FUNCTION STRING setTrack(STRING& bookingType, STRING& raceFormat)
                 PROMPT "Please choose your track (1 - 4): "
                 SET trackID = getValidIntegerInput("track, 1, 4)
         END IF
-
-        SWITCH (trackID)
-                CASE 1: counter.section9++; RETURN "Section 9 Circuit";
-                CASE 2: counter.blackrock++; RETURN "Blackrock Circuit";
-                CASE 3: counter.rushlineDash++; RETURN "Rushline Dash";
-                DEFAULT: counter.choroPass++; RETURN "Chrono Pass";
-
         IF bookingType == "Solo" AND raceFormat == "Circuit Race" THEN
                 DISPLAY "Available Track: Section 9 Circuit"
                 DISPLAY "Defaulting to said track"
                 SET counter.section9++
                 RETURN "Section 9 Circuit"
-        ELSE IF raceFormat == "Elimination Race" THEN
+        END IF
+        IF raceFormat == "Elimination Race" THEN
                 DISPLAY "Available Track: Blackrock Circuit"
                 DISPLAY "Defaulting to said track"
                 SET counter.blackrock++
                 RETURN "Blackrock Circuit"
-        ELSE IF raceFormat == "Sprint Race" THEN
+        END IF
+        IF raceFormat == "Sprint Race" THEN
                 DISPLAY "Available Track: Rushline Dash"
                 DISPLAY "Defaulting to said track"
                 SET counter.rushlineDash++
                 RETURN "Rushline Dash"
-        ELSE IF raceFormat == "Drag Race" THEN
+        END IF
+        IF raceFormat == "Drag Race" THEN
                 DISPLAY "Available Track: Torque Strip"
                 DISPLAY "Defaulting to said track"
                 SET counter.torqueStrip++
                 RETURN "Torque Strip"
         END IF
 
-        RETURN "Track"
+        SWITCH (trackID)
+                CASE 1: counter.section9++; RETURN "Section 9 Circuit";
+                CASE 2: counter.blackrock++; RETURN "Blackrock Circuit";
+                CASE 3: counter.rushlineDash++; RETURN "Rushline Dash";
+                DEFAULT: counter.choroPass++; RETURN "Chrono Pass";
+        END SWITCH
 END FUNCTION
                 
 MODULE setEngineCapacity(INTEGER driverCount, STRING driverName[], INTEGER driverAge[], CHARACTER license[])
@@ -450,7 +453,7 @@ FUNCTION FLOAT selectShoe(INTEGER i, INTEGER shoeSize[], FLOAT shoePrice[])
         ELSE
                 shoePrice[i] = 6
         END IF
-RETURN shoePrice[i]
+        RETURN shoePrice[i]
 END FUNCTION
 
 FUNCTION FLOAT calculateTotalGearPrice(INTEGER& driverCount, FLOAT helmetPrice[], FLOAT suitPrice[], FLOAT gearPrice[])
@@ -461,25 +464,24 @@ FUNCTION FLOAT calculateTotalGearPrice(INTEGER& driverCount, FLOAT helmetPrice[]
                 gearPrice[i] = helmetPrice[i] + suitPrice[i] + shoePrice [i]
                 totalGearPrice += gearPrice[i]
         END FOR
-RETURN totalGearPrice
+        RETURN totalGearPrice
 END FUNCTION
 
-FUNCTION FLOAT setMembershipDiscount(INTERGER driverCount, STRING driverName[])
-	DELCARE CHARACTER membership[5];
+FUNCTION FLOAT setMembershipDiscount(INTEGER driverCount, STRING driverName[])
+	DECLARE CHARACTER membership[5]
 
-	for (int i = 0; i < driverCount; i++) {
+	FOR INTEGER i = 0; i < driverCount; i++
 		DISPLAY "Does ", driverName[i], " have a membership? (Y/N): "
-		SET membership[i] = getValidCharacterInput()
+		membership[i] = getValidCharacterInput()
 
 		IF membership[i] == 'Y' THEN
 			counter.membership++
-		END IF 
-	}
-	IF counter.membership > 0 THEN
-		return MEMBERSHIPDISCOUNT;
-	END IF
-
-	RETURN 0
+		END IF
+	END FOR
+        IF counter.membership > 1 THEN
+		return MEMBERSHIPDISCOUNT
+        END IF
+	return 0;
 END FUNCTION
 
 FUNCTION FLOAT calculatePrice(INTEGER engineCapacity[], INTEGER laps, INTEGER driverCount, FLOAT totalGearPrice, FLOAT membershipDiscount, FLOAT kartPrice[], float* pTotalKartPrice)
