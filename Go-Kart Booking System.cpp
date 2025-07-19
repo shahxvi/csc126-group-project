@@ -320,6 +320,23 @@ char getValidCharacterInput()
 	return std::toupper(input[0]);
 }
 
+string getValidSizeInput(string inputType)
+{
+	string sizeInput;
+	cin >> sizeInput;
+	std::transform(sizeInput.begin(), sizeInput.end(), sizeInput.begin(), ::toupper);
+
+	while (cin.fail() || (sizeInput != "S" && sizeInput != "M" && sizeInput != "L" && sizeInput != "XL")) {
+		cin.clear();
+		cin.ignore(1000, '\n');
+		cout << "\n\t\t\tPlease choose a valid " << inputType << " (S/M/L/XL): ";
+		cin >> sizeInput;
+		std::transform(sizeInput.begin(), sizeInput.end(), sizeInput.begin(), ::toupper);
+	}
+	
+	return sizeInput;
+}
+
 string getBookingType()
 {
 	int bookingTypeID;
@@ -509,22 +526,6 @@ int setLaps(int driverCount, string& raceFormat) {
 	return laps;
 }
 
-string getValidSizeInput(string inputType)
-{
-	string sizeInput;
-	cin >> sizeInput;
-	std::transform(sizeInput.begin(), sizeInput.end(), sizeInput.begin(), ::toupper);
-
-	while (cin.fail() || (sizeInput != "S" && sizeInput != "M" && sizeInput != "L" && sizeInput != "XL")) {
-		cin.clear();
-		cin.ignore(1000, '\n');
-		cout << "\n\t\t\tPlease choose a valid " << inputType << " (S/M/L/XL): ";
-		cin >> sizeInput;
-		std::transform(sizeInput.begin(), sizeInput.end(), sizeInput.begin(), ::toupper);
-	}
-	
-	return sizeInput;
-}
 float selectHelmet(int i, string helmetSize[], float helmetPrice[])
 {
 	cout << "\n\t\t\tPlease choose your helmet size (S/M/L/XL): ";

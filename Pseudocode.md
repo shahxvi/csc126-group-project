@@ -218,6 +218,20 @@ FUNCTION CHARACTER getValidCharacterInput()
         RETURN std::toupper(input[0])
 END FUNCTION
 
+FUNCTION STRING getValidSizeInput(string inputType)
+	STRING sizeInput;
+	READ sizeInput;
+	std::transform(sizeInput.begin(), sizeInput.end(), sizeInput.begin(), ::toupper)
+
+	WHILE (cin.fail() || (sizeInput != "S" && sizeInput != "M" && sizeInput != "L" && sizeInput != "XL"))
+		PROMPT "\n\t\t\tPlease choose a valid " << inputType << " (S/M/L/XL): "
+		READ sizeInput
+		std::transform(sizeInput.begin(), sizeInput.end(), sizeInput.begin(), ::toupper)
+	END WHILE
+	
+	RETURN sizeInput
+END FUNCTION
+
 FUNCTION STRING getBookingType()
         DECLARE INTEGER bookingTypeID
 
