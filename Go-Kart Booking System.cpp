@@ -604,7 +604,7 @@ float setMembershipDiscount(int driverCount, string driverName[])
 			counter.membership++;
 		}
 	}
-	if (counter.membership > 1) {
+	if (counter.membership > 0) {
 		return MEMBERSHIPDISCOUNT;
 	}
 	return 0;
