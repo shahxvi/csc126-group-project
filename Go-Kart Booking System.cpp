@@ -259,7 +259,7 @@ void displayRaceFormat(string bookingType)
 	     << "\n\t\t\t3 - Time Trial"
 	     << "\n\t\t\t4 - Drag Race";
 	if (bookingType == "Group") {
-		cout << "\n\t\t\t5 - Eliminationn Race (Group)\n";
+		cout << "\n\t\t\t5 - Elimination Race (Group)\n";
 	}
 }
 
