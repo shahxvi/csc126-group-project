@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="DSDsXnFP1v6kwenmJiHx" name="Page-1">
-        <mxGraphModel dx="728" dy="586" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+        <mxGraphModel dx="678" dy="435" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -108,16 +108,14 @@
                         <mxPoint x="490" y="669.47" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="156" value="totalPrice = calculatePrice (engineCapacity, laps, driverCount, totalGearPrice, membershipDiscount)" style="whiteSpace=wrap;html=1;fillColor=#fa6800;fontColor=#FFFFFF;strokeColor=#C73500;strokeWidth=3;textShadow=1;spacing=2;" parent="1" vertex="1">
+                <mxCell id="156" value="membershipDiscount =&amp;nbsp;&lt;br&gt;setMembershipDiscount(driverCount, driverName)" style="whiteSpace=wrap;html=1;fillColor=#fa6800;fontColor=#FFFFFF;strokeColor=#C73500;strokeWidth=3;textShadow=1;spacing=2;" parent="1" vertex="1">
                     <mxGeometry x="490" y="630" width="240" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="157" value="" style="edgeStyle=none;html=1;strokeWidth=3;shadow=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;textShadow=1;spacing=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;rounded=0;curved=0;" parent="1" edge="1" target="304" source="156">
+                <mxCell id="157" value="" style="edgeStyle=none;html=1;strokeWidth=3;shadow=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;textShadow=1;spacing=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;rounded=0;curved=0;" parent="1" source="306" target="304" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="760" y="650" as="sourcePoint"/>
                         <mxPoint x="760.34" y="700" as="targetPoint"/>
-                        <Array as="points">
-                            <mxPoint x="860" y="670"/>
-                        </Array>
+                        <Array as="points"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="230" value="" style="edgeStyle=none;html=1;strokeWidth=3;" parent="1" target="161" edge="1">
@@ -556,14 +554,23 @@
                         <mxPoint x="742" y="1269.8400000000001" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="303" value="Output:&lt;br&gt;&quot;Track&quot;, track" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;textShadow=1;spacing=2;strokeWidth=3;" vertex="1" parent="1">
+                <mxCell id="303" value="Output:&lt;br&gt;&quot;Track&quot;, track" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;textShadow=1;spacing=2;strokeWidth=3;" parent="1" vertex="1">
                     <mxGeometry x="510" y="760" width="200" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="305" value="" style="edgeStyle=none;html=1;strokeWidth=3;" edge="1" parent="1" source="304" target="303">
+                <mxCell id="305" value="" style="edgeStyle=none;html=1;strokeWidth=3;" parent="1" source="304" target="303" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="304" value="Output:&lt;br&gt;&quot;Race Format&quot;, raceFormat" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;textShadow=1;spacing=2;strokeWidth=3;" vertex="1" parent="1">
-                    <mxGeometry x="760" y="760" width="200" height="60" as="geometry"/>
+                <mxCell id="304" value="Output:&lt;br&gt;&quot;Race Format&quot;, raceFormat" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;textShadow=1;spacing=2;strokeWidth=3;" parent="1" vertex="1">
+                    <mxGeometry x="800" y="760" width="200" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="306" value="totalPrice = calculatePrice (engineCapacity, laps, driverCount, totalGearPrice, membershipDiscount)" style="whiteSpace=wrap;html=1;fillColor=#fa6800;fontColor=#FFFFFF;strokeColor=#C73500;strokeWidth=3;textShadow=1;spacing=2;" vertex="1" parent="1">
+                    <mxGeometry x="780" y="630" width="240" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="307" value="" style="edgeStyle=none;html=1;strokeWidth=3;shadow=1;textShadow=1;spacing=2;" edge="1" parent="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="730" y="669.71" as="sourcePoint"/>
+                        <mxPoint x="780" y="669.71" as="targetPoint"/>
+                    </mxGeometry>
                 </mxCell>
             </root>
         </mxGraphModel>
