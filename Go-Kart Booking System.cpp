@@ -286,7 +286,7 @@ void displayRacingGear()
 void displayEngineCapacities(int age, char license)
 { 
 	cout << "\n\t\t\tAvailable Engine Capacities:";
-	cout << "\n\t\t\t1 - 100cc (Under 13)";
+	cout << "\n\t\t\t1 - 120cc (Under 13)";
 	if (age >= 18)
 		cout << "\n\t\t\t2 - 200cc";
 	if (license == 'Y')
