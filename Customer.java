@@ -130,7 +130,7 @@ public class Customer {
 	}
 
 	public double getShoePrice() {
-		return shoeSize;
+		return shoeSize <= 25 ? 3: 6;
 	}
 
 	public boolean getMembership() {
