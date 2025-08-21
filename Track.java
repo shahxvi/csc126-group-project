@@ -8,12 +8,12 @@ public class Track {
 		this.name = name;
 	}
 
-	public Track(String format) {
+	public setFormat(String format) {
 		this.format = format;
 		this.name = "";
 	}
 
-	public Track(String name) {
+	public setName(String name) {
 		this.format = "";
 		this.name = name;
 	}
