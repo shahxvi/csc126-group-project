@@ -10,11 +10,9 @@ public class Track {
 
 	public setFormat(String format) {
 		this.format = format;
-		this.name = "";
 	}
 
 	public setName(String name) {
-		this.format = "";
 		this.name = name;
 	}
 
