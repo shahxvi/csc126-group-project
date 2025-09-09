@@ -1,6 +1,44 @@
 public class Menu {
 
-	public void display() {
+  public static void display() {
+    clearScreen();
+    int choice;
+
+    do {
+      displayStartMenu();
+
+      System.out.print("Choose your option: ");
+      choice = InputValidator.getValidIntegerInput("menu option", 1, 5);
+
+      switch (choice) {
+        case 1:
+          clearScreen();
+          break;
+        case 2:
+          clearScreen();
+          displayRaceFormats("Group");
+          break;
+        case 3:
+          clearScreen();
+          displayTrackList();
+          break;
+        case 4:
+          clearScreen();
+          displayRacingGear();
+          break;
+        default:
+          clearScreen();
+          displayKartCapacities(18, true); // true here means show the menu with the Go-Kart that requires license
+          break;
+      }
+
+      System.out.println();
+
+    } while (choice != 1);
+
+  }
+
+	public static void displayStartMenu() {
 		System.out.println("Go-Kart Booking System");
 		System.out.println("1 - Start Booking");
 		System.out.println("2 - Race Formats");
@@ -9,7 +47,7 @@ public class Menu {
 		System.out.println("5 - Go-Kart Engine Capacities");
 	}
 
-	public void displayRaceFormats(String bookingType) {
+	public static void displayRaceFormats(String bookingType) {
 		System.out.println("Available Race Formats:");
 		System.out.println("1 - Circuit Race");
 		System.out.println("2 - Sprint Race");
@@ -18,7 +56,7 @@ public class Menu {
 		System.out.println(bookingType == "Group" ? "Elimination Race (Group)" : "");
 	}
 
-	public void displayTrackList() {
+	public static void displayTrackList() {
 		System.out.println("Available Tracks:");
 		System.out.println("1 - Section 9 Circuit");
 		System.out.println("2 - Chrono Pass");
@@ -27,7 +65,7 @@ public class Menu {
 		System.out.println("5 - Torque Strip");
 	}
 
-	public void displayRacingGear() {
+	public static void displayRacingGear() {
 		System.out.println("Helmets\t\t\tSuits\t\t\tShoes");
 		System.out.println("Size S:\t\t\tRM 2\t\t\tRM 5\t\t\tSize 20-25 cm: RM 3");
 		System.out.println("Size M:\t\t\tRM 4\t\t\tRM 10\t\t\tSize 26-35 cm: RM 6");
@@ -35,7 +73,7 @@ public class Menu {
 		System.out.println("Size XL\t\t\tRM 8\t\t\tRM 20");
 	}
 
-	public void displayKartCapacities(int age, boolean isLicensed) {
+	public static void displayKartCapacities(int age, boolean isLicensed) {
 		System.out.println("Available Engine Capacities:");
 		System.out.println("1 - 120cc (Under 13)");
 		if (age >= 18)
@@ -43,5 +81,10 @@ public class Menu {
 		if (isLicensed)
 			System.out.println("3 - 270cc (Requires License)");
 	}
+
+  public static void clearScreen() {
+    System.out.print("\033[H\033[2J");
+    System.out.flush();
+  }
 
 }
